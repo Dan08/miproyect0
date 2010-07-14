@@ -1,0 +1,454 @@
+---
+Objetivo: 
+  Objetivo_2: 
+    nombre: Objetivo de prueba
+    nombre_corto: Objetivo de prueba
+    created_at: 2009-02-05 09:44:48
+    updated_at: 2009-02-05 09:44:48
+  Objetivo_3: 
+    nombre: Defensa y justicia de los ciudadanos
+    descripcion: >
+      Realizar adecuadamente las acciones
+      pertinentes para garantizar la defensa y
+      justicia de los ciudadanos
+    nombre_corto: Defensa y justicia de los ciudadanos
+    tema: cliente
+    created_at: 2009-02-23 11:18:19
+    updated_at: 2009-02-23 11:26:44
+  Objetivo_4: 
+    nombre: Adquirir bienes y servicios
+    descripcion: >
+      Adquirir bienes y servicios de óptima
+      calidad para garantizar la ejecución de
+      la política de seguridad del distrito
+    nombre_corto: Adquirir bienes y servicios
+    tema: cliente
+    created_at: 2009-02-23 11:18:48
+    updated_at: 2009-02-23 11:18:48
+Categoria: 
+  Categoria_1: 
+    nombre: Eficacia
+  Categoria_2: 
+    nombre: Eficiencia
+  Categoria_3: 
+    nombre: Efectividad/Impacto
+  Categoria_4:
+    nombre: Indicador POA
+Indicador: 
+  Indicador_2: 
+    indicador: Indicador de prueba
+    borrador: 0
+    objetivo_id: Objetivo_2
+    tipo: procentaje
+    frecuencia: trimestral
+    umbral_rojo: 0
+    umbral_amarillo: 0
+    umbral_verde: 0
+    created_at: 2009-02-05 15:39:32
+    updated_at: 2009-02-19 12:09:39
+  Indicador_3: 
+    indicador: Necesidades de capacitación 
+    borrador: 0
+    objetivo_id: Objetivo_4
+    objetivo_estr: 
+    categoria_id: Categoria_1
+    defincion: >
+      Total de las Capacitaciones brindadas /
+      Total de necesidades de capacitación
+      encontradas 
+    medicion: 
+    descripcion: 
+    formula_textual: 
+    tipo: procentaje
+    frecuencia: semestral
+    como: 
+    que: 
+    formula: ($var5/$var6)*100
+    umbral_rojo: 50
+    umbral_amarillo: 70
+    umbral_verde: 100
+    meta: >
+      Alcanzar un 100 por ciento de avance en
+      la practica de jornadas de capacitación
+      frente a las necesidades encontradas
+    iniciativa: Necesidades de capacitación 
+    created_at: 2009-02-23 11:24:58
+    updated_at: 2009-02-23 11:34:56
+  Indicador_4: 
+    indicador: Evaluación percapita inversion FVS
+    borrador: 0
+    objetivo_id: Objetivo_4
+    objetivo_estr: testing
+    categoria_id: Categoria_2
+    defincion: >
+      Población directamente beneficiada con
+      la inversión ejecutada / Total
+      población area influencia o localidad X
+      Proyecto de Inversión FVS
+    medicion: 
+    descripcion: 
+    tipo: procentaje
+    frecuencia: trimestral
+    como: 
+    que: 
+    umbral_rojo: 50
+    umbral_amarillo: 70
+    umbral_verde: 100
+    meta: Incrementar la capacidad de cobertura 
+    iniciativa: Evaluación percapita inversion FVS
+    created_at: 2009-02-23 11:28:18
+    updated_at: 2009-02-24 11:40:01
+HistoricoIndicador: 
+  HistoricoIndicador_15: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_16: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_17: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_18: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_19: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_20: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_21: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_22: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_23: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_24: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    ano: 2008
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_25: 
+    indicador_id: Indicador_2
+    valor: 0.833333
+    ano: 2009
+    medicion_numero: 1
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_26: 
+    indicador_id: Indicador_2
+    valor: 0.833333
+    ano: 2009
+    medicion_numero: 2
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_27: 
+    indicador_id: Indicador_2
+    valor: 0.833333
+    ano: 2009
+    medicion_numero: 3
+    created_at: 2009-02-09 09:10:09
+    updated_at: 2009-02-09 09:10:09
+  HistoricoIndicador_28: 
+    indicador_id: Indicador_2
+    valor: 0.75
+    ano: 2009
+    medicion_numero: 4
+    created_at: 2009-02-09 09:16:13
+    updated_at: 2009-02-09 09:16:13
+  HistoricoIndicador_29: 
+    indicador_id: Indicador_3
+    valor: 33.3333
+    ano: 2009
+    medicion_numero: 1
+    observacion: Observaciones
+    created_at: 2009-02-23 11:48:26
+    updated_at: 2009-02-23 11:48:26
+  HistoricoIndicador_30: 
+    indicador_id: Indicador_3
+    valor: 66.6667
+    ano: 2009
+    medicion_numero: 2
+    observacion: Observaciones
+    created_at: 2009-02-23 11:48:37
+    updated_at: 2009-02-23 11:48:37
+  HistoricoIndicador_31: 
+    indicador_id: Indicador_4
+    valor: 0.8
+    ano: 2009
+    medicion_numero: 1
+    observacion: Observaciones
+    created_at: 2009-02-23 11:50:33
+    updated_at: 2009-02-23 11:50:33
+  HistoricoIndicador_32: 
+    indicador_id: Indicador_4
+    ano: 2009
+    medicion_numero: 2
+    observacion: Observaciones
+    created_at: 2009-03-06 15:03:32
+    updated_at: 2009-03-06 15:03:32
+Variable: 
+  Variable_3: 
+    nombre: Variable de prueba 1
+  Variable_4: 
+    nombre: Variable de prueba 2
+  Variable_5: 
+    nombre: Total capacitaciones brindadas
+    descripcion: 
+  Variable_6: 
+    nombre: >
+      Total necesidades de capacitacion
+      encontradas
+    descripcion: 
+  Variable_7: 
+    nombre: Poblacion beneficiada
+    descripcion: 
+  Variable_8: 
+    nombre: Total poblacion
+    descripcion: 
+HistoricoVariable: 
+  HistoricoVariable_55: 
+    valor: 3
+    historico_indicador_id: HistoricoIndicador_17
+  HistoricoVariable_56: 
+    valor: 4
+    historico_indicador_id: HistoricoIndicador_17
+  HistoricoVariable_57: 
+    variable_id: Variable_3
+    valor: 3
+    historico_indicador_id: HistoricoIndicador_24
+  HistoricoVariable_58: 
+    variable_id: Variable_4
+    valor: 4
+    historico_indicador_id: HistoricoIndicador_24
+  HistoricoVariable_59: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_60: 
+    variable_id: Variable_4
+    valor: 4
+  HistoricoVariable_61: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_62: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_63: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_64: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_65: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_66: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_67: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_68: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_69: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_70: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_71: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_72: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_73: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_74: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_75: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_76: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_77: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_78: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_79: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_80: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_81: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_82: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_83: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_84: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_85: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_86: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_87: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_88: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_89: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_90: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_91: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_92: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_93: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_94: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_95: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_96: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_97: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_98: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_99: 
+    variable_id: Variable_3
+    valor: 5
+    historico_indicador_id: HistoricoIndicador_25
+  HistoricoVariable_100: 
+    variable_id: Variable_4
+    valor: 6
+    historico_indicador_id: HistoricoIndicador_25
+  HistoricoVariable_101: 
+    variable_id: Variable_3
+    valor: 5
+    historico_indicador_id: HistoricoIndicador_26
+  HistoricoVariable_102: 
+    variable_id: Variable_4
+    valor: 6
+    historico_indicador_id: HistoricoIndicador_26
+  HistoricoVariable_103: 
+    variable_id: Variable_3
+    valor: 5
+    historico_indicador_id: HistoricoIndicador_27
+  HistoricoVariable_104: 
+    variable_id: Variable_4
+    valor: 6
+    historico_indicador_id: HistoricoIndicador_27
+  HistoricoVariable_105: 
+    variable_id: Variable_3
+    valor: 5
+  HistoricoVariable_106: 
+    variable_id: Variable_4
+    valor: 6
+  HistoricoVariable_107: 
+    variable_id: Variable_3
+    valor: 3
+    historico_indicador_id: HistoricoIndicador_28
+  HistoricoVariable_108: 
+    variable_id: Variable_4
+    valor: 4
+    historico_indicador_id: HistoricoIndicador_28
+  HistoricoVariable_109: 
+    variable_id: Variable_5
+    valor: 1
+    historico_indicador_id: HistoricoIndicador_29
+  HistoricoVariable_110: 
+    variable_id: Variable_6
+    valor: 3
+    historico_indicador_id: HistoricoIndicador_29
+  HistoricoVariable_111: 
+    variable_id: Variable_5
+    valor: 2
+    historico_indicador_id: HistoricoIndicador_30
+  HistoricoVariable_112: 
+    variable_id: Variable_6
+    valor: 3
+    historico_indicador_id: HistoricoIndicador_30
+  HistoricoVariable_113: 
+    variable_id: Variable_7
+    valor: 4
+    historico_indicador_id: HistoricoIndicador_31
+  HistoricoVariable_114: 
+    variable_id: Variable_8
+    valor: 5
+    historico_indicador_id: HistoricoIndicador_31
+  HistoricoVariable_115: 
+    variable_id: Variable_7
+    valor: 20
+    historico_indicador_id: HistoricoIndicador_32
+  HistoricoVariable_116: 
+    variable_id: Variable_8
+    valor: 30
+    historico_indicador_id: HistoricoIndicador_32
+IndicadorVariable: 
+  IndicadorVariable_3: 
+    indicador_id: Indicador_2
+    variable_id: Variable_3
+  IndicadorVariable_4: 
+    indicador_id: Indicador_2
+    variable_id: Variable_4
+  IndicadorVariable_5: 
+    indicador_id: Indicador_3
+    variable_id: Variable_5
+  IndicadorVariable_6: 
+    indicador_id: Indicador_3
+    variable_id: Variable_6
+  IndicadorVariable_7: 
+    indicador_id: Indicador_4
+    variable_id: Variable_7
+  IndicadorVariable_8: 
+    indicador_id: Indicador_4
+    variable_id: Variable_8

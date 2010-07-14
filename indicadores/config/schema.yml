@@ -1,0 +1,320 @@
+#
+# ESQUEMA BASE DE DATOS APLICACION DE SEGUIMIENO
+#
+propel:
+  #
+  # Tablas para indicadores
+  #
+  indicador:
+    id:
+    indicador:       varchar(255)
+    borrador:        boolean
+    objetivo_id:     { type: integer, foreignTable: objetivo, foreignReference: id, onDelete: setnull }
+    objetivo_estr:   longvarchar
+    categoria_id:    
+    proceso:         integer
+    defincion:       longvarchar
+    medicion:        longvarchar
+    descripcion:     longvarchar
+    formula_textual: longvarchar
+    tipo:            varchar(50)
+    frecuencia:      varchar(50)
+    responsable_id:  { type: integer, foreignTable: dependencia, foreignReference: id, onDelete: setnull }
+    quien_id:        { type: integer, foreignTable: dependencia, foreignReference: id, onDelete: setnull }
+    como:            longvarchar
+    que:             longvarchar
+    formula:         varchar(255)
+    umbral_rojo:     float
+    umbral_amarillo: float
+    umbral_verde:    float  
+    meta:            longvarchar
+    iniciativa:      longvarchar
+    created_at:
+    updated_at:
+  
+  variable:
+    id:
+    nombre:       varchar(255)
+    descripcion:  longvarchar
+  
+  objetivo:
+    id:
+    nombre:       varchar(255)
+    descripcion:  longvarchar
+    nombre_corto: varchar(50)
+    tema:         varchar(255)
+    created_at:
+    updated_at:
+  
+  categoria:
+    id:
+    nombre:       varchar(255)
+    descripcion:  varchar(255)
+    
+  dependencia:
+    id:
+    nombre: varchar(100)
+  
+  cargo:
+    id:
+    nombre:           varchar(100)
+    dependencia_id:   { type: integer, foreignTable: dependencia, foreignReference: id, onDelete: setnull }
+    
+  indicador_variable:
+    id:
+    indicador_id:
+    variable_id:
+    
+  historico_variable:
+    id:
+    variable_id:
+    valor:  float
+    historico_indicador_id: { type: integer, foreignTable: historico_indicador, foreignReference: id, onDelete: setnull }
+   
+  historico_indicador:
+    id:
+    indicador_id:    { type: integer, foreignTable: indicador, foreignReference: id, onDelete: setnull }
+    valor:           float
+    ano:             varchar(4)
+    medicion_numero: integer
+    observacion:     varchar(255)
+    created_at:
+    updated_at:
+
+  # Seccion procesos
+
+  macroproceso:
+    id:
+    nombre:        varchar(255)
+    descripcion:   longvarchar
+
+  proceso:
+    id:
+    macroproceso_id:  { type: integer, foreignTable: macroproceso, foreignReference: id, onDelete: setnull }
+    nombre:           varchar(255)
+    cargo_id:   { type: integer, foreignTable: cargo, foreignReference: id, onDelete: setnull }
+    descripcion:      longvarchar
+
+  #
+  # Tablas para seguimiento de proyectos
+  #
+
+  # Seccion Plan de Desarrollo
+
+  meta_pd:
+    id:
+    codigo: varchar(30)
+    meta: varchar(255)
+    descripcion: longvarchar
+    tipo: varchar(50)
+    created_at:
+    updated_at:
+
+  indicador_meta:
+    id:
+    meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
+    codigo: varchar(20)
+    descripcion: longvarchar
+    magnitud: varchar(20)
+    anualizacion_id: { type: integer, foreignTable: anualizacion, foreignReference: id, onDelete: setnull }
+    created_at:
+    updated_at:
+
+  anualizacion:
+    id:
+    meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
+    anyo1: float
+    anyo2: float
+    anyo3: float
+    anyo4: float
+    created_at:
+    updated_at:
+
+  # Tabla para seguimiento de indicadores
+  seguimiento_indicador_meta:
+    id:
+    indicador_meta_id: { type: integer, foreignTable: indicador_meta, foreignReference: id, onDelete: setnull }
+    anyo: varchar(4)
+    valor: float
+
+  # Seccion Seguimiento Proyectos
+
+  meta_proyecto:
+    id:
+    meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
+    codigo: varchar(20)
+    meta: varchar(255)
+    descripcion: longvarchar
+    created_at:
+    updated_at:
+
+  proyecto:
+    id:
+    meta_proyecto_id: { type: integer, foreignTable: meta_proyecto, foreignReference: id, onDelete: setnull }
+    anualizacion_id: { type: integer, foreignTable: anualizacion, foreignReference: id, onDelete: setnull }
+    codigo: varchar(20)
+    proyecto: varchar(255)
+    descripcion: longvarchar
+    magnitud: varchar(50)
+    programa_interno: varchar(50)
+    created_at:
+    updated_at:
+
+  actividad_proyecto:
+    id:
+    proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
+    actividad: varchar(255)
+    descripcion: longvarchar
+    ponderacion: float
+    created_at:
+    updated_at:
+
+  subactividad_proyecto:
+    id:
+    actividad_proyecto_id: { type: integer, foreignTable: actividad_proyecto, foreignReference: id, onDelete: setnull }
+    descripcion: longvarchar
+    fecha_inicio: date
+    duracion: integer
+    ponderacion: float
+    created_at:
+    updated_at:
+
+  subactividad_ejecucion:
+    id:
+    subactividad_proyecto_id: { type: integer, foreignTable: subactividad_proyecto, foreignReference: id, onDelete: setnull }
+    mes: integer
+    avance: float
+    created_at:
+    updated_at:
+
+  # Seccion POA
+
+  meta_poa:
+    id:
+    meta: varchar(255)
+    descripcion: longvarchar
+    created_at:
+    updated_at:
+
+  actividad_poa:
+    id:
+    meta_poa_id: { type: integer, foreignTable: meta_poa, foreignReference: id, onDelete: setnull }
+    proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
+    descripcion: longvarchar
+    responsable: varchar(50)
+    observaciones: longvarchar
+    created_at:
+    updated_at:
+
+  #
+  # Tablas para seguimiento de recursos Proyectos de Inversion (Planeacion)
+  #
+
+  proyecto_inversion:
+    id:
+    meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
+    codigo: varchar(20)
+    proyecto: longvarchar
+    created_at:
+    updated_at:
+
+  # tabla para actividades de la matriz de seguimiento
+  actividad:
+    id:
+    proyecto_inversion_id: { type: integer, foreignTable: proyecto_inversion, foreignReference: id, onDelete: setnull }
+    descripcion: longvarchar
+    tipo_gasto: varchar(20)
+    componente_sector: varchar(255)
+    concepto_gasto: varchar(255)
+    mes_etapa_contractual: varchar(20)
+    mes_ejecucion: varchar(20)
+    reservas: float
+    area_responsable: varchar(100)
+    valor_proceso: float
+    numero_solicitud: varchar(20)
+    fecha_solicitud: date
+    fecha_contrato: date
+    fecha_acta_inicio: date
+    fecha_terminacion: date
+    fecha_liquidacion: date
+    plazo_meses: integer
+    contrato_id: { type: integer, foreignTable: contrato, foreignReference: id, onDelete: setnull }
+    clase_contrato: varchar(80)
+    estado: varchar(80)
+    existencia_contrato_numero: varchar(20)
+    giros: float
+    saldo: float
+    created_at:
+    updated_at:
+
+  localidad:
+    id:
+    localidad: varchar(50)
+
+  localidad_actividad:
+    id:
+    localidad_id: { type: integer, foreignTable: localidad, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+    monto: float
+    cantidad: integer
+
+  cliente:
+    id:
+    cliente: varchar(80)
+
+  cliente_actividad:
+    id:
+    cliente_id: { type: integer, foreignTable: cliente, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+    monto: float
+    cantidad: integer
+
+  fuente:
+    id:
+    codigo: varchar(20)
+    fuente: varchar(100)
+
+  fuente_actividad:
+    id:
+    fuente_id: { type: integer, foreignTable: fuente, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+    monto: float
+
+  componente:
+    id:
+    codigo: varchar(20)
+    componente: varchar(100)
+
+  componente_actividad:
+    id:
+    componente_id: { type: integer, foreignTable: componente, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+    monto: float
+
+  cdp:
+    id:
+    numero: varchar(20)
+    fecha: date
+    monto: float
+
+  cdp_actividad:
+    id:
+    cdp_id: { type: integer, foreignTable: cdp, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+
+  crp:
+    id:
+    numero: varchar(20)
+    fecha: date
+    monto: float
+
+  crp_actividad:
+    id:
+    crp_id: { type: integer, foreignTable: crp, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+
+  contrato:
+    id:
+    numero: varchar(10)
+    id_contratista: varchar(30)
+    contratista: varchar(255)

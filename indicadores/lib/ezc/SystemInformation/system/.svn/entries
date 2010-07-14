@@ -1,0 +1,70 @@
+10
+
+dir
+0
+https://miproyect0.googlecode.com/svn/indicadores/lib/ezc/SystemInformation/system
+https://miproyect0.googlecode.com/svn
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46d4c7f6-6a67-7fb8-9541-e0f5b83a0404
+
+exceptions
+dir
+
+
+
+add
+
+info.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+interfaces
+dir
+
+
+
+add
+
+readers
+dir
+
+
+
+add
+
+structs
+dir
+
+
+
+add
+

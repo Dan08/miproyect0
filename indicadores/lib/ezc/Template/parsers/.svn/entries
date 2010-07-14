@@ -1,0 +1,84 @@
+10
+
+dir
+0
+https://miproyect0.googlecode.com/svn/indicadores/lib/ezc/Template/parsers
+https://miproyect0.googlecode.com/svn
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46d4c7f6-6a67-7fb8-9541-e0f5b83a0404
+
+ast_to_ast
+dir
+
+
+
+add
+
+ast_to_php
+dir
+
+
+
+add
+
+interfaces
+dir
+
+
+
+add
+
+tst_to_ast
+dir
+
+
+
+add
+
+tst_to_tst
+dir
+
+
+
+add
+
+ast
+dir
+
+
+
+add
+
+tst
+dir
+
+
+
+add
+
+source_to_tst
+dir
+
+
+
+add
+

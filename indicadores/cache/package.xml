@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.7.1" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfGuardPlugin</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>Identity management plugin.</summary>
+ <description>Identity management plugin.</description>
+ <lead>
+  <name>Fabien POTENCIER</name>
+  <user>fabpot</user>
+  <email>fabien.potencier@symfony-project.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jason IBELE</name>
+  <user>draven</user>
+  <email/>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Dave DASH</name>
+  <user>davedash</user>
+  <email>dd-symfony@davedash.com</email>
+  <active>no</active>
+ </lead>
+ <developer>
+  <name>Francois Zaninotto</name>
+  <user>fzaninotto</user>
+  <email>francois.zaninotto@symfony-project.com</email>
+  <active>no</active>
+ </developer>
+ <date>2008-08-14</date>
+ <time>09:24:35</time>
+ <version>
+  <release>1.1.16</release>
+  <api>1.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>-</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="9ad45550048a23dfac743a309d5a14b1" name="config/config.php" role="data"/>
+   <file md5sum="fe974cce983ee2f5ea41233c59b7c33a" name="config/schema.yml" role="data"/>
+   <file md5sum="0105fe20c2763f75e32e8e961f31128c" name="data/fixtures/fixtures.yml.sample" role="data"/>
+   <file md5sum="f7619f7c853063841490e319cb970c77" name="data/tasks/sfGuardSuperAdminTask.php" role="data"/>
+   <file md5sum="eb8c2971c4e78853ed160582cbd1fdad" name="lib/model/plugin/PluginsfGuardGroup.php" role="data"/>
+   <file md5sum="f1cc76049a91cdf2c1454bd22d5cae81" name="lib/model/plugin/PluginsfGuardGroupPeer.php" role="data"/>
+   <file md5sum="96b2c9a808d98a62ec319a98ec18f7a3" name="lib/model/plugin/PluginsfGuardGroupPermission.php" role="data"/>
+   <file md5sum="a27015ffe3c4ee6941768ab81b905ccc" name="lib/model/plugin/PluginsfGuardGroupPermissionPeer.php" role="data"/>
+   <file md5sum="0a7d8f0a8a44fda33137ff0ceebca28d" name="lib/model/plugin/PluginsfGuardPermission.php" role="data"/>
+   <file md5sum="9777aac874f8ab3e6b8f211e8ebfadb0" name="lib/model/plugin/PluginsfGuardPermissionPeer.php" role="data"/>
+   <file md5sum="710ec12ebd29d3909e70271a77f640ad" name="lib/model/plugin/PluginsfGuardUser.php" role="data"/>
+   <file md5sum="f175fd14bca0cf111472416c46d27187" name="lib/model/plugin/PluginsfGuardUserPeer.php" role="data"/>
+   <file md5sum="f391da116c782d0b6228938080233fa7" name="lib/model/plugin/PluginsfGuardUserGroup.php" role="data"/>
+   <file md5sum="06a5f1f1e244fc4314ba8f2a04ecdf05" name="lib/model/plugin/PluginsfGuardUserGroupPeer.php" role="data"/>
+   <file md5sum="bbce776d40aa48cf43c42a7fa3af5cd8" name="lib/model/plugin/PluginsfGuardUserPermission.php" role="data"/>
+   <file md5sum="1921bb69ab4ca42df3fd0010e4044bd3" name="lib/model/plugin/PluginsfGuardUserPermissionPeer.php" role="data"/>
+   <file md5sum="d6a73c6835391c6288041557c2f7af13" name="lib/model/plugin/PluginsfGuardRememberKey.php" role="data"/>
+   <file md5sum="4dd4228ec71a9c44c762f975602e8d72" name="lib/model/plugin/PluginsfGuardRememberKeyPeer.php" role="data"/>
+   <file md5sum="fbbeb5860ea5b5a4032b74f4844defb9" name="lib/model/sfGuardGroup.php" role="data"/>
+   <file md5sum="01360e7c6ed2e1359e50b6d719f9eab5" name="lib/model/sfGuardGroupPeer.php" role="data"/>
+   <file md5sum="c31b8f832d4e9b80e256b4d540465929" name="lib/model/sfGuardGroupPermission.php" role="data"/>
+   <file md5sum="d4aeef4c875c89dd1c9d3b39d2059d8a" name="lib/model/sfGuardGroupPermissionPeer.php" role="data"/>
+   <file md5sum="fe6f5fea41b9a353f5467bea9b858606" name="lib/model/sfGuardPermission.php" role="data"/>
+   <file md5sum="5417e0cda1d95d59beeadf57ecd137b6" name="lib/model/sfGuardPermissionPeer.php" role="data"/>
+   <file md5sum="955449f63016f4ef7c50cc0794c5f19f" name="lib/model/sfGuardUser.php" role="data"/>
+   <file md5sum="40e145a216735a0d1db7960ef9475d12" name="lib/model/sfGuardUserPeer.php" role="data"/>
+   <file md5sum="b9a76bead98456f1abc5a10951581e08" name="lib/model/sfGuardUserGroup.php" role="data"/>
+   <file md5sum="4e5e69ab4e04cf7a0be1ba3f90fd9f14" name="lib/model/sfGuardUserGroupPeer.php" role="data"/>
+   <file md5sum="90175c55b6880834f63edbbd152d60b9" name="lib/model/sfGuardUserPermission.php" role="data"/>
+   <file md5sum="28e294481e88769c947a82e27993b1f8" name="lib/model/sfGuardUserPermissionPeer.php" role="data"/>
+   <file md5sum="3ecbe2a03ccf2c359b37272744698d8a" name="lib/model/sfGuardRememberKey.php" role="data"/>
+   <file md5sum="9a755193ff8dde84129fb5609c3e4741" name="lib/model/sfGuardRememberKeyPeer.php" role="data"/>
+   <file md5sum="598856b20469469efbd7e0f1293a159c" name="lib/user/sfGuardSecurityUser.class.php" role="data"/>
+   <file md5sum="7c2f1a9964c9330edc1904193fd6af47" name="lib/validator/sfGuardUserValidator.class.php" role="data"/>
+   <file md5sum="9ba11d48da1f695e6b6e98602475296f" name="lib/sfGuardBasicSecurityFilter.class.php" role="data"/>
+   <file md5sum="52628b47bf836c653f4e4af70671733c" name="modules/sfGuardAuth/actions/actions.class.php" role="data"/>
+   <file md5sum="511d361ba246118e1e7a02fa91a27d3b" name="modules/sfGuardAuth/config/security.yml" role="data"/>
+   <file md5sum="5ab4d26c9d7e66609e3e0dc15b35462a" name="modules/sfGuardAuth/lib/BasesfGuardAuthActions.class.php" role="data"/>
+   <file md5sum="1647bab96e87034d779326be5fd895d4" name="modules/sfGuardAuth/templates/secureSuccess.php" role="data"/>
+   <file md5sum="9d1da4fca5ef77d77e011f373f6f13f7" name="modules/sfGuardAuth/templates/signinSuccess.php" role="data"/>
+   <file md5sum="583668a0732d28846ad353cfcfebc0b5" name="modules/sfGuardAuth/validate/signin.yml" role="data"/>
+   <file md5sum="22be2bc57c03027d946cde496f00f4ac" name="modules/sfGuardGroup/actions/actions.class.php" role="data"/>
+   <file md5sum="d010d0866c5f98497fe440a5bbcd115a" name="modules/sfGuardGroup/config/generator.yml" role="data"/>
+   <file md5sum="9bddc16cc60a11aa4572478b62c303e3" name="modules/sfGuardGroup/validate/edit.yml" role="data"/>
+   <file md5sum="7507a1d1db021cc7ed7607b3ad6cab87" name="modules/sfGuardPermission/actions/actions.class.php" role="data"/>
+   <file md5sum="fecb15383c341560c25ca96c44ad6e68" name="modules/sfGuardPermission/config/generator.yml" role="data"/>
+   <file md5sum="725219ec00157d35b97b760fe8ab0c60" name="modules/sfGuardPermission/validate/edit.yml" role="data"/>
+   <file md5sum="54e3230366f0de8400a3d0ea07d1ac72" name="modules/sfGuardUser/actions/actions.class.php" role="data"/>
+   <file md5sum="f945349ad8c4a874219fd4902c295069" name="modules/sfGuardUser/config/generator.yml" role="data"/>
+   <file md5sum="3df781c6fb9d699168521d2eb06aad9b" name="modules/sfGuardUser/lib/BasesfGuardUserActions.class.php" role="data"/>
+   <file md5sum="f6e893173f92c83a6af48f227259e114" name="modules/sfGuardUser/templates/_password.php" role="data"/>
+   <file md5sum="43d049c62485645065697f2ae098777c" name="modules/sfGuardUser/templates/_password_bis.php" role="data"/>
+   <file md5sum="24a0b1ecd6d13fc1d225fe75a72017a7" name="modules/sfGuardUser/templates/_groups.php" role="data"/>
+   <file md5sum="aa213f724f25d2a367b184bc9fdd36d1" name="modules/sfGuardUser/validate/edit.yml" role="data"/>
+   <file md5sum="1378e38607d311d248cbdb0e6ca8a90d" name="README" role="data"/>
+   <file md5sum="c0ab88a4687e9ff8e0fb6c95ca49ed74" name="LICENSE" role="data"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   
+  </required>
+ </dependencies>
+ <phprelease/>
+ <changelog>
+  <release>
+   <version>
+    <release>1.1.16</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.symfony-project.com/license">MIT license</license>
+   <license>MIT</license>
+   <date>2008-08-14</date>
+   <notes>* tom@punkave.com: added a group filter
+* fabien: fixed authorization removal when the session timeout</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.15</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.symfony-project.com/license">MIT license</license>
+   <license>MIT</license>
+   <date>2008-05-26</date>
+   <notes>* fabien: optimized getAllPermissions() number of database requests (#3238)
+* fabien: added the user object as a third parameter when calling the `app_sf_guard_plugin_check_password_callable` callable (#3231)
+* fabien: fixed `isSuperAdmin()` method (#2719)
+* fabien: fixed schema for IPv6 (#3626)</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.14</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.symfony-project.com/license">MIT license</license>
+   <license>MIT</license>
+   <date>2008-04-02</date>
+   <notes>* fabien: [BREAKS BC] renamed app_sfGuardPlugin_routes_register to app_sf_guard_plugin_routes_register (#2562)
+* fabien: added HTTP status code 401 when coming from a XMLHTTPRequest (#2469)
+* fabien: fixed HTTP status code for secure (403) and signin (401) actions (#2545)</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.13</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.symfony-project.com/license">MIT license</license>
+   <license>MIT</license>
+   <date>2008-02-26</date>
+   <notes>* fabien: fixed isAnonymous() method (#2484)
+* frederic: added PluginsfGuardUser::setPasswordHash() to be able to change the password hash directly (useful when loading fixtures)
+* fabien: updated documentation about creating the new tables (#2476)
+* fabien: added the BasesfGuardAuthActions inclusion when extending the sfGuardAuth class (#2296)
+* francois: fixed indexes on unique columns were not unique
+* francois: switched to YAML schema, to allow overriding by way of sfPropelAlternativeSchemaPlugin
+* francois: added `lib/model/plugin/` classes to make the model truly extensible</notes>
+  </release>
+ </changelog>
+</package>

@@ -1,0 +1,260 @@
+
+# This is a fix for InnoDB in MySQL >= 4.1.x
+# It "suspends judgement" for fkey relationships until are tables are set.
+SET FOREIGN_KEY_CHECKS = 0;
+
+#-----------------------------------------------------------------------------
+#-- indicador
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `indicador`;
+
+
+CREATE TABLE `indicador`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`indicador` VARCHAR(255),
+	`borrador` INTEGER,
+	`objetivo_id` INTEGER,
+	`objetivo_estr` TEXT,
+	`categoria_id` INTEGER,
+	`defincion` TEXT,
+	`medicion` TEXT,
+	`descripcion` TEXT,
+	`formula_textual` TEXT,
+	`tipo` VARCHAR(50),
+	`frecuencia` VARCHAR(50),
+	`responsable_id` INTEGER,
+	`quien_id` INTEGER,
+	`como` TEXT,
+	`que` TEXT,
+	`formula` VARCHAR(255),
+	`umbral_rojo` FLOAT,
+	`umbral_amarillo` FLOAT,
+	`umbral_verde` FLOAT,
+	`meta` TEXT,
+	`iniciativa` TEXT,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`),
+	INDEX `indicador_FI_1` (`objetivo_id`),
+	CONSTRAINT `indicador_FK_1`
+		FOREIGN KEY (`objetivo_id`)
+		REFERENCES `objetivo` (`id`)
+		ON DELETE SET NULL,
+	INDEX `indicador_FI_2` (`categoria_id`),
+	CONSTRAINT `indicador_FK_2`
+		FOREIGN KEY (`categoria_id`)
+		REFERENCES `categoria` (`id`),
+	INDEX `indicador_FI_3` (`responsable_id`),
+	CONSTRAINT `indicador_FK_3`
+		FOREIGN KEY (`responsable_id`)
+		REFERENCES `dependencia` (`id`)
+		ON DELETE SET NULL,
+	INDEX `indicador_FI_4` (`quien_id`),
+	CONSTRAINT `indicador_FK_4`
+		FOREIGN KEY (`quien_id`)
+		REFERENCES `dependencia` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- variable
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `variable`;
+
+
+CREATE TABLE `variable`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(255),
+	`descripcion` TEXT,
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- objetivo
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `objetivo`;
+
+
+CREATE TABLE `objetivo`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(255),
+	`descripcion` TEXT,
+	`nombre_corto` VARCHAR(50),
+	`tema` VARCHAR(255),
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- categoria
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `categoria`;
+
+
+CREATE TABLE `categoria`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(255),
+	`descripcion` VARCHAR(255),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- dependencia
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `dependencia`;
+
+
+CREATE TABLE `dependencia`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(100),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- cargo
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cargo`;
+
+
+CREATE TABLE `cargo`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(100),
+	`dependencia_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `cargo_FI_1` (`dependencia_id`),
+	CONSTRAINT `cargo_FK_1`
+		FOREIGN KEY (`dependencia_id`)
+		REFERENCES `dependencia` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- indicador_variable
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `indicador_variable`;
+
+
+CREATE TABLE `indicador_variable`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`indicador_id` INTEGER,
+	`variable_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `indicador_variable_FI_1` (`indicador_id`),
+	CONSTRAINT `indicador_variable_FK_1`
+		FOREIGN KEY (`indicador_id`)
+		REFERENCES `indicador` (`id`),
+	INDEX `indicador_variable_FI_2` (`variable_id`),
+	CONSTRAINT `indicador_variable_FK_2`
+		FOREIGN KEY (`variable_id`)
+		REFERENCES `variable` (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- historico_variable
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `historico_variable`;
+
+
+CREATE TABLE `historico_variable`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`variable_id` INTEGER,
+	`valor` FLOAT,
+	`historico_indicador_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `historico_variable_FI_1` (`variable_id`),
+	CONSTRAINT `historico_variable_FK_1`
+		FOREIGN KEY (`variable_id`)
+		REFERENCES `variable` (`id`),
+	INDEX `historico_variable_FI_2` (`historico_indicador_id`),
+	CONSTRAINT `historico_variable_FK_2`
+		FOREIGN KEY (`historico_indicador_id`)
+		REFERENCES `historico_indicador` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- historico_indicador
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `historico_indicador`;
+
+
+CREATE TABLE `historico_indicador`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`indicador_id` INTEGER,
+	`valor` FLOAT,
+	`ano` VARCHAR(4),
+	`medicion_numero` INTEGER,
+	`observacion` VARCHAR(255),
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`),
+	INDEX `historico_indicador_FI_1` (`indicador_id`),
+	CONSTRAINT `historico_indicador_FK_1`
+		FOREIGN KEY (`indicador_id`)
+		REFERENCES `indicador` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- macroproceso
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `macroproceso`;
+
+
+CREATE TABLE `macroproceso`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(255),
+	`descripcion` TEXT,
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- proceso
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `proceso`;
+
+
+CREATE TABLE `proceso`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`macroproceso_id` INTEGER,
+	`nombre` VARCHAR(255),
+	`cargo_id` INTEGER,
+	`descripcion` TEXT,
+	PRIMARY KEY (`id`),
+	INDEX `proceso_FI_1` (`macroproceso_id`),
+	CONSTRAINT `proceso_FK_1`
+		FOREIGN KEY (`macroproceso_id`)
+		REFERENCES `macroproceso` (`id`)
+		ON DELETE SET NULL,
+	INDEX `proceso_FI_2` (`cargo_id`),
+	CONSTRAINT `proceso_FK_2`
+		FOREIGN KEY (`cargo_id`)
+		REFERENCES `cargo` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+# This restores the fkey checks, after having unset them earlier
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1,0 +1,399 @@
+10
+
+dir
+0
+https://miproyect0.googlecode.com/svn/indicadores/lib/model/map
+https://miproyect0.googlecode.com/svn
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46d4c7f6-6a67-7fb8-9541-e0f5b83a0404
+
+VariableMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+MetaPoaMapBuilder.php
+file
+
+
+
+add
+
+FuenteMapBuilder.php
+file
+
+
+
+add
+
+SubactividadEjecucionMapBuilder.php
+file
+
+
+
+add
+
+SubactividadProyectoMapBuilder.php
+file
+
+
+
+add
+
+ActividadMapBuilder.php
+file
+
+
+
+add
+
+MacroprocesoMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+SeguimientoIndicadoresMapBuilder.php
+file
+
+
+
+add
+
+CrpActividadMapBuilder.php
+file
+
+
+
+add
+
+CategoriaMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ProyectoInversionMapBuilder.php
+file
+
+
+
+add
+
+IndicadorMetaMapBuilder.php
+file
+
+
+
+add
+
+ProyectoMapBuilder.php
+file
+
+
+
+add
+
+CdpMapBuilder.php
+file
+
+
+
+add
+
+ComponenteMapBuilder.php
+file
+
+
+
+add
+
+ProcesoMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+MetaPdMapBuilder.php
+file
+
+
+
+add
+
+AnualizacionMapBuilder.php
+file
+
+
+
+add
+
+ActividadProyectoMapBuilder.php
+file
+
+
+
+add
+
+ActividadesPoaMapBuilder.php
+file
+
+
+
+add
+
+HistoricoIndicadorMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ComponenteActividadMapBuilder.php
+file
+
+
+
+add
+
+ObjetivoMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ClienteMapBuilder.php
+file
+
+
+
+add
+
+CrpMapBuilder.php
+file
+
+
+
+add
+
+LocalidadActividadMapBuilder.php
+file
+
+
+
+add
+
+ActividadPoaMapBuilder.php
+file
+
+
+
+add
+
+ContratoMapBuilder.php
+file
+
+
+
+add
+
+CargoMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+IndicadorMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ClienteActividadMapBuilder.php
+file
+
+
+
+add
+
+MetasPdMapBuilder.php
+file
+
+
+
+add
+
+FuenteActividadMapBuilder.php
+file
+
+
+
+add
+
+DependenciaMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+IndicadorVariableMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ContratoActividadMapBuilder.php
+file
+
+
+
+add
+
+ProyectoInversionMetaMapBuilder.php
+file
+
+
+
+add
+
+HistoricoVariableMapBuilder.php
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+MetaProyectoMapBuilder.php
+file
+
+
+
+add
+
+SeguimientoIndicadorMetaMapBuilder.php
+file
+
+
+
+add
+
+LocalidadMapBuilder.php
+file
+
+
+
+add
+
+CdpActividadMapBuilder.php
+file
+
+
+
+add
+
