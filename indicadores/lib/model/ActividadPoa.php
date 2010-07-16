@@ -9,4 +9,8 @@
  */ 
 class ActividadPoa extends BaseActividadPoa
 {
+  public function __toString()
+  {
+    return $this->getDescripcion();
+  }
 }

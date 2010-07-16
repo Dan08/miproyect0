@@ -37,7 +37,7 @@
                         </td>
 		</tr>
 		<tr>
-                  <th><label id="type">Proceso asociado (si aplica):</label></th>
+                  <th><label id="type"></label></th>
       <td><?php include_partial('proceso_actividad', array('indicador' => $indicador, 'categoria' =>$indicador->getCategoriaId())) ?></td>
     </tr>
 		<tr>

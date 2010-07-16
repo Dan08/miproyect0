@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 ?>
-<?php /*echo object_select_tag($indicador, 'getProceso', array (
-  'related_class' => 'Proceso',
-  'include_blank' => true,
-      ));*/
-if ($categoria == 4) {
-  echo "poa";
+<?php
+if ($indicador->getCategoriaId() == 4)
+{
+  echo object_select_tag($indicador, 'getProceso', array (
+    'related_class' => 'ActividadPoa',
+    'include_blank' => true,
+      ));
 } else {
-  echo "lo demas...";
+  echo object_select_tag($indicador, 'getProceso', array (
+    'related_class' => 'Proceso',
+    'include_blank' => true,
+      ));
 }
-//echo $categoria?>
+?>

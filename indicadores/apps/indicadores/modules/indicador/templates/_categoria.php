@@ -15,8 +15,8 @@ echo object_select_tag($indicador, 'getCategoriaId', array (
 <?php
   echo observe_field('categoria_id', array(
   'update'   => 'proceso',
-  'url'      => 'objetivo/list',
-  'with'     => "'categoria_id=' + value",
+  'url'      => 'indicador/categoria',
+  'with'     => "'categoria=' + value",
   'script'   => true,
   'loading' => "Element.show('indicator')",
   'complete' => "Element.hide('indicator')",
