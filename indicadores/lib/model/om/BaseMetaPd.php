@@ -906,6 +906,76 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 		$l->setMetaPd($this);
 	}
 
+
+	
+	public function getMetaProyectosJoinProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::META_PD_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::META_PD_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
+	}
+
+
+	
+	public function getMetaProyectosJoinAnualizacion($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::META_PD_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinAnualizacion($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::META_PD_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinAnualizacion($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
+	}
+
 	
 	public function initProyectoInversions()
 	{

@@ -13,7 +13,7 @@ abstract class BaseMetaProyectoPeer {
 	const CLASS_DEFAULT = 'lib.model.MetaProyecto';
 
 	
-	const NUM_COLUMNS = 7;
+	const NUM_COLUMNS = 9;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -26,6 +26,9 @@ abstract class BaseMetaProyectoPeer {
 	const META_PD_ID = 'meta_proyecto.META_PD_ID';
 
 	
+	const PROYECTO_ID = 'meta_proyecto.PROYECTO_ID';
+
+	
 	const CODIGO = 'meta_proyecto.CODIGO';
 
 	
@@ -33,6 +36,9 @@ abstract class BaseMetaProyectoPeer {
 
 	
 	const DESCRIPCION = 'meta_proyecto.DESCRIPCION';
+
+	
+	const ANUALIZACION_ID = 'meta_proyecto.ANUALIZACION_ID';
 
 	
 	const CREATED_AT = 'meta_proyecto.CREATED_AT';
@@ -46,18 +52,18 @@ abstract class BaseMetaProyectoPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'MetaPdId', 'Codigo', 'Meta', 'Descripcion', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (MetaProyectoPeer::ID, MetaProyectoPeer::META_PD_ID, MetaProyectoPeer::CODIGO, MetaProyectoPeer::META, MetaProyectoPeer::DESCRIPCION, MetaProyectoPeer::CREATED_AT, MetaProyectoPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'meta_pd_id', 'codigo', 'meta', 'descripcion', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'MetaPdId', 'ProyectoId', 'Codigo', 'Meta', 'Descripcion', 'AnualizacionId', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (MetaProyectoPeer::ID, MetaProyectoPeer::META_PD_ID, MetaProyectoPeer::PROYECTO_ID, MetaProyectoPeer::CODIGO, MetaProyectoPeer::META, MetaProyectoPeer::DESCRIPCION, MetaProyectoPeer::ANUALIZACION_ID, MetaProyectoPeer::CREATED_AT, MetaProyectoPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'meta_pd_id', 'proyecto_id', 'codigo', 'meta', 'descripcion', 'anualizacion_id', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'MetaPdId' => 1, 'Codigo' => 2, 'Meta' => 3, 'Descripcion' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, ),
-		BasePeer::TYPE_COLNAME => array (MetaProyectoPeer::ID => 0, MetaProyectoPeer::META_PD_ID => 1, MetaProyectoPeer::CODIGO => 2, MetaProyectoPeer::META => 3, MetaProyectoPeer::DESCRIPCION => 4, MetaProyectoPeer::CREATED_AT => 5, MetaProyectoPeer::UPDATED_AT => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'meta_pd_id' => 1, 'codigo' => 2, 'meta' => 3, 'descripcion' => 4, 'created_at' => 5, 'updated_at' => 6, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'MetaPdId' => 1, 'ProyectoId' => 2, 'Codigo' => 3, 'Meta' => 4, 'Descripcion' => 5, 'AnualizacionId' => 6, 'CreatedAt' => 7, 'UpdatedAt' => 8, ),
+		BasePeer::TYPE_COLNAME => array (MetaProyectoPeer::ID => 0, MetaProyectoPeer::META_PD_ID => 1, MetaProyectoPeer::PROYECTO_ID => 2, MetaProyectoPeer::CODIGO => 3, MetaProyectoPeer::META => 4, MetaProyectoPeer::DESCRIPCION => 5, MetaProyectoPeer::ANUALIZACION_ID => 6, MetaProyectoPeer::CREATED_AT => 7, MetaProyectoPeer::UPDATED_AT => 8, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'meta_pd_id' => 1, 'proyecto_id' => 2, 'codigo' => 3, 'meta' => 4, 'descripcion' => 5, 'anualizacion_id' => 6, 'created_at' => 7, 'updated_at' => 8, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
@@ -115,11 +121,15 @@ abstract class BaseMetaProyectoPeer {
 
 		$criteria->addSelectColumn(MetaProyectoPeer::META_PD_ID);
 
+		$criteria->addSelectColumn(MetaProyectoPeer::PROYECTO_ID);
+
 		$criteria->addSelectColumn(MetaProyectoPeer::CODIGO);
 
 		$criteria->addSelectColumn(MetaProyectoPeer::META);
 
 		$criteria->addSelectColumn(MetaProyectoPeer::DESCRIPCION);
+
+		$criteria->addSelectColumn(MetaProyectoPeer::ANUALIZACION_ID);
 
 		$criteria->addSelectColumn(MetaProyectoPeer::CREATED_AT);
 
@@ -232,6 +242,62 @@ abstract class BaseMetaProyectoPeer {
 
 
 	
+	public static function doCountJoinProyecto(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$rs = MetaProyectoPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doCountJoinAnualizacion(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
+
+		$rs = MetaProyectoPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
 	public static function doSelectJoinMetaPd(Criteria $c, $con = null)
 	{
 		$c = clone $c;
@@ -279,6 +345,100 @@ abstract class BaseMetaProyectoPeer {
 
 
 	
+	public static function doSelectJoinProyecto(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MetaProyectoPeer::addSelectColumns($c);
+		$startcol = (MetaProyectoPeer::NUM_COLUMNS - MetaProyectoPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		ProyectoPeer::addSelectColumns($c);
+
+		$c->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MetaProyectoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = ProyectoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getProyecto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addMetaProyecto($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initMetaProyectos();
+				$obj2->addMetaProyecto($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinAnualizacion(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MetaProyectoPeer::addSelectColumns($c);
+		$startcol = (MetaProyectoPeer::NUM_COLUMNS - MetaProyectoPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		AnualizacionPeer::addSelectColumns($c);
+
+		$c->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MetaProyectoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = AnualizacionPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getAnualizacion(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addMetaProyecto($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initMetaProyectos();
+				$obj2->addMetaProyecto($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
 	public static function doCountJoinAll(Criteria $criteria, $distinct = false, $con = null)
 	{
 		$criteria = clone $criteria;
@@ -296,6 +456,10 @@ abstract class BaseMetaProyectoPeer {
 		}
 
 		$criteria->addJoin(MetaProyectoPeer::META_PD_ID, MetaPdPeer::ID);
+
+		$criteria->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$criteria->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
 
 		$rs = MetaProyectoPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -321,7 +485,17 @@ abstract class BaseMetaProyectoPeer {
 		MetaPdPeer::addSelectColumns($c);
 		$startcol3 = $startcol2 + MetaPdPeer::NUM_COLUMNS;
 
+		ProyectoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ProyectoPeer::NUM_COLUMNS;
+
+		AnualizacionPeer::addSelectColumns($c);
+		$startcol5 = $startcol4 + AnualizacionPeer::NUM_COLUMNS;
+
 		$c->addJoin(MetaProyectoPeer::META_PD_ID, MetaPdPeer::ID);
+
+		$c->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$c->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
@@ -356,6 +530,394 @@ abstract class BaseMetaProyectoPeer {
 			if ($newObject) {
 				$obj2->initMetaProyectos();
 				$obj2->addMetaProyecto($obj1);
+			}
+
+
+					
+			$omClass = ProyectoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3 = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getProyecto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addMetaProyecto($obj1); 					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initMetaProyectos();
+				$obj3->addMetaProyecto($obj1);
+			}
+
+
+					
+			$omClass = AnualizacionPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj4 = new $cls();
+			$obj4->hydrate($rs, $startcol4);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj4 = $temp_obj1->getAnualizacion(); 				if ($temp_obj4->getPrimaryKey() === $obj4->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj4->addMetaProyecto($obj1); 					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj4->initMetaProyectos();
+				$obj4->addMetaProyecto($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doCountJoinAllExceptMetaPd(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$criteria->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
+
+		$rs = MetaProyectoPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doCountJoinAllExceptProyecto(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MetaProyectoPeer::META_PD_ID, MetaPdPeer::ID);
+
+		$criteria->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
+
+		$rs = MetaProyectoPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doCountJoinAllExceptAnualizacion(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(MetaProyectoPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(MetaProyectoPeer::META_PD_ID, MetaPdPeer::ID);
+
+		$criteria->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$rs = MetaProyectoPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doSelectJoinAllExceptMetaPd(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MetaProyectoPeer::addSelectColumns($c);
+		$startcol2 = (MetaProyectoPeer::NUM_COLUMNS - MetaProyectoPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		ProyectoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ProyectoPeer::NUM_COLUMNS;
+
+		AnualizacionPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + AnualizacionPeer::NUM_COLUMNS;
+
+		$c->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$c->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MetaProyectoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = ProyectoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getProyecto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addMetaProyecto($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initMetaProyectos();
+				$obj2->addMetaProyecto($obj1);
+			}
+
+			$omClass = AnualizacionPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getAnualizacion(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addMetaProyecto($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initMetaProyectos();
+				$obj3->addMetaProyecto($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinAllExceptProyecto(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MetaProyectoPeer::addSelectColumns($c);
+		$startcol2 = (MetaProyectoPeer::NUM_COLUMNS - MetaProyectoPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		MetaPdPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + MetaPdPeer::NUM_COLUMNS;
+
+		AnualizacionPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + AnualizacionPeer::NUM_COLUMNS;
+
+		$c->addJoin(MetaProyectoPeer::META_PD_ID, MetaPdPeer::ID);
+
+		$c->addJoin(MetaProyectoPeer::ANUALIZACION_ID, AnualizacionPeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MetaProyectoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = MetaPdPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getMetaPd(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addMetaProyecto($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initMetaProyectos();
+				$obj2->addMetaProyecto($obj1);
+			}
+
+			$omClass = AnualizacionPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getAnualizacion(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addMetaProyecto($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initMetaProyectos();
+				$obj3->addMetaProyecto($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinAllExceptAnualizacion(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		MetaProyectoPeer::addSelectColumns($c);
+		$startcol2 = (MetaProyectoPeer::NUM_COLUMNS - MetaProyectoPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		MetaPdPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + MetaPdPeer::NUM_COLUMNS;
+
+		ProyectoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ProyectoPeer::NUM_COLUMNS;
+
+		$c->addJoin(MetaProyectoPeer::META_PD_ID, MetaPdPeer::ID);
+
+		$c->addJoin(MetaProyectoPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = MetaProyectoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = MetaPdPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getMetaPd(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addMetaProyecto($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initMetaProyectos();
+				$obj2->addMetaProyecto($obj1);
+			}
+
+			$omClass = ProyectoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getProyecto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addMetaProyecto($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initMetaProyectos();
+				$obj3->addMetaProyecto($obj1);
 			}
 
 			$results[] = $obj1;

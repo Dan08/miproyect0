@@ -34,10 +34,6 @@ class ProyectoMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addForeignKey('META_PROYECTO_ID', 'MetaProyectoId', 'int', CreoleTypes::INTEGER, 'meta_proyecto', 'ID', false, null);
-
-		$tMap->addForeignKey('ANUALIZACION_ID', 'AnualizacionId', 'int', CreoleTypes::INTEGER, 'anualizacion', 'ID', false, null);
-
 		$tMap->addColumn('CODIGO', 'Codigo', 'string', CreoleTypes::VARCHAR, false, 20);
 
 		$tMap->addColumn('PROYECTO', 'Proyecto', 'string', CreoleTypes::VARCHAR, false, 255);

@@ -150,4 +150,22 @@ class indicadorActions extends sfActions
     $this->ind = $this->indicador->calcularIndicador($this->vars, $this->getRequestParameter('observacion'));
     $this->formula = $this->indicador->getFormula();
   }
+
+  /**
+   * Soporta la funcion ajax en el formulario de indicadores, devuelve la lista de procesos o de actividades
+   * poa segun el caso
+   */
+  public function executeCategoria()
+  {
+    // se usa 4 en la tabla 'categoria' para asociar indicadores de actividades poa
+    $this->tipo = $this->getRequestParameter('categoria');
+
+    if ($this->getRequestParameter('categoria') == 4) {
+      //consultar la lista de actividades poa
+      $this->lista = ActividadPoaPeer::doSelect(new Criteria());
+    } else {
+      // consultar y devolver lista de procesos
+      $this->lista = ProcesoPeer::doSelect(new Criteria());
+    }
+  }
 }

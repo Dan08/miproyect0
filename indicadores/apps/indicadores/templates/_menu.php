@@ -53,17 +53,6 @@
     <a class="yuimenubaritemlabel" href="#ProyectosInversion">Proyectos de inversion</a>
     <div id="ProyectosInversion" class="yuimenu"><div class="bd">
       <ul>
-        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#MetasProyectos">Metas Proyectos de Inversion</a>
-          <div id="MetasProyectos" class="yuimenu"><div class="bd">
-            <ul class="first-of-type">
-              <li class="yuimenuitem">
-                <?php echo link_to('Crear', 'metaproyecto/create', 'class="yuimenuitemlabel"')?></li>
-              <li class="yuimenuitem">
-                <?php echo link_to('Modificar', 'metaproyecto/list', 'class="yuimenuitemlabel"')?></li>
-            </ul>
-          </div></div>
-        </li>
-
         <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#Proyectos">Proyectos</a>
           <div id="Proyectos" class="yuimenu"><div class="bd">
             <ul>
@@ -71,6 +60,17 @@
                 <?php echo link_to('Crear', 'proyecto/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
                 <?php echo link_to('Modificar', 'proyecto/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#MetasProyectos">Metas Proyectos de Inversion</a>
+          <div id="MetasProyectos" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'metaproyecto/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'metaproyecto/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>

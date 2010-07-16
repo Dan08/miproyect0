@@ -142,16 +142,16 @@ propel:
   meta_proyecto:
     id:
     meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
+    proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
     codigo: varchar(20)
     meta: varchar(255)
     descripcion: longvarchar
+    anualizacion_id: { type: integer, foreignTable: anualizacion, foreignReference: id, onDelete: setnull }
     created_at:
     updated_at:
 
   proyecto:
     id:
-    meta_proyecto_id: { type: integer, foreignTable: meta_proyecto, foreignReference: id, onDelete: setnull }
-    anualizacion_id: { type: integer, foreignTable: anualizacion, foreignReference: id, onDelete: setnull }
     codigo: varchar(20)
     proyecto: varchar(255)
     descripcion: longvarchar
