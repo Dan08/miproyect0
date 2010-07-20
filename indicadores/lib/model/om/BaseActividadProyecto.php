@@ -17,6 +17,10 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 
 	
+	protected $meta_pd_id;
+
+
+	
 	protected $actividad;
 
 
@@ -37,6 +41,9 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 	
 	protected $aProyecto;
+
+	
+	protected $aMetaPd;
 
 	
 	protected $collSubactividadProyectos;
@@ -62,6 +69,13 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 	{
 
 		return $this->proyecto_id;
+	}
+
+	
+	public function getMetaPdId()
+	{
+
+		return $this->meta_pd_id;
 	}
 
 	
@@ -162,6 +176,24 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setMetaPdId($v)
+	{
+
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->meta_pd_id !== $v) {
+			$this->meta_pd_id = $v;
+			$this->modifiedColumns[] = ActividadProyectoPeer::META_PD_ID;
+		}
+
+		if ($this->aMetaPd !== null && $this->aMetaPd->getId() !== $v) {
+			$this->aMetaPd = null;
+		}
+
+	} 
+	
 	public function setActividad($v)
 	{
 
@@ -242,21 +274,23 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 			$this->proyecto_id = $rs->getInt($startcol + 1);
 
-			$this->actividad = $rs->getString($startcol + 2);
+			$this->meta_pd_id = $rs->getInt($startcol + 2);
 
-			$this->descripcion = $rs->getString($startcol + 3);
+			$this->actividad = $rs->getString($startcol + 3);
 
-			$this->ponderacion = $rs->getFloat($startcol + 4);
+			$this->descripcion = $rs->getString($startcol + 4);
 
-			$this->created_at = $rs->getTimestamp($startcol + 5, null);
+			$this->ponderacion = $rs->getFloat($startcol + 5);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 6, null);
+			$this->created_at = $rs->getTimestamp($startcol + 6, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 7, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 7; 
+						return $startcol + 8; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating ActividadProyecto object", $e);
 		}
@@ -331,6 +365,13 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 				$this->setProyecto($this->aProyecto);
 			}
 
+			if ($this->aMetaPd !== null) {
+				if ($this->aMetaPd->isModified()) {
+					$affectedRows += $this->aMetaPd->save($con);
+				}
+				$this->setMetaPd($this->aMetaPd);
+			}
+
 
 						if ($this->isModified()) {
 				if ($this->isNew()) {
@@ -394,6 +435,12 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->aMetaPd !== null) {
+				if (!$this->aMetaPd->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aMetaPd->getValidationFailures());
+				}
+			}
+
 
 			if (($retval = ActividadProyectoPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
@@ -433,18 +480,21 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 				return $this->getProyectoId();
 				break;
 			case 2:
-				return $this->getActividad();
+				return $this->getMetaPdId();
 				break;
 			case 3:
-				return $this->getDescripcion();
+				return $this->getActividad();
 				break;
 			case 4:
-				return $this->getPonderacion();
+				return $this->getDescripcion();
 				break;
 			case 5:
-				return $this->getCreatedAt();
+				return $this->getPonderacion();
 				break;
 			case 6:
+				return $this->getCreatedAt();
+				break;
+			case 7:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -459,11 +509,12 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 		$result = array(
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getProyectoId(),
-			$keys[2] => $this->getActividad(),
-			$keys[3] => $this->getDescripcion(),
-			$keys[4] => $this->getPonderacion(),
-			$keys[5] => $this->getCreatedAt(),
-			$keys[6] => $this->getUpdatedAt(),
+			$keys[2] => $this->getMetaPdId(),
+			$keys[3] => $this->getActividad(),
+			$keys[4] => $this->getDescripcion(),
+			$keys[5] => $this->getPonderacion(),
+			$keys[6] => $this->getCreatedAt(),
+			$keys[7] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -486,18 +537,21 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 				$this->setProyectoId($value);
 				break;
 			case 2:
-				$this->setActividad($value);
+				$this->setMetaPdId($value);
 				break;
 			case 3:
-				$this->setDescripcion($value);
+				$this->setActividad($value);
 				break;
 			case 4:
-				$this->setPonderacion($value);
+				$this->setDescripcion($value);
 				break;
 			case 5:
-				$this->setCreatedAt($value);
+				$this->setPonderacion($value);
 				break;
 			case 6:
+				$this->setCreatedAt($value);
+				break;
+			case 7:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -509,11 +563,12 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setProyectoId($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setActividad($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setDescripcion($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setPonderacion($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setCreatedAt($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setUpdatedAt($arr[$keys[6]]);
+		if (array_key_exists($keys[2], $arr)) $this->setMetaPdId($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setActividad($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setDescripcion($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setPonderacion($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setCreatedAt($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setUpdatedAt($arr[$keys[7]]);
 	}
 
 	
@@ -523,6 +578,7 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 		if ($this->isColumnModified(ActividadProyectoPeer::ID)) $criteria->add(ActividadProyectoPeer::ID, $this->id);
 		if ($this->isColumnModified(ActividadProyectoPeer::PROYECTO_ID)) $criteria->add(ActividadProyectoPeer::PROYECTO_ID, $this->proyecto_id);
+		if ($this->isColumnModified(ActividadProyectoPeer::META_PD_ID)) $criteria->add(ActividadProyectoPeer::META_PD_ID, $this->meta_pd_id);
 		if ($this->isColumnModified(ActividadProyectoPeer::ACTIVIDAD)) $criteria->add(ActividadProyectoPeer::ACTIVIDAD, $this->actividad);
 		if ($this->isColumnModified(ActividadProyectoPeer::DESCRIPCION)) $criteria->add(ActividadProyectoPeer::DESCRIPCION, $this->descripcion);
 		if ($this->isColumnModified(ActividadProyectoPeer::PONDERACION)) $criteria->add(ActividadProyectoPeer::PONDERACION, $this->ponderacion);
@@ -559,6 +615,8 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 	{
 
 		$copyObj->setProyectoId($this->proyecto_id);
+
+		$copyObj->setMetaPdId($this->meta_pd_id);
 
 		$copyObj->setActividad($this->actividad);
 
@@ -630,6 +688,35 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aProyecto;
+	}
+
+	
+	public function setMetaPd($v)
+	{
+
+
+		if ($v === null) {
+			$this->setMetaPdId(NULL);
+		} else {
+			$this->setMetaPdId($v->getId());
+		}
+
+
+		$this->aMetaPd = $v;
+	}
+
+
+	
+	public function getMetaPd($con = null)
+	{
+		if ($this->aMetaPd === null && ($this->meta_pd_id !== null)) {
+						include_once 'lib/model/om/BaseMetaPdPeer.php';
+
+			$this->aMetaPd = MetaPdPeer::retrieveByPK($this->meta_pd_id, $con);
+
+			
+		}
+		return $this->aMetaPd;
 	}
 
 	

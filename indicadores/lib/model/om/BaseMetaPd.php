@@ -54,6 +54,12 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 	protected $lastMetaProyectoCriteria = null;
 
 	
+	protected $collActividadProyectos;
+
+	
+	protected $lastActividadProyectoCriteria = null;
+
+	
 	protected $collProyectoInversions;
 
 	
@@ -373,6 +379,14 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collActividadProyectos !== null) {
+				foreach($this->collActividadProyectos as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collProyectoInversions !== null) {
 				foreach($this->collProyectoInversions as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -440,6 +454,14 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 
 				if ($this->collMetaProyectos !== null) {
 					foreach($this->collMetaProyectos as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collActividadProyectos !== null) {
+					foreach($this->collActividadProyectos as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -630,6 +652,10 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 
 			foreach($this->getMetaProyectos() as $relObj) {
 				$copyObj->addMetaProyecto($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getActividadProyectos() as $relObj) {
+				$copyObj->addActividadProyecto($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getProyectoInversions() as $relObj) {
@@ -974,6 +1000,111 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 		$this->lastMetaProyectoCriteria = $criteria;
 
 		return $this->collMetaProyectos;
+	}
+
+	
+	public function initActividadProyectos()
+	{
+		if ($this->collActividadProyectos === null) {
+			$this->collActividadProyectos = array();
+		}
+	}
+
+	
+	public function getActividadProyectos($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadProyectos === null) {
+			if ($this->isNew()) {
+			   $this->collActividadProyectos = array();
+			} else {
+
+				$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
+
+				ActividadProyectoPeer::addSelectColumns($criteria);
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
+
+				ActividadProyectoPeer::addSelectColumns($criteria);
+				if (!isset($this->lastActividadProyectoCriteria) || !$this->lastActividadProyectoCriteria->equals($criteria)) {
+					$this->collActividadProyectos = ActividadProyectoPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastActividadProyectoCriteria = $criteria;
+		return $this->collActividadProyectos;
+	}
+
+	
+	public function countActividadProyectos($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
+
+		return ActividadProyectoPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addActividadProyecto(ActividadProyecto $l)
+	{
+		$this->collActividadProyectos[] = $l;
+		$l->setMetaPd($this);
+	}
+
+
+	
+	public function getActividadProyectosJoinProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadProyectos === null) {
+			if ($this->isNew()) {
+				$this->collActividadProyectos = array();
+			} else {
+
+				$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
+
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
+
+			if (!isset($this->lastActividadProyectoCriteria) || !$this->lastActividadProyectoCriteria->equals($criteria)) {
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		}
+		$this->lastActividadProyectoCriteria = $criteria;
+
+		return $this->collActividadProyectos;
 	}
 
 	

@@ -163,6 +163,7 @@ propel:
   actividad_proyecto:
     id:
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
+    meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
     actividad: varchar(255)
     descripcion: longvarchar
     ponderacion: float

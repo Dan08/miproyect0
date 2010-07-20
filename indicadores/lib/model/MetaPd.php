@@ -10,7 +10,7 @@
 class MetaPd extends BaseMetaPd
 {
     public function __toString() {
-        return $this->getMeta();
+        return $this->getCodigo()." - ".$this->getMeta();
     }
 
 }

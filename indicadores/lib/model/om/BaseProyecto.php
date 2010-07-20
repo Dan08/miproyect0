@@ -883,6 +883,41 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 		$l->setProyecto($this);
 	}
 
+
+	
+	public function getActividadProyectosJoinMetaPd($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadProyectos === null) {
+			if ($this->isNew()) {
+				$this->collActividadProyectos = array();
+			} else {
+
+				$criteria->add(ActividadProyectoPeer::PROYECTO_ID, $this->getId());
+
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinMetaPd($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadProyectoPeer::PROYECTO_ID, $this->getId());
+
+			if (!isset($this->lastActividadProyectoCriteria) || !$this->lastActividadProyectoCriteria->equals($criteria)) {
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinMetaPd($criteria, $con);
+			}
+		}
+		$this->lastActividadProyectoCriteria = $criteria;
+
+		return $this->collActividadProyectos;
+	}
+
 	
 	public function initActividadPoas()
 	{

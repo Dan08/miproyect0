@@ -367,6 +367,7 @@ CREATE TABLE `meta_proyecto`
 	`codigo` VARCHAR(20),
 	`meta` VARCHAR(255),
 	`descripcion` TEXT,
+	`anualizacion_id` INTEGER,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
@@ -379,6 +380,11 @@ CREATE TABLE `meta_proyecto`
 	CONSTRAINT `meta_proyecto_FK_2`
 		FOREIGN KEY (`proyecto_id`)
 		REFERENCES `proyecto` (`id`)
+		ON DELETE SET NULL,
+	INDEX `meta_proyecto_FI_3` (`anualizacion_id`),
+	CONSTRAINT `meta_proyecto_FK_3`
+		FOREIGN KEY (`anualizacion_id`)
+		REFERENCES `anualizacion` (`id`)
 		ON DELETE SET NULL
 )Type=InnoDB;
 
@@ -392,7 +398,6 @@ DROP TABLE IF EXISTS `proyecto`;
 CREATE TABLE `proyecto`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`anualizacion_id` INTEGER,
 	`codigo` VARCHAR(20),
 	`proyecto` VARCHAR(255),
 	`descripcion` TEXT,
@@ -400,12 +405,7 @@ CREATE TABLE `proyecto`
 	`programa_interno` VARCHAR(50),
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
-	PRIMARY KEY (`id`),
-	INDEX `proyecto_FI_1` (`anualizacion_id`),
-	CONSTRAINT `proyecto_FK_1`
-		FOREIGN KEY (`anualizacion_id`)
-		REFERENCES `anualizacion` (`id`)
-		ON DELETE SET NULL
+	PRIMARY KEY (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -419,6 +419,7 @@ CREATE TABLE `actividad_proyecto`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`proyecto_id` INTEGER,
+	`meta_pd_id` INTEGER,
 	`actividad` VARCHAR(255),
 	`descripcion` TEXT,
 	`ponderacion` FLOAT,
@@ -429,6 +430,11 @@ CREATE TABLE `actividad_proyecto`
 	CONSTRAINT `actividad_proyecto_FK_1`
 		FOREIGN KEY (`proyecto_id`)
 		REFERENCES `proyecto` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_proyecto_FI_2` (`meta_pd_id`),
+	CONSTRAINT `actividad_proyecto_FK_2`
+		FOREIGN KEY (`meta_pd_id`)
+		REFERENCES `meta_pd` (`id`)
 		ON DELETE SET NULL
 )Type=InnoDB;
 
