@@ -21,7 +21,27 @@ class subactividadejecucionActions extends sfActions
 
   public function executeList()
   {
-    $this->subactividad_ejecucions = SubactividadEjecucionPeer::doSelect(new Criteria());
+    // listar subactividades
+    if ($this->getRequestParameter('actividad'))
+    {
+      $c = new Criteria();
+      $c->add(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, $this->getRequestParameter('actividad'));
+      $this->subactividad_proyectos = SubactividadProyectoPeer::doSelect($c);
+      $this->setTemplate('listSubActividades');
+    // listar actividades
+    } elseif ($this->getRequestParameter('proyecto'))
+    {
+      $c = new Criteria();
+      $c->add(ActividadProyectoPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $this->actividad_proyectos = ActividadProyectoPeer::doSelect($c);
+      $this->setTemplate('listActividades');
+
+    // listar proyectos
+    } else {
+      $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+      $this->setTemplate('listProyectos');
+    }
+    //$this->subactividad_ejecucions = SubactividadEjecucionPeer::doSelect(new Criteria());
   }
 
   public function executeShow()
@@ -32,6 +52,8 @@ class subactividadejecucionActions extends sfActions
 
   public function executeCreate()
   {
+    // tomar el identificador de la subactividad
+    $this->subactividad = $this->getRequestParameter('subactividad');
     $this->subactividad_ejecucion = new SubactividadEjecucion();
 
     $this->setTemplate('edit');

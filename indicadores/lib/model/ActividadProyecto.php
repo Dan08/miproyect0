@@ -9,4 +9,7 @@
  */ 
 class ActividadProyecto extends BaseActividadProyecto
 {
+  public function  __toString() {
+    return $this->getActividad();
+  }
 }

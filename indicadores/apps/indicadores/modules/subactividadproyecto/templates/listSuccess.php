@@ -21,7 +21,7 @@
 <?php foreach ($subactividad_proyectos as $subactividad_proyecto): ?>
 <tr>
     <td><?php echo link_to($subactividad_proyecto->getId(), 'subactividadproyecto/show?id='.$subactividad_proyecto->getId()) ?></td>
-      <td><?php echo $subactividad_proyecto->getActividadProyectoId() ?></td>
+      <td><?php echo $subactividad_proyecto->getActividadProyecto() ?></td>
       <td><?php echo $subactividad_proyecto->getDescripcion() ?></td>
       <td><?php echo $subactividad_proyecto->getFechaInicio() ?></td>
       <td><?php echo $subactividad_proyecto->getDuracion() ?></td>

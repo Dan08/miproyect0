@@ -22,8 +22,8 @@
 <?php foreach ($meta_proyectos as $meta_proyecto): ?>
 <tr>
     <td><?php echo link_to($meta_proyecto->getId(), 'metaproyecto/show?id='.$meta_proyecto->getId()) ?></td>
-      <td><?php echo $meta_proyecto->getMetaPdId() ?></td>
-      <td><?php echo $meta_proyecto->getProyectoId() ?></td>
+      <td><?php echo $meta_proyecto->getMetaPd() ?></td>
+      <td><?php echo $meta_proyecto->getProyecto() ?></td>
       <td><?php echo $meta_proyecto->getCodigo() ?></td>
       <td><?php echo $meta_proyecto->getMeta() ?></td>
       <td><?php echo $meta_proyecto->getDescripcion() ?></td>
