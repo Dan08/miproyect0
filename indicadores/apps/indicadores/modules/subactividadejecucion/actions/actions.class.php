@@ -53,7 +53,9 @@ class subactividadejecucionActions extends sfActions
   public function executeCreate()
   {
     // tomar el identificador de la subactividad
-    $this->subactividad = $this->getRequestParameter('subactividad');
+    $this->id = $this->getRequestParameter('subactividad');
+    // consultar el numero de mediciones que existen
+    $this->subactividad = SubactividadProyectoPeer::retrieveByPK($this->id);
     $this->subactividad_ejecucion = new SubactividadEjecucion();
 
     $this->setTemplate('edit');

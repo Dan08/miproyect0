@@ -218,6 +218,8 @@
     <ul>
       <li class="yuimenuitem">
         <?php echo link_to('Seguimiento Objetivos', 'seguimiento/list', 'class="yuimenuitemlabel"')?></li>
+      <li class="yuimenuitem">
+        <?php echo link_to('Seguimiento Subactividades Proyectos', 'subactividadejecucion/list', 'class="yuimenuitemlabel"')?></li>
     </ul>
     </div>
     </div>
