@@ -9,4 +9,11 @@
  */ 
 class SubactividadProyectoPeer extends BaseSubactividadProyectoPeer
 {
+  public static function getConEjecuciones()
+  {
+    $c = new Criteria();
+    //$c->add(self::ID, SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID);
+
+    return SubactividadEjecucionPeer::doSelectJoinSubactividadProyecto($c);
+  }
 }

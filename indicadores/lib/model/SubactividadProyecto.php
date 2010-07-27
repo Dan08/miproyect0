@@ -33,4 +33,27 @@ class SubactividadProyecto extends BaseSubactividadProyecto
       return $medicion+1;
     }
   }
+
+  /**
+   * Obtiene el acumulado de la ejecucion de la tabla subactividad_ejecucion
+   */
+  public function getEjecucion()
+  {
+    $c = new Criteria();
+    $c->add(SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, $this->getId());
+    $resultset = SubactividadEjecucionPeer::doSelect($c);
+
+    $ejecucion = 0;
+    foreach ($resultset as $item)
+    {
+      $ejecucion += $item->getAvance();
+    }
+
+    return $ejecucion;
+  }
+
+  public function getEjecucionPonderada()
+  {
+    return ($this->getPonderacion()/100)*$this->getEjecucion();
+  }
 }
