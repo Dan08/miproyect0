@@ -77,13 +77,4 @@ class proyectoActions extends sfActions
 
     return $this->redirect('proyecto/list');
   }
-
-  public function executeProyecto()
-  {
-    $c = new Criteria();
-    $c->addAscendingOrderByColumn(MetaProyectoPeer::META_PD_ID);
-    $this->metaspd = MetaProyectoPeer::doSelectJoinAllExceptAnualizacion($c);
-
-    $this->array = SubactividadProyectoPeer::getConEjecuciones();
-  }
 }

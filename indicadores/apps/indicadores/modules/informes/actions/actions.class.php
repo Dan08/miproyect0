@@ -125,4 +125,37 @@ class informesActions extends sfActions
         $graph->render( 800, 350, 'images/historico.jpg' );
     }
   }
+
+  /**
+   * Muestra la ejecucion de los proyectos asociados a metas plan de desarrollo
+   */
+  public function executeMetasProyectos()
+  {
+    $c = new Criteria();
+    $c->addAscendingOrderByColumn(MetaProyectoPeer::META_PD_ID);
+    $this->metaspd = MetaProyectoPeer::doSelectJoinAllExceptAnualizacion($c);
+
+    $this->array = SubactividadProyectoPeer::getConEjecuciones();
+  }
+
+  /**
+   * Informe de ejecucion por proyectos discriminado con actividades
+   */
+  public function executeProyectos()
+  {
+    if ($this->getRequestParameter('proyecto'))
+    {
+      // mostrar el informe del proyecto especificado
+      $c = new Criteria();
+      $c->add(ActividadProyectoPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $c->addAscendingOrderByColumn(ActividadProyectoPeer::META_PD_ID);
+      
+      $this->actividades = SubactividadProyectoPeer::doSelectJoinActividadProyecto($c);
+      $this->proyecto = ProyectoPeer::retrieveByPK($this->getRequestParameter('proyecto'));
+    } else {
+      // mostrar lista de proyectos
+      $this->proyectos = ProyectoPeer::doSelect(new Criteria);
+      $this->setTemplate('listProyectos');
+    }
+  }
 }

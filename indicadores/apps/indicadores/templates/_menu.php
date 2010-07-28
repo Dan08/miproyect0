@@ -211,6 +211,7 @@
     </div></div>
   </li>
 
+  <!-- submenu seguimiento -->
   <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel"
     href="#seguimiento">Seguimiento</a>
     <div id="seguimiento" class="yuimenu">
@@ -231,6 +232,10 @@
     <div id="informes" class="yuimenu"><div class="bd">
       <ul>
         <li class="yuimenuitem">
+          <?php echo link_to('Avance Metas-Proyectos', 'informes/MetasProyectos', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
+          <?php echo link_to('Avance Proyectos', 'informes/Proyectos', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
           <?php echo link_to('Cuadro de Mando Integral (CMI)', 'informes/CMI', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
           <?php echo link_to('Cuadro de Mando Integral para procesos', 'informes/procesos', 'class="yuimenuitemlabel"')?></li>
@@ -239,7 +244,7 @@
         <li class="yuimenuitem">
           <?php echo link_to('Informe por Umbrales', 'informes/umbrales', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
-          <?php echo link_to('Generar hojas de vida de Indicadores', 'informes/hoja', 'class="yuimenuitemlabel"')?></li>
+          <?php echo link_to('Generar hojas de vida de Indicadores', 'informes/hoja', 'class="yuimenuitemlabel"')?></li>        
        </ul>
      </div></div>
   </li>
