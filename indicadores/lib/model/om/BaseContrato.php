@@ -495,7 +495,7 @@ abstract class BaseContrato extends BaseObject  implements Persistent {
 
 
 	
-	public function getActividadsJoinProyectoInversion($criteria = null, $con = null)
+	public function getActividadsJoinProyecto($criteria = null, $con = null)
 	{
 				include_once 'lib/model/om/BaseActividadPeer.php';
 		if ($criteria === null) {
@@ -513,14 +513,14 @@ abstract class BaseContrato extends BaseObject  implements Persistent {
 
 				$criteria->add(ActividadPeer::CONTRATO_ID, $this->getId());
 
-				$this->collActividads = ActividadPeer::doSelectJoinProyectoInversion($criteria, $con);
+				$this->collActividads = ActividadPeer::doSelectJoinProyecto($criteria, $con);
 			}
 		} else {
 									
 			$criteria->add(ActividadPeer::CONTRATO_ID, $this->getId());
 
 			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
-				$this->collActividads = ActividadPeer::doSelectJoinProyectoInversion($criteria, $con);
+				$this->collActividads = ActividadPeer::doSelectJoinProyecto($criteria, $con);
 			}
 		}
 		$this->lastActividadCriteria = $criteria;

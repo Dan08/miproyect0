@@ -7,7 +7,7 @@ propel:
   #
   indicador:
     id:
-    indicador:       varchar(255)
+    indicador:       { type: varchar(255), index: true }
     borrador:        boolean
     objetivo_id:     { type: integer, foreignTable: objetivo, foreignReference: id, onDelete: setnull }
     objetivo_estr:   longvarchar
@@ -39,7 +39,7 @@ propel:
   
   objetivo:
     id:
-    nombre:       varchar(255)
+    nombre:       { type: varchar(255), index: true }
     descripcion:  longvarchar
     nombre_corto: varchar(50)
     tema:         varchar(255)
@@ -103,17 +103,17 @@ propel:
 
   meta_pd:
     id:
-    codigo: varchar(30)
-    meta: varchar(255)
+    codigo: { type: varchar(30), required: true }
+    meta: { type: varchar(255), required: true }
     descripcion: longvarchar
-    tipo: varchar(50)
+    tipo: varchar(25)
     created_at:
     updated_at:
 
   indicador_meta:
     id:
     meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
-    codigo: varchar(20)
+    codigo: { type: varchar(20) }
     descripcion: longvarchar
     magnitud: varchar(20)
     anualizacion_id: { type: integer, foreignTable: anualizacion, foreignReference: id, onDelete: setnull }
@@ -123,10 +123,10 @@ propel:
   anualizacion:
     id:
     meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
-    anyo1: float
-    anyo2: float
-    anyo3: float
-    anyo4: float
+    anyo1: { type: float, required: true }
+    anyo2: { type: float, required: true }
+    anyo3: { type: float, required: true }
+    anyo4: { type: float, required: true }
     created_at:
     updated_at:
 
@@ -134,8 +134,8 @@ propel:
   seguimiento_indicador_meta:
     id:
     indicador_meta_id: { type: integer, foreignTable: indicador_meta, foreignReference: id, onDelete: setnull }
-    anyo: varchar(4)
-    valor: float
+    anyo: { type: varchar(4), required: true }
+    valor: { type: float, required: true }
 
   # Seccion Seguimiento Proyectos
 
@@ -143,8 +143,10 @@ propel:
     id:
     meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
-    codigo: varchar(20)
+    codigo: { type: varchar(20), required: true }
     meta: varchar(255)
+    tipo: varchar(25)
+    objetivo_id: { type: integer, foreignTable: objetivo, foreignReference: id, onDelete: setnull }
     descripcion: longvarchar
     anualizacion_id: { type: integer, foreignTable: anualizacion, foreignReference: id, onDelete: setnull }
     created_at:
@@ -152,11 +154,12 @@ propel:
 
   proyecto:
     id:
-    codigo: varchar(20)
-    proyecto: varchar(255)
-    descripcion: longvarchar
+    codigo: { type: varchar(20), required: true }
+    proyecto: { type: varchar(255), required: true }
+    descripcion: { type: longvarchar, required: true }
     magnitud: varchar(50)
     programa_interno: varchar(50)
+    monto: float
     created_at:
     updated_at:
 
@@ -164,26 +167,29 @@ propel:
     id:
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
     meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
-    actividad: varchar(255)
+    meta_proyecto_id: { type: integer, foreignTable: meta_proyecto, foreignReference: id, onDelete: setnull }
+    actividad: { type: varchar(255), required: true }
     descripcion: longvarchar
-    ponderacion: float
+    ponderacion: { type: float, required: true }
     created_at:
     updated_at:
 
   subactividad_proyecto:
     id:
     actividad_proyecto_id: { type: integer, foreignTable: actividad_proyecto, foreignReference: id, onDelete: setnull }
-    descripcion: longvarchar
-    fecha_inicio: date
-    duracion: integer
-    ponderacion: float
+    descripcion: { type: longvarchar, required: true }
+    entregable: { type: longvarchar, required: true }
+    fecha_inicio: { type: date, required: true }
+    duracion: { type: integer, required: true }
+    ponderacion: { type: float, required: true }
     created_at:
     updated_at:
 
   subactividad_ejecucion:
     id:
     subactividad_proyecto_id: { type: integer, foreignTable: subactividad_proyecto, foreignReference: id, onDelete: setnull }
-    mes: integer
+    mes: { type: integer, required: true }
+    descripcion: { type: longvarchar, required: true }
     avance: float
     created_at:
     updated_at:
@@ -192,8 +198,8 @@ propel:
 
   meta_poa:
     id:
-    meta: varchar(255)
-    descripcion: longvarchar
+    meta: { type: varchar(255), required: true }
+    descripcion: { type: longvarchar, required: true }
     created_at:
     updated_at:
 
@@ -201,7 +207,7 @@ propel:
     id:
     meta_poa_id: { type: integer, foreignTable: meta_poa, foreignReference: id, onDelete: setnull }
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
-    descripcion: longvarchar
+    descripcion: { type: longvarchar, required: true }
     responsable: varchar(50)
     observaciones: longvarchar
     created_at:
@@ -211,18 +217,18 @@ propel:
   # Tablas para seguimiento de recursos Proyectos de Inversion (Planeacion)
   #
 
-  proyecto_inversion:
-    id:
-    meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
-    codigo: varchar(20)
-    proyecto: longvarchar
-    created_at:
-    updated_at:
+   #proyecto_inversion:
+    #id:
+    #meta_pd_id: { type: integer, foreignTable: meta_pd, foreignReference: id, onDelete: setnull }
+    #codigo: varchar(20)
+    #proyecto: longvarchar
+    #created_at:
+    #updated_at:
 
   # tabla para actividades de la matriz de seguimiento
   actividad:
     id:
-    proyecto_inversion_id: { type: integer, foreignTable: proyecto_inversion, foreignReference: id, onDelete: setnull }
+    proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
     descripcion: longvarchar
     tipo_gasto: varchar(20)
     componente_sector: varchar(255)
@@ -243,8 +249,6 @@ propel:
     clase_contrato: varchar(80)
     estado: varchar(80)
     existencia_contrato_numero: varchar(20)
-    giros: float
-    saldo: float
     created_at:
     updated_at:
 

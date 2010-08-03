@@ -21,6 +21,10 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 
 
 	
+	protected $entregable;
+
+
+	
 	protected $fecha_inicio;
 
 
@@ -73,6 +77,13 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 	{
 
 		return $this->descripcion;
+	}
+
+	
+	public function getEntregable()
+	{
+
+		return $this->entregable;
 	}
 
 	
@@ -202,6 +213,20 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 
 	} 
 	
+	public function setEntregable($v)
+	{
+
+						if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->entregable !== $v) {
+			$this->entregable = $v;
+			$this->modifiedColumns[] = SubactividadProyectoPeer::ENTREGABLE;
+		}
+
+	} 
+	
 	public function setFechaInicio($v)
 	{
 
@@ -287,21 +312,23 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 
 			$this->descripcion = $rs->getString($startcol + 2);
 
-			$this->fecha_inicio = $rs->getDate($startcol + 3, null);
+			$this->entregable = $rs->getString($startcol + 3);
 
-			$this->duracion = $rs->getInt($startcol + 4);
+			$this->fecha_inicio = $rs->getDate($startcol + 4, null);
 
-			$this->ponderacion = $rs->getFloat($startcol + 5);
+			$this->duracion = $rs->getInt($startcol + 5);
 
-			$this->created_at = $rs->getTimestamp($startcol + 6, null);
+			$this->ponderacion = $rs->getFloat($startcol + 6);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 7, null);
+			$this->created_at = $rs->getTimestamp($startcol + 7, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 8, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 8; 
+						return $startcol + 9; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating SubactividadProyecto object", $e);
 		}
@@ -481,18 +508,21 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 				return $this->getDescripcion();
 				break;
 			case 3:
-				return $this->getFechaInicio();
+				return $this->getEntregable();
 				break;
 			case 4:
-				return $this->getDuracion();
+				return $this->getFechaInicio();
 				break;
 			case 5:
-				return $this->getPonderacion();
+				return $this->getDuracion();
 				break;
 			case 6:
-				return $this->getCreatedAt();
+				return $this->getPonderacion();
 				break;
 			case 7:
+				return $this->getCreatedAt();
+				break;
+			case 8:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -508,11 +538,12 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getActividadProyectoId(),
 			$keys[2] => $this->getDescripcion(),
-			$keys[3] => $this->getFechaInicio(),
-			$keys[4] => $this->getDuracion(),
-			$keys[5] => $this->getPonderacion(),
-			$keys[6] => $this->getCreatedAt(),
-			$keys[7] => $this->getUpdatedAt(),
+			$keys[3] => $this->getEntregable(),
+			$keys[4] => $this->getFechaInicio(),
+			$keys[5] => $this->getDuracion(),
+			$keys[6] => $this->getPonderacion(),
+			$keys[7] => $this->getCreatedAt(),
+			$keys[8] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -538,18 +569,21 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 				$this->setDescripcion($value);
 				break;
 			case 3:
-				$this->setFechaInicio($value);
+				$this->setEntregable($value);
 				break;
 			case 4:
-				$this->setDuracion($value);
+				$this->setFechaInicio($value);
 				break;
 			case 5:
-				$this->setPonderacion($value);
+				$this->setDuracion($value);
 				break;
 			case 6:
-				$this->setCreatedAt($value);
+				$this->setPonderacion($value);
 				break;
 			case 7:
+				$this->setCreatedAt($value);
+				break;
+			case 8:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -562,11 +596,12 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setActividadProyectoId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setDescripcion($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setFechaInicio($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setDuracion($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setPonderacion($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setCreatedAt($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setUpdatedAt($arr[$keys[7]]);
+		if (array_key_exists($keys[3], $arr)) $this->setEntregable($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setFechaInicio($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setDuracion($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setPonderacion($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setCreatedAt($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setUpdatedAt($arr[$keys[8]]);
 	}
 
 	
@@ -577,6 +612,7 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 		if ($this->isColumnModified(SubactividadProyectoPeer::ID)) $criteria->add(SubactividadProyectoPeer::ID, $this->id);
 		if ($this->isColumnModified(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID)) $criteria->add(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, $this->actividad_proyecto_id);
 		if ($this->isColumnModified(SubactividadProyectoPeer::DESCRIPCION)) $criteria->add(SubactividadProyectoPeer::DESCRIPCION, $this->descripcion);
+		if ($this->isColumnModified(SubactividadProyectoPeer::ENTREGABLE)) $criteria->add(SubactividadProyectoPeer::ENTREGABLE, $this->entregable);
 		if ($this->isColumnModified(SubactividadProyectoPeer::FECHA_INICIO)) $criteria->add(SubactividadProyectoPeer::FECHA_INICIO, $this->fecha_inicio);
 		if ($this->isColumnModified(SubactividadProyectoPeer::DURACION)) $criteria->add(SubactividadProyectoPeer::DURACION, $this->duracion);
 		if ($this->isColumnModified(SubactividadProyectoPeer::PONDERACION)) $criteria->add(SubactividadProyectoPeer::PONDERACION, $this->ponderacion);
@@ -615,6 +651,8 @@ abstract class BaseSubactividadProyecto extends BaseObject  implements Persisten
 		$copyObj->setActividadProyectoId($this->actividad_proyecto_id);
 
 		$copyObj->setDescripcion($this->descripcion);
+
+		$copyObj->setEntregable($this->entregable);
 
 		$copyObj->setFechaInicio($this->fecha_inicio);
 

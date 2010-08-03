@@ -36,13 +36,13 @@ class AnualizacionMapBuilder {
 
 		$tMap->addForeignKey('META_PD_ID', 'MetaPdId', 'int', CreoleTypes::INTEGER, 'meta_pd', 'ID', false, null);
 
-		$tMap->addColumn('ANYO1', 'Anyo1', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('ANYO1', 'Anyo1', 'double', CreoleTypes::FLOAT, true, null);
 
-		$tMap->addColumn('ANYO2', 'Anyo2', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('ANYO2', 'Anyo2', 'double', CreoleTypes::FLOAT, true, null);
 
-		$tMap->addColumn('ANYO3', 'Anyo3', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('ANYO3', 'Anyo3', 'double', CreoleTypes::FLOAT, true, null);
 
-		$tMap->addColumn('ANYO4', 'Anyo4', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('ANYO4', 'Anyo4', 'double', CreoleTypes::FLOAT, true, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

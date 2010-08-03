@@ -21,6 +21,10 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 
 
 	
+	protected $descripcion;
+
+
+	
 	protected $avance;
 
 
@@ -59,6 +63,13 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 	{
 
 		return $this->mes;
+	}
+
+	
+	public function getDescripcion()
+	{
+
+		return $this->descripcion;
 	}
 
 	
@@ -159,6 +170,20 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 
 	} 
 	
+	public function setDescripcion($v)
+	{
+
+						if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->descripcion !== $v) {
+			$this->descripcion = $v;
+			$this->modifiedColumns[] = SubactividadEjecucionPeer::DESCRIPCION;
+		}
+
+	} 
+	
 	public function setAvance($v)
 	{
 
@@ -213,17 +238,19 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 
 			$this->mes = $rs->getInt($startcol + 2);
 
-			$this->avance = $rs->getFloat($startcol + 3);
+			$this->descripcion = $rs->getString($startcol + 3);
 
-			$this->created_at = $rs->getTimestamp($startcol + 4, null);
+			$this->avance = $rs->getFloat($startcol + 4);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 5, null);
+			$this->created_at = $rs->getTimestamp($startcol + 5, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 6, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 6; 
+						return $startcol + 7; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating SubactividadEjecucion object", $e);
 		}
@@ -387,12 +414,15 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 				return $this->getMes();
 				break;
 			case 3:
-				return $this->getAvance();
+				return $this->getDescripcion();
 				break;
 			case 4:
-				return $this->getCreatedAt();
+				return $this->getAvance();
 				break;
 			case 5:
+				return $this->getCreatedAt();
+				break;
+			case 6:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -408,9 +438,10 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getSubactividadProyectoId(),
 			$keys[2] => $this->getMes(),
-			$keys[3] => $this->getAvance(),
-			$keys[4] => $this->getCreatedAt(),
-			$keys[5] => $this->getUpdatedAt(),
+			$keys[3] => $this->getDescripcion(),
+			$keys[4] => $this->getAvance(),
+			$keys[5] => $this->getCreatedAt(),
+			$keys[6] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -436,12 +467,15 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 				$this->setMes($value);
 				break;
 			case 3:
-				$this->setAvance($value);
+				$this->setDescripcion($value);
 				break;
 			case 4:
-				$this->setCreatedAt($value);
+				$this->setAvance($value);
 				break;
 			case 5:
+				$this->setCreatedAt($value);
+				break;
+			case 6:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -454,9 +488,10 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setSubactividadProyectoId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setMes($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setAvance($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setCreatedAt($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setUpdatedAt($arr[$keys[5]]);
+		if (array_key_exists($keys[3], $arr)) $this->setDescripcion($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setAvance($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setCreatedAt($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setUpdatedAt($arr[$keys[6]]);
 	}
 
 	
@@ -467,6 +502,7 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 		if ($this->isColumnModified(SubactividadEjecucionPeer::ID)) $criteria->add(SubactividadEjecucionPeer::ID, $this->id);
 		if ($this->isColumnModified(SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID)) $criteria->add(SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, $this->subactividad_proyecto_id);
 		if ($this->isColumnModified(SubactividadEjecucionPeer::MES)) $criteria->add(SubactividadEjecucionPeer::MES, $this->mes);
+		if ($this->isColumnModified(SubactividadEjecucionPeer::DESCRIPCION)) $criteria->add(SubactividadEjecucionPeer::DESCRIPCION, $this->descripcion);
 		if ($this->isColumnModified(SubactividadEjecucionPeer::AVANCE)) $criteria->add(SubactividadEjecucionPeer::AVANCE, $this->avance);
 		if ($this->isColumnModified(SubactividadEjecucionPeer::CREATED_AT)) $criteria->add(SubactividadEjecucionPeer::CREATED_AT, $this->created_at);
 		if ($this->isColumnModified(SubactividadEjecucionPeer::UPDATED_AT)) $criteria->add(SubactividadEjecucionPeer::UPDATED_AT, $this->updated_at);
@@ -503,6 +539,8 @@ abstract class BaseSubactividadEjecucion extends BaseObject  implements Persiste
 		$copyObj->setSubactividadProyectoId($this->subactividad_proyecto_id);
 
 		$copyObj->setMes($this->mes);
+
+		$copyObj->setDescripcion($this->descripcion);
 
 		$copyObj->setAvance($this->avance);
 

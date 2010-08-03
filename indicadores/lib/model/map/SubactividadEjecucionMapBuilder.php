@@ -36,7 +36,9 @@ class SubactividadEjecucionMapBuilder {
 
 		$tMap->addForeignKey('SUBACTIVIDAD_PROYECTO_ID', 'SubactividadProyectoId', 'int', CreoleTypes::INTEGER, 'subactividad_proyecto', 'ID', false, null);
 
-		$tMap->addColumn('MES', 'Mes', 'int', CreoleTypes::INTEGER, false, null);
+		$tMap->addColumn('MES', 'Mes', 'int', CreoleTypes::INTEGER, true, null);
+
+		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
 		$tMap->addColumn('AVANCE', 'Avance', 'double', CreoleTypes::FLOAT, false, null);
 

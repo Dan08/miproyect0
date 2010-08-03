@@ -33,6 +33,10 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 
 	
+	protected $monto;
+
+
+	
 	protected $created_at;
 
 
@@ -56,6 +60,12 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 	
 	protected $lastActividadPoaCriteria = null;
+
+	
+	protected $collActividads;
+
+	
+	protected $lastActividadCriteria = null;
 
 	
 	protected $alreadyInSave = false;
@@ -103,6 +113,13 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 	{
 
 		return $this->programa_interno;
+	}
+
+	
+	public function getMonto()
+	{
+
+		return $this->monto;
 	}
 
 	
@@ -234,6 +251,16 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setMonto($v)
+	{
+
+		if ($this->monto !== $v) {
+			$this->monto = $v;
+			$this->modifiedColumns[] = ProyectoPeer::MONTO;
+		}
+
+	} 
+	
 	public function setCreatedAt($v)
 	{
 
@@ -284,15 +311,17 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 			$this->programa_interno = $rs->getString($startcol + 5);
 
-			$this->created_at = $rs->getTimestamp($startcol + 6, null);
+			$this->monto = $rs->getFloat($startcol + 6);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 7, null);
+			$this->created_at = $rs->getTimestamp($startcol + 7, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 8, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 8; 
+						return $startcol + 9; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Proyecto object", $e);
 		}
@@ -394,6 +423,14 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collActividads !== null) {
+				foreach($this->collActividads as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -459,6 +496,14 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 					}
 				}
 
+				if ($this->collActividads !== null) {
+					foreach($this->collActividads as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
 
 			$this->alreadyInValidation = false;
 		}
@@ -496,9 +541,12 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 				return $this->getProgramaInterno();
 				break;
 			case 6:
-				return $this->getCreatedAt();
+				return $this->getMonto();
 				break;
 			case 7:
+				return $this->getCreatedAt();
+				break;
+			case 8:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -517,8 +565,9 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 			$keys[3] => $this->getDescripcion(),
 			$keys[4] => $this->getMagnitud(),
 			$keys[5] => $this->getProgramaInterno(),
-			$keys[6] => $this->getCreatedAt(),
-			$keys[7] => $this->getUpdatedAt(),
+			$keys[6] => $this->getMonto(),
+			$keys[7] => $this->getCreatedAt(),
+			$keys[8] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -553,9 +602,12 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 				$this->setProgramaInterno($value);
 				break;
 			case 6:
-				$this->setCreatedAt($value);
+				$this->setMonto($value);
 				break;
 			case 7:
+				$this->setCreatedAt($value);
+				break;
+			case 8:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -571,8 +623,9 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[3], $arr)) $this->setDescripcion($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setMagnitud($arr[$keys[4]]);
 		if (array_key_exists($keys[5], $arr)) $this->setProgramaInterno($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setCreatedAt($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setUpdatedAt($arr[$keys[7]]);
+		if (array_key_exists($keys[6], $arr)) $this->setMonto($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setCreatedAt($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setUpdatedAt($arr[$keys[8]]);
 	}
 
 	
@@ -586,6 +639,7 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(ProyectoPeer::DESCRIPCION)) $criteria->add(ProyectoPeer::DESCRIPCION, $this->descripcion);
 		if ($this->isColumnModified(ProyectoPeer::MAGNITUD)) $criteria->add(ProyectoPeer::MAGNITUD, $this->magnitud);
 		if ($this->isColumnModified(ProyectoPeer::PROGRAMA_INTERNO)) $criteria->add(ProyectoPeer::PROGRAMA_INTERNO, $this->programa_interno);
+		if ($this->isColumnModified(ProyectoPeer::MONTO)) $criteria->add(ProyectoPeer::MONTO, $this->monto);
 		if ($this->isColumnModified(ProyectoPeer::CREATED_AT)) $criteria->add(ProyectoPeer::CREATED_AT, $this->created_at);
 		if ($this->isColumnModified(ProyectoPeer::UPDATED_AT)) $criteria->add(ProyectoPeer::UPDATED_AT, $this->updated_at);
 
@@ -628,6 +682,8 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 		$copyObj->setProgramaInterno($this->programa_interno);
 
+		$copyObj->setMonto($this->monto);
+
 		$copyObj->setCreatedAt($this->created_at);
 
 		$copyObj->setUpdatedAt($this->updated_at);
@@ -646,6 +702,10 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 			foreach($this->getActividadPoas() as $relObj) {
 				$copyObj->addActividadPoa($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getActividads() as $relObj) {
+				$copyObj->addActividad($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -771,6 +831,41 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
 				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinMetaPd($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
+	}
+
+
+	
+	public function getMetaProyectosJoinObjetivo($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::PROYECTO_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinObjetivo($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::PROYECTO_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinObjetivo($criteria, $con);
 			}
 		}
 		$this->lastMetaProyectoCriteria = $criteria;
@@ -918,6 +1013,41 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 		return $this->collActividadProyectos;
 	}
 
+
+	
+	public function getActividadProyectosJoinMetaProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadProyectos === null) {
+			if ($this->isNew()) {
+				$this->collActividadProyectos = array();
+			} else {
+
+				$criteria->add(ActividadProyectoPeer::PROYECTO_ID, $this->getId());
+
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinMetaProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadProyectoPeer::PROYECTO_ID, $this->getId());
+
+			if (!isset($this->lastActividadProyectoCriteria) || !$this->lastActividadProyectoCriteria->equals($criteria)) {
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinMetaProyecto($criteria, $con);
+			}
+		}
+		$this->lastActividadProyectoCriteria = $criteria;
+
+		return $this->collActividadProyectos;
+	}
+
 	
 	public function initActividadPoas()
 	{
@@ -1021,6 +1151,111 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 		$this->lastActividadPoaCriteria = $criteria;
 
 		return $this->collActividadPoas;
+	}
+
+	
+	public function initActividads()
+	{
+		if ($this->collActividads === null) {
+			$this->collActividads = array();
+		}
+	}
+
+	
+	public function getActividads($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+			   $this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::PROYECTO_ID, $this->getId());
+
+				ActividadPeer::addSelectColumns($criteria);
+				$this->collActividads = ActividadPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(ActividadPeer::PROYECTO_ID, $this->getId());
+
+				ActividadPeer::addSelectColumns($criteria);
+				if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+					$this->collActividads = ActividadPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+		return $this->collActividads;
+	}
+
+	
+	public function countActividads($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(ActividadPeer::PROYECTO_ID, $this->getId());
+
+		return ActividadPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addActividad(Actividad $l)
+	{
+		$this->collActividads[] = $l;
+		$l->setProyecto($this);
+	}
+
+
+	
+	public function getActividadsJoinContrato($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::PROYECTO_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinContrato($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::PROYECTO_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinContrato($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
 	}
 
 } 

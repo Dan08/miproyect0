@@ -13,7 +13,7 @@ abstract class BaseProyectoPeer {
 	const CLASS_DEFAULT = 'lib.model.Proyecto';
 
 	
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 9;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -38,6 +38,9 @@ abstract class BaseProyectoPeer {
 	const PROGRAMA_INTERNO = 'proyecto.PROGRAMA_INTERNO';
 
 	
+	const MONTO = 'proyecto.MONTO';
+
+	
 	const CREATED_AT = 'proyecto.CREATED_AT';
 
 	
@@ -49,18 +52,18 @@ abstract class BaseProyectoPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'Codigo', 'Proyecto', 'Descripcion', 'Magnitud', 'ProgramaInterno', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (ProyectoPeer::ID, ProyectoPeer::CODIGO, ProyectoPeer::PROYECTO, ProyectoPeer::DESCRIPCION, ProyectoPeer::MAGNITUD, ProyectoPeer::PROGRAMA_INTERNO, ProyectoPeer::CREATED_AT, ProyectoPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'codigo', 'proyecto', 'descripcion', 'magnitud', 'programa_interno', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'Codigo', 'Proyecto', 'Descripcion', 'Magnitud', 'ProgramaInterno', 'Monto', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (ProyectoPeer::ID, ProyectoPeer::CODIGO, ProyectoPeer::PROYECTO, ProyectoPeer::DESCRIPCION, ProyectoPeer::MAGNITUD, ProyectoPeer::PROGRAMA_INTERNO, ProyectoPeer::MONTO, ProyectoPeer::CREATED_AT, ProyectoPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'codigo', 'proyecto', 'descripcion', 'magnitud', 'programa_interno', 'monto', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Codigo' => 1, 'Proyecto' => 2, 'Descripcion' => 3, 'Magnitud' => 4, 'ProgramaInterno' => 5, 'CreatedAt' => 6, 'UpdatedAt' => 7, ),
-		BasePeer::TYPE_COLNAME => array (ProyectoPeer::ID => 0, ProyectoPeer::CODIGO => 1, ProyectoPeer::PROYECTO => 2, ProyectoPeer::DESCRIPCION => 3, ProyectoPeer::MAGNITUD => 4, ProyectoPeer::PROGRAMA_INTERNO => 5, ProyectoPeer::CREATED_AT => 6, ProyectoPeer::UPDATED_AT => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'codigo' => 1, 'proyecto' => 2, 'descripcion' => 3, 'magnitud' => 4, 'programa_interno' => 5, 'created_at' => 6, 'updated_at' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Codigo' => 1, 'Proyecto' => 2, 'Descripcion' => 3, 'Magnitud' => 4, 'ProgramaInterno' => 5, 'Monto' => 6, 'CreatedAt' => 7, 'UpdatedAt' => 8, ),
+		BasePeer::TYPE_COLNAME => array (ProyectoPeer::ID => 0, ProyectoPeer::CODIGO => 1, ProyectoPeer::PROYECTO => 2, ProyectoPeer::DESCRIPCION => 3, ProyectoPeer::MAGNITUD => 4, ProyectoPeer::PROGRAMA_INTERNO => 5, ProyectoPeer::MONTO => 6, ProyectoPeer::CREATED_AT => 7, ProyectoPeer::UPDATED_AT => 8, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'codigo' => 1, 'proyecto' => 2, 'descripcion' => 3, 'magnitud' => 4, 'programa_interno' => 5, 'monto' => 6, 'created_at' => 7, 'updated_at' => 8, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
@@ -125,6 +128,8 @@ abstract class BaseProyectoPeer {
 		$criteria->addSelectColumn(ProyectoPeer::MAGNITUD);
 
 		$criteria->addSelectColumn(ProyectoPeer::PROGRAMA_INTERNO);
+
+		$criteria->addSelectColumn(ProyectoPeer::MONTO);
 
 		$criteria->addSelectColumn(ProyectoPeer::CREATED_AT);
 

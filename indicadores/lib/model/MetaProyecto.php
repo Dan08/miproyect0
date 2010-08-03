@@ -9,4 +9,9 @@
  */ 
 class MetaProyecto extends BaseMetaProyecto
 {
+  public function  __toString() {
+    return $this->getCodigo()."-".$this->getMeta();
+  }
+
+
 }

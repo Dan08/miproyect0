@@ -42,6 +42,12 @@ abstract class BaseObjetivo extends BaseObject  implements Persistent {
 	protected $lastIndicadorCriteria = null;
 
 	
+	protected $collMetaProyectos;
+
+	
+	protected $lastMetaProyectoCriteria = null;
+
+	
 	protected $alreadyInSave = false;
 
 	
@@ -339,6 +345,14 @@ abstract class BaseObjetivo extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collMetaProyectos !== null) {
+				foreach($this->collMetaProyectos as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -382,6 +396,14 @@ abstract class BaseObjetivo extends BaseObject  implements Persistent {
 
 				if ($this->collIndicadors !== null) {
 					foreach($this->collIndicadors as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collMetaProyectos !== null) {
+					foreach($this->collMetaProyectos as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -556,6 +578,10 @@ abstract class BaseObjetivo extends BaseObject  implements Persistent {
 
 			foreach($this->getIndicadors() as $relObj) {
 				$copyObj->addIndicador($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getMetaProyectos() as $relObj) {
+				$copyObj->addMetaProyecto($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -756,6 +782,181 @@ abstract class BaseObjetivo extends BaseObject  implements Persistent {
 		$this->lastIndicadorCriteria = $criteria;
 
 		return $this->collIndicadors;
+	}
+
+	
+	public function initMetaProyectos()
+	{
+		if ($this->collMetaProyectos === null) {
+			$this->collMetaProyectos = array();
+		}
+	}
+
+	
+	public function getMetaProyectos($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+			   $this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+				MetaProyectoPeer::addSelectColumns($criteria);
+				$this->collMetaProyectos = MetaProyectoPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+				MetaProyectoPeer::addSelectColumns($criteria);
+				if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+					$this->collMetaProyectos = MetaProyectoPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+		return $this->collMetaProyectos;
+	}
+
+	
+	public function countMetaProyectos($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+		return MetaProyectoPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addMetaProyecto(MetaProyecto $l)
+	{
+		$this->collMetaProyectos[] = $l;
+		$l->setObjetivo($this);
+	}
+
+
+	
+	public function getMetaProyectosJoinMetaPd($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinMetaPd($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinMetaPd($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
+	}
+
+
+	
+	public function getMetaProyectosJoinProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
+	}
+
+
+	
+	public function getMetaProyectosJoinAnualizacion($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinAnualizacion($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::OBJETIVO_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinAnualizacion($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
 	}
 
 } 

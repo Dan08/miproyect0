@@ -38,11 +38,13 @@ class ActividadProyectoMapBuilder {
 
 		$tMap->addForeignKey('META_PD_ID', 'MetaPdId', 'int', CreoleTypes::INTEGER, 'meta_pd', 'ID', false, null);
 
-		$tMap->addColumn('ACTIVIDAD', 'Actividad', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addForeignKey('META_PROYECTO_ID', 'MetaProyectoId', 'int', CreoleTypes::INTEGER, 'meta_proyecto', 'ID', false, null);
+
+		$tMap->addColumn('ACTIVIDAD', 'Actividad', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-		$tMap->addColumn('PONDERACION', 'Ponderacion', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('PONDERACION', 'Ponderacion', 'double', CreoleTypes::FLOAT, true, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

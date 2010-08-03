@@ -60,12 +60,6 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 	protected $lastActividadProyectoCriteria = null;
 
 	
-	protected $collProyectoInversions;
-
-	
-	protected $lastProyectoInversionCriteria = null;
-
-	
 	protected $alreadyInSave = false;
 
 	
@@ -387,14 +381,6 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->collProyectoInversions !== null) {
-				foreach($this->collProyectoInversions as $referrerFK) {
-					if (!$referrerFK->isDeleted()) {
-						$affectedRows += $referrerFK->save($con);
-					}
-				}
-			}
-
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -462,14 +448,6 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 
 				if ($this->collActividadProyectos !== null) {
 					foreach($this->collActividadProyectos as $referrerFK) {
-						if (!$referrerFK->validate($columns)) {
-							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
-						}
-					}
-				}
-
-				if ($this->collProyectoInversions !== null) {
-					foreach($this->collProyectoInversions as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -656,10 +634,6 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 
 			foreach($this->getActividadProyectos() as $relObj) {
 				$copyObj->addActividadProyecto($relObj->copy($deepCopy));
-			}
-
-			foreach($this->getProyectoInversions() as $relObj) {
-				$copyObj->addProyectoInversion($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -969,6 +943,41 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 
 
 	
+	public function getMetaProyectosJoinObjetivo($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collMetaProyectos === null) {
+			if ($this->isNew()) {
+				$this->collMetaProyectos = array();
+			} else {
+
+				$criteria->add(MetaProyectoPeer::META_PD_ID, $this->getId());
+
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinObjetivo($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(MetaProyectoPeer::META_PD_ID, $this->getId());
+
+			if (!isset($this->lastMetaProyectoCriteria) || !$this->lastMetaProyectoCriteria->equals($criteria)) {
+				$this->collMetaProyectos = MetaProyectoPeer::doSelectJoinObjetivo($criteria, $con);
+			}
+		}
+		$this->lastMetaProyectoCriteria = $criteria;
+
+		return $this->collMetaProyectos;
+	}
+
+
+	
 	public function getMetaProyectosJoinAnualizacion($criteria = null, $con = null)
 	{
 				include_once 'lib/model/om/BaseMetaProyectoPeer.php';
@@ -1107,18 +1116,11 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 		return $this->collActividadProyectos;
 	}
 
-	
-	public function initProyectoInversions()
-	{
-		if ($this->collProyectoInversions === null) {
-			$this->collProyectoInversions = array();
-		}
-	}
 
 	
-	public function getProyectoInversions($criteria = null, $con = null)
+	public function getActividadProyectosJoinMetaProyecto($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseProyectoInversionPeer.php';
+				include_once 'lib/model/om/BaseActividadProyectoPeer.php';
 		if ($criteria === null) {
 			$criteria = new Criteria();
 		}
@@ -1127,54 +1129,26 @@ abstract class BaseMetaPd extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collProyectoInversions === null) {
+		if ($this->collActividadProyectos === null) {
 			if ($this->isNew()) {
-			   $this->collProyectoInversions = array();
+				$this->collActividadProyectos = array();
 			} else {
 
-				$criteria->add(ProyectoInversionPeer::META_PD_ID, $this->getId());
+				$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
 
-				ProyectoInversionPeer::addSelectColumns($criteria);
-				$this->collProyectoInversions = ProyectoInversionPeer::doSelect($criteria, $con);
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinMetaProyecto($criteria, $con);
 			}
 		} else {
-						if (!$this->isNew()) {
-												
+									
+			$criteria->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
 
-				$criteria->add(ProyectoInversionPeer::META_PD_ID, $this->getId());
-
-				ProyectoInversionPeer::addSelectColumns($criteria);
-				if (!isset($this->lastProyectoInversionCriteria) || !$this->lastProyectoInversionCriteria->equals($criteria)) {
-					$this->collProyectoInversions = ProyectoInversionPeer::doSelect($criteria, $con);
-				}
+			if (!isset($this->lastActividadProyectoCriteria) || !$this->lastActividadProyectoCriteria->equals($criteria)) {
+				$this->collActividadProyectos = ActividadProyectoPeer::doSelectJoinMetaProyecto($criteria, $con);
 			}
 		}
-		$this->lastProyectoInversionCriteria = $criteria;
-		return $this->collProyectoInversions;
-	}
+		$this->lastActividadProyectoCriteria = $criteria;
 
-	
-	public function countProyectoInversions($criteria = null, $distinct = false, $con = null)
-	{
-				include_once 'lib/model/om/BaseProyectoInversionPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		$criteria->add(ProyectoInversionPeer::META_PD_ID, $this->getId());
-
-		return ProyectoInversionPeer::doCount($criteria, $distinct, $con);
-	}
-
-	
-	public function addProyectoInversion(ProyectoInversion $l)
-	{
-		$this->collProyectoInversions[] = $l;
-		$l->setMetaPd($this);
+		return $this->collActividadProyectos;
 	}
 
 } 

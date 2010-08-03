@@ -13,7 +13,7 @@ abstract class BaseSubactividadProyectoPeer {
 	const CLASS_DEFAULT = 'lib.model.SubactividadProyecto';
 
 	
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 9;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -27,6 +27,9 @@ abstract class BaseSubactividadProyectoPeer {
 
 	
 	const DESCRIPCION = 'subactividad_proyecto.DESCRIPCION';
+
+	
+	const ENTREGABLE = 'subactividad_proyecto.ENTREGABLE';
 
 	
 	const FECHA_INICIO = 'subactividad_proyecto.FECHA_INICIO';
@@ -49,18 +52,18 @@ abstract class BaseSubactividadProyectoPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'ActividadProyectoId', 'Descripcion', 'FechaInicio', 'Duracion', 'Ponderacion', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (SubactividadProyectoPeer::ID, SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, SubactividadProyectoPeer::DESCRIPCION, SubactividadProyectoPeer::FECHA_INICIO, SubactividadProyectoPeer::DURACION, SubactividadProyectoPeer::PONDERACION, SubactividadProyectoPeer::CREATED_AT, SubactividadProyectoPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'actividad_proyecto_id', 'descripcion', 'fecha_inicio', 'duracion', 'ponderacion', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'ActividadProyectoId', 'Descripcion', 'Entregable', 'FechaInicio', 'Duracion', 'Ponderacion', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (SubactividadProyectoPeer::ID, SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, SubactividadProyectoPeer::DESCRIPCION, SubactividadProyectoPeer::ENTREGABLE, SubactividadProyectoPeer::FECHA_INICIO, SubactividadProyectoPeer::DURACION, SubactividadProyectoPeer::PONDERACION, SubactividadProyectoPeer::CREATED_AT, SubactividadProyectoPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'actividad_proyecto_id', 'descripcion', 'entregable', 'fecha_inicio', 'duracion', 'ponderacion', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ActividadProyectoId' => 1, 'Descripcion' => 2, 'FechaInicio' => 3, 'Duracion' => 4, 'Ponderacion' => 5, 'CreatedAt' => 6, 'UpdatedAt' => 7, ),
-		BasePeer::TYPE_COLNAME => array (SubactividadProyectoPeer::ID => 0, SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID => 1, SubactividadProyectoPeer::DESCRIPCION => 2, SubactividadProyectoPeer::FECHA_INICIO => 3, SubactividadProyectoPeer::DURACION => 4, SubactividadProyectoPeer::PONDERACION => 5, SubactividadProyectoPeer::CREATED_AT => 6, SubactividadProyectoPeer::UPDATED_AT => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'actividad_proyecto_id' => 1, 'descripcion' => 2, 'fecha_inicio' => 3, 'duracion' => 4, 'ponderacion' => 5, 'created_at' => 6, 'updated_at' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ActividadProyectoId' => 1, 'Descripcion' => 2, 'Entregable' => 3, 'FechaInicio' => 4, 'Duracion' => 5, 'Ponderacion' => 6, 'CreatedAt' => 7, 'UpdatedAt' => 8, ),
+		BasePeer::TYPE_COLNAME => array (SubactividadProyectoPeer::ID => 0, SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID => 1, SubactividadProyectoPeer::DESCRIPCION => 2, SubactividadProyectoPeer::ENTREGABLE => 3, SubactividadProyectoPeer::FECHA_INICIO => 4, SubactividadProyectoPeer::DURACION => 5, SubactividadProyectoPeer::PONDERACION => 6, SubactividadProyectoPeer::CREATED_AT => 7, SubactividadProyectoPeer::UPDATED_AT => 8, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'actividad_proyecto_id' => 1, 'descripcion' => 2, 'entregable' => 3, 'fecha_inicio' => 4, 'duracion' => 5, 'ponderacion' => 6, 'created_at' => 7, 'updated_at' => 8, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
@@ -119,6 +122,8 @@ abstract class BaseSubactividadProyectoPeer {
 		$criteria->addSelectColumn(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID);
 
 		$criteria->addSelectColumn(SubactividadProyectoPeer::DESCRIPCION);
+
+		$criteria->addSelectColumn(SubactividadProyectoPeer::ENTREGABLE);
 
 		$criteria->addSelectColumn(SubactividadProyectoPeer::FECHA_INICIO);
 

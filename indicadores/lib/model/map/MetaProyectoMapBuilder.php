@@ -38,9 +38,13 @@ class MetaProyectoMapBuilder {
 
 		$tMap->addForeignKey('PROYECTO_ID', 'ProyectoId', 'int', CreoleTypes::INTEGER, 'proyecto', 'ID', false, null);
 
-		$tMap->addColumn('CODIGO', 'Codigo', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addColumn('CODIGO', 'Codigo', 'string', CreoleTypes::VARCHAR, true, 20);
 
 		$tMap->addColumn('META', 'Meta', 'string', CreoleTypes::VARCHAR, false, 255);
+
+		$tMap->addColumn('TIPO', 'Tipo', 'string', CreoleTypes::VARCHAR, false, 25);
+
+		$tMap->addForeignKey('OBJETIVO_ID', 'ObjetivoId', 'int', CreoleTypes::INTEGER, 'objetivo', 'ID', false, null);
 
 		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
 

@@ -13,7 +13,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
-	protected $proyecto_inversion_id;
+	protected $proyecto_id;
 
 
 	
@@ -97,14 +97,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
-	protected $giros;
-
-
-	
-	protected $saldo;
-
-
-	
 	protected $created_at;
 
 
@@ -112,7 +104,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	protected $updated_at;
 
 	
-	protected $aProyectoInversion;
+	protected $aProyecto;
 
 	
 	protected $aContrato;
@@ -167,10 +159,10 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getProyectoInversionId()
+	public function getProyectoId()
 	{
 
-		return $this->proyecto_inversion_id;
+		return $this->proyecto_id;
 	}
 
 	
@@ -389,20 +381,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getGiros()
-	{
-
-		return $this->giros;
-	}
-
-	
-	public function getSaldo()
-	{
-
-		return $this->saldo;
-	}
-
-	
 	public function getCreatedAt($format = 'Y-m-d H:i:s')
 	{
 
@@ -461,20 +439,20 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setProyectoInversionId($v)
+	public function setProyectoId($v)
 	{
 
 						if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
-		if ($this->proyecto_inversion_id !== $v) {
-			$this->proyecto_inversion_id = $v;
-			$this->modifiedColumns[] = ActividadPeer::PROYECTO_INVERSION_ID;
+		if ($this->proyecto_id !== $v) {
+			$this->proyecto_id = $v;
+			$this->modifiedColumns[] = ActividadPeer::PROYECTO_ID;
 		}
 
-		if ($this->aProyectoInversion !== null && $this->aProyectoInversion->getId() !== $v) {
-			$this->aProyectoInversion = null;
+		if ($this->aProyecto !== null && $this->aProyecto->getId() !== $v) {
+			$this->aProyecto = null;
 		}
 
 	} 
@@ -770,26 +748,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setGiros($v)
-	{
-
-		if ($this->giros !== $v) {
-			$this->giros = $v;
-			$this->modifiedColumns[] = ActividadPeer::GIROS;
-		}
-
-	} 
-	
-	public function setSaldo($v)
-	{
-
-		if ($this->saldo !== $v) {
-			$this->saldo = $v;
-			$this->modifiedColumns[] = ActividadPeer::SALDO;
-		}
-
-	} 
-	
 	public function setCreatedAt($v)
 	{
 
@@ -830,7 +788,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 			$this->id = $rs->getInt($startcol + 0);
 
-			$this->proyecto_inversion_id = $rs->getInt($startcol + 1);
+			$this->proyecto_id = $rs->getInt($startcol + 1);
 
 			$this->descripcion = $rs->getString($startcol + 2);
 
@@ -872,19 +830,15 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 			$this->existencia_contrato_numero = $rs->getString($startcol + 21);
 
-			$this->giros = $rs->getFloat($startcol + 22);
+			$this->created_at = $rs->getTimestamp($startcol + 22, null);
 
-			$this->saldo = $rs->getFloat($startcol + 23);
-
-			$this->created_at = $rs->getTimestamp($startcol + 24, null);
-
-			$this->updated_at = $rs->getTimestamp($startcol + 25, null);
+			$this->updated_at = $rs->getTimestamp($startcol + 23, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 26; 
+						return $startcol + 24; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Actividad object", $e);
 		}
@@ -952,11 +906,11 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aProyectoInversion !== null) {
-				if ($this->aProyectoInversion->isModified()) {
-					$affectedRows += $this->aProyectoInversion->save($con);
+			if ($this->aProyecto !== null) {
+				if ($this->aProyecto->isModified()) {
+					$affectedRows += $this->aProyecto->save($con);
 				}
-				$this->setProyectoInversion($this->aProyectoInversion);
+				$this->setProyecto($this->aProyecto);
 			}
 
 			if ($this->aContrato !== null) {
@@ -1063,9 +1017,9 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aProyectoInversion !== null) {
-				if (!$this->aProyectoInversion->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aProyectoInversion->getValidationFailures());
+			if ($this->aProyecto !== null) {
+				if (!$this->aProyecto->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aProyecto->getValidationFailures());
 				}
 			}
 
@@ -1151,7 +1105,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getProyectoInversionId();
+				return $this->getProyectoId();
 				break;
 			case 2:
 				return $this->getDescripcion();
@@ -1214,15 +1168,9 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				return $this->getExistenciaContratoNumero();
 				break;
 			case 22:
-				return $this->getGiros();
-				break;
-			case 23:
-				return $this->getSaldo();
-				break;
-			case 24:
 				return $this->getCreatedAt();
 				break;
-			case 25:
+			case 23:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -1236,7 +1184,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$keys = ActividadPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getProyectoInversionId(),
+			$keys[1] => $this->getProyectoId(),
 			$keys[2] => $this->getDescripcion(),
 			$keys[3] => $this->getTipoGasto(),
 			$keys[4] => $this->getComponenteSector(),
@@ -1257,10 +1205,8 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 			$keys[19] => $this->getClaseContrato(),
 			$keys[20] => $this->getEstado(),
 			$keys[21] => $this->getExistenciaContratoNumero(),
-			$keys[22] => $this->getGiros(),
-			$keys[23] => $this->getSaldo(),
-			$keys[24] => $this->getCreatedAt(),
-			$keys[25] => $this->getUpdatedAt(),
+			$keys[22] => $this->getCreatedAt(),
+			$keys[23] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -1280,7 +1226,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setProyectoInversionId($value);
+				$this->setProyectoId($value);
 				break;
 			case 2:
 				$this->setDescripcion($value);
@@ -1343,15 +1289,9 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				$this->setExistenciaContratoNumero($value);
 				break;
 			case 22:
-				$this->setGiros($value);
-				break;
-			case 23:
-				$this->setSaldo($value);
-				break;
-			case 24:
 				$this->setCreatedAt($value);
 				break;
-			case 25:
+			case 23:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -1362,7 +1302,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$keys = ActividadPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setProyectoInversionId($arr[$keys[1]]);
+		if (array_key_exists($keys[1], $arr)) $this->setProyectoId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setDescripcion($arr[$keys[2]]);
 		if (array_key_exists($keys[3], $arr)) $this->setTipoGasto($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setComponenteSector($arr[$keys[4]]);
@@ -1383,10 +1323,8 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[19], $arr)) $this->setClaseContrato($arr[$keys[19]]);
 		if (array_key_exists($keys[20], $arr)) $this->setEstado($arr[$keys[20]]);
 		if (array_key_exists($keys[21], $arr)) $this->setExistenciaContratoNumero($arr[$keys[21]]);
-		if (array_key_exists($keys[22], $arr)) $this->setGiros($arr[$keys[22]]);
-		if (array_key_exists($keys[23], $arr)) $this->setSaldo($arr[$keys[23]]);
-		if (array_key_exists($keys[24], $arr)) $this->setCreatedAt($arr[$keys[24]]);
-		if (array_key_exists($keys[25], $arr)) $this->setUpdatedAt($arr[$keys[25]]);
+		if (array_key_exists($keys[22], $arr)) $this->setCreatedAt($arr[$keys[22]]);
+		if (array_key_exists($keys[23], $arr)) $this->setUpdatedAt($arr[$keys[23]]);
 	}
 
 	
@@ -1395,7 +1333,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$criteria = new Criteria(ActividadPeer::DATABASE_NAME);
 
 		if ($this->isColumnModified(ActividadPeer::ID)) $criteria->add(ActividadPeer::ID, $this->id);
-		if ($this->isColumnModified(ActividadPeer::PROYECTO_INVERSION_ID)) $criteria->add(ActividadPeer::PROYECTO_INVERSION_ID, $this->proyecto_inversion_id);
+		if ($this->isColumnModified(ActividadPeer::PROYECTO_ID)) $criteria->add(ActividadPeer::PROYECTO_ID, $this->proyecto_id);
 		if ($this->isColumnModified(ActividadPeer::DESCRIPCION)) $criteria->add(ActividadPeer::DESCRIPCION, $this->descripcion);
 		if ($this->isColumnModified(ActividadPeer::TIPO_GASTO)) $criteria->add(ActividadPeer::TIPO_GASTO, $this->tipo_gasto);
 		if ($this->isColumnModified(ActividadPeer::COMPONENTE_SECTOR)) $criteria->add(ActividadPeer::COMPONENTE_SECTOR, $this->componente_sector);
@@ -1416,8 +1354,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(ActividadPeer::CLASE_CONTRATO)) $criteria->add(ActividadPeer::CLASE_CONTRATO, $this->clase_contrato);
 		if ($this->isColumnModified(ActividadPeer::ESTADO)) $criteria->add(ActividadPeer::ESTADO, $this->estado);
 		if ($this->isColumnModified(ActividadPeer::EXISTENCIA_CONTRATO_NUMERO)) $criteria->add(ActividadPeer::EXISTENCIA_CONTRATO_NUMERO, $this->existencia_contrato_numero);
-		if ($this->isColumnModified(ActividadPeer::GIROS)) $criteria->add(ActividadPeer::GIROS, $this->giros);
-		if ($this->isColumnModified(ActividadPeer::SALDO)) $criteria->add(ActividadPeer::SALDO, $this->saldo);
 		if ($this->isColumnModified(ActividadPeer::CREATED_AT)) $criteria->add(ActividadPeer::CREATED_AT, $this->created_at);
 		if ($this->isColumnModified(ActividadPeer::UPDATED_AT)) $criteria->add(ActividadPeer::UPDATED_AT, $this->updated_at);
 
@@ -1450,7 +1386,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setProyectoInversionId($this->proyecto_inversion_id);
+		$copyObj->setProyectoId($this->proyecto_id);
 
 		$copyObj->setDescripcion($this->descripcion);
 
@@ -1491,10 +1427,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$copyObj->setEstado($this->estado);
 
 		$copyObj->setExistenciaContratoNumero($this->existencia_contrato_numero);
-
-		$copyObj->setGiros($this->giros);
-
-		$copyObj->setSaldo($this->saldo);
 
 		$copyObj->setCreatedAt($this->created_at);
 
@@ -1554,32 +1486,32 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function setProyectoInversion($v)
+	public function setProyecto($v)
 	{
 
 
 		if ($v === null) {
-			$this->setProyectoInversionId(NULL);
+			$this->setProyectoId(NULL);
 		} else {
-			$this->setProyectoInversionId($v->getId());
+			$this->setProyectoId($v->getId());
 		}
 
 
-		$this->aProyectoInversion = $v;
+		$this->aProyecto = $v;
 	}
 
 
 	
-	public function getProyectoInversion($con = null)
+	public function getProyecto($con = null)
 	{
-		if ($this->aProyectoInversion === null && ($this->proyecto_inversion_id !== null)) {
-						include_once 'lib/model/om/BaseProyectoInversionPeer.php';
+		if ($this->aProyecto === null && ($this->proyecto_id !== null)) {
+						include_once 'lib/model/om/BaseProyectoPeer.php';
 
-			$this->aProyectoInversion = ProyectoInversionPeer::retrieveByPK($this->proyecto_inversion_id, $con);
+			$this->aProyecto = ProyectoPeer::retrieveByPK($this->proyecto_id, $con);
 
 			
 		}
-		return $this->aProyectoInversion;
+		return $this->aProyecto;
 	}
 
 	

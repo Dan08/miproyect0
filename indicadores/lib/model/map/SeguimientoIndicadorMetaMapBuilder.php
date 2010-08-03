@@ -36,9 +36,9 @@ class SeguimientoIndicadorMetaMapBuilder {
 
 		$tMap->addForeignKey('INDICADOR_META_ID', 'IndicadorMetaId', 'int', CreoleTypes::INTEGER, 'indicador_meta', 'ID', false, null);
 
-		$tMap->addColumn('ANYO', 'Anyo', 'string', CreoleTypes::VARCHAR, false, 4);
+		$tMap->addColumn('ANYO', 'Anyo', 'string', CreoleTypes::VARCHAR, true, 4);
 
-		$tMap->addColumn('VALOR', 'Valor', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('VALOR', 'Valor', 'double', CreoleTypes::FLOAT, true, null);
 
 	} 
 } 

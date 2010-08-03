@@ -38,6 +38,7 @@ CREATE TABLE `indicador`
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
+	KEY `indicador_indicador_index`(`indicador`),
 	INDEX `indicador_FI_1` (`objetivo_id`),
 	CONSTRAINT `indicador_FK_1`
 		FOREIGN KEY (`objetivo_id`)
@@ -90,7 +91,8 @@ CREATE TABLE `objetivo`
 	`tema` VARCHAR(255),
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `objetivo_nombre_index`(`nombre`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -267,10 +269,10 @@ DROP TABLE IF EXISTS `meta_pd`;
 CREATE TABLE `meta_pd`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`codigo` VARCHAR(30),
-	`meta` VARCHAR(255),
+	`codigo` VARCHAR(30)  NOT NULL,
+	`meta` VARCHAR(255)  NOT NULL,
 	`descripcion` TEXT,
-	`tipo` VARCHAR(50),
+	`tipo` VARCHAR(25),
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`)
@@ -317,10 +319,10 @@ CREATE TABLE `anualizacion`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`meta_pd_id` INTEGER,
-	`anyo1` FLOAT,
-	`anyo2` FLOAT,
-	`anyo3` FLOAT,
-	`anyo4` FLOAT,
+	`anyo1` FLOAT  NOT NULL,
+	`anyo2` FLOAT  NOT NULL,
+	`anyo3` FLOAT  NOT NULL,
+	`anyo4` FLOAT  NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
@@ -342,8 +344,8 @@ CREATE TABLE `seguimiento_indicador_meta`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`indicador_meta_id` INTEGER,
-	`anyo` VARCHAR(4),
-	`valor` FLOAT,
+	`anyo` VARCHAR(4)  NOT NULL,
+	`valor` FLOAT  NOT NULL,
 	PRIMARY KEY (`id`),
 	INDEX `seguimiento_indicador_meta_FI_1` (`indicador_meta_id`),
 	CONSTRAINT `seguimiento_indicador_meta_FK_1`
@@ -364,8 +366,10 @@ CREATE TABLE `meta_proyecto`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`meta_pd_id` INTEGER,
 	`proyecto_id` INTEGER,
-	`codigo` VARCHAR(20),
+	`codigo` VARCHAR(20)  NOT NULL,
 	`meta` VARCHAR(255),
+	`tipo` VARCHAR(25),
+	`objetivo_id` INTEGER,
 	`descripcion` TEXT,
 	`anualizacion_id` INTEGER,
 	`created_at` DATETIME,
@@ -381,8 +385,13 @@ CREATE TABLE `meta_proyecto`
 		FOREIGN KEY (`proyecto_id`)
 		REFERENCES `proyecto` (`id`)
 		ON DELETE SET NULL,
-	INDEX `meta_proyecto_FI_3` (`anualizacion_id`),
+	INDEX `meta_proyecto_FI_3` (`objetivo_id`),
 	CONSTRAINT `meta_proyecto_FK_3`
+		FOREIGN KEY (`objetivo_id`)
+		REFERENCES `objetivo` (`id`)
+		ON DELETE SET NULL,
+	INDEX `meta_proyecto_FI_4` (`anualizacion_id`),
+	CONSTRAINT `meta_proyecto_FK_4`
 		FOREIGN KEY (`anualizacion_id`)
 		REFERENCES `anualizacion` (`id`)
 		ON DELETE SET NULL
@@ -398,11 +407,12 @@ DROP TABLE IF EXISTS `proyecto`;
 CREATE TABLE `proyecto`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`codigo` VARCHAR(20),
-	`proyecto` VARCHAR(255),
-	`descripcion` TEXT,
+	`codigo` VARCHAR(20)  NOT NULL,
+	`proyecto` VARCHAR(255)  NOT NULL,
+	`descripcion` TEXT  NOT NULL,
 	`magnitud` VARCHAR(50),
 	`programa_interno` VARCHAR(50),
+	`monto` FLOAT,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`)
@@ -420,9 +430,10 @@ CREATE TABLE `actividad_proyecto`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`proyecto_id` INTEGER,
 	`meta_pd_id` INTEGER,
-	`actividad` VARCHAR(255),
+	`meta_proyecto_id` INTEGER,
+	`actividad` VARCHAR(255)  NOT NULL,
 	`descripcion` TEXT,
-	`ponderacion` FLOAT,
+	`ponderacion` FLOAT  NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
@@ -435,6 +446,11 @@ CREATE TABLE `actividad_proyecto`
 	CONSTRAINT `actividad_proyecto_FK_2`
 		FOREIGN KEY (`meta_pd_id`)
 		REFERENCES `meta_pd` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_proyecto_FI_3` (`meta_proyecto_id`),
+	CONSTRAINT `actividad_proyecto_FK_3`
+		FOREIGN KEY (`meta_proyecto_id`)
+		REFERENCES `meta_proyecto` (`id`)
 		ON DELETE SET NULL
 )Type=InnoDB;
 
@@ -449,10 +465,11 @@ CREATE TABLE `subactividad_proyecto`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`actividad_proyecto_id` INTEGER,
-	`descripcion` TEXT,
-	`fecha_inicio` DATE,
-	`duracion` INTEGER,
-	`ponderacion` FLOAT,
+	`descripcion` TEXT  NOT NULL,
+	`entregable` TEXT  NOT NULL,
+	`fecha_inicio` DATE  NOT NULL,
+	`duracion` INTEGER  NOT NULL,
+	`ponderacion` FLOAT  NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
@@ -474,7 +491,8 @@ CREATE TABLE `subactividad_ejecucion`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`subactividad_proyecto_id` INTEGER,
-	`mes` INTEGER,
+	`mes` INTEGER  NOT NULL,
+	`descripcion` TEXT  NOT NULL,
 	`avance` FLOAT,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
@@ -496,8 +514,8 @@ DROP TABLE IF EXISTS `meta_poa`;
 CREATE TABLE `meta_poa`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`meta` VARCHAR(255),
-	`descripcion` TEXT,
+	`meta` VARCHAR(255)  NOT NULL,
+	`descripcion` TEXT  NOT NULL,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`)
@@ -515,7 +533,7 @@ CREATE TABLE `actividad_poa`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`meta_poa_id` INTEGER,
 	`proyecto_id` INTEGER,
-	`descripcion` TEXT,
+	`descripcion` TEXT  NOT NULL,
 	`responsable` VARCHAR(50),
 	`observaciones` TEXT,
 	`created_at` DATETIME,
@@ -534,29 +552,6 @@ CREATE TABLE `actividad_poa`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
-#-- proyecto_inversion
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `proyecto_inversion`;
-
-
-CREATE TABLE `proyecto_inversion`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`meta_pd_id` INTEGER,
-	`codigo` VARCHAR(20),
-	`proyecto` TEXT,
-	`created_at` DATETIME,
-	`updated_at` DATETIME,
-	PRIMARY KEY (`id`),
-	INDEX `proyecto_inversion_FI_1` (`meta_pd_id`),
-	CONSTRAINT `proyecto_inversion_FK_1`
-		FOREIGN KEY (`meta_pd_id`)
-		REFERENCES `meta_pd` (`id`)
-		ON DELETE SET NULL
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
 #-- actividad
 #-----------------------------------------------------------------------------
 
@@ -566,7 +561,7 @@ DROP TABLE IF EXISTS `actividad`;
 CREATE TABLE `actividad`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`proyecto_inversion_id` INTEGER,
+	`proyecto_id` INTEGER,
 	`descripcion` TEXT,
 	`tipo_gasto` VARCHAR(20),
 	`componente_sector` VARCHAR(255),
@@ -587,15 +582,13 @@ CREATE TABLE `actividad`
 	`clase_contrato` VARCHAR(80),
 	`estado` VARCHAR(80),
 	`existencia_contrato_numero` VARCHAR(20),
-	`giros` FLOAT,
-	`saldo` FLOAT,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`),
-	INDEX `actividad_FI_1` (`proyecto_inversion_id`),
+	INDEX `actividad_FI_1` (`proyecto_id`),
 	CONSTRAINT `actividad_FK_1`
-		FOREIGN KEY (`proyecto_inversion_id`)
-		REFERENCES `proyecto_inversion` (`id`)
+		FOREIGN KEY (`proyecto_id`)
+		REFERENCES `proyecto` (`id`)
 		ON DELETE SET NULL,
 	INDEX `actividad_FI_2` (`contrato_id`),
 	CONSTRAINT `actividad_FK_2`

@@ -13,7 +13,7 @@ abstract class BaseActividadPeer {
 	const CLASS_DEFAULT = 'lib.model.Actividad';
 
 	
-	const NUM_COLUMNS = 26;
+	const NUM_COLUMNS = 24;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -23,7 +23,7 @@ abstract class BaseActividadPeer {
 	const ID = 'actividad.ID';
 
 	
-	const PROYECTO_INVERSION_ID = 'actividad.PROYECTO_INVERSION_ID';
+	const PROYECTO_ID = 'actividad.PROYECTO_ID';
 
 	
 	const DESCRIPCION = 'actividad.DESCRIPCION';
@@ -86,12 +86,6 @@ abstract class BaseActividadPeer {
 	const EXISTENCIA_CONTRATO_NUMERO = 'actividad.EXISTENCIA_CONTRATO_NUMERO';
 
 	
-	const GIROS = 'actividad.GIROS';
-
-	
-	const SALDO = 'actividad.SALDO';
-
-	
 	const CREATED_AT = 'actividad.CREATED_AT';
 
 	
@@ -103,18 +97,18 @@ abstract class BaseActividadPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'ProyectoInversionId', 'Descripcion', 'TipoGasto', 'ComponenteSector', 'ConceptoGasto', 'MesEtapaContractual', 'MesEjecucion', 'Reservas', 'AreaResponsable', 'ValorProceso', 'NumeroSolicitud', 'FechaSolicitud', 'FechaContrato', 'FechaActaInicio', 'FechaTerminacion', 'FechaLiquidacion', 'PlazoMeses', 'ContratoId', 'ClaseContrato', 'Estado', 'ExistenciaContratoNumero', 'Giros', 'Saldo', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID, ActividadPeer::PROYECTO_INVERSION_ID, ActividadPeer::DESCRIPCION, ActividadPeer::TIPO_GASTO, ActividadPeer::COMPONENTE_SECTOR, ActividadPeer::CONCEPTO_GASTO, ActividadPeer::MES_ETAPA_CONTRACTUAL, ActividadPeer::MES_EJECUCION, ActividadPeer::RESERVAS, ActividadPeer::AREA_RESPONSABLE, ActividadPeer::VALOR_PROCESO, ActividadPeer::NUMERO_SOLICITUD, ActividadPeer::FECHA_SOLICITUD, ActividadPeer::FECHA_CONTRATO, ActividadPeer::FECHA_ACTA_INICIO, ActividadPeer::FECHA_TERMINACION, ActividadPeer::FECHA_LIQUIDACION, ActividadPeer::PLAZO_MESES, ActividadPeer::CONTRATO_ID, ActividadPeer::CLASE_CONTRATO, ActividadPeer::ESTADO, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO, ActividadPeer::GIROS, ActividadPeer::SALDO, ActividadPeer::CREATED_AT, ActividadPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'proyecto_inversion_id', 'descripcion', 'tipo_gasto', 'componente_sector', 'concepto_gasto', 'mes_etapa_contractual', 'mes_ejecucion', 'reservas', 'area_responsable', 'valor_proceso', 'numero_solicitud', 'fecha_solicitud', 'fecha_contrato', 'fecha_acta_inicio', 'fecha_terminacion', 'fecha_liquidacion', 'plazo_meses', 'contrato_id', 'clase_contrato', 'estado', 'existencia_contrato_numero', 'giros', 'saldo', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'ProyectoId', 'Descripcion', 'TipoGasto', 'ComponenteSector', 'ConceptoGasto', 'MesEtapaContractual', 'MesEjecucion', 'Reservas', 'AreaResponsable', 'ValorProceso', 'NumeroSolicitud', 'FechaSolicitud', 'FechaContrato', 'FechaActaInicio', 'FechaTerminacion', 'FechaLiquidacion', 'PlazoMeses', 'ContratoId', 'ClaseContrato', 'Estado', 'ExistenciaContratoNumero', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID, ActividadPeer::PROYECTO_ID, ActividadPeer::DESCRIPCION, ActividadPeer::TIPO_GASTO, ActividadPeer::COMPONENTE_SECTOR, ActividadPeer::CONCEPTO_GASTO, ActividadPeer::MES_ETAPA_CONTRACTUAL, ActividadPeer::MES_EJECUCION, ActividadPeer::RESERVAS, ActividadPeer::AREA_RESPONSABLE, ActividadPeer::VALOR_PROCESO, ActividadPeer::NUMERO_SOLICITUD, ActividadPeer::FECHA_SOLICITUD, ActividadPeer::FECHA_CONTRATO, ActividadPeer::FECHA_ACTA_INICIO, ActividadPeer::FECHA_TERMINACION, ActividadPeer::FECHA_LIQUIDACION, ActividadPeer::PLAZO_MESES, ActividadPeer::CONTRATO_ID, ActividadPeer::CLASE_CONTRATO, ActividadPeer::ESTADO, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO, ActividadPeer::CREATED_AT, ActividadPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'proyecto_id', 'descripcion', 'tipo_gasto', 'componente_sector', 'concepto_gasto', 'mes_etapa_contractual', 'mes_ejecucion', 'reservas', 'area_responsable', 'valor_proceso', 'numero_solicitud', 'fecha_solicitud', 'fecha_contrato', 'fecha_acta_inicio', 'fecha_terminacion', 'fecha_liquidacion', 'plazo_meses', 'contrato_id', 'clase_contrato', 'estado', 'existencia_contrato_numero', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProyectoInversionId' => 1, 'Descripcion' => 2, 'TipoGasto' => 3, 'ComponenteSector' => 4, 'ConceptoGasto' => 5, 'MesEtapaContractual' => 6, 'MesEjecucion' => 7, 'Reservas' => 8, 'AreaResponsable' => 9, 'ValorProceso' => 10, 'NumeroSolicitud' => 11, 'FechaSolicitud' => 12, 'FechaContrato' => 13, 'FechaActaInicio' => 14, 'FechaTerminacion' => 15, 'FechaLiquidacion' => 16, 'PlazoMeses' => 17, 'ContratoId' => 18, 'ClaseContrato' => 19, 'Estado' => 20, 'ExistenciaContratoNumero' => 21, 'Giros' => 22, 'Saldo' => 23, 'CreatedAt' => 24, 'UpdatedAt' => 25, ),
-		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID => 0, ActividadPeer::PROYECTO_INVERSION_ID => 1, ActividadPeer::DESCRIPCION => 2, ActividadPeer::TIPO_GASTO => 3, ActividadPeer::COMPONENTE_SECTOR => 4, ActividadPeer::CONCEPTO_GASTO => 5, ActividadPeer::MES_ETAPA_CONTRACTUAL => 6, ActividadPeer::MES_EJECUCION => 7, ActividadPeer::RESERVAS => 8, ActividadPeer::AREA_RESPONSABLE => 9, ActividadPeer::VALOR_PROCESO => 10, ActividadPeer::NUMERO_SOLICITUD => 11, ActividadPeer::FECHA_SOLICITUD => 12, ActividadPeer::FECHA_CONTRATO => 13, ActividadPeer::FECHA_ACTA_INICIO => 14, ActividadPeer::FECHA_TERMINACION => 15, ActividadPeer::FECHA_LIQUIDACION => 16, ActividadPeer::PLAZO_MESES => 17, ActividadPeer::CONTRATO_ID => 18, ActividadPeer::CLASE_CONTRATO => 19, ActividadPeer::ESTADO => 20, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO => 21, ActividadPeer::GIROS => 22, ActividadPeer::SALDO => 23, ActividadPeer::CREATED_AT => 24, ActividadPeer::UPDATED_AT => 25, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'proyecto_inversion_id' => 1, 'descripcion' => 2, 'tipo_gasto' => 3, 'componente_sector' => 4, 'concepto_gasto' => 5, 'mes_etapa_contractual' => 6, 'mes_ejecucion' => 7, 'reservas' => 8, 'area_responsable' => 9, 'valor_proceso' => 10, 'numero_solicitud' => 11, 'fecha_solicitud' => 12, 'fecha_contrato' => 13, 'fecha_acta_inicio' => 14, 'fecha_terminacion' => 15, 'fecha_liquidacion' => 16, 'plazo_meses' => 17, 'contrato_id' => 18, 'clase_contrato' => 19, 'estado' => 20, 'existencia_contrato_numero' => 21, 'giros' => 22, 'saldo' => 23, 'created_at' => 24, 'updated_at' => 25, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProyectoId' => 1, 'Descripcion' => 2, 'TipoGasto' => 3, 'ComponenteSector' => 4, 'ConceptoGasto' => 5, 'MesEtapaContractual' => 6, 'MesEjecucion' => 7, 'Reservas' => 8, 'AreaResponsable' => 9, 'ValorProceso' => 10, 'NumeroSolicitud' => 11, 'FechaSolicitud' => 12, 'FechaContrato' => 13, 'FechaActaInicio' => 14, 'FechaTerminacion' => 15, 'FechaLiquidacion' => 16, 'PlazoMeses' => 17, 'ContratoId' => 18, 'ClaseContrato' => 19, 'Estado' => 20, 'ExistenciaContratoNumero' => 21, 'CreatedAt' => 22, 'UpdatedAt' => 23, ),
+		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID => 0, ActividadPeer::PROYECTO_ID => 1, ActividadPeer::DESCRIPCION => 2, ActividadPeer::TIPO_GASTO => 3, ActividadPeer::COMPONENTE_SECTOR => 4, ActividadPeer::CONCEPTO_GASTO => 5, ActividadPeer::MES_ETAPA_CONTRACTUAL => 6, ActividadPeer::MES_EJECUCION => 7, ActividadPeer::RESERVAS => 8, ActividadPeer::AREA_RESPONSABLE => 9, ActividadPeer::VALOR_PROCESO => 10, ActividadPeer::NUMERO_SOLICITUD => 11, ActividadPeer::FECHA_SOLICITUD => 12, ActividadPeer::FECHA_CONTRATO => 13, ActividadPeer::FECHA_ACTA_INICIO => 14, ActividadPeer::FECHA_TERMINACION => 15, ActividadPeer::FECHA_LIQUIDACION => 16, ActividadPeer::PLAZO_MESES => 17, ActividadPeer::CONTRATO_ID => 18, ActividadPeer::CLASE_CONTRATO => 19, ActividadPeer::ESTADO => 20, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO => 21, ActividadPeer::CREATED_AT => 22, ActividadPeer::UPDATED_AT => 23, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'proyecto_id' => 1, 'descripcion' => 2, 'tipo_gasto' => 3, 'componente_sector' => 4, 'concepto_gasto' => 5, 'mes_etapa_contractual' => 6, 'mes_ejecucion' => 7, 'reservas' => 8, 'area_responsable' => 9, 'valor_proceso' => 10, 'numero_solicitud' => 11, 'fecha_solicitud' => 12, 'fecha_contrato' => 13, 'fecha_acta_inicio' => 14, 'fecha_terminacion' => 15, 'fecha_liquidacion' => 16, 'plazo_meses' => 17, 'contrato_id' => 18, 'clase_contrato' => 19, 'estado' => 20, 'existencia_contrato_numero' => 21, 'created_at' => 22, 'updated_at' => 23, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, )
 	);
 
 	
@@ -170,7 +164,7 @@ abstract class BaseActividadPeer {
 
 		$criteria->addSelectColumn(ActividadPeer::ID);
 
-		$criteria->addSelectColumn(ActividadPeer::PROYECTO_INVERSION_ID);
+		$criteria->addSelectColumn(ActividadPeer::PROYECTO_ID);
 
 		$criteria->addSelectColumn(ActividadPeer::DESCRIPCION);
 
@@ -211,10 +205,6 @@ abstract class BaseActividadPeer {
 		$criteria->addSelectColumn(ActividadPeer::ESTADO);
 
 		$criteria->addSelectColumn(ActividadPeer::EXISTENCIA_CONTRATO_NUMERO);
-
-		$criteria->addSelectColumn(ActividadPeer::GIROS);
-
-		$criteria->addSelectColumn(ActividadPeer::SALDO);
 
 		$criteria->addSelectColumn(ActividadPeer::CREATED_AT);
 
@@ -299,7 +289,7 @@ abstract class BaseActividadPeer {
 	}
 
 	
-	public static function doCountJoinProyectoInversion(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinProyecto(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
@@ -315,7 +305,7 @@ abstract class BaseActividadPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(ActividadPeer::PROYECTO_INVERSION_ID, ProyectoInversionPeer::ID);
+		$criteria->addJoin(ActividadPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 		$rs = ActividadPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -355,7 +345,7 @@ abstract class BaseActividadPeer {
 
 
 	
-	public static function doSelectJoinProyectoInversion(Criteria $c, $con = null)
+	public static function doSelectJoinProyecto(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
@@ -365,9 +355,9 @@ abstract class BaseActividadPeer {
 
 		ActividadPeer::addSelectColumns($c);
 		$startcol = (ActividadPeer::NUM_COLUMNS - ActividadPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		ProyectoInversionPeer::addSelectColumns($c);
+		ProyectoPeer::addSelectColumns($c);
 
-		$c->addJoin(ActividadPeer::PROYECTO_INVERSION_ID, ProyectoInversionPeer::ID);
+		$c->addJoin(ActividadPeer::PROYECTO_ID, ProyectoPeer::ID);
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
@@ -379,7 +369,7 @@ abstract class BaseActividadPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = ProyectoInversionPeer::getOMClass();
+			$omClass = ProyectoPeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj2 = new $cls();
@@ -387,7 +377,7 @@ abstract class BaseActividadPeer {
 
 			$newObject = true;
 			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getProyectoInversion(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getProyecto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 										$temp_obj2->addActividad($obj1); 					break;
 				}
@@ -465,7 +455,7 @@ abstract class BaseActividadPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(ActividadPeer::PROYECTO_INVERSION_ID, ProyectoInversionPeer::ID);
+		$criteria->addJoin(ActividadPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 		$criteria->addJoin(ActividadPeer::CONTRATO_ID, ContratoPeer::ID);
 
@@ -490,13 +480,13 @@ abstract class BaseActividadPeer {
 		ActividadPeer::addSelectColumns($c);
 		$startcol2 = (ActividadPeer::NUM_COLUMNS - ActividadPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		ProyectoInversionPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + ProyectoInversionPeer::NUM_COLUMNS;
+		ProyectoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ProyectoPeer::NUM_COLUMNS;
 
 		ContratoPeer::addSelectColumns($c);
 		$startcol4 = $startcol3 + ContratoPeer::NUM_COLUMNS;
 
-		$c->addJoin(ActividadPeer::PROYECTO_INVERSION_ID, ProyectoInversionPeer::ID);
+		$c->addJoin(ActividadPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 		$c->addJoin(ActividadPeer::CONTRATO_ID, ContratoPeer::ID);
 
@@ -514,7 +504,7 @@ abstract class BaseActividadPeer {
 
 
 					
-			$omClass = ProyectoInversionPeer::getOMClass();
+			$omClass = ProyectoPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -524,7 +514,7 @@ abstract class BaseActividadPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getProyectoInversion(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getProyecto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addActividad($obj1); 					break;
 				}
@@ -565,7 +555,7 @@ abstract class BaseActividadPeer {
 
 
 	
-	public static function doCountJoinAllExceptProyectoInversion(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinAllExceptProyecto(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
@@ -609,7 +599,7 @@ abstract class BaseActividadPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(ActividadPeer::PROYECTO_INVERSION_ID, ProyectoInversionPeer::ID);
+		$criteria->addJoin(ActividadPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 		$rs = ActividadPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -621,7 +611,7 @@ abstract class BaseActividadPeer {
 
 
 	
-	public static function doSelectJoinAllExceptProyectoInversion(Criteria $c, $con = null)
+	public static function doSelectJoinAllExceptProyecto(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
@@ -689,10 +679,10 @@ abstract class BaseActividadPeer {
 		ActividadPeer::addSelectColumns($c);
 		$startcol2 = (ActividadPeer::NUM_COLUMNS - ActividadPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		ProyectoInversionPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + ProyectoInversionPeer::NUM_COLUMNS;
+		ProyectoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ProyectoPeer::NUM_COLUMNS;
 
-		$c->addJoin(ActividadPeer::PROYECTO_INVERSION_ID, ProyectoInversionPeer::ID);
+		$c->addJoin(ActividadPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 
 		$rs = BasePeer::doSelect($c, $con);
@@ -706,7 +696,7 @@ abstract class BaseActividadPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = ProyectoInversionPeer::getOMClass();
+			$omClass = ProyectoPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -716,7 +706,7 @@ abstract class BaseActividadPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getProyectoInversion(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getProyecto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addActividad($obj1);
 					break;

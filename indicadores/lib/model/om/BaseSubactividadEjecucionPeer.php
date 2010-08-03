@@ -13,7 +13,7 @@ abstract class BaseSubactividadEjecucionPeer {
 	const CLASS_DEFAULT = 'lib.model.SubactividadEjecucion';
 
 	
-	const NUM_COLUMNS = 6;
+	const NUM_COLUMNS = 7;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -27,6 +27,9 @@ abstract class BaseSubactividadEjecucionPeer {
 
 	
 	const MES = 'subactividad_ejecucion.MES';
+
+	
+	const DESCRIPCION = 'subactividad_ejecucion.DESCRIPCION';
 
 	
 	const AVANCE = 'subactividad_ejecucion.AVANCE';
@@ -43,18 +46,18 @@ abstract class BaseSubactividadEjecucionPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'SubactividadProyectoId', 'Mes', 'Avance', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (SubactividadEjecucionPeer::ID, SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadEjecucionPeer::MES, SubactividadEjecucionPeer::AVANCE, SubactividadEjecucionPeer::CREATED_AT, SubactividadEjecucionPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'subactividad_proyecto_id', 'mes', 'avance', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'SubactividadProyectoId', 'Mes', 'Descripcion', 'Avance', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (SubactividadEjecucionPeer::ID, SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadEjecucionPeer::MES, SubactividadEjecucionPeer::DESCRIPCION, SubactividadEjecucionPeer::AVANCE, SubactividadEjecucionPeer::CREATED_AT, SubactividadEjecucionPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'subactividad_proyecto_id', 'mes', 'descripcion', 'avance', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'SubactividadProyectoId' => 1, 'Mes' => 2, 'Avance' => 3, 'CreatedAt' => 4, 'UpdatedAt' => 5, ),
-		BasePeer::TYPE_COLNAME => array (SubactividadEjecucionPeer::ID => 0, SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID => 1, SubactividadEjecucionPeer::MES => 2, SubactividadEjecucionPeer::AVANCE => 3, SubactividadEjecucionPeer::CREATED_AT => 4, SubactividadEjecucionPeer::UPDATED_AT => 5, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'subactividad_proyecto_id' => 1, 'mes' => 2, 'avance' => 3, 'created_at' => 4, 'updated_at' => 5, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'SubactividadProyectoId' => 1, 'Mes' => 2, 'Descripcion' => 3, 'Avance' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, ),
+		BasePeer::TYPE_COLNAME => array (SubactividadEjecucionPeer::ID => 0, SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID => 1, SubactividadEjecucionPeer::MES => 2, SubactividadEjecucionPeer::DESCRIPCION => 3, SubactividadEjecucionPeer::AVANCE => 4, SubactividadEjecucionPeer::CREATED_AT => 5, SubactividadEjecucionPeer::UPDATED_AT => 6, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'subactividad_proyecto_id' => 1, 'mes' => 2, 'descripcion' => 3, 'avance' => 4, 'created_at' => 5, 'updated_at' => 6, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	
@@ -113,6 +116,8 @@ abstract class BaseSubactividadEjecucionPeer {
 		$criteria->addSelectColumn(SubactividadEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID);
 
 		$criteria->addSelectColumn(SubactividadEjecucionPeer::MES);
+
+		$criteria->addSelectColumn(SubactividadEjecucionPeer::DESCRIPCION);
 
 		$criteria->addSelectColumn(SubactividadEjecucionPeer::AVANCE);
 

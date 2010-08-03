@@ -34,9 +34,9 @@ class MetaPoaMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addColumn('META', 'Meta', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addColumn('META', 'Meta', 'string', CreoleTypes::VARCHAR, true, 255);
 
-		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

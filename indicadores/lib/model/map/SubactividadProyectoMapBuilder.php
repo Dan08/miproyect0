@@ -36,13 +36,15 @@ class SubactividadProyectoMapBuilder {
 
 		$tMap->addForeignKey('ACTIVIDAD_PROYECTO_ID', 'ActividadProyectoId', 'int', CreoleTypes::INTEGER, 'actividad_proyecto', 'ID', false, null);
 
-		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
-		$tMap->addColumn('FECHA_INICIO', 'FechaInicio', 'int', CreoleTypes::DATE, false, null);
+		$tMap->addColumn('ENTREGABLE', 'Entregable', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
-		$tMap->addColumn('DURACION', 'Duracion', 'int', CreoleTypes::INTEGER, false, null);
+		$tMap->addColumn('FECHA_INICIO', 'FechaInicio', 'int', CreoleTypes::DATE, true, null);
 
-		$tMap->addColumn('PONDERACION', 'Ponderacion', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addColumn('DURACION', 'Duracion', 'int', CreoleTypes::INTEGER, true, null);
+
+		$tMap->addColumn('PONDERACION', 'Ponderacion', 'double', CreoleTypes::FLOAT, true, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

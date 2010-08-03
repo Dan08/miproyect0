@@ -34,15 +34,17 @@ class ProyectoMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addColumn('CODIGO', 'Codigo', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addColumn('CODIGO', 'Codigo', 'string', CreoleTypes::VARCHAR, true, 20);
 
-		$tMap->addColumn('PROYECTO', 'Proyecto', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addColumn('PROYECTO', 'Proyecto', 'string', CreoleTypes::VARCHAR, true, 255);
 
-		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
 		$tMap->addColumn('MAGNITUD', 'Magnitud', 'string', CreoleTypes::VARCHAR, false, 50);
 
 		$tMap->addColumn('PROGRAMA_INTERNO', 'ProgramaInterno', 'string', CreoleTypes::VARCHAR, false, 50);
+
+		$tMap->addColumn('MONTO', 'Monto', 'double', CreoleTypes::FLOAT, false, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

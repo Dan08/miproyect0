@@ -34,7 +34,7 @@ class ActividadMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addForeignKey('PROYECTO_INVERSION_ID', 'ProyectoInversionId', 'int', CreoleTypes::INTEGER, 'proyecto_inversion', 'ID', false, null);
+		$tMap->addForeignKey('PROYECTO_ID', 'ProyectoId', 'int', CreoleTypes::INTEGER, 'proyecto', 'ID', false, null);
 
 		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
@@ -75,10 +75,6 @@ class ActividadMapBuilder {
 		$tMap->addColumn('ESTADO', 'Estado', 'string', CreoleTypes::VARCHAR, false, 80);
 
 		$tMap->addColumn('EXISTENCIA_CONTRATO_NUMERO', 'ExistenciaContratoNumero', 'string', CreoleTypes::VARCHAR, false, 20);
-
-		$tMap->addColumn('GIROS', 'Giros', 'double', CreoleTypes::FLOAT, false, null);
-
-		$tMap->addColumn('SALDO', 'Saldo', 'double', CreoleTypes::FLOAT, false, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 
