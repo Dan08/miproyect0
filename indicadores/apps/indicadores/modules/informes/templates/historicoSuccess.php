@@ -1,1 +1,0 @@
-<p><?php echo image_tag('historico.jpg'); ?></p>
