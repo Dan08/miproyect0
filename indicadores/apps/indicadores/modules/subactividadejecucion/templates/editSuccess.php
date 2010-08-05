@@ -4,6 +4,8 @@
 ?>
 <?php use_helper('Object') ?>
 
+<?php if ($subactividad->getMesMedicion() > 0): ?>
+
 <?php echo form_tag('subactividadejecucion/update') ?>
 
 <?php echo object_input_hidden_tag($subactividad_ejecucion, 'getId') ?>
@@ -12,15 +14,16 @@
 <tbody>
 <tr>
   <th>Subactividad proyecto:</th>
-  <td><?php echo object_select_tag($subactividad_ejecucion, 'getSubactividadProyectoId', array (
-  'related_class' => 'SubactividadProyecto',
-  'include_blank' => true,
-)) ?></td>
+  <td><?php echo $subactividad->getDescripcion(); ?>
+    <?php echo input_hidden_tag('subactividad_proyecto_id', $subactividad->getId()) ?>
+  </td>
 </tr>
 <tr>
   <th>Mes*:</th>
-  <td><?php echo object_input_tag($subactividad_ejecucion, 'getMes', array (
-  'size' => 7,
+  <td>
+    <?php echo $subactividad->getMesMedicion(); ?> de <?php echo $subactividad->getDuracion(); ?>
+    <?php echo object_input_tag($subactividad_ejecucion, 'getMes', array (
+  'size' => 2,
 )) ?></td>
 </tr>
 <tr>
@@ -32,8 +35,8 @@
 <tr>
   <th>Avance:</th>
   <td><?php echo object_input_tag($subactividad_ejecucion, 'getAvance', array (
-  'size' => 7,
-)) ?></td>
+  'size' => 2,
+)) ?>%</td>
 </tr>
 </tbody>
 </table>
@@ -46,3 +49,6 @@
   &nbsp;<?php echo link_to('cancel', 'subactividadejecucion/list') ?>
 <?php endif; ?>
 </form>
+<?php else: ?>
+  <strong>Se han realizado todas las mediciones</strong>
+<?php endif; ?>
