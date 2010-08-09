@@ -11,8 +11,8 @@ sfGuardGroupPermission:
   sfGuardGroupPermission_1_1: 
     group_id: sfGuardGroup_1
     permission_id: sfGuardPermission_1
-sfGuardUser: 
-  sfGuardUser_1: 
+sfGuardUser:
+  sfGuardUser_1:
     username:       admin
     password:       muysecret0
     is_super_admin: true
@@ -466,8 +466,6 @@ MetaPd:
       Diseñar 1 política para la
       intervención de 31 zonas críticas en
       seguridad y convivencia
-    descripcion: 
-    tipo: 
     created_at: 2010-07-19 17:51:44
     updated_at: 2010-07-19 17:52:14
   MetaPd_2: 
@@ -478,8 +476,6 @@ MetaPd:
       violentos y delictivos a acciones para
       laprevención de las conflictividades en
       las zonas críticas
-    descripcion: 
-    tipo: 
     created_at: 2010-07-19 17:52:36
     updated_at: 2010-07-19 17:52:36
   MetaPd_3: 
@@ -489,8 +485,6 @@ MetaPd:
       de impacto para desarrollar proyectos de
       prevención con las poblacionales
       vulnerables en las zonas criticas
-    descripcion: 
-    tipo: 
     created_at: 2010-07-19 17:52:52
     updated_at: 2010-07-19 17:52:52
   MetaPd_4: 
@@ -500,8 +494,6 @@ MetaPd:
       ciudadana para la recuperación de las
       zonas críticas de intervención en 19
       plazas de mercado
-    descripcion: 
-    tipo: 
     created_at: 2010-07-19 17:53:20
     updated_at: 2010-07-19 17:53:20
   MetaPd_5: 
@@ -511,8 +503,6 @@ MetaPd:
       sensibilización para el control y
       prevención de violencias y delitos en
       las zonas criticas
-    descripcion: 
-    tipo: 
     created_at: 2010-07-19 17:53:37
     updated_at: 2010-07-19 17:53:37
 Proyecto: 
@@ -520,8 +510,6 @@ Proyecto:
     codigo: 402
     proyecto: Zonas Criticas
     descripcion: 
-    magnitud: 
-    programa_interno: 
     created_at: 2010-07-19 17:53:52
     updated_at: 2010-07-19 17:53:52
 MetaProyecto: 
@@ -529,39 +517,674 @@ MetaProyecto:
     meta_pd_id: MetaPd_1
     proyecto_id: Proyecto_1
     codigo: 343
-    meta: 
+    meta: >
+      Diseñar 1 política para la
+      intervención de 31 zonas críticas en
+      seguridad y convivencia
+    tipo: 
     descripcion: 
     created_at: 2010-07-19 17:54:53
-    updated_at: 2010-07-19 17:54:53
+    updated_at: 2010-08-02 23:32:56
   MetaProyecto_2: 
     meta_pd_id: MetaPd_2
     proyecto_id: Proyecto_1
     codigo: 344
-    meta: 
-    descripcion: 
     created_at: 2010-07-19 17:55:10
     updated_at: 2010-07-19 17:55:10
   MetaProyecto_3: 
     meta_pd_id: MetaPd_3
     proyecto_id: Proyecto_1
     codigo: 345
-    meta: 
-    descripcion: 
     created_at: 2010-07-19 17:55:21
     updated_at: 2010-07-19 17:56:15
   MetaProyecto_4: 
     meta_pd_id: MetaPd_4
     proyecto_id: Proyecto_1
     codigo: 347
-    meta: 
-    descripcion: 
     created_at: 2010-07-19 17:55:30
     updated_at: 2010-07-19 17:56:27
   MetaProyecto_5: 
     meta_pd_id: MetaPd_5
     proyecto_id: Proyecto_1
     codigo: 348
-    meta: 
-    descripcion: 
     created_at: 2010-07-19 17:55:43
     updated_at: 2010-07-19 17:55:43
+ActividadProyecto: 
+  ActividadProyecto_3: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_1
+    meta_proyecto_id: MetaProyecto_1
+    actividad: >
+      Orientar la gestión y formular la
+      política de intervención de las zonas
+      prioritarias en seguridad y convivencia
+      de manera concertada con actores
+      institucionales y comunitarios.
+    descripcion: >
+      Orientar la gestión y formular la
+      política de intervención de las zonas
+      prioritarias en seguridad y convivencia
+      de manera concertada con actores
+      institucionales y comunitarios.
+    ponderacion: 100
+    created_at: 2010-08-03 01:34:01
+    updated_at: 2010-08-03 01:34:01
+  ActividadProyecto_4: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_2
+    meta_proyecto_id: MetaProyecto_2
+    actividad: Caminando relajado
+    descripcion: |
+      CAMINANDO RELAJADO: Modelo de intervención  en el que se  busca identificar , visibilizar y atender a jovenes en situación de alto riesgo de violencia y que impacten en la seguridad y convivencia en las 31 ZAISC, por fuera del entorno escolar.
+      La intervención se enmarca en el proyecto denominado “Caminando Relajado” que tiene 5 componentes de intervención a saber:
+      1. Abordaje/Acercamiento
+      2. Productividad para la Vida
+      3.  Diagnóstico
+      4.  Construcción del Entorno Barrial
+      5. Construcción y Ejecución de un Observatorio de Convivencia y Seguridad Juvenil. Esta iniciativa tiene como fundamento principal atender en tiempo presente conflictividades barriales donde el joven asume su rol de víctima o victimario y desactivar de forma rápida situaciones de tensión y conflictividad entre los mismos jóvenes de su barrio o de otro, con la comunidad y la policía.
+    ponderacion: 20
+    created_at: 2010-08-03 01:56:32
+    updated_at: 2010-08-03 01:56:32
+  ActividadProyecto_5: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_2
+    meta_proyecto_id: MetaProyecto_2
+    actividad: Ejercito
+    descripcion: >
+      EJERCITO NACIONAL: Generación de
+      condiciones que apoyen la vinculación
+      al mercado laboral para jovenes en alto
+      riesgo de violencia y delincuencia.
+    ponderacion: 20
+    created_at: 2010-08-03 02:04:19
+    updated_at: 2010-08-03 02:04:19
+  ActividadProyecto_6: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_2
+    meta_proyecto_id: MetaProyecto_2
+    actividad: Desarrollo Actitudes Artisticas
+    descripcion: >
+      DESARROLLO ACTITUDES ARTISTICAS: 
+      Implementar escuelas de formación
+      musical en las ZAISC para incrementar el
+      uso creativo del tiempo libre y
+      disminuir el riesgo de delincuencia en
+      la población juvenil.
+    ponderacion: 20
+    created_at: 2010-08-03 02:10:08
+    updated_at: 2010-08-03 02:10:44
+  ActividadProyecto_7: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_2
+    meta_proyecto_id: MetaProyecto_2
+    actividad: Escuelas deportivas
+    descripcion: >
+      ESCUELAS DEPORTIVAS DE INICIACIÓN
+      Generación de oportunidades a niños y
+      jovenes en riesgo de violencia y
+      delincuencia para el ingreso a escuelas
+      deportivas de iniciación  como proyecto
+      de vida.
+    ponderacion: 20
+    created_at: 2010-08-03 02:15:22
+    updated_at: 2010-08-03 02:15:22
+  ActividadProyecto_8: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_2
+    meta_proyecto_id: MetaProyecto_2
+    actividad: PIPE
+    descripcion: |
+      PIPE Fortalecimiento de redes de protección del entorno.
+      Estrategia de Intervención Integral  en Seguridad y Convivencia  al Interior  y en los entornos Escolares. EN - RED A -DOS Generación de modelo de intervención  en  6  colegios, dirijido a jovenes con calificación de conflictividad  y riesgo de violencia y delincuencia dentro de los colegios.
+    ponderacion: 20
+    created_at: 2010-08-03 02:21:01
+    updated_at: 2010-08-03 02:21:01
+  ActividadProyecto_9: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_5
+    meta_proyecto_id: MetaProyecto_5
+    actividad: CAMPAÑAS
+    descripcion: 
+    ponderacion: 70
+    created_at: 2010-08-03 02:25:58
+    updated_at: 2010-08-03 02:25:58
+  ActividadProyecto_10: 
+    proyecto_id: Proyecto_1
+    meta_pd_id: MetaPd_5
+    meta_proyecto_id: MetaProyecto_5
+    actividad: Medios comunitarios
+    descripcion: >
+      APOYO A MEDIOS COMUNITARIOS
+      Institucionalidad, mejorar percepciòn
+      de seguridad, visivilizar procesos
+      comunitarios de convivencia.
+    ponderacion: 30
+    created_at: 2010-08-03 02:28:50
+    updated_at: 2010-08-03 02:28:50
+SubactividadProyecto: 
+  SubactividadProyecto_2: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: |
+      Ajustes  al protocolo para el abordaje de 2010
+      
+    entregable: |
+      Documento que describe el ajuste en el protocolo de abordaje de los territorios.
+      
+    fecha_inicio: 2010-01-11
+    duracion: 2
+    ponderacion: 5
+    created_at: 2010-08-03 01:35:52
+    updated_at: 2010-08-03 01:35:52
+  SubactividadProyecto_3: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: |
+      Modelo de concertación de planes de acción con autoridades locales y de policía
+      
+    entregable: Documentos de planes
+    fecha_inicio: 2010-03-08
+    duracion: 4
+    ponderacion: 5
+    created_at: 2010-08-03 01:38:48
+    updated_at: 2010-08-03 01:38:48
+  SubactividadProyecto_4: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Modelo de articulación de acciones de
+      componentes en proyectos marco con
+      institucionalidad (para proyectar
+      sostenibilidad)
+    entregable: >
+      Estudios previos para formalizar la
+      suscripción de los convenios
+    fecha_inicio: 2010-05-03
+    duracion: 4
+    ponderacion: 5
+    created_at: 2010-08-03 01:39:57
+    updated_at: 2010-08-03 01:39:57
+  SubactividadProyecto_5: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: |
+      Reformulación del proyecto 402
+      
+    entregable: |
+      Un (1)  Documento de reformulación   (versión junio 30) del proyecto 402
+      
+    fecha_inicio: 2010-04-05
+    duracion: 3
+    ponderacion: 10
+    created_at: 2010-08-03 01:41:00
+    updated_at: 2010-08-03 01:41:00
+  SubactividadProyecto_6: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      2da Versión de construcción de
+      documento de política
+    entregable: >
+      Un (1)  Documento que se adopta a la
+      fecha para incorporar al de política
+      (Versión julio)
+    fecha_inicio: 2010-07-12
+    duracion: 2
+    ponderacion: 15
+    created_at: 2010-08-03 01:42:04
+    updated_at: 2010-08-03 01:42:04
+  SubactividadProyecto_7: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Validación de modelo de intervención
+      de territorios
+    entregable: >
+      Un (1)  Documento de metodología de
+      intervención a territorios que se
+      incorpora al modelo de gestión
+      (Versión septiembre)
+    fecha_inicio: 2010-09-20
+    duracion: 1
+    ponderacion: 5
+    created_at: 2010-08-03 01:43:04
+    updated_at: 2010-08-03 01:43:04
+  SubactividadProyecto_8: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Presentación de versión de la
+      política ante FVS, Secretaría de
+      Gobierno
+    entregable: >
+      Documento (s) de circularización de la 
+      Versión Junio 30 de 2010, de la
+      política pública de intervención, en
+      las instancias institucionales
+      competentes para revisión, aportes y
+      observaciones.
+    fecha_inicio: 2010-09-20
+    duracion: 1
+    ponderacion: 5
+    created_at: 2010-08-03 01:47:53
+    updated_at: 2010-08-03 01:47:53
+  SubactividadProyecto_9: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: |
+      Incorporación recomendaciones
+      
+    entregable: |
+      Documento ajustado
+      
+    fecha_inicio: 2010-09-27
+    duracion: 1
+    ponderacion: 5
+    created_at: 2010-08-03 01:48:38
+    updated_at: 2010-08-03 01:48:38
+  SubactividadProyecto_10: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Presentación ante las instancias
+      pertinentes  los proyectos de actos
+      administrativos que garantizarán la
+      institucionalización del modelo
+      metodológico de intervención de los
+      territorios
+    entregable: |
+      Documentos proyectos de acuerdo
+      
+    fecha_inicio: 2010-10-04
+    duracion: 2
+    ponderacion: 5
+    created_at: 2010-08-03 01:49:33
+    updated_at: 2010-08-03 01:49:33
+  SubactividadProyecto_11: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Gestión para lograr concertadamente con
+      CEACS definir el modelo estadístico
+      para calificación de ZAISC y Vecindario
+      Seguro
+    entregable: |
+      Acuerdo de plan de trabajo para avanzar en construcción de modelo
+      
+    fecha_inicio: 2010-10-11
+    duracion: 3
+    ponderacion: 15
+    created_at: 2010-08-03 01:50:26
+    updated_at: 2010-08-03 01:50:26
+  SubactividadProyecto_12: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Gestión con CEACS y Secretaría de
+      Planeación Distrital para establecer
+      sistema de actualización de
+      información sobre población en
+      cuadrantes ZAISC.
+    entregable: >
+      Acuerdo de plan de trabajo para definir
+      la articulación
+    fecha_inicio: 2010-10-25
+    duracion: 2
+    ponderacion: 15
+    created_at: 2010-08-03 01:51:02
+    updated_at: 2010-08-03 01:51:02
+  SubactividadProyecto_13: 
+    actividad_proyecto_id: ActividadProyecto_3
+    descripcion: >
+      Incorporación de ajustes por
+      experiencias internacionales
+    entregable: Capítulo del documento de política
+    fecha_inicio: 2010-11-08
+    duracion: 1
+    ponderacion: 10
+    created_at: 2010-08-03 01:51:55
+    updated_at: 2010-08-03 01:51:55
+  SubactividadProyecto_14: 
+    actividad_proyecto_id: ActividadProyecto_4
+    descripcion: >
+      Encuentros de acercamiento y abordaje a
+      los jóvenes
+    entregable: >
+      No. Encuentros  acercamiento a  jóvenes
+      para la consolidación de rutas de
+      trabajo
+    fecha_inicio: 2010-03-08
+    duracion: 4
+    ponderacion: 30
+    created_at: 2010-08-03 01:57:59
+    updated_at: 2010-08-03 01:57:59
+  SubactividadProyecto_15: 
+    actividad_proyecto_id: ActividadProyecto_4
+    descripcion: >
+      Elaboración de  registro de analisis
+      situacional de jóvenes
+    entregable: >
+      No. Documental de registro de analisis
+      situacional de jóvenes
+    fecha_inicio: 2010-04-05
+    duracion: 3
+    ponderacion: 10
+    created_at: 2010-08-03 01:58:45
+    updated_at: 2010-08-03 01:58:45
+  SubactividadProyecto_16: 
+    actividad_proyecto_id: ActividadProyecto_4
+    descripcion: |
+      Estudios previos
+      
+    entregable: |
+      Estudios previos
+      
+    fecha_inicio: 2010-05-03
+    duracion: 2
+    ponderacion: 10
+    created_at: 2010-08-03 01:59:24
+    updated_at: 2010-08-03 01:59:24
+  SubactividadProyecto_17: 
+    actividad_proyecto_id: ActividadProyecto_4
+    descripcion: |
+      Legalización Contractual
+      
+    entregable: |
+      Contrato de suministro
+      
+    fecha_inicio: 2010-05-03
+    duracion: 2
+    ponderacion: 10
+    created_at: 2010-08-03 02:00:08
+    updated_at: 2010-08-03 02:00:08
+  SubactividadProyecto_18: 
+    actividad_proyecto_id: ActividadProyecto_4
+    descripcion: |
+      Ejecución Física Contractual
+      
+    entregable: |
+      Ejecución Contractual
+      
+    fecha_inicio: 2010-06-07
+    duracion: 5
+    ponderacion: 40
+    created_at: 2010-08-03 02:01:08
+    updated_at: 2010-08-03 02:01:08
+  SubactividadProyecto_19: 
+    actividad_proyecto_id: ActividadProyecto_4
+    descripcion: |
+      Diagnóstico. Desarrollar un proceso de reconocimiento de los Jóvenes en Situación de Alto Riesgo de Violencia y Delincuencia.
+      Identificación de las estructuras y formas de organización de los jóvenes en conflicto.
+      Composición y actividad delictiva o roles sociales,
+      Construcción del mapa de relaciones, territorios e influencias. Mediante: Recolección de Información. Construcción de instrumentos, mapas cartográficos. Aplicación de instrumentos.
+    entregable: Instrumentos aplicados y analizados.
+    fecha_inicio: 2010-12-01
+    duracion: 1
+    ponderacion: 10
+    created_at: 2010-08-03 02:03:22
+    updated_at: 2010-08-03 02:03:22
+  SubactividadProyecto_20: 
+    actividad_proyecto_id: ActividadProyecto_5
+    descripcion: >
+      Gestionar con el Ejercito Nacional -
+      Dirección de Reclutamiento  el proceso
+      de formalización de  libretas militares
+      a Jóvenes 
+    entregable: >
+      Requerimiento por la Policia con número
+      de jovenes que necesitan definir su
+      sitación militar y que pertenecen a  sa
+      población vulnerable y que residan
+      dentro de las ZAISC
+    fecha_inicio: 2010-03-08
+    duracion: 4
+    ponderacion: 30
+    created_at: 2010-08-03 02:05:09
+    updated_at: 2010-08-03 02:05:09
+  SubactividadProyecto_21: 
+    actividad_proyecto_id: ActividadProyecto_5
+    descripcion: |
+      Elaboración de Estudios Previos
+      
+    entregable: |
+      Elaboración de Estudios Previos
+      
+    fecha_inicio: 2010-05-03
+    duracion: 2
+    ponderacion: 10
+    created_at: 2010-08-03 02:05:45
+    updated_at: 2010-08-03 02:05:45
+  SubactividadProyecto_22: 
+    actividad_proyecto_id: ActividadProyecto_5
+    descripcion: |
+      Elaboración Contrato
+      
+    entregable: |
+      Elaboración Contrato
+      
+    fecha_inicio: 2010-07-05
+    duracion: 1
+    ponderacion: 10
+    created_at: 2010-08-03 02:06:28
+    updated_at: 2010-08-03 02:06:28
+  SubactividadProyecto_23: 
+    actividad_proyecto_id: ActividadProyecto_5
+    descripcion: |
+      Ejecución Física Contractual
+      
+    entregable: |
+      Ejecución Contractual
+      
+      
+    fecha_inicio: 2010-07-05
+    duracion: 5
+    ponderacion: 50
+    created_at: 2010-08-03 02:07:09
+    updated_at: 2010-08-03 02:07:09
+  SubactividadProyecto_24: 
+    actividad_proyecto_id: ActividadProyecto_6
+    descripcion: >
+      Gestionar  con la Secretaris de Gobierno
+      - Dirección de Seguridad  Proyecto
+      Jovenes Conviven por Bogotà,  generar 
+      Alianzas  Estratègicas   para faciliar
+      el ingreso de los niños y jòvenes en
+      condiciones  de vulnerabilidad  y alto
+      riesgo en Violencia y Delincuencia, a
+      las Escuelas  de formación musical
+    entregable: >
+      No. De reuniones de gestión con la
+      Secretaria de Gobierno  para la
+      definición del convenio
+    fecha_inicio: 2010-04-05
+    duracion: 2
+    ponderacion: 30
+    created_at: 2010-08-03 02:11:32
+    updated_at: 2010-08-03 02:11:32
+  SubactividadProyecto_25: 
+    actividad_proyecto_id: ActividadProyecto_6
+    descripcion: Elaboración de Estudios Previos
+    entregable: Estudios previos
+    fecha_inicio: 2010-05-10
+    duracion: 2
+    ponderacion: 10
+    created_at: 2010-08-03 02:12:14
+    updated_at: 2010-08-03 02:12:14
+  SubactividadProyecto_26: 
+    actividad_proyecto_id: ActividadProyecto_6
+    descripcion: |
+      Elaboraciön Contrato
+      
+    entregable: |
+      Elaboraciön Contrato
+      
+    fecha_inicio: 2010-07-05
+    duracion: 5
+    ponderacion: 10
+    created_at: 2010-08-03 02:12:50
+    updated_at: 2010-08-03 02:12:50
+  SubactividadProyecto_27: 
+    actividad_proyecto_id: ActividadProyecto_6
+    descripcion: Ejecución Física Contractual 
+    entregable: Ejecución Física Contractual
+    fecha_inicio: 2010-07-19
+    duracion: 5
+    ponderacion: 50
+    created_at: 2010-08-03 02:13:23
+    updated_at: 2010-08-03 02:13:23
+  SubactividadProyecto_28: 
+    actividad_proyecto_id: ActividadProyecto_7
+    descripcion: >
+      Gestionar  y generar  Alianzas 
+      Estratègicas  con el IDRD para faciliar
+      el ingreso de los niños y jòvenes en
+      condiciones  de vulnerabilidad  y alto
+      riesgo en Violencia y Delincuencia, a
+      las Escuelas  de iniciación en el
+      deporte  del Distrito. 
+    entregable: >
+      Número  de  Reuniones con el IDRD -
+      Dirección de Deportes
+    fecha_inicio: 2010-05-03
+    duracion: 2
+    ponderacion: 30
+    created_at: 2010-08-03 02:16:05
+    updated_at: 2010-08-03 02:16:05
+  SubactividadProyecto_29: 
+    actividad_proyecto_id: ActividadProyecto_7
+    descripcion: Estudios previos
+    entregable: estudios previos
+    fecha_inicio: 2010-05-03
+    duracion: 2
+    ponderacion: 10
+    created_at: 2010-08-03 02:16:45
+    updated_at: 2010-08-03 02:16:45
+  SubactividadProyecto_30: 
+    actividad_proyecto_id: ActividadProyecto_7
+    descripcion: Elaboracion contrato
+    entregable: contrato
+    fecha_inicio: 2010-06-07
+    duracion: 1
+    ponderacion: 10
+    created_at: 2010-08-03 02:17:15
+    updated_at: 2010-08-03 02:17:15
+  SubactividadProyecto_31: 
+    actividad_proyecto_id: ActividadProyecto_7
+    descripcion: Ejecucion contractual
+    entregable: Ejecucion contractual
+    fecha_inicio: 2010-07-05
+    duracion: 5
+    ponderacion: 50
+    created_at: 2010-08-03 02:17:45
+    updated_at: 2010-08-03 02:17:45
+  SubactividadProyecto_32: 
+    actividad_proyecto_id: ActividadProyecto_8
+    descripcion: |
+      Gestionar con la secretaria de educación - Dirección de Inclusión e integración de poblaciones para generar alianzas estategicas aunando recutrsos técnicoa administrativos y económicos para implementar redes de protección escolar. disminuir las acciones violentas al interior  y en los entornos escolares, mediante la gestiòn intersectorial para   apropiar estrategias protectoras con los niños  niñas y jòvenes y   la comunidad educativa: Uso saludable y creativo del tiempo libre, Juego Interactivo, Proyecto de vida
+      Red social de protección escolar
+      
+    entregable: >
+      Número de reuniones con la secretaria
+      de educación 
+    fecha_inicio: 2010-03-08
+    duracion: 4
+    ponderacion: 30
+    created_at: 2010-08-03 02:21:55
+    updated_at: 2010-08-03 02:21:55
+  SubactividadProyecto_33: 
+    actividad_proyecto_id: ActividadProyecto_8
+    descripcion: Estudios previos
+    entregable: Estudios previos
+    fecha_inicio: 2010-06-07
+    duracion: 3
+    ponderacion: 10
+    created_at: 2010-08-03 02:22:47
+    updated_at: 2010-08-03 02:22:47
+  SubactividadProyecto_34: 
+    actividad_proyecto_id: ActividadProyecto_8
+    descripcion: Elaboracion contrato
+    entregable: Elaboracion contrato
+    fecha_inicio: 2010-07-05
+    duracion: 1
+    ponderacion: 10
+    created_at: 2010-08-03 02:23:31
+    updated_at: 2010-08-03 02:23:31
+  SubactividadProyecto_35: 
+    actividad_proyecto_id: ActividadProyecto_8
+    descripcion: Ejecucion contractual
+    entregable: Ejecucion contractual
+    fecha_inicio: 2010-07-05
+    duracion: 5
+    ponderacion: 50
+    created_at: 2010-08-03 02:24:07
+    updated_at: 2010-08-03 02:24:07
+  SubactividadProyecto_36: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: |
+      IMPRESOS Y PUBLICACIONES Impresión de volantes de las diferentes campañas
+      
+    entregable: 
+    fecha_inicio: 2010-06-07
+    duracion: 3
+    ponderacion: 20
+    created_at: 2010-08-03 02:26:49
+    updated_at: 2010-08-03 02:26:49
+  SubactividadProyecto_37: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: |
+      Impresión de publicaciones del proyecto.
+      
+    entregable: |
+      Impresión de publicaciones del proyecto.
+      
+    fecha_inicio: 2010-08-09
+    duracion: 3
+    ponderacion: 20
+    created_at: 2010-08-03 02:27:17
+    updated_at: 2010-08-03 02:27:17
+  SubactividadProyecto_38: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: |
+      CAMPAÑAS Cosquilleo
+      Hurto a personas, vehículos y motos.
+      Consumo de SPA
+      Explotación infantil
+      Basuras y escombros
+      No dè papaya
+    entregable: 
+    fecha_inicio: 2010-09-06
+    duracion: 4
+    ponderacion: 60
+    created_at: 2010-08-03 02:27:48
+    updated_at: 2010-08-03 02:27:48
+  SubactividadProyecto_39: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: >
+      Reunión de representes de medios
+      comunitarios para definir el apoyo
+    entregable: 
+    fecha_inicio: 2010-03-08
+    duracion: 10
+    ponderacion: 25
+    created_at: 2010-08-03 02:30:09
+    updated_at: 2010-08-03 02:30:09
+  SubactividadProyecto_40: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: |
+      Elaboración de estudios previos
+      
+    entregable: |
+      Elaboración de estudios previos
+      
+    fecha_inicio: 2010-04-05
+    duracion: 4
+    ponderacion: 15
+    created_at: 2010-08-03 02:31:06
+    updated_at: 2010-08-03 02:31:06
+  SubactividadProyecto_41: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: suscripcion contrato
+    entregable: 
+    fecha_inicio: 2010-07-05
+    duracion: 1
+    ponderacion: 10
+    created_at: 2010-08-03 02:31:41
+    updated_at: 2010-08-03 02:31:41
+  SubactividadProyecto_42: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: Ejecucion contrato
+    entregable: 
+    fecha_inicio: 2010-07-12
+    duracion: 5
+    ponderacion: 50
+    created_at: 2010-08-03 02:32:10
+    updated_at: 2010-08-03 02:32:10

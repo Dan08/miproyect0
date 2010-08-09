@@ -17,6 +17,10 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 
 
 	
+	protected $proceso_id;
+
+
+	
 	protected $proyecto_id;
 
 
@@ -43,6 +47,9 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 	protected $aMetaPoa;
 
 	
+	protected $aProceso;
+
+	
 	protected $aProyecto;
 
 	
@@ -63,6 +70,13 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 	{
 
 		return $this->meta_poa_id;
+	}
+
+	
+	public function getProcesoId()
+	{
+
+		return $this->proceso_id;
 	}
 
 	
@@ -170,6 +184,24 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setProcesoId($v)
+	{
+
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->proceso_id !== $v) {
+			$this->proceso_id = $v;
+			$this->modifiedColumns[] = ActividadPoaPeer::PROCESO_ID;
+		}
+
+		if ($this->aProceso !== null && $this->aProceso->getId() !== $v) {
+			$this->aProceso = null;
+		}
+
+	} 
+	
 	public function setProyectoId($v)
 	{
 
@@ -272,23 +304,25 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 
 			$this->meta_poa_id = $rs->getInt($startcol + 1);
 
-			$this->proyecto_id = $rs->getInt($startcol + 2);
+			$this->proceso_id = $rs->getInt($startcol + 2);
 
-			$this->descripcion = $rs->getString($startcol + 3);
+			$this->proyecto_id = $rs->getInt($startcol + 3);
 
-			$this->responsable = $rs->getString($startcol + 4);
+			$this->descripcion = $rs->getString($startcol + 4);
 
-			$this->observaciones = $rs->getString($startcol + 5);
+			$this->responsable = $rs->getString($startcol + 5);
 
-			$this->created_at = $rs->getTimestamp($startcol + 6, null);
+			$this->observaciones = $rs->getString($startcol + 6);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 7, null);
+			$this->created_at = $rs->getTimestamp($startcol + 7, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 8, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 8; 
+						return $startcol + 9; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating ActividadPoa object", $e);
 		}
@@ -363,6 +397,13 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 				$this->setMetaPoa($this->aMetaPoa);
 			}
 
+			if ($this->aProceso !== null) {
+				if ($this->aProceso->isModified()) {
+					$affectedRows += $this->aProceso->save($con);
+				}
+				$this->setProceso($this->aProceso);
+			}
+
 			if ($this->aProyecto !== null) {
 				if ($this->aProyecto->isModified()) {
 					$affectedRows += $this->aProyecto->save($con);
@@ -425,6 +466,12 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->aProceso !== null) {
+				if (!$this->aProceso->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aProceso->getValidationFailures());
+				}
+			}
+
 			if ($this->aProyecto !== null) {
 				if (!$this->aProyecto->validate($columns)) {
 					$failureMap = array_merge($failureMap, $this->aProyecto->getValidationFailures());
@@ -462,21 +509,24 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 				return $this->getMetaPoaId();
 				break;
 			case 2:
-				return $this->getProyectoId();
+				return $this->getProcesoId();
 				break;
 			case 3:
-				return $this->getDescripcion();
+				return $this->getProyectoId();
 				break;
 			case 4:
-				return $this->getResponsable();
+				return $this->getDescripcion();
 				break;
 			case 5:
-				return $this->getObservaciones();
+				return $this->getResponsable();
 				break;
 			case 6:
-				return $this->getCreatedAt();
+				return $this->getObservaciones();
 				break;
 			case 7:
+				return $this->getCreatedAt();
+				break;
+			case 8:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -491,12 +541,13 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 		$result = array(
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getMetaPoaId(),
-			$keys[2] => $this->getProyectoId(),
-			$keys[3] => $this->getDescripcion(),
-			$keys[4] => $this->getResponsable(),
-			$keys[5] => $this->getObservaciones(),
-			$keys[6] => $this->getCreatedAt(),
-			$keys[7] => $this->getUpdatedAt(),
+			$keys[2] => $this->getProcesoId(),
+			$keys[3] => $this->getProyectoId(),
+			$keys[4] => $this->getDescripcion(),
+			$keys[5] => $this->getResponsable(),
+			$keys[6] => $this->getObservaciones(),
+			$keys[7] => $this->getCreatedAt(),
+			$keys[8] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -519,21 +570,24 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 				$this->setMetaPoaId($value);
 				break;
 			case 2:
-				$this->setProyectoId($value);
+				$this->setProcesoId($value);
 				break;
 			case 3:
-				$this->setDescripcion($value);
+				$this->setProyectoId($value);
 				break;
 			case 4:
-				$this->setResponsable($value);
+				$this->setDescripcion($value);
 				break;
 			case 5:
-				$this->setObservaciones($value);
+				$this->setResponsable($value);
 				break;
 			case 6:
-				$this->setCreatedAt($value);
+				$this->setObservaciones($value);
 				break;
 			case 7:
+				$this->setCreatedAt($value);
+				break;
+			case 8:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -545,12 +599,13 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setMetaPoaId($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setProyectoId($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setDescripcion($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setResponsable($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setObservaciones($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setCreatedAt($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setUpdatedAt($arr[$keys[7]]);
+		if (array_key_exists($keys[2], $arr)) $this->setProcesoId($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setProyectoId($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setDescripcion($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setResponsable($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setObservaciones($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setCreatedAt($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setUpdatedAt($arr[$keys[8]]);
 	}
 
 	
@@ -560,6 +615,7 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 
 		if ($this->isColumnModified(ActividadPoaPeer::ID)) $criteria->add(ActividadPoaPeer::ID, $this->id);
 		if ($this->isColumnModified(ActividadPoaPeer::META_POA_ID)) $criteria->add(ActividadPoaPeer::META_POA_ID, $this->meta_poa_id);
+		if ($this->isColumnModified(ActividadPoaPeer::PROCESO_ID)) $criteria->add(ActividadPoaPeer::PROCESO_ID, $this->proceso_id);
 		if ($this->isColumnModified(ActividadPoaPeer::PROYECTO_ID)) $criteria->add(ActividadPoaPeer::PROYECTO_ID, $this->proyecto_id);
 		if ($this->isColumnModified(ActividadPoaPeer::DESCRIPCION)) $criteria->add(ActividadPoaPeer::DESCRIPCION, $this->descripcion);
 		if ($this->isColumnModified(ActividadPoaPeer::RESPONSABLE)) $criteria->add(ActividadPoaPeer::RESPONSABLE, $this->responsable);
@@ -597,6 +653,8 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 	{
 
 		$copyObj->setMetaPoaId($this->meta_poa_id);
+
+		$copyObj->setProcesoId($this->proceso_id);
 
 		$copyObj->setProyectoId($this->proyecto_id);
 
@@ -661,6 +719,35 @@ abstract class BaseActividadPoa extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aMetaPoa;
+	}
+
+	
+	public function setProceso($v)
+	{
+
+
+		if ($v === null) {
+			$this->setProcesoId(NULL);
+		} else {
+			$this->setProcesoId($v->getId());
+		}
+
+
+		$this->aProceso = $v;
+	}
+
+
+	
+	public function getProceso($con = null)
+	{
+		if ($this->aProceso === null && ($this->proceso_id !== null)) {
+						include_once 'lib/model/om/BaseProcesoPeer.php';
+
+			$this->aProceso = ProcesoPeer::retrieveByPK($this->proceso_id, $con);
+
+			
+		}
+		return $this->aProceso;
 	}
 
 	

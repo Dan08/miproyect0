@@ -13,7 +13,7 @@ abstract class BaseActividadPoaPeer {
 	const CLASS_DEFAULT = 'lib.model.ActividadPoa';
 
 	
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 9;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -24,6 +24,9 @@ abstract class BaseActividadPoaPeer {
 
 	
 	const META_POA_ID = 'actividad_poa.META_POA_ID';
+
+	
+	const PROCESO_ID = 'actividad_poa.PROCESO_ID';
 
 	
 	const PROYECTO_ID = 'actividad_poa.PROYECTO_ID';
@@ -49,18 +52,18 @@ abstract class BaseActividadPoaPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'MetaPoaId', 'ProyectoId', 'Descripcion', 'Responsable', 'Observaciones', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (ActividadPoaPeer::ID, ActividadPoaPeer::META_POA_ID, ActividadPoaPeer::PROYECTO_ID, ActividadPoaPeer::DESCRIPCION, ActividadPoaPeer::RESPONSABLE, ActividadPoaPeer::OBSERVACIONES, ActividadPoaPeer::CREATED_AT, ActividadPoaPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'meta_poa_id', 'proyecto_id', 'descripcion', 'responsable', 'observaciones', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'MetaPoaId', 'ProcesoId', 'ProyectoId', 'Descripcion', 'Responsable', 'Observaciones', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (ActividadPoaPeer::ID, ActividadPoaPeer::META_POA_ID, ActividadPoaPeer::PROCESO_ID, ActividadPoaPeer::PROYECTO_ID, ActividadPoaPeer::DESCRIPCION, ActividadPoaPeer::RESPONSABLE, ActividadPoaPeer::OBSERVACIONES, ActividadPoaPeer::CREATED_AT, ActividadPoaPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'meta_poa_id', 'proceso_id', 'proyecto_id', 'descripcion', 'responsable', 'observaciones', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'MetaPoaId' => 1, 'ProyectoId' => 2, 'Descripcion' => 3, 'Responsable' => 4, 'Observaciones' => 5, 'CreatedAt' => 6, 'UpdatedAt' => 7, ),
-		BasePeer::TYPE_COLNAME => array (ActividadPoaPeer::ID => 0, ActividadPoaPeer::META_POA_ID => 1, ActividadPoaPeer::PROYECTO_ID => 2, ActividadPoaPeer::DESCRIPCION => 3, ActividadPoaPeer::RESPONSABLE => 4, ActividadPoaPeer::OBSERVACIONES => 5, ActividadPoaPeer::CREATED_AT => 6, ActividadPoaPeer::UPDATED_AT => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'meta_poa_id' => 1, 'proyecto_id' => 2, 'descripcion' => 3, 'responsable' => 4, 'observaciones' => 5, 'created_at' => 6, 'updated_at' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'MetaPoaId' => 1, 'ProcesoId' => 2, 'ProyectoId' => 3, 'Descripcion' => 4, 'Responsable' => 5, 'Observaciones' => 6, 'CreatedAt' => 7, 'UpdatedAt' => 8, ),
+		BasePeer::TYPE_COLNAME => array (ActividadPoaPeer::ID => 0, ActividadPoaPeer::META_POA_ID => 1, ActividadPoaPeer::PROCESO_ID => 2, ActividadPoaPeer::PROYECTO_ID => 3, ActividadPoaPeer::DESCRIPCION => 4, ActividadPoaPeer::RESPONSABLE => 5, ActividadPoaPeer::OBSERVACIONES => 6, ActividadPoaPeer::CREATED_AT => 7, ActividadPoaPeer::UPDATED_AT => 8, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'meta_poa_id' => 1, 'proceso_id' => 2, 'proyecto_id' => 3, 'descripcion' => 4, 'responsable' => 5, 'observaciones' => 6, 'created_at' => 7, 'updated_at' => 8, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, )
 	);
 
 	
@@ -117,6 +120,8 @@ abstract class BaseActividadPoaPeer {
 		$criteria->addSelectColumn(ActividadPoaPeer::ID);
 
 		$criteria->addSelectColumn(ActividadPoaPeer::META_POA_ID);
+
+		$criteria->addSelectColumn(ActividadPoaPeer::PROCESO_ID);
 
 		$criteria->addSelectColumn(ActividadPoaPeer::PROYECTO_ID);
 
@@ -237,6 +242,34 @@ abstract class BaseActividadPoaPeer {
 
 
 	
+	public static function doCountJoinProceso(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(ActividadPoaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(ActividadPoaPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
+
+		$rs = ActividadPoaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
 	public static function doCountJoinProyecto(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
@@ -298,6 +331,53 @@ abstract class BaseActividadPoaPeer {
 			$newObject = true;
 			foreach($results as $temp_obj1) {
 				$temp_obj2 = $temp_obj1->getMetaPoa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addActividadPoa($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initActividadPoas();
+				$obj2->addActividadPoa($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinProceso(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		ActividadPoaPeer::addSelectColumns($c);
+		$startcol = (ActividadPoaPeer::NUM_COLUMNS - ActividadPoaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		ProcesoPeer::addSelectColumns($c);
+
+		$c->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = ActividadPoaPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = ProcesoPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getProceso(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 										$temp_obj2->addActividadPoa($obj1); 					break;
 				}
@@ -377,6 +457,8 @@ abstract class BaseActividadPoaPeer {
 
 		$criteria->addJoin(ActividadPoaPeer::META_POA_ID, MetaPoaPeer::ID);
 
+		$criteria->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
+
 		$criteria->addJoin(ActividadPoaPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 		$rs = ActividadPoaPeer::doSelectRS($criteria, $con);
@@ -403,10 +485,15 @@ abstract class BaseActividadPoaPeer {
 		MetaPoaPeer::addSelectColumns($c);
 		$startcol3 = $startcol2 + MetaPoaPeer::NUM_COLUMNS;
 
+		ProcesoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ProcesoPeer::NUM_COLUMNS;
+
 		ProyectoPeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + ProyectoPeer::NUM_COLUMNS;
+		$startcol5 = $startcol4 + ProyectoPeer::NUM_COLUMNS;
 
 		$c->addJoin(ActividadPoaPeer::META_POA_ID, MetaPoaPeer::ID);
+
+		$c->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
 
 		$c->addJoin(ActividadPoaPeer::PROYECTO_ID, ProyectoPeer::ID);
 
@@ -447,7 +534,7 @@ abstract class BaseActividadPoaPeer {
 
 
 					
-			$omClass = ProyectoPeer::getOMClass();
+			$omClass = ProcesoPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -457,7 +544,7 @@ abstract class BaseActividadPoaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getProyecto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+				$temp_obj3 = $temp_obj1->getProceso(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj3->addActividadPoa($obj1); 					break;
 				}
@@ -466,6 +553,29 @@ abstract class BaseActividadPoaPeer {
 			if ($newObject) {
 				$obj3->initActividadPoas();
 				$obj3->addActividadPoa($obj1);
+			}
+
+
+					
+			$omClass = ProyectoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj4 = new $cls();
+			$obj4->hydrate($rs, $startcol4);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj4 = $temp_obj1->getProyecto(); 				if ($temp_obj4->getPrimaryKey() === $obj4->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj4->addActividadPoa($obj1); 					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj4->initActividadPoas();
+				$obj4->addActividadPoa($obj1);
 			}
 
 			$results[] = $obj1;
@@ -490,6 +600,38 @@ abstract class BaseActividadPoaPeer {
 		{
 			$criteria->addSelectColumn($column);
 		}
+
+		$criteria->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
+
+		$criteria->addJoin(ActividadPoaPeer::PROYECTO_ID, ProyectoPeer::ID);
+
+		$rs = ActividadPoaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
+	}
+
+
+	
+	public static function doCountJoinAllExceptProceso(Criteria $criteria, $distinct = false, $con = null)
+	{
+				$criteria = clone $criteria;
+
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(ActividadPoaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(ActividadPoaPeer::COUNT);
+		}
+
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
+		}
+
+		$criteria->addJoin(ActividadPoaPeer::META_POA_ID, MetaPoaPeer::ID);
 
 		$criteria->addJoin(ActividadPoaPeer::PROYECTO_ID, ProyectoPeer::ID);
 
@@ -521,6 +663,8 @@ abstract class BaseActividadPoaPeer {
 
 		$criteria->addJoin(ActividadPoaPeer::META_POA_ID, MetaPoaPeer::ID);
 
+		$criteria->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
+
 		$rs = ActividadPoaPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
 			return $rs->getInt(1);
@@ -542,8 +686,13 @@ abstract class BaseActividadPoaPeer {
 		ActividadPoaPeer::addSelectColumns($c);
 		$startcol2 = (ActividadPoaPeer::NUM_COLUMNS - ActividadPoaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
+		ProcesoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ProcesoPeer::NUM_COLUMNS;
+
 		ProyectoPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + ProyectoPeer::NUM_COLUMNS;
+		$startcol4 = $startcol3 + ProyectoPeer::NUM_COLUMNS;
+
+		$c->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
 
 		$c->addJoin(ActividadPoaPeer::PROYECTO_ID, ProyectoPeer::ID);
 
@@ -559,7 +708,7 @@ abstract class BaseActividadPoaPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = ProyectoPeer::getOMClass();
+			$omClass = ProcesoPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -569,7 +718,7 @@ abstract class BaseActividadPoaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getProyecto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getProceso(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addActividadPoa($obj1);
 					break;
@@ -581,6 +730,28 @@ abstract class BaseActividadPoaPeer {
 				$obj2->addActividadPoa($obj1);
 			}
 
+			$omClass = ProyectoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getProyecto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addActividadPoa($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initActividadPoas();
+				$obj3->addActividadPoa($obj1);
+			}
+
 			$results[] = $obj1;
 		}
 		return $results;
@@ -588,7 +759,7 @@ abstract class BaseActividadPoaPeer {
 
 
 	
-	public static function doSelectJoinAllExceptProyecto(Criteria $c, $con = null)
+	public static function doSelectJoinAllExceptProceso(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
@@ -602,7 +773,12 @@ abstract class BaseActividadPoaPeer {
 		MetaPoaPeer::addSelectColumns($c);
 		$startcol3 = $startcol2 + MetaPoaPeer::NUM_COLUMNS;
 
+		ProyectoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ProyectoPeer::NUM_COLUMNS;
+
 		$c->addJoin(ActividadPoaPeer::META_POA_ID, MetaPoaPeer::ID);
+
+		$c->addJoin(ActividadPoaPeer::PROYECTO_ID, ProyectoPeer::ID);
 
 
 		$rs = BasePeer::doSelect($c, $con);
@@ -636,6 +812,112 @@ abstract class BaseActividadPoaPeer {
 			if ($newObject) {
 				$obj2->initActividadPoas();
 				$obj2->addActividadPoa($obj1);
+			}
+
+			$omClass = ProyectoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getProyecto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addActividadPoa($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initActividadPoas();
+				$obj3->addActividadPoa($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinAllExceptProyecto(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		ActividadPoaPeer::addSelectColumns($c);
+		$startcol2 = (ActividadPoaPeer::NUM_COLUMNS - ActividadPoaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		MetaPoaPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + MetaPoaPeer::NUM_COLUMNS;
+
+		ProcesoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ProcesoPeer::NUM_COLUMNS;
+
+		$c->addJoin(ActividadPoaPeer::META_POA_ID, MetaPoaPeer::ID);
+
+		$c->addJoin(ActividadPoaPeer::PROCESO_ID, ProcesoPeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = ActividadPoaPeer::getOMClass();
+
+			$cls = Propel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = MetaPoaPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getMetaPoa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addActividadPoa($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initActividadPoas();
+				$obj2->addActividadPoa($obj1);
+			}
+
+			$omClass = ProcesoPeer::getOMClass();
+
+
+			$cls = Propel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getProceso(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addActividadPoa($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initActividadPoas();
+				$obj3->addActividadPoa($obj1);
 			}
 
 			$results[] = $obj1;

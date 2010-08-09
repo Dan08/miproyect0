@@ -10,6 +10,7 @@
 <thead>
 <tr>
   <th>Meta Plan Desarrollo</th>
+  <th>Meta Proyecto</th>
   <th>Proyecto</th>
   <th>% Ejecucion</th>
 </tr>
@@ -18,6 +19,7 @@
   <?php foreach ($metaspd as $meta): ?>
   <tr>
     <td><?php echo $meta->getMetaPd(); ?></td>
+    <td><?php echo $meta; ?></td>
     <td><?php echo $meta->getProyecto(); ?></td>
     <td><?php echo link_to($meta->getProyecto()->getEjecucion(), 'informes/proyectos?proyecto='.$meta->getProyecto()->getId()) ?></td>
   </tr>

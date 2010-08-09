@@ -3,6 +3,7 @@
 // date: 2010/08/03 01:36:47
 ?>
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript') ?>
 
 <?php echo form_tag('subactividadproyecto/update') ?>
 
@@ -15,7 +16,17 @@
   <td><?php echo object_select_tag($subactividad_proyecto, 'getActividadProyectoId', array (
   'related_class' => 'ActividadProyecto',
   'include_blank' => true,
-)) ?></td>
+)) ?>
+
+  <?php
+    echo observe_field('actividad_proyecto_id', array(
+    'update'   => 'pond',
+    'url'      => 'ajax/subactividad',
+    'with'     => "'actividad=' + value",
+    'script'   => true,
+    ));
+  ?>
+  </td>
 </tr>
 <tr>
   <th>Descripcion*:</th>
@@ -44,8 +55,8 @@
 <tr>
   <th>Ponderacion*:</th>
   <td><?php echo object_input_tag($subactividad_proyecto, 'getPonderacion', array (
-  'size' => 7,
-)) ?></td>
+  'size' => 7,)) ?>
+    &nbsp;Ponderacion Acumulada <div id="pond" style="display: inline"></div>%</td>
 </tr>
 </tbody>
 </table>

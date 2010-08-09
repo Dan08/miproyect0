@@ -3,6 +3,7 @@
 // date: 2010/08/03 04:03:47
 ?>
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript') ?>
 
 <?php echo form_tag('actividadproyecto/update') ?>
 
@@ -22,7 +23,16 @@
   <td><?php echo object_select_tag($actividad_proyecto, 'getMetaPdId', array (
   'related_class' => 'MetaPd',
   'include_blank' => true,
-)) ?></td>
+)) ?>
+  <?php
+  echo observe_field('meta_pd_id', array(
+  'update'   => 'pond',
+  'url'      => 'ajax/actividad',
+  'with'     => "'meta=' + value",
+  'script'   => true,
+));
+?>
+  </td>
 </tr>
 <tr>
   <th>Meta proyecto:</th>
@@ -46,8 +56,9 @@
 <tr>
   <th>Ponderacion*:</th>
   <td><?php echo object_input_tag($actividad_proyecto, 'getPonderacion', array (
-  'size' => 7,
-)) ?></td>
+  'size' => 2,
+)) ?>
+    &nbsp;Ponderacion Acumulada <div id="pond" style="display: inline"></div>%</td>
 </tr>
 </tbody>
 </table>
