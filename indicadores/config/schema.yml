@@ -206,6 +206,7 @@ propel:
   actividad_poa:
     id:
     meta_poa_id: { type: integer, foreignTable: meta_poa, foreignReference: id, onDelete: setnull }
+    proceso_id:  { type: integer, foreignTable: proceso, foreignReference: id, onDelete: setnull }
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
     descripcion: { type: longvarchar, required: true }
     responsable: varchar(50)

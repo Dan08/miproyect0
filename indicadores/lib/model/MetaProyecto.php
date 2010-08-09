@@ -13,5 +13,14 @@ class MetaProyecto extends BaseMetaProyecto
     return $this->getCodigo()."-".$this->getMeta();
   }
 
+  public function getPonderacionAcumulada() {
+    $sum = 0;
+    foreach ($this->getActividadProyectos() as $actividad) {
+      $sum += $actividad->getPonderacion();
+    }
+
+    return $sum;
+  }
+
 
 }

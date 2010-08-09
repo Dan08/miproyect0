@@ -24,4 +24,22 @@ class MetaPd extends BaseMetaPd
 
       return ProyectoPeer::doSelect($c);
     }
+
+    public function getPonderacionAcum()
+    {
+      $c = new Criteria();
+      $c->add(ActividadProyectoPeer::META_PD_ID, $this->getId());
+
+      $actividades = ActividadProyectoPeer::doSelect($c);
+
+      $sum = 0;
+      foreach ($actividades as $actividad)
+      {
+        $sum += $actividad->getPonderacion();
+      }
+
+      return $sum;
+
+    }
+
 }

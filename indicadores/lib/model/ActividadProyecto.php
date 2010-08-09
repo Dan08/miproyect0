@@ -39,4 +39,20 @@ class ActividadProyecto extends BaseActividadProyecto
   {
     return ($this->getPonderacion()/100)*$this->getEjecucion();
   }
+
+  public function getPonderacionAcum()
+  {
+    $c = new Criteria();
+    $c->add(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, $this->id);
+
+    $subactividades = SubactividadProyectoPeer::doSelect($c);
+    $sum = 0;
+
+    foreach ($subactividades as $subactividad)
+    {
+      $sum += $subactividad->getPonderacion();
+    }
+
+    return $sum;
+  }
 }

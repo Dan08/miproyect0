@@ -133,9 +133,7 @@ class informesActions extends sfActions
   {
     $c = new Criteria();
     $c->addAscendingOrderByColumn(MetaProyectoPeer::META_PD_ID);
-    $this->metaspd = MetaProyectoPeer::doSelectJoinAllExceptAnualizacion($c);
-
-    $this->array = SubactividadProyectoPeer::getConEjecuciones();
+    $this->metaspd = MetaProyectoPeer::doSelectJoinProyecto($c);
   }
 
   /**

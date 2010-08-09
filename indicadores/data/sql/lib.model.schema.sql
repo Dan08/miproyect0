@@ -532,6 +532,7 @@ CREATE TABLE `actividad_poa`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`meta_poa_id` INTEGER,
+	`proceso_id` INTEGER,
 	`proyecto_id` INTEGER,
 	`descripcion` TEXT  NOT NULL,
 	`responsable` VARCHAR(50),
@@ -544,8 +545,13 @@ CREATE TABLE `actividad_poa`
 		FOREIGN KEY (`meta_poa_id`)
 		REFERENCES `meta_poa` (`id`)
 		ON DELETE SET NULL,
-	INDEX `actividad_poa_FI_2` (`proyecto_id`),
+	INDEX `actividad_poa_FI_2` (`proceso_id`),
 	CONSTRAINT `actividad_poa_FK_2`
+		FOREIGN KEY (`proceso_id`)
+		REFERENCES `proceso` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_poa_FI_3` (`proyecto_id`),
+	CONSTRAINT `actividad_poa_FK_3`
 		FOREIGN KEY (`proyecto_id`)
 		REFERENCES `proyecto` (`id`)
 		ON DELETE SET NULL

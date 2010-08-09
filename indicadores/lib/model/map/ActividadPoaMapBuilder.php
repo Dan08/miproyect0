@@ -36,6 +36,8 @@ class ActividadPoaMapBuilder {
 
 		$tMap->addForeignKey('META_POA_ID', 'MetaPoaId', 'int', CreoleTypes::INTEGER, 'meta_poa', 'ID', false, null);
 
+		$tMap->addForeignKey('PROCESO_ID', 'ProcesoId', 'int', CreoleTypes::INTEGER, 'proceso', 'ID', false, null);
+
 		$tMap->addForeignKey('PROYECTO_ID', 'ProyectoId', 'int', CreoleTypes::INTEGER, 'proyecto', 'ID', false, null);
 
 		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, true, null);
