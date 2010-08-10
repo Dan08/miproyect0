@@ -32,24 +32,8 @@ class subactividadproyectoActions extends sfActions
 
   public function executeCreate()
   {
-    if ($this->getRequestParameter('proyecto')) {
-      // mostrar formulario
       $this->subactividad_proyecto = new SubactividadProyecto();
-
       $this->setTemplate('edit');
-    } else {
-      // mostrar proyectos
-      $this->proyectos = ProyectoPeer::doSelect(new Criteria());
-      $this->setTemplate('proyectolist');
-
-    }
-
-
-
-
-
-
-
   }
 
   public function executeEdit()

@@ -9,7 +9,8 @@
  */ 
 class ActividadProyectoPeer extends BaseActividadProyectoPeer
 {
-  static public function doSelectByProyecto($proyecto) {
+  public static function doSelectByProyecto($proyecto)
+  {
     $c = new Criteria();
     $c->add(self::PROYECTO_ID, $proyecto);
 
