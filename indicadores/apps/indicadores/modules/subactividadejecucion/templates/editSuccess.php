@@ -3,21 +3,17 @@
 // date: 2010/08/03 04:05:27
 ?>
 <?php use_helper('Object') ?>
-
+<h3>Subactividad: <?php echo $subactividad->getDescripcion(); ?></h3>
+<h3>Duracion: <?php echo $subactividad->getDuracion(); ?> meses</h3>
+<h3>Porcentaje Avance: <?php echo $subactividad->getEjecucion(); ?>%</h3>
 <?php if ($subactividad->getMesMedicion() > 0): ?>
 
 <?php echo form_tag('subactividadejecucion/update') ?>
 
 <?php echo object_input_hidden_tag($subactividad_ejecucion, 'getId') ?>
-
+<?php echo input_hidden_tag('subactividad_proyecto_id', $subactividad->getId()) ?>
 <table>
 <tbody>
-<tr>
-  <th>Subactividad proyecto:</th>
-  <td><?php echo $subactividad->getDescripcion(); ?>
-    <?php echo input_hidden_tag('subactividad_proyecto_id', $subactividad->getId()) ?>
-  </td>
-</tr>
 <tr>
   <th>Mes*:</th>
   <td>
@@ -50,5 +46,5 @@
 <?php endif; ?>
 </form>
 <?php else: ?>
-  <strong>Se han realizado todas las mediciones</strong>
+<h1><strong>Se han realizado todas las mediciones</strong></h1>
 <?php endif; ?>

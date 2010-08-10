@@ -26,6 +26,7 @@ class subactividadejecucionActions extends sfActions
     {
       $c = new Criteria();
       $c->add(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, $this->getRequestParameter('actividad'));
+      
       $this->subactividad_proyectos = SubactividadProyectoPeer::doSelect($c);
       $this->setTemplate('listSubActividades');
     // listar actividades

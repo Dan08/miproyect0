@@ -8,9 +8,30 @@
 <?php echo form_tag('subactividadproyecto/update') ?>
 
 <?php echo object_input_hidden_tag($subactividad_proyecto, 'getId') ?>
-
 <table>
 <tbody>
+<tr>
+  <th>Proyecto:</th>
+  <td><?php echo select_tag('proyecto_id', objects_for_select(
+  ProyectoPeer::doSelect(new Criteria()),
+  'getId',
+  '__toString'
+)) ?>
+
+
+  <?php
+  echo observe_field('proyecto_id', array(
+  'update'   => 'actividad_proyecto_id',
+  'url'      => 'ajax/actividadporproyecto',
+  'with'     => "'proyecto=' + value",
+  'script'   => true,
+  'loading' => "Element.show('indicator')",
+  'complete' => "Element.hide('indicator')",
+));
+?>
+
+  </td>
+</tr>
 <tr>
   <th>Actividad proyecto:</th>
   <td><?php echo object_select_tag($subactividad_proyecto, 'getActividadProyectoId', array (
