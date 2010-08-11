@@ -21,7 +21,31 @@ class subactividadproyectoActions extends sfActions
 
   public function executeList()
   {
-    $this->subactividad_proyectos = SubactividadProyectoPeer::doSelect(new Criteria());
+    // mostrar formulario
+    // listar actividades
+    // listar proyectos
+    
+    // listar subactividades
+    if ($this->getRequestParameter('actividad'))
+    {
+      $c = new Criteria();
+      $c->add(SubactividadProyectoPeer::ACTIVIDAD_PROYECTO_ID, $this->getRequestParameter('actividad'));
+      
+      $this->subactividad_proyectos = SubactividadProyectoPeer::doSelect($c);
+    // listar actividades
+    } elseif ($this->getRequestParameter('proyecto'))
+    {
+      $c = new Criteria();
+      $c->add(ActividadProyectoPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $this->actividad_proyectos = ActividadProyectoPeer::doSelect($c);
+      $this->setTemplate('listActividades');
+
+    // listar proyectos
+    } else {
+      $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+      $this->setTemplate('listProyectos');
+    }
+    //$this->subactividad_proyectos = SubactividadProyectoPeer::doSelect(new Criteria());
   }
 
   public function executeShow()
@@ -32,12 +56,14 @@ class subactividadproyectoActions extends sfActions
 
   public function executeCreate()
   {
-      $this->subactividad_proyecto = new SubactividadProyecto();
-      $this->setTemplate('edit');
+    $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+    $this->subactividad_proyecto = new SubactividadProyecto();
+    $this->setTemplate('edit');
   }
 
   public function executeEdit()
   {
+    $this->proyectos = ProyectoPeer::doSelect(new Criteria());
     $this->subactividad_proyecto = SubactividadProyectoPeer::retrieveByPk($this->getRequestParameter('id'));
     $this->forward404Unless($this->subactividad_proyecto);
   }
