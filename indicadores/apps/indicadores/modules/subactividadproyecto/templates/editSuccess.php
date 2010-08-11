@@ -8,15 +8,16 @@
 <?php echo form_tag('subactividadproyecto/update') ?>
 
 <?php echo object_input_hidden_tag($subactividad_proyecto, 'getId') ?>
+
+<?php var_dump($subactividad_proyecto->getArrayProgramacion()) ?>
+<?php var_dump($subactividad_proyecto->getArrayEjecucion()) ?>
+<?php var_dump($subactividad_proyecto->getArrayInformeEjecucion()) ?>
+
 <table>
 <tbody>
 <tr>
   <th>Proyecto:</th>
-  <td><?php echo select_tag('proyecto_id', objects_for_select(
-  ProyectoPeer::doSelect(new Criteria()),
-  'getId',
-  '__toString'
-)) ?>
+  <td><?php echo select_tag('proyecto_id', objects_for_select($proyectos, 'getId', '__toString', '', 'include_blank=true')) ?>
 
 
   <?php
