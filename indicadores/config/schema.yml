@@ -291,10 +291,10 @@ propel:
     codigo: varchar(20)
     componente: varchar(100)
 
-  componente_actividad:
+  componente_proyecto:
     id:
     componente_id: { type: integer, foreignTable: componente, foreignReference: id, onDelete: setnull }
-    actividad_id: { type: integer, foreignTable: actividad, foreignReference: id, onDelete: setnull }
+    proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
     monto: float
 
   cdp:

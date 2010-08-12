@@ -128,12 +128,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	protected $lastFuenteActividadCriteria = null;
 
 	
-	protected $collComponenteActividads;
-
-	
-	protected $lastComponenteActividadCriteria = null;
-
-	
 	protected $collCdpActividads;
 
 	
@@ -956,14 +950,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->collComponenteActividads !== null) {
-				foreach($this->collComponenteActividads as $referrerFK) {
-					if (!$referrerFK->isDeleted()) {
-						$affectedRows += $referrerFK->save($con);
-					}
-				}
-			}
-
 			if ($this->collCdpActividads !== null) {
 				foreach($this->collCdpActividads as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -1053,14 +1039,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 				if ($this->collFuenteActividads !== null) {
 					foreach($this->collFuenteActividads as $referrerFK) {
-						if (!$referrerFK->validate($columns)) {
-							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
-						}
-					}
-				}
-
-				if ($this->collComponenteActividads !== null) {
-					foreach($this->collComponenteActividads as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -1446,10 +1424,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 			foreach($this->getFuenteActividads() as $relObj) {
 				$copyObj->addFuenteActividad($relObj->copy($deepCopy));
-			}
-
-			foreach($this->getComponenteActividads() as $relObj) {
-				$copyObj->addComponenteActividad($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getCdpActividads() as $relObj) {
@@ -1856,111 +1830,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$this->lastFuenteActividadCriteria = $criteria;
 
 		return $this->collFuenteActividads;
-	}
-
-	
-	public function initComponenteActividads()
-	{
-		if ($this->collComponenteActividads === null) {
-			$this->collComponenteActividads = array();
-		}
-	}
-
-	
-	public function getComponenteActividads($criteria = null, $con = null)
-	{
-				include_once 'lib/model/om/BaseComponenteActividadPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collComponenteActividads === null) {
-			if ($this->isNew()) {
-			   $this->collComponenteActividads = array();
-			} else {
-
-				$criteria->add(ComponenteActividadPeer::ACTIVIDAD_ID, $this->getId());
-
-				ComponenteActividadPeer::addSelectColumns($criteria);
-				$this->collComponenteActividads = ComponenteActividadPeer::doSelect($criteria, $con);
-			}
-		} else {
-						if (!$this->isNew()) {
-												
-
-				$criteria->add(ComponenteActividadPeer::ACTIVIDAD_ID, $this->getId());
-
-				ComponenteActividadPeer::addSelectColumns($criteria);
-				if (!isset($this->lastComponenteActividadCriteria) || !$this->lastComponenteActividadCriteria->equals($criteria)) {
-					$this->collComponenteActividads = ComponenteActividadPeer::doSelect($criteria, $con);
-				}
-			}
-		}
-		$this->lastComponenteActividadCriteria = $criteria;
-		return $this->collComponenteActividads;
-	}
-
-	
-	public function countComponenteActividads($criteria = null, $distinct = false, $con = null)
-	{
-				include_once 'lib/model/om/BaseComponenteActividadPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		$criteria->add(ComponenteActividadPeer::ACTIVIDAD_ID, $this->getId());
-
-		return ComponenteActividadPeer::doCount($criteria, $distinct, $con);
-	}
-
-	
-	public function addComponenteActividad(ComponenteActividad $l)
-	{
-		$this->collComponenteActividads[] = $l;
-		$l->setActividad($this);
-	}
-
-
-	
-	public function getComponenteActividadsJoinComponente($criteria = null, $con = null)
-	{
-				include_once 'lib/model/om/BaseComponenteActividadPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collComponenteActividads === null) {
-			if ($this->isNew()) {
-				$this->collComponenteActividads = array();
-			} else {
-
-				$criteria->add(ComponenteActividadPeer::ACTIVIDAD_ID, $this->getId());
-
-				$this->collComponenteActividads = ComponenteActividadPeer::doSelectJoinComponente($criteria, $con);
-			}
-		} else {
-									
-			$criteria->add(ComponenteActividadPeer::ACTIVIDAD_ID, $this->getId());
-
-			if (!isset($this->lastComponenteActividadCriteria) || !$this->lastComponenteActividadCriteria->equals($criteria)) {
-				$this->collComponenteActividads = ComponenteActividadPeer::doSelectJoinComponente($criteria, $con);
-			}
-		}
-		$this->lastComponenteActividadCriteria = $criteria;
-
-		return $this->collComponenteActividads;
 	}
 
 	

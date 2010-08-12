@@ -68,6 +68,12 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 	protected $lastActividadCriteria = null;
 
 	
+	protected $collComponenteProyectos;
+
+	
+	protected $lastComponenteProyectoCriteria = null;
+
+	
 	protected $alreadyInSave = false;
 
 	
@@ -431,6 +437,14 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collComponenteProyectos !== null) {
+				foreach($this->collComponenteProyectos as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -498,6 +512,14 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 				if ($this->collActividads !== null) {
 					foreach($this->collActividads as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collComponenteProyectos !== null) {
+					foreach($this->collComponenteProyectos as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -706,6 +728,10 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 
 			foreach($this->getActividads() as $relObj) {
 				$copyObj->addActividad($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getComponenteProyectos() as $relObj) {
+				$copyObj->addComponenteProyecto($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -1291,6 +1317,111 @@ abstract class BaseProyecto extends BaseObject  implements Persistent {
 		$this->lastActividadCriteria = $criteria;
 
 		return $this->collActividads;
+	}
+
+	
+	public function initComponenteProyectos()
+	{
+		if ($this->collComponenteProyectos === null) {
+			$this->collComponenteProyectos = array();
+		}
+	}
+
+	
+	public function getComponenteProyectos($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseComponenteProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collComponenteProyectos === null) {
+			if ($this->isNew()) {
+			   $this->collComponenteProyectos = array();
+			} else {
+
+				$criteria->add(ComponenteProyectoPeer::PROYECTO_ID, $this->getId());
+
+				ComponenteProyectoPeer::addSelectColumns($criteria);
+				$this->collComponenteProyectos = ComponenteProyectoPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(ComponenteProyectoPeer::PROYECTO_ID, $this->getId());
+
+				ComponenteProyectoPeer::addSelectColumns($criteria);
+				if (!isset($this->lastComponenteProyectoCriteria) || !$this->lastComponenteProyectoCriteria->equals($criteria)) {
+					$this->collComponenteProyectos = ComponenteProyectoPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastComponenteProyectoCriteria = $criteria;
+		return $this->collComponenteProyectos;
+	}
+
+	
+	public function countComponenteProyectos($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseComponenteProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(ComponenteProyectoPeer::PROYECTO_ID, $this->getId());
+
+		return ComponenteProyectoPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addComponenteProyecto(ComponenteProyecto $l)
+	{
+		$this->collComponenteProyectos[] = $l;
+		$l->setProyecto($this);
+	}
+
+
+	
+	public function getComponenteProyectosJoinComponente($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseComponenteProyectoPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collComponenteProyectos === null) {
+			if ($this->isNew()) {
+				$this->collComponenteProyectos = array();
+			} else {
+
+				$criteria->add(ComponenteProyectoPeer::PROYECTO_ID, $this->getId());
+
+				$this->collComponenteProyectos = ComponenteProyectoPeer::doSelectJoinComponente($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ComponenteProyectoPeer::PROYECTO_ID, $this->getId());
+
+			if (!isset($this->lastComponenteProyectoCriteria) || !$this->lastComponenteProyectoCriteria->equals($criteria)) {
+				$this->collComponenteProyectos = ComponenteProyectoPeer::doSelectJoinComponente($criteria, $con);
+			}
+		}
+		$this->lastComponenteProyectoCriteria = $criteria;
+
+		return $this->collComponenteProyectos;
 	}
 
 } 
