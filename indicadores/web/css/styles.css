@@ -23,19 +23,24 @@ html,body{
   padding: 4px;
 }
 .rojo {
-    color: #FFFFFF;
+    color: red;
     background-color: #FF0000;
 }
 
 .amarillo {
-    color: #000000;
+    color: yellow;
     background-color: #FFFF00;
 }
 
 .verde {
-    color: #000000;
+    color: greenyellow;
     background-color: #00FF00;
 }
+
+.naranja {
+  background-color: orange;
+}
+
 .main {
   margin-top: 20px;
 }

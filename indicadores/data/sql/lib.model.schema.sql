@@ -742,28 +742,28 @@ CREATE TABLE `componente`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
-#-- componente_actividad
+#-- componente_proyecto
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `componente_actividad`;
+DROP TABLE IF EXISTS `componente_proyecto`;
 
 
-CREATE TABLE `componente_actividad`
+CREATE TABLE `componente_proyecto`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`componente_id` INTEGER,
-	`actividad_id` INTEGER,
+	`proyecto_id` INTEGER,
 	`monto` FLOAT,
 	PRIMARY KEY (`id`),
-	INDEX `componente_actividad_FI_1` (`componente_id`),
-	CONSTRAINT `componente_actividad_FK_1`
+	INDEX `componente_proyecto_FI_1` (`componente_id`),
+	CONSTRAINT `componente_proyecto_FK_1`
 		FOREIGN KEY (`componente_id`)
 		REFERENCES `componente` (`id`)
 		ON DELETE SET NULL,
-	INDEX `componente_actividad_FI_2` (`actividad_id`),
-	CONSTRAINT `componente_actividad_FK_2`
-		FOREIGN KEY (`actividad_id`)
-		REFERENCES `actividad` (`id`)
+	INDEX `componente_proyecto_FI_2` (`proyecto_id`),
+	CONSTRAINT `componente_proyecto_FK_2`
+		FOREIGN KEY (`proyecto_id`)
+		REFERENCES `proyecto` (`id`)
 		ON DELETE SET NULL
 )Type=InnoDB;
 

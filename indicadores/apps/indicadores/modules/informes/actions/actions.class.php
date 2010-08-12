@@ -156,4 +156,22 @@ class informesActions extends sfActions
       $this->setTemplate('listProyectos');
     }
   }
+
+  public function executeEjecucionproyectos()
+  {
+    if ($this->getRequestParameter('proyecto'))
+    {
+      // mostrar el informe del proyecto especificado
+      $c = new Criteria();
+      $c->add(ActividadProyectoPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $c->addAscendingOrderByColumn(ActividadProyectoPeer::META_PD_ID);
+
+      $this->actividades = SubactividadProyectoPeer::doSelectJoinActividadProyecto($c);
+      $this->proyecto = ProyectoPeer::retrieveByPK($this->getRequestParameter('proyecto'));
+    } else {
+      // mostrar lista de proyectos
+      $this->proyectos = ProyectoPeer::doSelect(new Criteria);
+      $this->setTemplate('listEjecucionProyectos');
+    }
+  }
 }

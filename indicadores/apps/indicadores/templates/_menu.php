@@ -236,6 +236,8 @@
         <li class="yuimenuitem">
           <?php echo link_to('Avance Proyectos', 'informes/Proyectos', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
+          <?php echo link_to('Ejecucion Semanal Proyectos', 'informes/ejecucionproyectos', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
           <?php echo link_to('Cuadro de Mando Integral (CMI)', 'informes/CMI', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
           <?php echo link_to('Cuadro de Mando Integral para procesos', 'informes/procesos', 'class="yuimenuitemlabel"')?></li>
