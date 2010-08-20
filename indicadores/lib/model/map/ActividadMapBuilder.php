@@ -38,21 +38,29 @@ class ActividadMapBuilder {
 
 		$tMap->addColumn('DESCRIPCION', 'Descripcion', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-		$tMap->addColumn('TIPO_GASTO', 'TipoGasto', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addForeignKey('TIPO_GASTO_ID', 'TipoGastoId', 'int', CreoleTypes::INTEGER, 'tipo_gasto', 'ID', false, null);
 
-		$tMap->addColumn('COMPONENTE_SECTOR', 'ComponenteSector', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addForeignKey('COMPONENTE_SECTOR_ID', 'ComponenteSectorId', 'int', CreoleTypes::INTEGER, 'componente_sector', 'ID', false, null);
 
-		$tMap->addColumn('CONCEPTO_GASTO', 'ConceptoGasto', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addForeignKey('CONCEPTO_GASTO_ID', 'ConceptoGastoId', 'int', CreoleTypes::INTEGER, 'concepto_gasto', 'ID', false, null);
+
+		$tMap->addColumn('COD_APP_FVS', 'CodAppFvs', 'string', CreoleTypes::VARCHAR, false, 30);
+
+		$tMap->addForeignKey('META_PROYECTO_ID', 'MetaProyectoId', 'int', CreoleTypes::INTEGER, 'meta_proyecto', 'ID', false, null);
+
+		$tMap->addColumn('INVERSION_RECURRENTE', 'InversionRecurrente', 'boolean', CreoleTypes::BOOLEAN, false, null);
 
 		$tMap->addColumn('MES_ETAPA_CONTRACTUAL', 'MesEtapaContractual', 'string', CreoleTypes::VARCHAR, false, 20);
 
-		$tMap->addColumn('MES_EJECUCION', 'MesEjecucion', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addColumn('MES_INICIO_EJECUCION', 'MesInicioEjecucion', 'string', CreoleTypes::VARCHAR, false, 20);
 
 		$tMap->addColumn('RESERVAS', 'Reservas', 'double', CreoleTypes::FLOAT, false, null);
 
-		$tMap->addColumn('AREA_RESPONSABLE', 'AreaResponsable', 'string', CreoleTypes::VARCHAR, false, 100);
+		$tMap->addForeignKey('AREA_RESPONSABLE', 'AreaResponsable', 'int', CreoleTypes::INTEGER, 'dependencia', 'ID', false, null);
 
-		$tMap->addColumn('VALOR_PROCESO', 'ValorProceso', 'double', CreoleTypes::FLOAT, false, null);
+		$tMap->addForeignKey('COMPONENTE_INVERSION_ID', 'ComponenteInversionId', 'int', CreoleTypes::INTEGER, 'componente', 'ID', false, null);
+
+		$tMap->addColumn('PLURIANUAL_PROGRAMADO', 'PlurianualProgramado', 'double', CreoleTypes::FLOAT, false, null);
 
 		$tMap->addColumn('NUMERO_SOLICITUD', 'NumeroSolicitud', 'string', CreoleTypes::VARCHAR, false, 20);
 
@@ -69,10 +77,6 @@ class ActividadMapBuilder {
 		$tMap->addColumn('PLAZO_MESES', 'PlazoMeses', 'int', CreoleTypes::INTEGER, false, null);
 
 		$tMap->addForeignKey('CONTRATO_ID', 'ContratoId', 'int', CreoleTypes::INTEGER, 'contrato', 'ID', false, null);
-
-		$tMap->addColumn('CLASE_CONTRATO', 'ClaseContrato', 'string', CreoleTypes::VARCHAR, false, 80);
-
-		$tMap->addColumn('ESTADO', 'Estado', 'string', CreoleTypes::VARCHAR, false, 80);
 
 		$tMap->addColumn('EXISTENCIA_CONTRATO_NUMERO', 'ExistenciaContratoNumero', 'string', CreoleTypes::VARCHAR, false, 20);
 

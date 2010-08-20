@@ -231,14 +231,18 @@ propel:
     id:
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
     descripcion: longvarchar
-    tipo_gasto: varchar(20)
-    componente_sector: varchar(255)
-    concepto_gasto: varchar(255)
+    tipo_gasto_id: { type: integer, foreignTable: tipo_gasto, foreignReference: id, onDelete: setnull }
+    componente_sector_id: { type: integer, foreignTable: componente_sector, foreignReference: id, onDelete: setnull }
+    concepto_gasto_id: { type: integer, foreignTable: concepto_gasto, foreignReference: id, onDelete: setnull }
+    cod_app_fvs: varchar(30)
+    meta_proyecto_id: { type: integer, foreignTable: meta_proyecto, foreignReference: id, onDelete: setnull }
+    inversion_recurrente: boolean
     mes_etapa_contractual: varchar(20)
-    mes_ejecucion: varchar(20)
+    mes_inicio_ejecucion: varchar(20)
     reservas: float
-    area_responsable: varchar(100)
-    valor_proceso: float
+    area_responsable: { type: integer, foreignTable: dependencia, foreignReference: id, onDelete: setnull }
+    componente_inversion_id: { type: integer, foreignTable: componente, foreignReference: id, onDelete: setnull }
+    plurianual_programado: float
     numero_solicitud: varchar(20)
     fecha_solicitud: date
     fecha_contrato: date
@@ -247,12 +251,11 @@ propel:
     fecha_liquidacion: date
     plazo_meses: integer
     contrato_id: { type: integer, foreignTable: contrato, foreignReference: id, onDelete: setnull }
-    clase_contrato: varchar(80)
-    estado: varchar(80)
     existencia_contrato_numero: varchar(20)
     created_at:
     updated_at:
 
+  # tablas auxiliares para actividades
   localidad:
     id:
     localidad: varchar(50)
@@ -322,5 +325,26 @@ propel:
   contrato:
     id:
     numero: varchar(10)
-    id_contratista: varchar(30)
     contratista: varchar(255)
+    fecha_firma: date
+    fecha_acta_inicio: date
+    fecha_terminacion: date
+    fecha_liquidacion: date
+    modalidad_contratacion: varchar(255)
+    cantidad: float
+    unidad_medida: varchar(100)
+    clase_contrato: varchar(100)
+    plazo: integer
+    estado: varchar(80)
+
+  tipo_gasto:
+    id:
+    tipo_gasto: varchar(255)
+
+  componente_sector:
+    id:
+    componente_sector: varchar(255)
+
+  concepto_gasto:
+    id:
+    concepto_gasto: varchar(255)

@@ -13,7 +13,7 @@ abstract class BaseContratoPeer {
 	const CLASS_DEFAULT = 'lib.model.Contrato';
 
 	
-	const NUM_COLUMNS = 4;
+	const NUM_COLUMNS = 13;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -26,10 +26,37 @@ abstract class BaseContratoPeer {
 	const NUMERO = 'contrato.NUMERO';
 
 	
-	const ID_CONTRATISTA = 'contrato.ID_CONTRATISTA';
+	const CONTRATISTA = 'contrato.CONTRATISTA';
 
 	
-	const CONTRATISTA = 'contrato.CONTRATISTA';
+	const FECHA_FIRMA = 'contrato.FECHA_FIRMA';
+
+	
+	const FECHA_ACTA_INICIO = 'contrato.FECHA_ACTA_INICIO';
+
+	
+	const FECHA_TERMINACION = 'contrato.FECHA_TERMINACION';
+
+	
+	const FECHA_LIQUIDACION = 'contrato.FECHA_LIQUIDACION';
+
+	
+	const MODALIDAD_CONTRATACION = 'contrato.MODALIDAD_CONTRATACION';
+
+	
+	const CANTIDAD = 'contrato.CANTIDAD';
+
+	
+	const UNIDAD_MEDIDA = 'contrato.UNIDAD_MEDIDA';
+
+	
+	const CLASE_CONTRATO = 'contrato.CLASE_CONTRATO';
+
+	
+	const PLAZO = 'contrato.PLAZO';
+
+	
+	const ESTADO = 'contrato.ESTADO';
 
 	
 	private static $phpNameMap = null;
@@ -37,18 +64,18 @@ abstract class BaseContratoPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'Numero', 'IdContratista', 'Contratista', ),
-		BasePeer::TYPE_COLNAME => array (ContratoPeer::ID, ContratoPeer::NUMERO, ContratoPeer::ID_CONTRATISTA, ContratoPeer::CONTRATISTA, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'numero', 'id_contratista', 'contratista', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'Numero', 'Contratista', 'FechaFirma', 'FechaActaInicio', 'FechaTerminacion', 'FechaLiquidacion', 'ModalidadContratacion', 'Cantidad', 'UnidadMedida', 'ClaseContrato', 'Plazo', 'Estado', ),
+		BasePeer::TYPE_COLNAME => array (ContratoPeer::ID, ContratoPeer::NUMERO, ContratoPeer::CONTRATISTA, ContratoPeer::FECHA_FIRMA, ContratoPeer::FECHA_ACTA_INICIO, ContratoPeer::FECHA_TERMINACION, ContratoPeer::FECHA_LIQUIDACION, ContratoPeer::MODALIDAD_CONTRATACION, ContratoPeer::CANTIDAD, ContratoPeer::UNIDAD_MEDIDA, ContratoPeer::CLASE_CONTRATO, ContratoPeer::PLAZO, ContratoPeer::ESTADO, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'numero', 'contratista', 'fecha_firma', 'fecha_acta_inicio', 'fecha_terminacion', 'fecha_liquidacion', 'modalidad_contratacion', 'cantidad', 'unidad_medida', 'clase_contrato', 'plazo', 'estado', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Numero' => 1, 'IdContratista' => 2, 'Contratista' => 3, ),
-		BasePeer::TYPE_COLNAME => array (ContratoPeer::ID => 0, ContratoPeer::NUMERO => 1, ContratoPeer::ID_CONTRATISTA => 2, ContratoPeer::CONTRATISTA => 3, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'numero' => 1, 'id_contratista' => 2, 'contratista' => 3, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Numero' => 1, 'Contratista' => 2, 'FechaFirma' => 3, 'FechaActaInicio' => 4, 'FechaTerminacion' => 5, 'FechaLiquidacion' => 6, 'ModalidadContratacion' => 7, 'Cantidad' => 8, 'UnidadMedida' => 9, 'ClaseContrato' => 10, 'Plazo' => 11, 'Estado' => 12, ),
+		BasePeer::TYPE_COLNAME => array (ContratoPeer::ID => 0, ContratoPeer::NUMERO => 1, ContratoPeer::CONTRATISTA => 2, ContratoPeer::FECHA_FIRMA => 3, ContratoPeer::FECHA_ACTA_INICIO => 4, ContratoPeer::FECHA_TERMINACION => 5, ContratoPeer::FECHA_LIQUIDACION => 6, ContratoPeer::MODALIDAD_CONTRATACION => 7, ContratoPeer::CANTIDAD => 8, ContratoPeer::UNIDAD_MEDIDA => 9, ContratoPeer::CLASE_CONTRATO => 10, ContratoPeer::PLAZO => 11, ContratoPeer::ESTADO => 12, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'numero' => 1, 'contratista' => 2, 'fecha_firma' => 3, 'fecha_acta_inicio' => 4, 'fecha_terminacion' => 5, 'fecha_liquidacion' => 6, 'modalidad_contratacion' => 7, 'cantidad' => 8, 'unidad_medida' => 9, 'clase_contrato' => 10, 'plazo' => 11, 'estado' => 12, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, )
 	);
 
 	
@@ -106,9 +133,27 @@ abstract class BaseContratoPeer {
 
 		$criteria->addSelectColumn(ContratoPeer::NUMERO);
 
-		$criteria->addSelectColumn(ContratoPeer::ID_CONTRATISTA);
-
 		$criteria->addSelectColumn(ContratoPeer::CONTRATISTA);
+
+		$criteria->addSelectColumn(ContratoPeer::FECHA_FIRMA);
+
+		$criteria->addSelectColumn(ContratoPeer::FECHA_ACTA_INICIO);
+
+		$criteria->addSelectColumn(ContratoPeer::FECHA_TERMINACION);
+
+		$criteria->addSelectColumn(ContratoPeer::FECHA_LIQUIDACION);
+
+		$criteria->addSelectColumn(ContratoPeer::MODALIDAD_CONTRATACION);
+
+		$criteria->addSelectColumn(ContratoPeer::CANTIDAD);
+
+		$criteria->addSelectColumn(ContratoPeer::UNIDAD_MEDIDA);
+
+		$criteria->addSelectColumn(ContratoPeer::CLASE_CONTRATO);
+
+		$criteria->addSelectColumn(ContratoPeer::PLAZO);
+
+		$criteria->addSelectColumn(ContratoPeer::ESTADO);
 
 	}
 

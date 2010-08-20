@@ -1,32 +1,34 @@
 ---
 sfGuardGroup: 
-  sfGuardGroup_1: 
+  sfGuardGroup_2: 
     name: admin
     description: Administrator group
 sfGuardPermission: 
-  sfGuardPermission_1: 
+  sfGuardPermission_2: 
     name: admin
     description: Administrator permission
 sfGuardGroupPermission: 
-  sfGuardGroupPermission_1_1: 
-    group_id: sfGuardGroup_1
-    permission_id: sfGuardPermission_1
-sfGuardUser:
-  sfGuardUser_1:
+  sfGuardGroupPermission_2_2: 
+    group_id: sfGuardGroup_2
+    permission_id: sfGuardPermission_2
+sfGuardUser: 
+  sfGuardUser_2:
     username:       admin
     password:       muysecret0
     is_super_admin: true
+    is_active: 1
+    is_super_admin: 1
 sfGuardUserGroup: 
-  sfGuardUserGroup_1_1: 
-    user_id: sfGuardUser_1
-    group_id: sfGuardGroup_1
+  sfGuardUserGroup_2_2: 
+    user_id: sfGuardUser_2
+    group_id: sfGuardGroup_2
 Objetivo: 
-  Objetivo_1: 
+  Objetivo_4: 
     nombre: Objetivo de prueba
     nombre_corto: Objetivo de prueba
     created_at: 2009-02-05 09:44:48
     updated_at: 2009-02-05 09:44:48
-  Objetivo_2: 
+  Objetivo_5: 
     nombre: Defensa y justicia de los ciudadanos
     descripcion: >
       Realizar adecuadamente las acciones
@@ -36,7 +38,7 @@ Objetivo:
     tema: cliente
     created_at: 2009-02-23 11:18:19
     updated_at: 2009-02-23 11:26:44
-  Objetivo_3: 
+  Objetivo_6: 
     nombre: Adquirir bienes y servicios
     descripcion: >
       Adquirir bienes y servicios de óptima
@@ -47,19 +49,19 @@ Objetivo:
     created_at: 2009-02-23 11:18:48
     updated_at: 2009-02-23 11:18:48
 Categoria: 
-  Categoria_1: 
-    nombre: Eficacia
-  Categoria_2: 
-    nombre: Eficiencia
-  Categoria_3: 
-    nombre: Efectividad/Impacto
   Categoria_4: 
     nombre: Indicador POA
+  Categoria_5: 
+    nombre: Eficacia
+  Categoria_6: 
+    nombre: Eficiencia
+  Categoria_7: 
+    nombre: Efectividad/Impacto
 Indicador: 
-  Indicador_1: 
+  Indicador_4: 
     indicador: Indicador de prueba
     borrador: 0
-    objetivo_id: Objetivo_1
+    objetivo_id: Objetivo_4
     tipo: procentaje
     frecuencia: trimestral
     umbral_rojo: 0
@@ -67,11 +69,11 @@ Indicador:
     umbral_verde: 0
     created_at: 2009-02-05 15:39:32
     updated_at: 2009-02-19 12:09:39
-  Indicador_2: 
+  Indicador_5: 
     indicador: Necesidades de capacitación
     borrador: 0
-    objetivo_id: Objetivo_3
-    categoria_id: Categoria_1
+    objetivo_id: Objetivo_6
+    categoria_id: Categoria_5
     defincion: >
       Total de las Capacitaciones brindadas /
       Total de necesidades de capacitación
@@ -89,12 +91,12 @@ Indicador:
     iniciativa: Necesidades de capacitación
     created_at: 2009-02-23 11:24:58
     updated_at: 2009-02-23 11:34:56
-  Indicador_3: 
+  Indicador_6: 
     indicador: Evaluación percapita inversion FVS
     borrador: 0
-    objetivo_id: Objetivo_3
+    objetivo_id: Objetivo_6
     objetivo_estr: testing
-    categoria_id: Categoria_2
+    categoria_id: Categoria_6
     defincion: >
       Población directamente beneficiada con
       la inversión ejecutada / Total
@@ -110,357 +112,366 @@ Indicador:
     created_at: 2009-02-23 11:28:18
     updated_at: 2009-02-24 11:40:01
 Variable: 
-  Variable_1: 
+  Variable_7: 
     nombre: Variable de prueba 1
-  Variable_2: 
+  Variable_8: 
     nombre: Variable de prueba 2
-  Variable_3: 
+  Variable_9: 
     nombre: Total capacitaciones brindadas
-  Variable_4: 
+  Variable_10: 
     nombre: >
       Total necesidades de capacitacion
       encontradas
-  Variable_5: 
+  Variable_11: 
     nombre: Poblacion beneficiada
-  Variable_6: 
+  Variable_12: 
     nombre: Total poblacion
 IndicadorVariable: 
-  IndicadorVariable_1: 
-    indicador_id: Indicador_1
-    variable_id: Variable_1
-  IndicadorVariable_2: 
-    indicador_id: Indicador_1
-    variable_id: Variable_2
-  IndicadorVariable_3: 
-    indicador_id: Indicador_2
-    variable_id: Variable_3
-  IndicadorVariable_4: 
-    indicador_id: Indicador_2
-    variable_id: Variable_4
-  IndicadorVariable_5: 
-    indicador_id: Indicador_3
-    variable_id: Variable_5
-  IndicadorVariable_6: 
-    indicador_id: Indicador_3
-    variable_id: Variable_6
+  IndicadorVariable_7: 
+    indicador_id: Indicador_4
+    variable_id: Variable_7
+  IndicadorVariable_8: 
+    indicador_id: Indicador_4
+    variable_id: Variable_8
+  IndicadorVariable_9: 
+    indicador_id: Indicador_5
+    variable_id: Variable_9
+  IndicadorVariable_10: 
+    indicador_id: Indicador_5
+    variable_id: Variable_10
+  IndicadorVariable_11: 
+    indicador_id: Indicador_6
+    variable_id: Variable_11
+  IndicadorVariable_12: 
+    indicador_id: Indicador_6
+    variable_id: Variable_12
 HistoricoIndicador: 
-  HistoricoIndicador_1: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_19: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_2: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_20: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_3: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_21: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_4: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_22: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_5: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_23: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_6: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_24: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_7: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_25: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_8: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_26: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_9: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_27: 
+    indicador_id: Indicador_4
     valor: 0.75
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_10: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_28: 
+    indicador_id: Indicador_4
     valor: 0.75
     ano: 2008
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_11: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_29: 
+    indicador_id: Indicador_4
     valor: 0.833333
     ano: 2009
     medicion_numero: 1
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_12: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_30: 
+    indicador_id: Indicador_4
     valor: 0.833333
     ano: 2009
     medicion_numero: 2
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_13: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_31: 
+    indicador_id: Indicador_4
     valor: 0.833333
     ano: 2009
     medicion_numero: 3
     created_at: 2009-02-09 09:10:09
     updated_at: 2009-02-09 09:10:09
-  HistoricoIndicador_14: 
-    indicador_id: Indicador_1
+  HistoricoIndicador_32: 
+    indicador_id: Indicador_4
     valor: 0.75
     ano: 2009
     medicion_numero: 4
     created_at: 2009-02-09 09:16:13
     updated_at: 2009-02-09 09:16:13
-  HistoricoIndicador_15: 
-    indicador_id: Indicador_2
+  HistoricoIndicador_33: 
+    indicador_id: Indicador_5
     valor: 33.3333
     ano: 2009
     medicion_numero: 1
     observacion: Observaciones
     created_at: 2009-02-23 11:48:26
     updated_at: 2009-02-23 11:48:26
-  HistoricoIndicador_16: 
-    indicador_id: Indicador_2
+  HistoricoIndicador_34: 
+    indicador_id: Indicador_5
     valor: 66.6667
     ano: 2009
     medicion_numero: 2
     observacion: Observaciones
     created_at: 2009-02-23 11:48:37
     updated_at: 2009-02-23 11:48:37
-  HistoricoIndicador_17: 
-    indicador_id: Indicador_3
+  HistoricoIndicador_35: 
+    indicador_id: Indicador_6
     valor: 0.8
     ano: 2009
     medicion_numero: 1
     observacion: Observaciones
     created_at: 2009-02-23 11:50:33
     updated_at: 2009-02-23 11:50:33
-  HistoricoIndicador_18: 
-    indicador_id: Indicador_3
+  HistoricoIndicador_36: 
+    indicador_id: Indicador_6
     ano: 2009
     medicion_numero: 2
     observacion: Observaciones
     created_at: 2009-03-06 15:03:32
     updated_at: 2009-03-06 15:03:32
 HistoricoVariable: 
-  HistoricoVariable_1: 
+  HistoricoVariable_63: 
     valor: 3
-    historico_indicador_id: HistoricoIndicador_3
-  HistoricoVariable_2: 
+    historico_indicador_id: HistoricoIndicador_21
+  HistoricoVariable_64: 
     valor: 4
-    historico_indicador_id: HistoricoIndicador_3
-  HistoricoVariable_3: 
-    variable_id: Variable_1
+    historico_indicador_id: HistoricoIndicador_21
+  HistoricoVariable_65: 
+    variable_id: Variable_7
     valor: 3
-    historico_indicador_id: HistoricoIndicador_10
-  HistoricoVariable_4: 
-    variable_id: Variable_2
+    historico_indicador_id: HistoricoIndicador_28
+  HistoricoVariable_66: 
+    variable_id: Variable_8
     valor: 4
-    historico_indicador_id: HistoricoIndicador_10
-  HistoricoVariable_5: 
-    variable_id: Variable_1
+    historico_indicador_id: HistoricoIndicador_28
+  HistoricoVariable_67: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_6: 
-    variable_id: Variable_2
+  HistoricoVariable_68: 
+    variable_id: Variable_8
     valor: 4
-  HistoricoVariable_7: 
-    variable_id: Variable_1
+  HistoricoVariable_69: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_8: 
-    variable_id: Variable_2
+  HistoricoVariable_70: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_9: 
-    variable_id: Variable_1
+  HistoricoVariable_71: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_10: 
-    variable_id: Variable_2
+  HistoricoVariable_72: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_11: 
-    variable_id: Variable_1
+  HistoricoVariable_73: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_12: 
-    variable_id: Variable_2
+  HistoricoVariable_74: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_13: 
-    variable_id: Variable_1
+  HistoricoVariable_75: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_14: 
-    variable_id: Variable_2
+  HistoricoVariable_76: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_15: 
-    variable_id: Variable_1
+  HistoricoVariable_77: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_16: 
-    variable_id: Variable_2
+  HistoricoVariable_78: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_17: 
-    variable_id: Variable_1
+  HistoricoVariable_79: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_18: 
-    variable_id: Variable_2
+  HistoricoVariable_80: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_19: 
-    variable_id: Variable_1
+  HistoricoVariable_81: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_20: 
-    variable_id: Variable_2
+  HistoricoVariable_82: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_21: 
-    variable_id: Variable_1
+  HistoricoVariable_83: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_22: 
-    variable_id: Variable_2
+  HistoricoVariable_84: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_23: 
-    variable_id: Variable_1
+  HistoricoVariable_85: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_24: 
-    variable_id: Variable_2
+  HistoricoVariable_86: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_25: 
-    variable_id: Variable_1
+  HistoricoVariable_87: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_26: 
-    variable_id: Variable_2
+  HistoricoVariable_88: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_27: 
-    variable_id: Variable_1
+  HistoricoVariable_89: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_28: 
-    variable_id: Variable_2
+  HistoricoVariable_90: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_29: 
-    variable_id: Variable_1
+  HistoricoVariable_91: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_30: 
-    variable_id: Variable_2
+  HistoricoVariable_92: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_31: 
-    variable_id: Variable_1
+  HistoricoVariable_93: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_32: 
-    variable_id: Variable_2
+  HistoricoVariable_94: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_33: 
-    variable_id: Variable_1
+  HistoricoVariable_95: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_34: 
-    variable_id: Variable_2
+  HistoricoVariable_96: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_35: 
-    variable_id: Variable_1
+  HistoricoVariable_97: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_36: 
-    variable_id: Variable_2
+  HistoricoVariable_98: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_37: 
-    variable_id: Variable_1
+  HistoricoVariable_99: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_38: 
-    variable_id: Variable_2
+  HistoricoVariable_100: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_39: 
-    variable_id: Variable_1
+  HistoricoVariable_101: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_40: 
-    variable_id: Variable_2
+  HistoricoVariable_102: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_41: 
-    variable_id: Variable_1
+  HistoricoVariable_103: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_42: 
-    variable_id: Variable_2
+  HistoricoVariable_104: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_43: 
-    variable_id: Variable_1
+  HistoricoVariable_105: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_44: 
-    variable_id: Variable_2
+  HistoricoVariable_106: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_45: 
-    variable_id: Variable_1
+  HistoricoVariable_107: 
+    variable_id: Variable_7
     valor: 5
-    historico_indicador_id: HistoricoIndicador_11
-  HistoricoVariable_46: 
-    variable_id: Variable_2
+    historico_indicador_id: HistoricoIndicador_29
+  HistoricoVariable_108: 
+    variable_id: Variable_8
     valor: 6
-    historico_indicador_id: HistoricoIndicador_11
-  HistoricoVariable_47: 
-    variable_id: Variable_1
+    historico_indicador_id: HistoricoIndicador_29
+  HistoricoVariable_109: 
+    variable_id: Variable_7
     valor: 5
-    historico_indicador_id: HistoricoIndicador_12
-  HistoricoVariable_48: 
-    variable_id: Variable_2
+    historico_indicador_id: HistoricoIndicador_30
+  HistoricoVariable_110: 
+    variable_id: Variable_8
     valor: 6
-    historico_indicador_id: HistoricoIndicador_12
-  HistoricoVariable_49: 
-    variable_id: Variable_1
+    historico_indicador_id: HistoricoIndicador_30
+  HistoricoVariable_111: 
+    variable_id: Variable_7
     valor: 5
-    historico_indicador_id: HistoricoIndicador_13
-  HistoricoVariable_50: 
-    variable_id: Variable_2
+    historico_indicador_id: HistoricoIndicador_31
+  HistoricoVariable_112: 
+    variable_id: Variable_8
     valor: 6
-    historico_indicador_id: HistoricoIndicador_13
-  HistoricoVariable_51: 
-    variable_id: Variable_1
+    historico_indicador_id: HistoricoIndicador_31
+  HistoricoVariable_113: 
+    variable_id: Variable_7
     valor: 5
-  HistoricoVariable_52: 
-    variable_id: Variable_2
+  HistoricoVariable_114: 
+    variable_id: Variable_8
     valor: 6
-  HistoricoVariable_53: 
-    variable_id: Variable_1
+  HistoricoVariable_115: 
+    variable_id: Variable_7
     valor: 3
-    historico_indicador_id: HistoricoIndicador_14
-  HistoricoVariable_54: 
-    variable_id: Variable_2
+    historico_indicador_id: HistoricoIndicador_32
+  HistoricoVariable_116: 
+    variable_id: Variable_8
     valor: 4
-    historico_indicador_id: HistoricoIndicador_14
-  HistoricoVariable_55: 
-    variable_id: Variable_3
+    historico_indicador_id: HistoricoIndicador_32
+  HistoricoVariable_117: 
+    variable_id: Variable_9
     valor: 1
-    historico_indicador_id: HistoricoIndicador_15
-  HistoricoVariable_56: 
-    variable_id: Variable_4
+    historico_indicador_id: HistoricoIndicador_33
+  HistoricoVariable_118: 
+    variable_id: Variable_10
     valor: 3
-    historico_indicador_id: HistoricoIndicador_15
-  HistoricoVariable_57: 
-    variable_id: Variable_3
+    historico_indicador_id: HistoricoIndicador_33
+  HistoricoVariable_119: 
+    variable_id: Variable_9
     valor: 2
-    historico_indicador_id: HistoricoIndicador_16
-  HistoricoVariable_58: 
-    variable_id: Variable_4
+    historico_indicador_id: HistoricoIndicador_34
+  HistoricoVariable_120: 
+    variable_id: Variable_10
     valor: 3
-    historico_indicador_id: HistoricoIndicador_16
-  HistoricoVariable_59: 
-    variable_id: Variable_5
+    historico_indicador_id: HistoricoIndicador_34
+  HistoricoVariable_121: 
+    variable_id: Variable_11
     valor: 4
-    historico_indicador_id: HistoricoIndicador_17
-  HistoricoVariable_60: 
-    variable_id: Variable_6
+    historico_indicador_id: HistoricoIndicador_35
+  HistoricoVariable_122: 
+    variable_id: Variable_12
     valor: 5
-    historico_indicador_id: HistoricoIndicador_17
-  HistoricoVariable_61: 
-    variable_id: Variable_5
+    historico_indicador_id: HistoricoIndicador_35
+  HistoricoVariable_123: 
+    variable_id: Variable_11
     valor: 20
-    historico_indicador_id: HistoricoIndicador_18
-  HistoricoVariable_62: 
-    variable_id: Variable_6
+    historico_indicador_id: HistoricoIndicador_36
+  HistoricoVariable_124: 
+    variable_id: Variable_12
     valor: 30
-    historico_indicador_id: HistoricoIndicador_18
+    historico_indicador_id: HistoricoIndicador_36
+Macroproceso: 
+  Macroproceso_1: 
+    nombre: Macroproceso 1
+    descripcion: 
+Proceso: 
+  Proceso_1: 
+    macroproceso_id: Macroproceso_1
+    nombre: Proceso 1
+    descripcion: 
 MetaPd: 
-  MetaPd_1: 
+  MetaPd_6: 
     codigo: 343
     meta: >
       Diseñar 1 política para la
@@ -468,7 +479,7 @@ MetaPd:
       seguridad y convivencia
     created_at: 2010-07-19 17:51:44
     updated_at: 2010-07-19 17:52:14
-  MetaPd_2: 
+  MetaPd_7: 
     codigo: 344
     meta: >
       Vincular 1.000 jovenes en riesgo de
@@ -478,7 +489,7 @@ MetaPd:
       las zonas críticas
     created_at: 2010-07-19 17:52:36
     updated_at: 2010-07-19 17:52:36
-  MetaPd_3: 
+  MetaPd_8: 
     codigo: 345
     meta: >
       Apoyar acciones sociales y económicas
@@ -487,7 +498,7 @@ MetaPd:
       vulnerables en las zonas criticas
     created_at: 2010-07-19 17:52:52
     updated_at: 2010-07-19 17:52:52
-  MetaPd_4: 
+  MetaPd_9: 
     codigo: 347
     meta: >
       Crear 31 espacios de participación
@@ -496,7 +507,7 @@ MetaPd:
       plazas de mercado
     created_at: 2010-07-19 17:53:20
     updated_at: 2010-07-19 17:53:20
-  MetaPd_5: 
+  MetaPd_10: 
     codigo: 348
     meta: >
       Realizar 20 campañas de
@@ -506,54 +517,78 @@ MetaPd:
     created_at: 2010-07-19 17:53:37
     updated_at: 2010-07-19 17:53:37
 Proyecto: 
-  Proyecto_1: 
+  Proyecto_2: 
     codigo: 402
     proyecto: Zonas Criticas
     descripcion: 
     created_at: 2010-07-19 17:53:52
     updated_at: 2010-07-19 17:53:52
+  Proyecto_3: 
+    codigo: 10001
+    proyecto: Proyecto de Prueba
+    descripcion: 
+    magnitud: 
+    programa_interno: 
+    created_at: 2010-08-09 15:25:01
+    updated_at: 2010-08-09 15:25:01
 MetaProyecto: 
-  MetaProyecto_1: 
-    meta_pd_id: MetaPd_1
-    proyecto_id: Proyecto_1
+  MetaProyecto_6: 
+    meta_pd_id: MetaPd_6
+    proyecto_id: Proyecto_2
     codigo: 343
     meta: >
       Diseñar 1 política para la
       intervención de 31 zonas críticas en
       seguridad y convivencia
-    tipo: 
-    descripcion: 
     created_at: 2010-07-19 17:54:53
     updated_at: 2010-08-02 23:32:56
-  MetaProyecto_2: 
-    meta_pd_id: MetaPd_2
-    proyecto_id: Proyecto_1
+  MetaProyecto_7: 
+    meta_pd_id: MetaPd_7
+    proyecto_id: Proyecto_2
     codigo: 344
     created_at: 2010-07-19 17:55:10
     updated_at: 2010-07-19 17:55:10
-  MetaProyecto_3: 
-    meta_pd_id: MetaPd_3
-    proyecto_id: Proyecto_1
+  MetaProyecto_8: 
+    meta_pd_id: MetaPd_8
+    proyecto_id: Proyecto_2
     codigo: 345
     created_at: 2010-07-19 17:55:21
     updated_at: 2010-07-19 17:56:15
-  MetaProyecto_4: 
-    meta_pd_id: MetaPd_4
-    proyecto_id: Proyecto_1
+  MetaProyecto_9: 
+    meta_pd_id: MetaPd_9
+    proyecto_id: Proyecto_2
     codigo: 347
     created_at: 2010-07-19 17:55:30
     updated_at: 2010-07-19 17:56:27
-  MetaProyecto_5: 
-    meta_pd_id: MetaPd_5
-    proyecto_id: Proyecto_1
+  MetaProyecto_10: 
+    meta_pd_id: MetaPd_10
+    proyecto_id: Proyecto_2
     codigo: 348
     created_at: 2010-07-19 17:55:43
     updated_at: 2010-07-19 17:55:43
+  MetaProyecto_11: 
+    meta_pd_id: MetaPd_9
+    proyecto_id: Proyecto_3
+    codigo: 10001-1
+    meta: Meta 1
+    tipo: 
+    descripcion: 
+    created_at: 2010-08-09 15:25:50
+    updated_at: 2010-08-09 15:26:52
+  MetaProyecto_12: 
+    meta_pd_id: MetaPd_10
+    proyecto_id: Proyecto_3
+    codigo: 10001-2
+    meta: 
+    tipo: 
+    descripcion: 
+    created_at: 2010-08-09 15:27:22
+    updated_at: 2010-08-09 15:27:22
 ActividadProyecto: 
-  ActividadProyecto_3: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_1
-    meta_proyecto_id: MetaProyecto_1
+  ActividadProyecto_9: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_6
+    meta_proyecto_id: MetaProyecto_6
     actividad: >
       Orientar la gestión y formular la
       política de intervención de las zonas
@@ -569,10 +604,10 @@ ActividadProyecto:
     ponderacion: 100
     created_at: 2010-08-03 01:34:01
     updated_at: 2010-08-03 01:34:01
-  ActividadProyecto_4: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_2
-    meta_proyecto_id: MetaProyecto_2
+  ActividadProyecto_10: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_7
+    meta_proyecto_id: MetaProyecto_7
     actividad: Caminando relajado
     descripcion: |
       CAMINANDO RELAJADO: Modelo de intervención  en el que se  busca identificar , visibilizar y atender a jovenes en situación de alto riesgo de violencia y que impacten en la seguridad y convivencia en las 31 ZAISC, por fuera del entorno escolar.
@@ -585,10 +620,10 @@ ActividadProyecto:
     ponderacion: 20
     created_at: 2010-08-03 01:56:32
     updated_at: 2010-08-03 01:56:32
-  ActividadProyecto_5: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_2
-    meta_proyecto_id: MetaProyecto_2
+  ActividadProyecto_11: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_7
+    meta_proyecto_id: MetaProyecto_7
     actividad: Ejercito
     descripcion: >
       EJERCITO NACIONAL: Generación de
@@ -598,13 +633,13 @@ ActividadProyecto:
     ponderacion: 20
     created_at: 2010-08-03 02:04:19
     updated_at: 2010-08-03 02:04:19
-  ActividadProyecto_6: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_2
-    meta_proyecto_id: MetaProyecto_2
+  ActividadProyecto_12: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_7
+    meta_proyecto_id: MetaProyecto_7
     actividad: Desarrollo Actitudes Artisticas
     descripcion: >
-      DESARROLLO ACTITUDES ARTISTICAS: 
+      DESARROLLO ACTITUDES ARTISTICAS:
       Implementar escuelas de formación
       musical en las ZAISC para incrementar el
       uso creativo del tiempo libre y
@@ -613,10 +648,10 @@ ActividadProyecto:
     ponderacion: 20
     created_at: 2010-08-03 02:10:08
     updated_at: 2010-08-03 02:10:44
-  ActividadProyecto_7: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_2
-    meta_proyecto_id: MetaProyecto_2
+  ActividadProyecto_13: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_7
+    meta_proyecto_id: MetaProyecto_7
     actividad: Escuelas deportivas
     descripcion: >
       ESCUELAS DEPORTIVAS DE INICIACIÓN
@@ -628,10 +663,10 @@ ActividadProyecto:
     ponderacion: 20
     created_at: 2010-08-03 02:15:22
     updated_at: 2010-08-03 02:15:22
-  ActividadProyecto_8: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_2
-    meta_proyecto_id: MetaProyecto_2
+  ActividadProyecto_14: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_7
+    meta_proyecto_id: MetaProyecto_7
     actividad: PIPE
     descripcion: |
       PIPE Fortalecimiento de redes de protección del entorno.
@@ -639,19 +674,18 @@ ActividadProyecto:
     ponderacion: 20
     created_at: 2010-08-03 02:21:01
     updated_at: 2010-08-03 02:21:01
-  ActividadProyecto_9: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_5
-    meta_proyecto_id: MetaProyecto_5
+  ActividadProyecto_15: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_10
+    meta_proyecto_id: MetaProyecto_10
     actividad: CAMPAÑAS
-    descripcion: 
     ponderacion: 70
     created_at: 2010-08-03 02:25:58
     updated_at: 2010-08-03 02:25:58
-  ActividadProyecto_10: 
-    proyecto_id: Proyecto_1
-    meta_pd_id: MetaPd_5
-    meta_proyecto_id: MetaProyecto_5
+  ActividadProyecto_16: 
+    proyecto_id: Proyecto_2
+    meta_pd_id: MetaPd_10
+    meta_proyecto_id: MetaProyecto_10
     actividad: Medios comunitarios
     descripcion: >
       APOYO A MEDIOS COMUNITARIOS
@@ -661,33 +695,50 @@ ActividadProyecto:
     ponderacion: 30
     created_at: 2010-08-03 02:28:50
     updated_at: 2010-08-03 02:28:50
+  ActividadProyecto_17: 
+    proyecto_id: Proyecto_3
+    meta_pd_id: MetaPd_9
+    meta_proyecto_id: MetaProyecto_12
+    actividad: Actividad 1
+    descripcion: 
+    ponderacion: 100
+    created_at: 2010-08-09 15:28:03
+    updated_at: 2010-08-09 15:31:37
+MetaPoa: 
+  MetaPoa_1: 
+    meta: Meta 1 POA
+    descripcion: 
+    created_at: 2010-08-16 18:20:30
+    updated_at: 2010-08-16 18:20:30
 SubactividadProyecto: 
-  SubactividadProyecto_2: 
-    actividad_proyecto_id: ActividadProyecto_3
-    descripcion: |
-      Ajustes  al protocolo para el abordaje de 2010
-      
-    entregable: |
-      Documento que describe el ajuste en el protocolo de abordaje de los territorios.
-      
+  SubactividadProyecto_42: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: >
+      Ajustes  al protocolo para el abordaje
+      de 2010
+    entregable: >
+      Documento que describe el ajuste en el
+      protocolo de abordaje de los
+      territorios.
     fecha_inicio: 2010-01-11
     duracion: 2
     ponderacion: 5
     created_at: 2010-08-03 01:35:52
     updated_at: 2010-08-03 01:35:52
-  SubactividadProyecto_3: 
-    actividad_proyecto_id: ActividadProyecto_3
-    descripcion: |
-      Modelo de concertación de planes de acción con autoridades locales y de policía
-      
+  SubactividadProyecto_43: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: >
+      Modelo de concertación de planes de
+      acción con autoridades locales y de
+      policía
     entregable: Documentos de planes
     fecha_inicio: 2010-03-08
     duracion: 4
     ponderacion: 5
     created_at: 2010-08-03 01:38:48
     updated_at: 2010-08-03 01:38:48
-  SubactividadProyecto_4: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_44: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Modelo de articulación de acciones de
       componentes en proyectos marco con
@@ -701,21 +752,19 @@ SubactividadProyecto:
     ponderacion: 5
     created_at: 2010-08-03 01:39:57
     updated_at: 2010-08-03 01:39:57
-  SubactividadProyecto_5: 
-    actividad_proyecto_id: ActividadProyecto_3
-    descripcion: |
-      Reformulación del proyecto 402
-      
-    entregable: |
-      Un (1)  Documento de reformulación   (versión junio 30) del proyecto 402
-      
+  SubactividadProyecto_45: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: Reformulación del proyecto 402
+    entregable: >
+      Un (1)  Documento de reformulación  
+      (versión junio 30) del proyecto 402
     fecha_inicio: 2010-04-05
     duracion: 3
     ponderacion: 10
     created_at: 2010-08-03 01:41:00
     updated_at: 2010-08-03 01:41:00
-  SubactividadProyecto_6: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_46: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       2da Versión de construcción de
       documento de política
@@ -728,8 +777,8 @@ SubactividadProyecto:
     ponderacion: 15
     created_at: 2010-08-03 01:42:04
     updated_at: 2010-08-03 01:42:04
-  SubactividadProyecto_7: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_47: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Validación de modelo de intervención
       de territorios
@@ -743,14 +792,14 @@ SubactividadProyecto:
     ponderacion: 5
     created_at: 2010-08-03 01:43:04
     updated_at: 2010-08-03 01:43:04
-  SubactividadProyecto_8: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_48: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Presentación de versión de la
       política ante FVS, Secretaría de
       Gobierno
     entregable: >
-      Documento (s) de circularización de la 
+      Documento (s) de circularización de la
       Versión Junio 30 de 2010, de la
       política pública de intervención, en
       las instancias institucionales
@@ -761,21 +810,17 @@ SubactividadProyecto:
     ponderacion: 5
     created_at: 2010-08-03 01:47:53
     updated_at: 2010-08-03 01:47:53
-  SubactividadProyecto_9: 
-    actividad_proyecto_id: ActividadProyecto_3
-    descripcion: |
-      Incorporación recomendaciones
-      
-    entregable: |
-      Documento ajustado
-      
+  SubactividadProyecto_49: 
+    actividad_proyecto_id: ActividadProyecto_9
+    descripcion: Incorporación recomendaciones
+    entregable: Documento ajustado
     fecha_inicio: 2010-09-27
     duracion: 1
     ponderacion: 5
     created_at: 2010-08-03 01:48:38
     updated_at: 2010-08-03 01:48:38
-  SubactividadProyecto_10: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_50: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Presentación ante las instancias
       pertinentes  los proyectos de actos
@@ -783,31 +828,29 @@ SubactividadProyecto:
       institucionalización del modelo
       metodológico de intervención de los
       territorios
-    entregable: |
-      Documentos proyectos de acuerdo
-      
+    entregable: Documentos proyectos de acuerdo
     fecha_inicio: 2010-10-04
     duracion: 2
     ponderacion: 5
     created_at: 2010-08-03 01:49:33
     updated_at: 2010-08-03 01:49:33
-  SubactividadProyecto_11: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_51: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Gestión para lograr concertadamente con
       CEACS definir el modelo estadístico
       para calificación de ZAISC y Vecindario
       Seguro
-    entregable: |
-      Acuerdo de plan de trabajo para avanzar en construcción de modelo
-      
+    entregable: >
+      Acuerdo de plan de trabajo para avanzar
+      en construcción de modelo
     fecha_inicio: 2010-10-11
     duracion: 3
     ponderacion: 15
     created_at: 2010-08-03 01:50:26
     updated_at: 2010-08-03 01:50:26
-  SubactividadProyecto_12: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_52: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Gestión con CEACS y Secretaría de
       Planeación Distrital para establecer
@@ -822,8 +865,8 @@ SubactividadProyecto:
     ponderacion: 15
     created_at: 2010-08-03 01:51:02
     updated_at: 2010-08-03 01:51:02
-  SubactividadProyecto_13: 
-    actividad_proyecto_id: ActividadProyecto_3
+  SubactividadProyecto_53: 
+    actividad_proyecto_id: ActividadProyecto_9
     descripcion: >
       Incorporación de ajustes por
       experiencias internacionales
@@ -833,8 +876,8 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 01:51:55
     updated_at: 2010-08-03 01:51:55
-  SubactividadProyecto_14: 
-    actividad_proyecto_id: ActividadProyecto_4
+  SubactividadProyecto_54: 
+    actividad_proyecto_id: ActividadProyecto_10
     descripcion: >
       Encuentros de acercamiento y abordaje a
       los jóvenes
@@ -847,8 +890,8 @@ SubactividadProyecto:
     ponderacion: 30
     created_at: 2010-08-03 01:57:59
     updated_at: 2010-08-03 01:57:59
-  SubactividadProyecto_15: 
-    actividad_proyecto_id: ActividadProyecto_4
+  SubactividadProyecto_55: 
+    actividad_proyecto_id: ActividadProyecto_10
     descripcion: >
       Elaboración de  registro de analisis
       situacional de jóvenes
@@ -860,47 +903,35 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 01:58:45
     updated_at: 2010-08-03 01:58:45
-  SubactividadProyecto_16: 
-    actividad_proyecto_id: ActividadProyecto_4
-    descripcion: |
-      Estudios previos
-      
-    entregable: |
-      Estudios previos
-      
+  SubactividadProyecto_56: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: Estudios previos
+    entregable: Estudios previos
     fecha_inicio: 2010-05-03
     duracion: 2
     ponderacion: 10
     created_at: 2010-08-03 01:59:24
     updated_at: 2010-08-03 01:59:24
-  SubactividadProyecto_17: 
-    actividad_proyecto_id: ActividadProyecto_4
-    descripcion: |
-      Legalización Contractual
-      
-    entregable: |
-      Contrato de suministro
-      
+  SubactividadProyecto_57: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: Legalización Contractual
+    entregable: Contrato de suministro
     fecha_inicio: 2010-05-03
     duracion: 2
     ponderacion: 10
     created_at: 2010-08-03 02:00:08
     updated_at: 2010-08-03 02:00:08
-  SubactividadProyecto_18: 
-    actividad_proyecto_id: ActividadProyecto_4
-    descripcion: |
-      Ejecución Física Contractual
-      
-    entregable: |
-      Ejecución Contractual
-      
+  SubactividadProyecto_58: 
+    actividad_proyecto_id: ActividadProyecto_10
+    descripcion: Ejecución Física Contractual
+    entregable: Ejecución Contractual
     fecha_inicio: 2010-06-07
     duracion: 5
     ponderacion: 40
     created_at: 2010-08-03 02:01:08
     updated_at: 2010-08-03 02:01:08
-  SubactividadProyecto_19: 
-    actividad_proyecto_id: ActividadProyecto_4
+  SubactividadProyecto_59: 
+    actividad_proyecto_id: ActividadProyecto_10
     descripcion: |
       Diagnóstico. Desarrollar un proceso de reconocimiento de los Jóvenes en Situación de Alto Riesgo de Violencia y Delincuencia.
       Identificación de las estructuras y formas de organización de los jóvenes en conflicto.
@@ -912,13 +943,13 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:03:22
     updated_at: 2010-08-03 02:03:22
-  SubactividadProyecto_20: 
-    actividad_proyecto_id: ActividadProyecto_5
+  SubactividadProyecto_60: 
+    actividad_proyecto_id: ActividadProyecto_11
     descripcion: >
       Gestionar con el Ejercito Nacional -
       Dirección de Reclutamiento  el proceso
       de formalización de  libretas militares
-      a Jóvenes 
+      a Jóvenes
     entregable: >
       Requerimiento por la Policia con número
       de jovenes que necesitan definir su
@@ -930,52 +961,39 @@ SubactividadProyecto:
     ponderacion: 30
     created_at: 2010-08-03 02:05:09
     updated_at: 2010-08-03 02:05:09
-  SubactividadProyecto_21: 
-    actividad_proyecto_id: ActividadProyecto_5
-    descripcion: |
-      Elaboración de Estudios Previos
-      
-    entregable: |
-      Elaboración de Estudios Previos
-      
+  SubactividadProyecto_61: 
+    actividad_proyecto_id: ActividadProyecto_11
+    descripcion: Elaboración de Estudios Previos
+    entregable: Elaboración de Estudios Previos
     fecha_inicio: 2010-05-03
     duracion: 2
     ponderacion: 10
     created_at: 2010-08-03 02:05:45
     updated_at: 2010-08-03 02:05:45
-  SubactividadProyecto_22: 
-    actividad_proyecto_id: ActividadProyecto_5
-    descripcion: |
-      Elaboración Contrato
-      
-    entregable: |
-      Elaboración Contrato
-      
+  SubactividadProyecto_62: 
+    actividad_proyecto_id: ActividadProyecto_11
+    descripcion: Elaboración Contrato
+    entregable: Elaboración Contrato
     fecha_inicio: 2010-07-05
     duracion: 1
     ponderacion: 10
     created_at: 2010-08-03 02:06:28
     updated_at: 2010-08-03 02:06:28
-  SubactividadProyecto_23: 
-    actividad_proyecto_id: ActividadProyecto_5
-    descripcion: |
-      Ejecución Física Contractual
-      
-    entregable: |
-      Ejecución Contractual
-      
-      
+  SubactividadProyecto_63: 
+    actividad_proyecto_id: ActividadProyecto_11
+    descripcion: Ejecución Física Contractual
+    entregable: Ejecución Contractual
     fecha_inicio: 2010-07-05
     duracion: 5
     ponderacion: 50
     created_at: 2010-08-03 02:07:09
     updated_at: 2010-08-03 02:07:09
-  SubactividadProyecto_24: 
-    actividad_proyecto_id: ActividadProyecto_6
+  SubactividadProyecto_64: 
+    actividad_proyecto_id: ActividadProyecto_12
     descripcion: >
       Gestionar  con la Secretaris de Gobierno
       - Dirección de Seguridad  Proyecto
-      Jovenes Conviven por Bogotà,  generar 
+      Jovenes Conviven por Bogotà,  generar
       Alianzas  Estratègicas   para faciliar
       el ingreso de los niños y jòvenes en
       condiciones  de vulnerabilidad  y alto
@@ -990,8 +1008,8 @@ SubactividadProyecto:
     ponderacion: 30
     created_at: 2010-08-03 02:11:32
     updated_at: 2010-08-03 02:11:32
-  SubactividadProyecto_25: 
-    actividad_proyecto_id: ActividadProyecto_6
+  SubactividadProyecto_65: 
+    actividad_proyecto_id: ActividadProyecto_12
     descripcion: Elaboración de Estudios Previos
     entregable: Estudios previos
     fecha_inicio: 2010-05-10
@@ -999,38 +1017,34 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:12:14
     updated_at: 2010-08-03 02:12:14
-  SubactividadProyecto_26: 
-    actividad_proyecto_id: ActividadProyecto_6
-    descripcion: |
-      Elaboraciön Contrato
-      
-    entregable: |
-      Elaboraciön Contrato
-      
+  SubactividadProyecto_66: 
+    actividad_proyecto_id: ActividadProyecto_12
+    descripcion: Elaboraciön Contrato
+    entregable: Elaboraciön Contrato
     fecha_inicio: 2010-07-05
     duracion: 5
     ponderacion: 10
     created_at: 2010-08-03 02:12:50
     updated_at: 2010-08-03 02:12:50
-  SubactividadProyecto_27: 
-    actividad_proyecto_id: ActividadProyecto_6
-    descripcion: Ejecución Física Contractual 
+  SubactividadProyecto_67: 
+    actividad_proyecto_id: ActividadProyecto_12
+    descripcion: Ejecución Física Contractual
     entregable: Ejecución Física Contractual
     fecha_inicio: 2010-07-19
     duracion: 5
     ponderacion: 50
     created_at: 2010-08-03 02:13:23
     updated_at: 2010-08-03 02:13:23
-  SubactividadProyecto_28: 
-    actividad_proyecto_id: ActividadProyecto_7
+  SubactividadProyecto_68: 
+    actividad_proyecto_id: ActividadProyecto_13
     descripcion: >
-      Gestionar  y generar  Alianzas 
+      Gestionar  y generar  Alianzas
       Estratègicas  con el IDRD para faciliar
       el ingreso de los niños y jòvenes en
       condiciones  de vulnerabilidad  y alto
       riesgo en Violencia y Delincuencia, a
       las Escuelas  de iniciación en el
-      deporte  del Distrito. 
+      deporte  del Distrito.
     entregable: >
       Número  de  Reuniones con el IDRD -
       Dirección de Deportes
@@ -1039,8 +1053,8 @@ SubactividadProyecto:
     ponderacion: 30
     created_at: 2010-08-03 02:16:05
     updated_at: 2010-08-03 02:16:05
-  SubactividadProyecto_29: 
-    actividad_proyecto_id: ActividadProyecto_7
+  SubactividadProyecto_69: 
+    actividad_proyecto_id: ActividadProyecto_13
     descripcion: Estudios previos
     entregable: estudios previos
     fecha_inicio: 2010-05-03
@@ -1048,8 +1062,8 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:16:45
     updated_at: 2010-08-03 02:16:45
-  SubactividadProyecto_30: 
-    actividad_proyecto_id: ActividadProyecto_7
+  SubactividadProyecto_70: 
+    actividad_proyecto_id: ActividadProyecto_13
     descripcion: Elaboracion contrato
     entregable: contrato
     fecha_inicio: 2010-06-07
@@ -1057,8 +1071,8 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:17:15
     updated_at: 2010-08-03 02:17:15
-  SubactividadProyecto_31: 
-    actividad_proyecto_id: ActividadProyecto_7
+  SubactividadProyecto_71: 
+    actividad_proyecto_id: ActividadProyecto_13
     descripcion: Ejecucion contractual
     entregable: Ejecucion contractual
     fecha_inicio: 2010-07-05
@@ -1066,22 +1080,21 @@ SubactividadProyecto:
     ponderacion: 50
     created_at: 2010-08-03 02:17:45
     updated_at: 2010-08-03 02:17:45
-  SubactividadProyecto_32: 
-    actividad_proyecto_id: ActividadProyecto_8
+  SubactividadProyecto_72: 
+    actividad_proyecto_id: ActividadProyecto_14
     descripcion: |
       Gestionar con la secretaria de educación - Dirección de Inclusión e integración de poblaciones para generar alianzas estategicas aunando recutrsos técnicoa administrativos y económicos para implementar redes de protección escolar. disminuir las acciones violentas al interior  y en los entornos escolares, mediante la gestiòn intersectorial para   apropiar estrategias protectoras con los niños  niñas y jòvenes y   la comunidad educativa: Uso saludable y creativo del tiempo libre, Juego Interactivo, Proyecto de vida
       Red social de protección escolar
-      
     entregable: >
       Número de reuniones con la secretaria
-      de educación 
+      de educación
     fecha_inicio: 2010-03-08
     duracion: 4
     ponderacion: 30
     created_at: 2010-08-03 02:21:55
     updated_at: 2010-08-03 02:21:55
-  SubactividadProyecto_33: 
-    actividad_proyecto_id: ActividadProyecto_8
+  SubactividadProyecto_73: 
+    actividad_proyecto_id: ActividadProyecto_14
     descripcion: Estudios previos
     entregable: Estudios previos
     fecha_inicio: 2010-06-07
@@ -1089,8 +1102,8 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:22:47
     updated_at: 2010-08-03 02:22:47
-  SubactividadProyecto_34: 
-    actividad_proyecto_id: ActividadProyecto_8
+  SubactividadProyecto_74: 
+    actividad_proyecto_id: ActividadProyecto_14
     descripcion: Elaboracion contrato
     entregable: Elaboracion contrato
     fecha_inicio: 2010-07-05
@@ -1098,8 +1111,8 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:23:31
     updated_at: 2010-08-03 02:23:31
-  SubactividadProyecto_35: 
-    actividad_proyecto_id: ActividadProyecto_8
+  SubactividadProyecto_75: 
+    actividad_proyecto_id: ActividadProyecto_14
     descripcion: Ejecucion contractual
     entregable: Ejecucion contractual
     fecha_inicio: 2010-07-05
@@ -1107,32 +1120,32 @@ SubactividadProyecto:
     ponderacion: 50
     created_at: 2010-08-03 02:24:07
     updated_at: 2010-08-03 02:24:07
-  SubactividadProyecto_36: 
-    actividad_proyecto_id: ActividadProyecto_9
-    descripcion: |
-      IMPRESOS Y PUBLICACIONES Impresión de volantes de las diferentes campañas
-      
+  SubactividadProyecto_76: 
+    actividad_proyecto_id: ActividadProyecto_15
+    descripcion: >
+      IMPRESOS Y PUBLICACIONES Impresión de
+      volantes de las diferentes campañas
     entregable: 
     fecha_inicio: 2010-06-07
     duracion: 3
     ponderacion: 20
     created_at: 2010-08-03 02:26:49
     updated_at: 2010-08-03 02:26:49
-  SubactividadProyecto_37: 
-    actividad_proyecto_id: ActividadProyecto_9
-    descripcion: |
-      Impresión de publicaciones del proyecto.
-      
-    entregable: |
-      Impresión de publicaciones del proyecto.
-      
+  SubactividadProyecto_77: 
+    actividad_proyecto_id: ActividadProyecto_15
+    descripcion: >
+      Impresión de publicaciones del
+      proyecto.
+    entregable: >
+      Impresión de publicaciones del
+      proyecto.
     fecha_inicio: 2010-08-09
     duracion: 3
     ponderacion: 20
     created_at: 2010-08-03 02:27:17
     updated_at: 2010-08-03 02:27:17
-  SubactividadProyecto_38: 
-    actividad_proyecto_id: ActividadProyecto_9
+  SubactividadProyecto_78: 
+    actividad_proyecto_id: ActividadProyecto_15
     descripcion: |
       CAMPAÑAS Cosquilleo
       Hurto a personas, vehículos y motos.
@@ -1146,8 +1159,8 @@ SubactividadProyecto:
     ponderacion: 60
     created_at: 2010-08-03 02:27:48
     updated_at: 2010-08-03 02:27:48
-  SubactividadProyecto_39: 
-    actividad_proyecto_id: ActividadProyecto_10
+  SubactividadProyecto_79: 
+    actividad_proyecto_id: ActividadProyecto_16
     descripcion: >
       Reunión de representes de medios
       comunitarios para definir el apoyo
@@ -1157,21 +1170,17 @@ SubactividadProyecto:
     ponderacion: 25
     created_at: 2010-08-03 02:30:09
     updated_at: 2010-08-03 02:30:09
-  SubactividadProyecto_40: 
-    actividad_proyecto_id: ActividadProyecto_10
-    descripcion: |
-      Elaboración de estudios previos
-      
-    entregable: |
-      Elaboración de estudios previos
-      
+  SubactividadProyecto_80: 
+    actividad_proyecto_id: ActividadProyecto_16
+    descripcion: Elaboración de estudios previos
+    entregable: Elaboración de estudios previos
     fecha_inicio: 2010-04-05
     duracion: 4
     ponderacion: 15
     created_at: 2010-08-03 02:31:06
     updated_at: 2010-08-03 02:31:06
-  SubactividadProyecto_41: 
-    actividad_proyecto_id: ActividadProyecto_10
+  SubactividadProyecto_81: 
+    actividad_proyecto_id: ActividadProyecto_16
     descripcion: suscripcion contrato
     entregable: 
     fecha_inicio: 2010-07-05
@@ -1179,8 +1188,8 @@ SubactividadProyecto:
     ponderacion: 10
     created_at: 2010-08-03 02:31:41
     updated_at: 2010-08-03 02:31:41
-  SubactividadProyecto_42: 
-    actividad_proyecto_id: ActividadProyecto_10
+  SubactividadProyecto_82: 
+    actividad_proyecto_id: ActividadProyecto_16
     descripcion: Ejecucion contrato
     entregable: 
     fecha_inicio: 2010-07-12
@@ -1188,3 +1197,61 @@ SubactividadProyecto:
     ponderacion: 50
     created_at: 2010-08-03 02:32:10
     updated_at: 2010-08-03 02:32:10
+  SubactividadProyecto_83: 
+    actividad_proyecto_id: ActividadProyecto_17
+    descripcion: Subactividad 1
+    entregable: 
+    fecha_inicio: 2010-02-08
+    duracion: 3
+    ponderacion: 50
+    created_at: 2010-08-09 15:29:33
+    updated_at: 2010-08-11 03:37:46
+  SubactividadProyecto_84: 
+    actividad_proyecto_id: ActividadProyecto_17
+    descripcion: Subactividad 2
+    entregable: 
+    fecha_inicio: 2010-10-04
+    duracion: 2
+    ponderacion: 30
+    created_at: 2010-08-09 15:29:57
+    updated_at: 2010-08-10 00:58:18
+  SubactividadProyecto_85: 
+    actividad_proyecto_id: ActividadProyecto_17
+    descripcion: Subactividad 3
+    entregable: 
+    fecha_inicio: 2010-09-20
+    duracion: 2
+    ponderacion: 20
+    created_at: 2010-08-09 15:30:41
+    updated_at: 2010-08-10 00:58:32
+SubactividadEjecucion: 
+  SubactividadEjecucion_1: 
+    subactividad_proyecto_id: SubactividadProyecto_83
+    mes: 1
+    descripcion: 
+    avance: 50
+    created_at: 2010-08-09 15:33:22
+    updated_at: 2010-08-09 15:33:22
+  SubactividadEjecucion_2: 
+    subactividad_proyecto_id: SubactividadProyecto_83
+    mes: 2
+    descripcion: 
+    avance: 50
+    created_at: 2010-09-09 15:33:44
+    updated_at: 2010-09-09 15:33:44
+  SubactividadEjecucion_3: 
+    subactividad_proyecto_id: SubactividadProyecto_84
+    mes: 1
+    descripcion: 
+    avance: 50
+    created_at: 2010-08-10 01:06:59
+    updated_at: 2010-08-10 01:06:59
+ActividadPoa: 
+  ActividadPoa_1: 
+    meta_poa_id: MetaPoa_1
+    proceso_id: Proceso_1
+    descripcion: Actividad 1
+    responsable: 
+    observaciones: 
+    created_at: 2010-08-16 18:20:51
+    updated_at: 2010-08-16 18:20:51
