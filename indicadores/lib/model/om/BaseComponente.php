@@ -20,6 +20,12 @@ abstract class BaseComponente extends BaseObject  implements Persistent {
 	protected $componente;
 
 	
+	protected $collActividads;
+
+	
+	protected $lastActividadCriteria = null;
+
+	
 	protected $collComponenteProyectos;
 
 	
@@ -177,6 +183,14 @@ abstract class BaseComponente extends BaseObject  implements Persistent {
 				}
 				$this->resetModified(); 			}
 
+			if ($this->collActividads !== null) {
+				foreach($this->collActividads as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collComponenteProyectos !== null) {
 				foreach($this->collComponenteProyectos as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -225,6 +239,14 @@ abstract class BaseComponente extends BaseObject  implements Persistent {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
+
+				if ($this->collActividads !== null) {
+					foreach($this->collActividads as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
 
 				if ($this->collComponenteProyectos !== null) {
 					foreach($this->collComponenteProyectos as $referrerFK) {
@@ -356,6 +378,10 @@ abstract class BaseComponente extends BaseObject  implements Persistent {
 		if ($deepCopy) {
 									$copyObj->setNew(false);
 
+			foreach($this->getActividads() as $relObj) {
+				$copyObj->addActividad($relObj->copy($deepCopy));
+			}
+
 			foreach($this->getComponenteProyectos() as $relObj) {
 				$copyObj->addComponenteProyecto($relObj->copy($deepCopy));
 			}
@@ -383,6 +409,321 @@ abstract class BaseComponente extends BaseObject  implements Persistent {
 			self::$peer = new ComponentePeer();
 		}
 		return self::$peer;
+	}
+
+	
+	public function initActividads()
+	{
+		if ($this->collActividads === null) {
+			$this->collActividads = array();
+		}
+	}
+
+	
+	public function getActividads($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+			   $this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				ActividadPeer::addSelectColumns($criteria);
+				$this->collActividads = ActividadPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				ActividadPeer::addSelectColumns($criteria);
+				if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+					$this->collActividads = ActividadPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+		return $this->collActividads;
+	}
+
+	
+	public function countActividads($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+		return ActividadPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addActividad(Actividad $l)
+	{
+		$this->collActividads[] = $l;
+		$l->setComponente($this);
+	}
+
+
+	
+	public function getActividadsJoinProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
+	}
+
+
+	
+	public function getActividadsJoinTipoGasto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinTipoGasto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinTipoGasto($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
+	}
+
+
+	
+	public function getActividadsJoinComponenteSector($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinComponenteSector($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinComponenteSector($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
+	}
+
+
+	
+	public function getActividadsJoinConceptoGasto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinConceptoGasto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinConceptoGasto($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
+	}
+
+
+	
+	public function getActividadsJoinMetaProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinMetaProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinMetaProyecto($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
+	}
+
+
+	
+	public function getActividadsJoinDependencia($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinDependencia($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinDependencia($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
+	}
+
+
+	
+	public function getActividadsJoinContrato($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividads === null) {
+			if ($this->isNew()) {
+				$this->collActividads = array();
+			} else {
+
+				$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+				$this->collActividads = ActividadPeer::doSelectJoinContrato($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->getId());
+
+			if (!isset($this->lastActividadCriteria) || !$this->lastActividadCriteria->equals($criteria)) {
+				$this->collActividads = ActividadPeer::doSelectJoinContrato($criteria, $con);
+			}
+		}
+		$this->lastActividadCriteria = $criteria;
+
+		return $this->collActividads;
 	}
 
 	

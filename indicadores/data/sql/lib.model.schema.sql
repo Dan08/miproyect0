@@ -569,14 +569,18 @@ CREATE TABLE `actividad`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`proyecto_id` INTEGER,
 	`descripcion` TEXT,
-	`tipo_gasto` VARCHAR(20),
-	`componente_sector` VARCHAR(255),
-	`concepto_gasto` VARCHAR(255),
+	`tipo_gasto_id` INTEGER,
+	`componente_sector_id` INTEGER,
+	`concepto_gasto_id` INTEGER,
+	`cod_app_fvs` VARCHAR(30),
+	`meta_proyecto_id` INTEGER,
+	`inversion_recurrente` INTEGER,
 	`mes_etapa_contractual` VARCHAR(20),
-	`mes_ejecucion` VARCHAR(20),
+	`mes_inicio_ejecucion` VARCHAR(20),
 	`reservas` FLOAT,
-	`area_responsable` VARCHAR(100),
-	`valor_proceso` FLOAT,
+	`area_responsable` INTEGER,
+	`componente_inversion_id` INTEGER,
+	`plurianual_programado` FLOAT,
 	`numero_solicitud` VARCHAR(20),
 	`fecha_solicitud` DATE,
 	`fecha_contrato` DATE,
@@ -585,8 +589,6 @@ CREATE TABLE `actividad`
 	`fecha_liquidacion` DATE,
 	`plazo_meses` INTEGER,
 	`contrato_id` INTEGER,
-	`clase_contrato` VARCHAR(80),
-	`estado` VARCHAR(80),
 	`existencia_contrato_numero` VARCHAR(20),
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
@@ -596,8 +598,38 @@ CREATE TABLE `actividad`
 		FOREIGN KEY (`proyecto_id`)
 		REFERENCES `proyecto` (`id`)
 		ON DELETE SET NULL,
-	INDEX `actividad_FI_2` (`contrato_id`),
+	INDEX `actividad_FI_2` (`tipo_gasto_id`),
 	CONSTRAINT `actividad_FK_2`
+		FOREIGN KEY (`tipo_gasto_id`)
+		REFERENCES `tipo_gasto` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_FI_3` (`componente_sector_id`),
+	CONSTRAINT `actividad_FK_3`
+		FOREIGN KEY (`componente_sector_id`)
+		REFERENCES `componente_sector` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_FI_4` (`concepto_gasto_id`),
+	CONSTRAINT `actividad_FK_4`
+		FOREIGN KEY (`concepto_gasto_id`)
+		REFERENCES `concepto_gasto` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_FI_5` (`meta_proyecto_id`),
+	CONSTRAINT `actividad_FK_5`
+		FOREIGN KEY (`meta_proyecto_id`)
+		REFERENCES `meta_proyecto` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_FI_6` (`area_responsable`),
+	CONSTRAINT `actividad_FK_6`
+		FOREIGN KEY (`area_responsable`)
+		REFERENCES `dependencia` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_FI_7` (`componente_inversion_id`),
+	CONSTRAINT `actividad_FK_7`
+		FOREIGN KEY (`componente_inversion_id`)
+		REFERENCES `componente` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_FI_8` (`contrato_id`),
+	CONSTRAINT `actividad_FK_8`
 		FOREIGN KEY (`contrato_id`)
 		REFERENCES `contrato` (`id`)
 		ON DELETE SET NULL
@@ -860,8 +892,59 @@ CREATE TABLE `contrato`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`numero` VARCHAR(10),
-	`id_contratista` VARCHAR(30),
 	`contratista` VARCHAR(255),
+	`fecha_firma` DATE,
+	`fecha_acta_inicio` DATE,
+	`fecha_terminacion` DATE,
+	`fecha_liquidacion` DATE,
+	`modalidad_contratacion` VARCHAR(255),
+	`cantidad` FLOAT,
+	`unidad_medida` VARCHAR(100),
+	`clase_contrato` VARCHAR(100),
+	`plazo` INTEGER,
+	`estado` VARCHAR(80),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- tipo_gasto
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tipo_gasto`;
+
+
+CREATE TABLE `tipo_gasto`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`tipo_gasto` VARCHAR(255),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- componente_sector
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `componente_sector`;
+
+
+CREATE TABLE `componente_sector`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`componente_sector` VARCHAR(255),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- concepto_gasto
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `concepto_gasto`;
+
+
+CREATE TABLE `concepto_gasto`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`concepto_gasto` VARCHAR(255),
 	PRIMARY KEY (`id`)
 )Type=InnoDB;
 

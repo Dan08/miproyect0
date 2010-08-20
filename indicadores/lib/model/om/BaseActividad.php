@@ -21,15 +21,27 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
-	protected $tipo_gasto;
+	protected $tipo_gasto_id;
 
 
 	
-	protected $componente_sector;
+	protected $componente_sector_id;
 
 
 	
-	protected $concepto_gasto;
+	protected $concepto_gasto_id;
+
+
+	
+	protected $cod_app_fvs;
+
+
+	
+	protected $meta_proyecto_id;
+
+
+	
+	protected $inversion_recurrente;
 
 
 	
@@ -37,7 +49,7 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
-	protected $mes_ejecucion;
+	protected $mes_inicio_ejecucion;
 
 
 	
@@ -49,7 +61,11 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
-	protected $valor_proceso;
+	protected $componente_inversion_id;
+
+
+	
+	protected $plurianual_programado;
 
 
 	
@@ -85,14 +101,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
-	protected $clase_contrato;
-
-
-	
-	protected $estado;
-
-
-	
 	protected $existencia_contrato_numero;
 
 
@@ -105,6 +113,24 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	
 	protected $aProyecto;
+
+	
+	protected $aTipoGasto;
+
+	
+	protected $aComponenteSector;
+
+	
+	protected $aConceptoGasto;
+
+	
+	protected $aMetaProyecto;
+
+	
+	protected $aDependencia;
+
+	
+	protected $aComponente;
 
 	
 	protected $aContrato;
@@ -167,24 +193,45 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getTipoGasto()
+	public function getTipoGastoId()
 	{
 
-		return $this->tipo_gasto;
+		return $this->tipo_gasto_id;
 	}
 
 	
-	public function getComponenteSector()
+	public function getComponenteSectorId()
 	{
 
-		return $this->componente_sector;
+		return $this->componente_sector_id;
 	}
 
 	
-	public function getConceptoGasto()
+	public function getConceptoGastoId()
 	{
 
-		return $this->concepto_gasto;
+		return $this->concepto_gasto_id;
+	}
+
+	
+	public function getCodAppFvs()
+	{
+
+		return $this->cod_app_fvs;
+	}
+
+	
+	public function getMetaProyectoId()
+	{
+
+		return $this->meta_proyecto_id;
+	}
+
+	
+	public function getInversionRecurrente()
+	{
+
+		return $this->inversion_recurrente;
 	}
 
 	
@@ -195,10 +242,10 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getMesEjecucion()
+	public function getMesInicioEjecucion()
 	{
 
-		return $this->mes_ejecucion;
+		return $this->mes_inicio_ejecucion;
 	}
 
 	
@@ -216,10 +263,17 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getValorProceso()
+	public function getComponenteInversionId()
 	{
 
-		return $this->valor_proceso;
+		return $this->componente_inversion_id;
+	}
+
+	
+	public function getPlurianualProgramado()
+	{
+
+		return $this->plurianual_programado;
 	}
 
 	
@@ -354,20 +408,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getClaseContrato()
-	{
-
-		return $this->clase_contrato;
-	}
-
-	
-	public function getEstado()
-	{
-
-		return $this->estado;
-	}
-
-	
 	public function getExistenciaContratoNumero()
 	{
 
@@ -465,44 +505,98 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setTipoGasto($v)
+	public function setTipoGastoId($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
-		if ($this->tipo_gasto !== $v) {
-			$this->tipo_gasto = $v;
-			$this->modifiedColumns[] = ActividadPeer::TIPO_GASTO;
+		if ($this->tipo_gasto_id !== $v) {
+			$this->tipo_gasto_id = $v;
+			$this->modifiedColumns[] = ActividadPeer::TIPO_GASTO_ID;
+		}
+
+		if ($this->aTipoGasto !== null && $this->aTipoGasto->getId() !== $v) {
+			$this->aTipoGasto = null;
 		}
 
 	} 
 	
-	public function setComponenteSector($v)
+	public function setComponenteSectorId($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
-		if ($this->componente_sector !== $v) {
-			$this->componente_sector = $v;
-			$this->modifiedColumns[] = ActividadPeer::COMPONENTE_SECTOR;
+		if ($this->componente_sector_id !== $v) {
+			$this->componente_sector_id = $v;
+			$this->modifiedColumns[] = ActividadPeer::COMPONENTE_SECTOR_ID;
+		}
+
+		if ($this->aComponenteSector !== null && $this->aComponenteSector->getId() !== $v) {
+			$this->aComponenteSector = null;
 		}
 
 	} 
 	
-	public function setConceptoGasto($v)
+	public function setConceptoGastoId($v)
+	{
+
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->concepto_gasto_id !== $v) {
+			$this->concepto_gasto_id = $v;
+			$this->modifiedColumns[] = ActividadPeer::CONCEPTO_GASTO_ID;
+		}
+
+		if ($this->aConceptoGasto !== null && $this->aConceptoGasto->getId() !== $v) {
+			$this->aConceptoGasto = null;
+		}
+
+	} 
+	
+	public function setCodAppFvs($v)
 	{
 
 						if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
-		if ($this->concepto_gasto !== $v) {
-			$this->concepto_gasto = $v;
-			$this->modifiedColumns[] = ActividadPeer::CONCEPTO_GASTO;
+		if ($this->cod_app_fvs !== $v) {
+			$this->cod_app_fvs = $v;
+			$this->modifiedColumns[] = ActividadPeer::COD_APP_FVS;
+		}
+
+	} 
+	
+	public function setMetaProyectoId($v)
+	{
+
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->meta_proyecto_id !== $v) {
+			$this->meta_proyecto_id = $v;
+			$this->modifiedColumns[] = ActividadPeer::META_PROYECTO_ID;
+		}
+
+		if ($this->aMetaProyecto !== null && $this->aMetaProyecto->getId() !== $v) {
+			$this->aMetaProyecto = null;
+		}
+
+	} 
+	
+	public function setInversionRecurrente($v)
+	{
+
+		if ($this->inversion_recurrente !== $v) {
+			$this->inversion_recurrente = $v;
+			$this->modifiedColumns[] = ActividadPeer::INVERSION_RECURRENTE;
 		}
 
 	} 
@@ -521,16 +615,16 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setMesEjecucion($v)
+	public function setMesInicioEjecucion($v)
 	{
 
 						if ($v !== null && !is_string($v)) {
 			$v = (string) $v; 
 		}
 
-		if ($this->mes_ejecucion !== $v) {
-			$this->mes_ejecucion = $v;
-			$this->modifiedColumns[] = ActividadPeer::MES_EJECUCION;
+		if ($this->mes_inicio_ejecucion !== $v) {
+			$this->mes_inicio_ejecucion = $v;
+			$this->modifiedColumns[] = ActividadPeer::MES_INICIO_EJECUCION;
 		}
 
 	} 
@@ -548,8 +642,8 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	public function setAreaResponsable($v)
 	{
 
-						if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
 		if ($this->area_responsable !== $v) {
@@ -557,14 +651,36 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ActividadPeer::AREA_RESPONSABLE;
 		}
 
+		if ($this->aDependencia !== null && $this->aDependencia->getId() !== $v) {
+			$this->aDependencia = null;
+		}
+
 	} 
 	
-	public function setValorProceso($v)
+	public function setComponenteInversionId($v)
 	{
 
-		if ($this->valor_proceso !== $v) {
-			$this->valor_proceso = $v;
-			$this->modifiedColumns[] = ActividadPeer::VALOR_PROCESO;
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->componente_inversion_id !== $v) {
+			$this->componente_inversion_id = $v;
+			$this->modifiedColumns[] = ActividadPeer::COMPONENTE_INVERSION_ID;
+		}
+
+		if ($this->aComponente !== null && $this->aComponente->getId() !== $v) {
+			$this->aComponente = null;
+		}
+
+	} 
+	
+	public function setPlurianualProgramado($v)
+	{
+
+		if ($this->plurianual_programado !== $v) {
+			$this->plurianual_programado = $v;
+			$this->modifiedColumns[] = ActividadPeer::PLURIANUAL_PROGRAMADO;
 		}
 
 	} 
@@ -700,34 +816,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setClaseContrato($v)
-	{
-
-						if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
-		}
-
-		if ($this->clase_contrato !== $v) {
-			$this->clase_contrato = $v;
-			$this->modifiedColumns[] = ActividadPeer::CLASE_CONTRATO;
-		}
-
-	} 
-	
-	public function setEstado($v)
-	{
-
-						if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
-		}
-
-		if ($this->estado !== $v) {
-			$this->estado = $v;
-			$this->modifiedColumns[] = ActividadPeer::ESTADO;
-		}
-
-	} 
-	
 	public function setExistenciaContratoNumero($v)
 	{
 
@@ -786,53 +874,57 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 			$this->descripcion = $rs->getString($startcol + 2);
 
-			$this->tipo_gasto = $rs->getString($startcol + 3);
+			$this->tipo_gasto_id = $rs->getInt($startcol + 3);
 
-			$this->componente_sector = $rs->getString($startcol + 4);
+			$this->componente_sector_id = $rs->getInt($startcol + 4);
 
-			$this->concepto_gasto = $rs->getString($startcol + 5);
+			$this->concepto_gasto_id = $rs->getInt($startcol + 5);
 
-			$this->mes_etapa_contractual = $rs->getString($startcol + 6);
+			$this->cod_app_fvs = $rs->getString($startcol + 6);
 
-			$this->mes_ejecucion = $rs->getString($startcol + 7);
+			$this->meta_proyecto_id = $rs->getInt($startcol + 7);
 
-			$this->reservas = $rs->getFloat($startcol + 8);
+			$this->inversion_recurrente = $rs->getBoolean($startcol + 8);
 
-			$this->area_responsable = $rs->getString($startcol + 9);
+			$this->mes_etapa_contractual = $rs->getString($startcol + 9);
 
-			$this->valor_proceso = $rs->getFloat($startcol + 10);
+			$this->mes_inicio_ejecucion = $rs->getString($startcol + 10);
 
-			$this->numero_solicitud = $rs->getString($startcol + 11);
+			$this->reservas = $rs->getFloat($startcol + 11);
 
-			$this->fecha_solicitud = $rs->getDate($startcol + 12, null);
+			$this->area_responsable = $rs->getInt($startcol + 12);
 
-			$this->fecha_contrato = $rs->getDate($startcol + 13, null);
+			$this->componente_inversion_id = $rs->getInt($startcol + 13);
 
-			$this->fecha_acta_inicio = $rs->getDate($startcol + 14, null);
+			$this->plurianual_programado = $rs->getFloat($startcol + 14);
 
-			$this->fecha_terminacion = $rs->getDate($startcol + 15, null);
+			$this->numero_solicitud = $rs->getString($startcol + 15);
 
-			$this->fecha_liquidacion = $rs->getDate($startcol + 16, null);
+			$this->fecha_solicitud = $rs->getDate($startcol + 16, null);
 
-			$this->plazo_meses = $rs->getInt($startcol + 17);
+			$this->fecha_contrato = $rs->getDate($startcol + 17, null);
 
-			$this->contrato_id = $rs->getInt($startcol + 18);
+			$this->fecha_acta_inicio = $rs->getDate($startcol + 18, null);
 
-			$this->clase_contrato = $rs->getString($startcol + 19);
+			$this->fecha_terminacion = $rs->getDate($startcol + 19, null);
 
-			$this->estado = $rs->getString($startcol + 20);
+			$this->fecha_liquidacion = $rs->getDate($startcol + 20, null);
 
-			$this->existencia_contrato_numero = $rs->getString($startcol + 21);
+			$this->plazo_meses = $rs->getInt($startcol + 21);
 
-			$this->created_at = $rs->getTimestamp($startcol + 22, null);
+			$this->contrato_id = $rs->getInt($startcol + 22);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 23, null);
+			$this->existencia_contrato_numero = $rs->getString($startcol + 23);
+
+			$this->created_at = $rs->getTimestamp($startcol + 24, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 25, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 24; 
+						return $startcol + 26; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Actividad object", $e);
 		}
@@ -905,6 +997,48 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 					$affectedRows += $this->aProyecto->save($con);
 				}
 				$this->setProyecto($this->aProyecto);
+			}
+
+			if ($this->aTipoGasto !== null) {
+				if ($this->aTipoGasto->isModified()) {
+					$affectedRows += $this->aTipoGasto->save($con);
+				}
+				$this->setTipoGasto($this->aTipoGasto);
+			}
+
+			if ($this->aComponenteSector !== null) {
+				if ($this->aComponenteSector->isModified()) {
+					$affectedRows += $this->aComponenteSector->save($con);
+				}
+				$this->setComponenteSector($this->aComponenteSector);
+			}
+
+			if ($this->aConceptoGasto !== null) {
+				if ($this->aConceptoGasto->isModified()) {
+					$affectedRows += $this->aConceptoGasto->save($con);
+				}
+				$this->setConceptoGasto($this->aConceptoGasto);
+			}
+
+			if ($this->aMetaProyecto !== null) {
+				if ($this->aMetaProyecto->isModified()) {
+					$affectedRows += $this->aMetaProyecto->save($con);
+				}
+				$this->setMetaProyecto($this->aMetaProyecto);
+			}
+
+			if ($this->aDependencia !== null) {
+				if ($this->aDependencia->isModified()) {
+					$affectedRows += $this->aDependencia->save($con);
+				}
+				$this->setDependencia($this->aDependencia);
+			}
+
+			if ($this->aComponente !== null) {
+				if ($this->aComponente->isModified()) {
+					$affectedRows += $this->aComponente->save($con);
+				}
+				$this->setComponente($this->aComponente);
 			}
 
 			if ($this->aContrato !== null) {
@@ -1009,6 +1143,42 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->aTipoGasto !== null) {
+				if (!$this->aTipoGasto->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aTipoGasto->getValidationFailures());
+				}
+			}
+
+			if ($this->aComponenteSector !== null) {
+				if (!$this->aComponenteSector->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aComponenteSector->getValidationFailures());
+				}
+			}
+
+			if ($this->aConceptoGasto !== null) {
+				if (!$this->aConceptoGasto->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aConceptoGasto->getValidationFailures());
+				}
+			}
+
+			if ($this->aMetaProyecto !== null) {
+				if (!$this->aMetaProyecto->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aMetaProyecto->getValidationFailures());
+				}
+			}
+
+			if ($this->aDependencia !== null) {
+				if (!$this->aDependencia->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aDependencia->getValidationFailures());
+				}
+			}
+
+			if ($this->aComponente !== null) {
+				if (!$this->aComponente->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aComponente->getValidationFailures());
+				}
+			}
+
 			if ($this->aContrato !== null) {
 				if (!$this->aContrato->validate($columns)) {
 					$failureMap = array_merge($failureMap, $this->aContrato->getValidationFailures());
@@ -1089,66 +1259,72 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				return $this->getDescripcion();
 				break;
 			case 3:
-				return $this->getTipoGasto();
+				return $this->getTipoGastoId();
 				break;
 			case 4:
-				return $this->getComponenteSector();
+				return $this->getComponenteSectorId();
 				break;
 			case 5:
-				return $this->getConceptoGasto();
+				return $this->getConceptoGastoId();
 				break;
 			case 6:
-				return $this->getMesEtapaContractual();
+				return $this->getCodAppFvs();
 				break;
 			case 7:
-				return $this->getMesEjecucion();
+				return $this->getMetaProyectoId();
 				break;
 			case 8:
-				return $this->getReservas();
+				return $this->getInversionRecurrente();
 				break;
 			case 9:
-				return $this->getAreaResponsable();
+				return $this->getMesEtapaContractual();
 				break;
 			case 10:
-				return $this->getValorProceso();
+				return $this->getMesInicioEjecucion();
 				break;
 			case 11:
-				return $this->getNumeroSolicitud();
+				return $this->getReservas();
 				break;
 			case 12:
-				return $this->getFechaSolicitud();
+				return $this->getAreaResponsable();
 				break;
 			case 13:
-				return $this->getFechaContrato();
+				return $this->getComponenteInversionId();
 				break;
 			case 14:
-				return $this->getFechaActaInicio();
+				return $this->getPlurianualProgramado();
 				break;
 			case 15:
-				return $this->getFechaTerminacion();
+				return $this->getNumeroSolicitud();
 				break;
 			case 16:
-				return $this->getFechaLiquidacion();
+				return $this->getFechaSolicitud();
 				break;
 			case 17:
-				return $this->getPlazoMeses();
+				return $this->getFechaContrato();
 				break;
 			case 18:
-				return $this->getContratoId();
+				return $this->getFechaActaInicio();
 				break;
 			case 19:
-				return $this->getClaseContrato();
+				return $this->getFechaTerminacion();
 				break;
 			case 20:
-				return $this->getEstado();
+				return $this->getFechaLiquidacion();
 				break;
 			case 21:
-				return $this->getExistenciaContratoNumero();
+				return $this->getPlazoMeses();
 				break;
 			case 22:
-				return $this->getCreatedAt();
+				return $this->getContratoId();
 				break;
 			case 23:
+				return $this->getExistenciaContratoNumero();
+				break;
+			case 24:
+				return $this->getCreatedAt();
+				break;
+			case 25:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -1164,27 +1340,29 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getProyectoId(),
 			$keys[2] => $this->getDescripcion(),
-			$keys[3] => $this->getTipoGasto(),
-			$keys[4] => $this->getComponenteSector(),
-			$keys[5] => $this->getConceptoGasto(),
-			$keys[6] => $this->getMesEtapaContractual(),
-			$keys[7] => $this->getMesEjecucion(),
-			$keys[8] => $this->getReservas(),
-			$keys[9] => $this->getAreaResponsable(),
-			$keys[10] => $this->getValorProceso(),
-			$keys[11] => $this->getNumeroSolicitud(),
-			$keys[12] => $this->getFechaSolicitud(),
-			$keys[13] => $this->getFechaContrato(),
-			$keys[14] => $this->getFechaActaInicio(),
-			$keys[15] => $this->getFechaTerminacion(),
-			$keys[16] => $this->getFechaLiquidacion(),
-			$keys[17] => $this->getPlazoMeses(),
-			$keys[18] => $this->getContratoId(),
-			$keys[19] => $this->getClaseContrato(),
-			$keys[20] => $this->getEstado(),
-			$keys[21] => $this->getExistenciaContratoNumero(),
-			$keys[22] => $this->getCreatedAt(),
-			$keys[23] => $this->getUpdatedAt(),
+			$keys[3] => $this->getTipoGastoId(),
+			$keys[4] => $this->getComponenteSectorId(),
+			$keys[5] => $this->getConceptoGastoId(),
+			$keys[6] => $this->getCodAppFvs(),
+			$keys[7] => $this->getMetaProyectoId(),
+			$keys[8] => $this->getInversionRecurrente(),
+			$keys[9] => $this->getMesEtapaContractual(),
+			$keys[10] => $this->getMesInicioEjecucion(),
+			$keys[11] => $this->getReservas(),
+			$keys[12] => $this->getAreaResponsable(),
+			$keys[13] => $this->getComponenteInversionId(),
+			$keys[14] => $this->getPlurianualProgramado(),
+			$keys[15] => $this->getNumeroSolicitud(),
+			$keys[16] => $this->getFechaSolicitud(),
+			$keys[17] => $this->getFechaContrato(),
+			$keys[18] => $this->getFechaActaInicio(),
+			$keys[19] => $this->getFechaTerminacion(),
+			$keys[20] => $this->getFechaLiquidacion(),
+			$keys[21] => $this->getPlazoMeses(),
+			$keys[22] => $this->getContratoId(),
+			$keys[23] => $this->getExistenciaContratoNumero(),
+			$keys[24] => $this->getCreatedAt(),
+			$keys[25] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -1210,66 +1388,72 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				$this->setDescripcion($value);
 				break;
 			case 3:
-				$this->setTipoGasto($value);
+				$this->setTipoGastoId($value);
 				break;
 			case 4:
-				$this->setComponenteSector($value);
+				$this->setComponenteSectorId($value);
 				break;
 			case 5:
-				$this->setConceptoGasto($value);
+				$this->setConceptoGastoId($value);
 				break;
 			case 6:
-				$this->setMesEtapaContractual($value);
+				$this->setCodAppFvs($value);
 				break;
 			case 7:
-				$this->setMesEjecucion($value);
+				$this->setMetaProyectoId($value);
 				break;
 			case 8:
-				$this->setReservas($value);
+				$this->setInversionRecurrente($value);
 				break;
 			case 9:
-				$this->setAreaResponsable($value);
+				$this->setMesEtapaContractual($value);
 				break;
 			case 10:
-				$this->setValorProceso($value);
+				$this->setMesInicioEjecucion($value);
 				break;
 			case 11:
-				$this->setNumeroSolicitud($value);
+				$this->setReservas($value);
 				break;
 			case 12:
-				$this->setFechaSolicitud($value);
+				$this->setAreaResponsable($value);
 				break;
 			case 13:
-				$this->setFechaContrato($value);
+				$this->setComponenteInversionId($value);
 				break;
 			case 14:
-				$this->setFechaActaInicio($value);
+				$this->setPlurianualProgramado($value);
 				break;
 			case 15:
-				$this->setFechaTerminacion($value);
+				$this->setNumeroSolicitud($value);
 				break;
 			case 16:
-				$this->setFechaLiquidacion($value);
+				$this->setFechaSolicitud($value);
 				break;
 			case 17:
-				$this->setPlazoMeses($value);
+				$this->setFechaContrato($value);
 				break;
 			case 18:
-				$this->setContratoId($value);
+				$this->setFechaActaInicio($value);
 				break;
 			case 19:
-				$this->setClaseContrato($value);
+				$this->setFechaTerminacion($value);
 				break;
 			case 20:
-				$this->setEstado($value);
+				$this->setFechaLiquidacion($value);
 				break;
 			case 21:
-				$this->setExistenciaContratoNumero($value);
+				$this->setPlazoMeses($value);
 				break;
 			case 22:
-				$this->setCreatedAt($value);
+				$this->setContratoId($value);
 				break;
 			case 23:
+				$this->setExistenciaContratoNumero($value);
+				break;
+			case 24:
+				$this->setCreatedAt($value);
+				break;
+			case 25:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -1282,27 +1466,29 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setProyectoId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setDescripcion($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setTipoGasto($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setComponenteSector($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setConceptoGasto($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setMesEtapaContractual($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setMesEjecucion($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setReservas($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setAreaResponsable($arr[$keys[9]]);
-		if (array_key_exists($keys[10], $arr)) $this->setValorProceso($arr[$keys[10]]);
-		if (array_key_exists($keys[11], $arr)) $this->setNumeroSolicitud($arr[$keys[11]]);
-		if (array_key_exists($keys[12], $arr)) $this->setFechaSolicitud($arr[$keys[12]]);
-		if (array_key_exists($keys[13], $arr)) $this->setFechaContrato($arr[$keys[13]]);
-		if (array_key_exists($keys[14], $arr)) $this->setFechaActaInicio($arr[$keys[14]]);
-		if (array_key_exists($keys[15], $arr)) $this->setFechaTerminacion($arr[$keys[15]]);
-		if (array_key_exists($keys[16], $arr)) $this->setFechaLiquidacion($arr[$keys[16]]);
-		if (array_key_exists($keys[17], $arr)) $this->setPlazoMeses($arr[$keys[17]]);
-		if (array_key_exists($keys[18], $arr)) $this->setContratoId($arr[$keys[18]]);
-		if (array_key_exists($keys[19], $arr)) $this->setClaseContrato($arr[$keys[19]]);
-		if (array_key_exists($keys[20], $arr)) $this->setEstado($arr[$keys[20]]);
-		if (array_key_exists($keys[21], $arr)) $this->setExistenciaContratoNumero($arr[$keys[21]]);
-		if (array_key_exists($keys[22], $arr)) $this->setCreatedAt($arr[$keys[22]]);
-		if (array_key_exists($keys[23], $arr)) $this->setUpdatedAt($arr[$keys[23]]);
+		if (array_key_exists($keys[3], $arr)) $this->setTipoGastoId($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setComponenteSectorId($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setConceptoGastoId($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setCodAppFvs($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setMetaProyectoId($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setInversionRecurrente($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setMesEtapaContractual($arr[$keys[9]]);
+		if (array_key_exists($keys[10], $arr)) $this->setMesInicioEjecucion($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setReservas($arr[$keys[11]]);
+		if (array_key_exists($keys[12], $arr)) $this->setAreaResponsable($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setComponenteInversionId($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setPlurianualProgramado($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setNumeroSolicitud($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setFechaSolicitud($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setFechaContrato($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setFechaActaInicio($arr[$keys[18]]);
+		if (array_key_exists($keys[19], $arr)) $this->setFechaTerminacion($arr[$keys[19]]);
+		if (array_key_exists($keys[20], $arr)) $this->setFechaLiquidacion($arr[$keys[20]]);
+		if (array_key_exists($keys[21], $arr)) $this->setPlazoMeses($arr[$keys[21]]);
+		if (array_key_exists($keys[22], $arr)) $this->setContratoId($arr[$keys[22]]);
+		if (array_key_exists($keys[23], $arr)) $this->setExistenciaContratoNumero($arr[$keys[23]]);
+		if (array_key_exists($keys[24], $arr)) $this->setCreatedAt($arr[$keys[24]]);
+		if (array_key_exists($keys[25], $arr)) $this->setUpdatedAt($arr[$keys[25]]);
 	}
 
 	
@@ -1313,14 +1499,18 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(ActividadPeer::ID)) $criteria->add(ActividadPeer::ID, $this->id);
 		if ($this->isColumnModified(ActividadPeer::PROYECTO_ID)) $criteria->add(ActividadPeer::PROYECTO_ID, $this->proyecto_id);
 		if ($this->isColumnModified(ActividadPeer::DESCRIPCION)) $criteria->add(ActividadPeer::DESCRIPCION, $this->descripcion);
-		if ($this->isColumnModified(ActividadPeer::TIPO_GASTO)) $criteria->add(ActividadPeer::TIPO_GASTO, $this->tipo_gasto);
-		if ($this->isColumnModified(ActividadPeer::COMPONENTE_SECTOR)) $criteria->add(ActividadPeer::COMPONENTE_SECTOR, $this->componente_sector);
-		if ($this->isColumnModified(ActividadPeer::CONCEPTO_GASTO)) $criteria->add(ActividadPeer::CONCEPTO_GASTO, $this->concepto_gasto);
+		if ($this->isColumnModified(ActividadPeer::TIPO_GASTO_ID)) $criteria->add(ActividadPeer::TIPO_GASTO_ID, $this->tipo_gasto_id);
+		if ($this->isColumnModified(ActividadPeer::COMPONENTE_SECTOR_ID)) $criteria->add(ActividadPeer::COMPONENTE_SECTOR_ID, $this->componente_sector_id);
+		if ($this->isColumnModified(ActividadPeer::CONCEPTO_GASTO_ID)) $criteria->add(ActividadPeer::CONCEPTO_GASTO_ID, $this->concepto_gasto_id);
+		if ($this->isColumnModified(ActividadPeer::COD_APP_FVS)) $criteria->add(ActividadPeer::COD_APP_FVS, $this->cod_app_fvs);
+		if ($this->isColumnModified(ActividadPeer::META_PROYECTO_ID)) $criteria->add(ActividadPeer::META_PROYECTO_ID, $this->meta_proyecto_id);
+		if ($this->isColumnModified(ActividadPeer::INVERSION_RECURRENTE)) $criteria->add(ActividadPeer::INVERSION_RECURRENTE, $this->inversion_recurrente);
 		if ($this->isColumnModified(ActividadPeer::MES_ETAPA_CONTRACTUAL)) $criteria->add(ActividadPeer::MES_ETAPA_CONTRACTUAL, $this->mes_etapa_contractual);
-		if ($this->isColumnModified(ActividadPeer::MES_EJECUCION)) $criteria->add(ActividadPeer::MES_EJECUCION, $this->mes_ejecucion);
+		if ($this->isColumnModified(ActividadPeer::MES_INICIO_EJECUCION)) $criteria->add(ActividadPeer::MES_INICIO_EJECUCION, $this->mes_inicio_ejecucion);
 		if ($this->isColumnModified(ActividadPeer::RESERVAS)) $criteria->add(ActividadPeer::RESERVAS, $this->reservas);
 		if ($this->isColumnModified(ActividadPeer::AREA_RESPONSABLE)) $criteria->add(ActividadPeer::AREA_RESPONSABLE, $this->area_responsable);
-		if ($this->isColumnModified(ActividadPeer::VALOR_PROCESO)) $criteria->add(ActividadPeer::VALOR_PROCESO, $this->valor_proceso);
+		if ($this->isColumnModified(ActividadPeer::COMPONENTE_INVERSION_ID)) $criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->componente_inversion_id);
+		if ($this->isColumnModified(ActividadPeer::PLURIANUAL_PROGRAMADO)) $criteria->add(ActividadPeer::PLURIANUAL_PROGRAMADO, $this->plurianual_programado);
 		if ($this->isColumnModified(ActividadPeer::NUMERO_SOLICITUD)) $criteria->add(ActividadPeer::NUMERO_SOLICITUD, $this->numero_solicitud);
 		if ($this->isColumnModified(ActividadPeer::FECHA_SOLICITUD)) $criteria->add(ActividadPeer::FECHA_SOLICITUD, $this->fecha_solicitud);
 		if ($this->isColumnModified(ActividadPeer::FECHA_CONTRATO)) $criteria->add(ActividadPeer::FECHA_CONTRATO, $this->fecha_contrato);
@@ -1329,8 +1519,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(ActividadPeer::FECHA_LIQUIDACION)) $criteria->add(ActividadPeer::FECHA_LIQUIDACION, $this->fecha_liquidacion);
 		if ($this->isColumnModified(ActividadPeer::PLAZO_MESES)) $criteria->add(ActividadPeer::PLAZO_MESES, $this->plazo_meses);
 		if ($this->isColumnModified(ActividadPeer::CONTRATO_ID)) $criteria->add(ActividadPeer::CONTRATO_ID, $this->contrato_id);
-		if ($this->isColumnModified(ActividadPeer::CLASE_CONTRATO)) $criteria->add(ActividadPeer::CLASE_CONTRATO, $this->clase_contrato);
-		if ($this->isColumnModified(ActividadPeer::ESTADO)) $criteria->add(ActividadPeer::ESTADO, $this->estado);
 		if ($this->isColumnModified(ActividadPeer::EXISTENCIA_CONTRATO_NUMERO)) $criteria->add(ActividadPeer::EXISTENCIA_CONTRATO_NUMERO, $this->existencia_contrato_numero);
 		if ($this->isColumnModified(ActividadPeer::CREATED_AT)) $criteria->add(ActividadPeer::CREATED_AT, $this->created_at);
 		if ($this->isColumnModified(ActividadPeer::UPDATED_AT)) $criteria->add(ActividadPeer::UPDATED_AT, $this->updated_at);
@@ -1368,21 +1556,29 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 		$copyObj->setDescripcion($this->descripcion);
 
-		$copyObj->setTipoGasto($this->tipo_gasto);
+		$copyObj->setTipoGastoId($this->tipo_gasto_id);
 
-		$copyObj->setComponenteSector($this->componente_sector);
+		$copyObj->setComponenteSectorId($this->componente_sector_id);
 
-		$copyObj->setConceptoGasto($this->concepto_gasto);
+		$copyObj->setConceptoGastoId($this->concepto_gasto_id);
+
+		$copyObj->setCodAppFvs($this->cod_app_fvs);
+
+		$copyObj->setMetaProyectoId($this->meta_proyecto_id);
+
+		$copyObj->setInversionRecurrente($this->inversion_recurrente);
 
 		$copyObj->setMesEtapaContractual($this->mes_etapa_contractual);
 
-		$copyObj->setMesEjecucion($this->mes_ejecucion);
+		$copyObj->setMesInicioEjecucion($this->mes_inicio_ejecucion);
 
 		$copyObj->setReservas($this->reservas);
 
 		$copyObj->setAreaResponsable($this->area_responsable);
 
-		$copyObj->setValorProceso($this->valor_proceso);
+		$copyObj->setComponenteInversionId($this->componente_inversion_id);
+
+		$copyObj->setPlurianualProgramado($this->plurianual_programado);
 
 		$copyObj->setNumeroSolicitud($this->numero_solicitud);
 
@@ -1399,10 +1595,6 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$copyObj->setPlazoMeses($this->plazo_meses);
 
 		$copyObj->setContratoId($this->contrato_id);
-
-		$copyObj->setClaseContrato($this->clase_contrato);
-
-		$copyObj->setEstado($this->estado);
 
 		$copyObj->setExistenciaContratoNumero($this->existencia_contrato_numero);
 
@@ -1486,6 +1678,180 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aProyecto;
+	}
+
+	
+	public function setTipoGasto($v)
+	{
+
+
+		if ($v === null) {
+			$this->setTipoGastoId(NULL);
+		} else {
+			$this->setTipoGastoId($v->getId());
+		}
+
+
+		$this->aTipoGasto = $v;
+	}
+
+
+	
+	public function getTipoGasto($con = null)
+	{
+		if ($this->aTipoGasto === null && ($this->tipo_gasto_id !== null)) {
+						include_once 'lib/model/om/BaseTipoGastoPeer.php';
+
+			$this->aTipoGasto = TipoGastoPeer::retrieveByPK($this->tipo_gasto_id, $con);
+
+			
+		}
+		return $this->aTipoGasto;
+	}
+
+	
+	public function setComponenteSector($v)
+	{
+
+
+		if ($v === null) {
+			$this->setComponenteSectorId(NULL);
+		} else {
+			$this->setComponenteSectorId($v->getId());
+		}
+
+
+		$this->aComponenteSector = $v;
+	}
+
+
+	
+	public function getComponenteSector($con = null)
+	{
+		if ($this->aComponenteSector === null && ($this->componente_sector_id !== null)) {
+						include_once 'lib/model/om/BaseComponenteSectorPeer.php';
+
+			$this->aComponenteSector = ComponenteSectorPeer::retrieveByPK($this->componente_sector_id, $con);
+
+			
+		}
+		return $this->aComponenteSector;
+	}
+
+	
+	public function setConceptoGasto($v)
+	{
+
+
+		if ($v === null) {
+			$this->setConceptoGastoId(NULL);
+		} else {
+			$this->setConceptoGastoId($v->getId());
+		}
+
+
+		$this->aConceptoGasto = $v;
+	}
+
+
+	
+	public function getConceptoGasto($con = null)
+	{
+		if ($this->aConceptoGasto === null && ($this->concepto_gasto_id !== null)) {
+						include_once 'lib/model/om/BaseConceptoGastoPeer.php';
+
+			$this->aConceptoGasto = ConceptoGastoPeer::retrieveByPK($this->concepto_gasto_id, $con);
+
+			
+		}
+		return $this->aConceptoGasto;
+	}
+
+	
+	public function setMetaProyecto($v)
+	{
+
+
+		if ($v === null) {
+			$this->setMetaProyectoId(NULL);
+		} else {
+			$this->setMetaProyectoId($v->getId());
+		}
+
+
+		$this->aMetaProyecto = $v;
+	}
+
+
+	
+	public function getMetaProyecto($con = null)
+	{
+		if ($this->aMetaProyecto === null && ($this->meta_proyecto_id !== null)) {
+						include_once 'lib/model/om/BaseMetaProyectoPeer.php';
+
+			$this->aMetaProyecto = MetaProyectoPeer::retrieveByPK($this->meta_proyecto_id, $con);
+
+			
+		}
+		return $this->aMetaProyecto;
+	}
+
+	
+	public function setDependencia($v)
+	{
+
+
+		if ($v === null) {
+			$this->setAreaResponsable(NULL);
+		} else {
+			$this->setAreaResponsable($v->getId());
+		}
+
+
+		$this->aDependencia = $v;
+	}
+
+
+	
+	public function getDependencia($con = null)
+	{
+		if ($this->aDependencia === null && ($this->area_responsable !== null)) {
+						include_once 'lib/model/om/BaseDependenciaPeer.php';
+
+			$this->aDependencia = DependenciaPeer::retrieveByPK($this->area_responsable, $con);
+
+			
+		}
+		return $this->aDependencia;
+	}
+
+	
+	public function setComponente($v)
+	{
+
+
+		if ($v === null) {
+			$this->setComponenteInversionId(NULL);
+		} else {
+			$this->setComponenteInversionId($v->getId());
+		}
+
+
+		$this->aComponente = $v;
+	}
+
+
+	
+	public function getComponente($con = null)
+	{
+		if ($this->aComponente === null && ($this->componente_inversion_id !== null)) {
+						include_once 'lib/model/om/BaseComponentePeer.php';
+
+			$this->aComponente = ComponentePeer::retrieveByPK($this->componente_inversion_id, $con);
+
+			
+		}
+		return $this->aComponente;
 	}
 
 	

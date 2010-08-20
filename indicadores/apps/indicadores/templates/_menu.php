@@ -144,7 +144,21 @@
 
   <!-- submenu plan contractual -->
   <li class="yuimenubaritem first-of-type">
-  	<?php echo link_to ('Plan Contractual','signout', 'class="yuimenuitemlabel"')?>
+    <a class="yuimenubaritemlabel" href="#plancontractual">Plan Contractual</a>
+    <div id="plancontractual" class="yuimenu"><div class="bd">
+      <ul>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#programarproyecto">Programar Proyecto</a>
+          <div id="Proyecto" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'componenteproyecto/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'componenteproyecto/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+      </ul>
+    </div></div>
   </li>
 
   <!-- submenu plataforma estrategica -->
