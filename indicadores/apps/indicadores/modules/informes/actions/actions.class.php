@@ -174,4 +174,9 @@ class informesActions extends sfActions
       $this->setTemplate('listEjecucionProyectos');
     }
   }
+
+  public function executeMetasPlanDesarrollo()
+  {
+    $this->metaspd = AnualizacionPeer::doSelectJoinAll(new Criteria());
+  }
 }
