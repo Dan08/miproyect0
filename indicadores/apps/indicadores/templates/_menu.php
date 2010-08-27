@@ -234,6 +234,8 @@
       <li class="yuimenuitem">
         <?php echo link_to('Seguimiento Objetivos', 'seguimiento/list', 'class="yuimenuitemlabel"')?></li>
       <li class="yuimenuitem">
+        <?php echo link_to('Seguimiento Metas Plan de Desarrollo', 'seguimientometas/create', 'class="yuimenuitemlabel"')?></li>
+      <li class="yuimenuitem">
         <?php echo link_to('Seguimiento Subactividades Proyectos', 'subactividadejecucion/list', 'class="yuimenuitemlabel"')?></li>
     </ul>
     </div>
@@ -246,11 +248,17 @@
     <div id="informes" class="yuimenu"><div class="bd">
       <ul>
         <li class="yuimenuitem">
+          <?php echo link_to('Programacion Metas Plan de Desarrollo', 'informes/MetasPlanDesarrollo', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
           <?php echo link_to('Avance Metas-Proyectos', 'informes/MetasProyectos', 'class="yuimenuitemlabel"')?></li>
+      </ul>
+      <ul>
         <li class="yuimenuitem">
           <?php echo link_to('Avance Proyectos', 'informes/Proyectos', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
           <?php echo link_to('Ejecucion Semanal Proyectos', 'informes/ejecucionproyectos', 'class="yuimenuitemlabel"')?></li>
+      </ul>
+       <ul>
         <li class="yuimenuitem">
           <?php echo link_to('Cuadro de Mando Integral (CMI)', 'informes/CMI', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
