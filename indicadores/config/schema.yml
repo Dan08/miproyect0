@@ -95,6 +95,13 @@ propel:
     cargo_id:   { type: integer, foreignTable: cargo, foreignReference: id, onDelete: setnull }
     descripcion:      longvarchar
 
+  procedimiento:
+    id:
+    proceso_id: { type: integer, foreignTable: proceso, foreignReference: id, onDelete: setnull }
+    nombre: varchar(255)
+    descripcion: longvarchar
+
+
   #
   # Tablas para seguimiento de proyectos
   #
@@ -213,6 +220,16 @@ propel:
     observaciones: longvarchar
     created_at:
     updated_at:
+
+  subactividad_poa:
+    id:
+    procedimiento_id: { type: integer, foreignTable: proceso, foreignReference: id, onDelete: setnull }
+    descripcion: longvarchar
+    responsable: varchar(50)
+    ponderacion: { type: float, required: true }
+    created_at:
+    updated_at:
+
 
   #
   # Tablas para seguimiento de recursos Proyectos de Inversion (Planeacion)
