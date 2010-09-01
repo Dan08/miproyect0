@@ -9,10 +9,6 @@
 
 <?php echo object_input_hidden_tag($subactividad_proyecto, 'getId') ?>
 
-<?php var_dump($subactividad_proyecto->getArrayProgramacion()) ?>
-<?php var_dump($subactividad_proyecto->getArrayEjecucion()) ?>
-<?php var_dump($subactividad_proyecto->getArrayInformeEjecucion()) ?>
-
 <table>
 <tbody>
 <tr>
