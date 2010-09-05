@@ -19,11 +19,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($dependencia->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'dependencia/delete?id='.$dependencia->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'dependencia/show?id='.$dependencia->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'dependencia/delete?id='.$dependencia->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'dependencia/show?id='.$dependencia->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'dependencia/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'dependencia/list') ?>
 <?php endif; ?>
 </form>

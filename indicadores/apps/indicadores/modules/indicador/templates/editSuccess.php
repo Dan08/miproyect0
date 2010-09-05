@@ -134,7 +134,9 @@
 	</tbody>
 </table>
 <hr />
-<div id="buttons"><?php echo submit_tag('Guardar', 'class="button"') ?> <?php if ($indicador->getId()): ?>
+<div id="buttons">
+<?php echo submit_tag('Guardar', 'class="button"') ?>
+<?php if ($indicador->getId()): ?>
 &nbsp;<?php echo link_to('Eliminar', 'indicador/delete?id='.$indicador->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
 &nbsp;<?php echo link_to('Cancelar', 'indicador/show?id='.$indicador->getId(), 'class="button"') ?>
 <?php else: ?> &nbsp;<?php echo link_to('Cancelar', 'indicador/list', 'class="button"') ?>

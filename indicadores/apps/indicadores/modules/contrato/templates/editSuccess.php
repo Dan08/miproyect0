@@ -85,11 +85,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($contrato->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'contrato/delete?id='.$contrato->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'contrato/show?id='.$contrato->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'contrato/delete?id='.$contrato->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'contrato/show?id='.$contrato->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'contrato/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'contrato/list') ?>
 <?php endif; ?>
 </form>

@@ -19,11 +19,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($componente_sector->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'componentesector/delete?id='.$componente_sector->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'componentesector/show?id='.$componente_sector->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'componentesector/delete?id='.$componente_sector->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'componentesector/show?id='.$componente_sector->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'componentesector/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'componentesector/list') ?>
 <?php endif; ?>
 </form>

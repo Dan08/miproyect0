@@ -32,11 +32,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($proyecto_inversion->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'proyectoinv/delete?id='.$proyecto_inversion->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'proyectoinv/show?id='.$proyecto_inversion->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'proyectoinv/delete?id='.$proyecto_inversion->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'proyectoinv/show?id='.$proyecto_inversion->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'proyectoinv/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'proyectoinv/list') ?>
 <?php endif; ?>
 </form>

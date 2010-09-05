@@ -43,11 +43,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($proyecto->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'proyecto/delete?id='.$proyecto->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'proyecto/show?id='.$proyecto->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'proyecto/delete?id='.$proyecto->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'proyecto/show?id='.$proyecto->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'proyecto/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'proyecto/list') ?>
 <?php endif; ?>
 </form>

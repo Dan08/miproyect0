@@ -32,11 +32,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($seguimiento_indicador_meta->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'seguimientoindicador/delete?id='.$seguimiento_indicador_meta->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'seguimientoindicador/show?id='.$seguimiento_indicador_meta->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'seguimientoindicador/delete?id='.$seguimiento_indicador_meta->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'seguimientoindicador/show?id='.$seguimiento_indicador_meta->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'seguimientoindicador/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'seguimientoindicador/list') ?>
 <?php endif; ?>
 </form>
