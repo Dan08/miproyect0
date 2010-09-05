@@ -33,11 +33,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($fuente_actividad->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'fuenteactividad/delete?id='.$fuente_actividad->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'fuenteactividad/show?id='.$fuente_actividad->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'fuenteactividad/delete?id='.$fuente_actividad->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'fuenteactividad/show?id='.$fuente_actividad->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'fuenteactividad/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'fuenteactividad/list') ?>
 <?php endif; ?>
 </form>

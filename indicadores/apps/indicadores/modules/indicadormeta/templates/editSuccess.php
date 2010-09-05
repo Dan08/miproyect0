@@ -45,11 +45,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($indicador_meta->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'indicadormeta/delete?id='.$indicador_meta->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'indicadormeta/show?id='.$indicador_meta->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'indicadormeta/delete?id='.$indicador_meta->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'indicadormeta/show?id='.$indicador_meta->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'indicadormeta/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'indicadormeta/list') ?>
 <?php endif; ?>
 </form>

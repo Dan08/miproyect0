@@ -44,11 +44,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($anualizacion->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'anualizacion/delete?id='.$anualizacion->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'anualizacion/show?id='.$anualizacion->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'anualizacion/delete?id='.$anualizacion->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'anualizacion/show?id='.$anualizacion->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'anualizacion/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'anualizacion/list') ?>
 <?php endif; ?>
 </form>

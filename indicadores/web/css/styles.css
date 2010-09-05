@@ -1,40 +1,33 @@
 body {
-  background-image: url("background.png");
-  background-color: #ffd04d;
-  background-position: center bottom;
-  background-repeat: repeat-x;
-  height:100%;
+  background-color: #D5D5D5;
 }
 
 html,body{
     margin:0px;
     padding:0px;
-    min-height:100%;
 }
 
-* html body{
+html body{
     height:100%;
 }
 .wrapper {
-  background-color: #FFFFFF;
-  border: solid 2px;
-  border-color: #ffdda9;
-  width: 98%;
-  padding: 4px;
+  width: 99.5%;
+      margin-left: auto;
+	margin-right: auto;
 }
 .rojo {
-    color: red;
-    background-color: #FF0000;
+    color: white;
+    background-color: red;
 }
 
 .amarillo {
-    color: yellow;
-    background-color: #FFFF00;
+    color: black;
+    background-color: yellow;
 }
 
 .verde {
-    color: greenyellow;
-    background-color: #00FF00;
+    color: white;
+    background-color: green
 }
 
 .naranja {
@@ -61,11 +54,11 @@ td {
 }
 
 tr.par > td{
-  background-color:#FFFFCC;
+  background-color:#C0C0C0;
 }
 
 tr > td {
-	background-color:#ffdda9;
+	background-color:#EAEAEA;
 }
 
 .button {    
@@ -73,7 +66,7 @@ tr > td {
    font-size: 10pt;
    font-weight: bold;
    padding: 4px;
-   background-color: #ffffcc;
+   background-color: #EAEAEA;
    color: #333333;
    text-decoration: none;
    height: 28px;
@@ -97,4 +90,13 @@ div#indicator
   height: 20px;
   z-index: 900;
   background: url(loader.gif) no-repeat 0 0;
+}
+
+h1 {
+  padding-bottom: 5px;
+  text-transform:uppercase;
+}
+
+th {
+  text-transform:uppercase;
 }

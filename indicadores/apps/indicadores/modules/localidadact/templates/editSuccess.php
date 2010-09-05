@@ -39,11 +39,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($localidad_actividad->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'localidadact/delete?id='.$localidad_actividad->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'localidadact/show?id='.$localidad_actividad->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'localidadact/delete?id='.$localidad_actividad->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'localidadact/show?id='.$localidad_actividad->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'localidadact/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'localidadact/list') ?>
 <?php endif; ?>
 </form>

@@ -4,7 +4,7 @@
 ?>
 <h1>actividadproyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Id</th>
@@ -14,8 +14,7 @@
   <th>Actividad</th>
   <th>Descripcion</th>
   <th>Ponderacion</th>
-  <th>Created at</th>
-  <th>Updated at</th>
+
 </tr>
 </thead>
 <tbody>
@@ -28,8 +27,7 @@
       <td><?php echo $actividad_proyecto->getActividad() ?></td>
       <td><?php echo $actividad_proyecto->getDescripcion() ?></td>
       <td><?php echo $actividad_proyecto->getPonderacion() ?></td>
-      <td><?php echo $actividad_proyecto->getCreatedAt() ?></td>
-      <td><?php echo $actividad_proyecto->getUpdatedAt() ?></td>
+
   </tr>
 <?php endforeach; ?>
 </tbody>

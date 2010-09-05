@@ -31,11 +31,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($crp->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'crp/delete?id='.$crp->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'crp/show?id='.$crp->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'crp/delete?id='.$crp->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'crp/show?id='.$crp->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'crp/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'crp/list') ?>
 <?php endif; ?>
 </form>

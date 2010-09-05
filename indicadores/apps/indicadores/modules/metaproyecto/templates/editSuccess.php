@@ -65,11 +65,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($meta_proyecto->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'metaproyecto/delete?id='.$meta_proyecto->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'metaproyecto/show?id='.$meta_proyecto->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'metaproyecto/delete?id='.$meta_proyecto->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'metaproyecto/show?id='.$meta_proyecto->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'metaproyecto/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'metaproyecto/list') ?>
 <?php endif; ?>
 </form>

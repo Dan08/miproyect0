@@ -37,12 +37,12 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($subactividad_ejecucion->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'subactividadejecucion/delete?id='.$subactividad_ejecucion->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'subactividadejecucion/show?id='.$subactividad_ejecucion->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'subactividadejecucion/delete?id='.$subactividad_ejecucion->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'subactividadejecucion/show?id='.$subactividad_ejecucion->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'subactividadejecucion/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'subactividadejecucion/list') ?>
 <?php endif; ?>
 </form>
 <?php else: ?>

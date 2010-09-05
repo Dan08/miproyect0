@@ -26,11 +26,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($cargo->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'cargo/delete?id='.$cargo->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'cargo/show?id='.$cargo->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'cargo/delete?id='.$cargo->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'cargo/show?id='.$cargo->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'cargo/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'cargo/list') ?>
 <?php endif; ?>
 </form>

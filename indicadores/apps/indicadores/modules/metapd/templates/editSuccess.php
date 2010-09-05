@@ -37,11 +37,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($meta_pd->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'metapd/delete?id='.$meta_pd->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'metapd/show?id='.$meta_pd->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'metapd/delete?id='.$meta_pd->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'metapd/show?id='.$meta_pd->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'metapd/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'metapd/list') ?>
 <?php endif; ?>
 </form>

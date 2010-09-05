@@ -51,11 +51,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($actividad_poa->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'actividadpoa/delete?id='.$actividad_poa->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'actividadpoa/show?id='.$actividad_poa->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'actividadpoa/delete?id='.$actividad_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'actividadpoa/show?id='.$actividad_poa->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'actividadpoa/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'actividadpoa/list') ?>
 <?php endif; ?>
 </form>

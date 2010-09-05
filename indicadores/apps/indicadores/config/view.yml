@@ -9,9 +9,9 @@ default:
     keywords:     symfony, project
     language:     en
 
-  stylesheets:    [main, styles, menu, button]
+  stylesheets:    [tablecloth, main, styles, menu, button]
 
-  javascripts:    [yahoo-dom-event, container-min, menu-min, element-beta-min, button-min, functions]
+  javascripts:    [yahoo-dom-event, container-min, menu-min, element-beta-min, button-min, functions, tablecloth]
 
   has_layout:     on
   layout:         layout

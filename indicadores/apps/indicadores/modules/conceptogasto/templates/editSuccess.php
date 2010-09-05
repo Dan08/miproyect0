@@ -19,11 +19,11 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<div id="buttons"> <?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($concepto_gasto->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'conceptogasto/delete?id='.$concepto_gasto->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'conceptogasto/show?id='.$concepto_gasto->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'conceptogasto/delete?id='.$concepto_gasto->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'conceptogasto/show?id='.$concepto_gasto->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'conceptogasto/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'conceptogasto/list') ?>
 <?php endif; ?>
 </form>
