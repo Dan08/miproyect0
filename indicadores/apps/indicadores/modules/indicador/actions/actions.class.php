@@ -163,6 +163,9 @@ class indicadorActions extends sfActions
     if ($this->getRequestParameter('categoria') == 4) {
       //consultar la lista de actividades poa
       $this->lista = ActividadPoaPeer::doSelect(new Criteria());
+    // procedimientos
+    } elseif ($this->getRequestParameter('categoria') == 5) {
+      $this->lista = ProcedimientoPeer::doSelect(new Criteria());
     } else {
       // consultar y devolver lista de procesos
       $this->lista = ProcesoPeer::doSelect(new Criteria());

@@ -16,9 +16,9 @@
 <table>
 <thead>
 <tr>
-  <th>Actividad</th>
   <th>Meta Plan Desarrollo</th>
   <th>Meta Proyecto</th>
+  <th>Actividad</th>
   <th>% Ejecucion</th>
   <th>% Ponderacion</th>
   <th>% Ejecucion Ponderada</th>
@@ -33,9 +33,9 @@
   <?php foreach ($actividades as $actividad): ?>
   <tr>
     <?php if ($pos == (pos($actividad))): ?>
-      <td rowspan="<?php echo current($cuenta) ?>"><?php ($actividad);echo $actividad->getActividadProyecto() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getMetaPd() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getMetaProyecto() ?></td>
+      <td rowspan="<?php echo current($cuenta) ?>"><?php ($actividad);echo $actividad->getActividadProyecto() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getEjecucion() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getPonderacion() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getEjecucionPonderada() ?></td>

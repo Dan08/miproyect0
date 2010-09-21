@@ -5,11 +5,27 @@
  */
 ?>
 <?php
+/**
+ * Ajax para el formulario de indicadores
+
+ */
+
+/**
+ * indicador de Actividad POA
+ */
 if ($indicador->getCategoriaId() == 4)
 {
   echo object_select_tag($indicador, 'getProceso', array (
     'related_class' => 'ActividadPoa',
-    'include_blank' => true,
+    'include_blank' => false,
+      ));
+/**
+ * indicador de Procedimiento POA
+ */
+} elseif ($indicador->getCategoriaId() == 5) {
+  echo object_select_tag($indicador, 'getProceso', array (
+    'related_class' => 'Procedimiento',
+    'include_blank' => false,
       ));
 } else {
   echo object_select_tag($indicador, 'getProceso', array (

@@ -215,18 +215,37 @@ propel:
     meta_poa_id: { type: integer, foreignTable: meta_poa, foreignReference: id, onDelete: setnull }
     proceso_id:  { type: integer, foreignTable: proceso, foreignReference: id, onDelete: setnull }
     proyecto_id: { type: integer, foreignTable: proyecto, foreignReference: id, onDelete: setnull }
+    actividad_id: { type: integer, foreignTable: actividad_proyecto, foreignReference: id, onDelete: setnull }
     descripcion: { type: longvarchar, required: true }
     responsable: varchar(50)
     observaciones: longvarchar
     created_at:
     updated_at:
 
+  procedimiento_poa:
+    id:
+    proceso_id: { type: integer, foreignTable: proceso, foreignReference: id, onDelete: setnull }
+    procedimiento_id: { type: integer, foreignTable: procedimiento, foreignReference: id, onDelete: setnull }
+    ponderacion: { type: float, required: true }
+
   subactividad_poa:
     id:
-    procedimiento_id: { type: integer, foreignTable: proceso, foreignReference: id, onDelete: setnull }
+    procedimiento_id: { type: integer, foreignTable: procedimiento, foreignReference: id, onDelete: setnull }
     descripcion: longvarchar
     responsable: varchar(50)
+    entregable: { type: longvarchar, required: true }
+    fecha_inicio: { type: date, required: true }
+    duracion: { type: integer, required: true }
     ponderacion: { type: float, required: true }
+    created_at:
+    updated_at:
+
+  subactividad_poa_ejecucion:
+    id:
+    subactividad_proyecto_id: { type: integer, foreignTable: subactividad_poa, foreignReference: id, onDelete: setnull }
+    mes: { type: integer, required: true }
+    descripcion: { type: longvarchar, required: true }
+    avance: float
     created_at:
     updated_at:
 

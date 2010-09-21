@@ -21,7 +21,20 @@ class actividadproyectoActions extends sfActions
 
   public function executeList()
   {
-    $this->actividad_proyectos = ActividadProyectoPeer::doSelect(new Criteria());
+    /**
+     * Si no se tiene ningun parametro, se muestra la lista de proyectos, si se tiene
+     * el parametro proyecto, se muestra la lista de actividades asociadas a ese proyecto
+     */
+    if ($this->getRequestParameter('proyecto')) {
+      $c = new Criteria();
+      $c->add(ActividadProyectoPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $this->actividad_proyectos = ActividadProyectoPeer::doSelect($c);
+
+    // listar proyectos
+    } else {
+      $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+      $this->setTemplate('listProyectos');
+    }
   }
 
   public function executeShow()

@@ -59,6 +59,12 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 	protected $lastSubactividadProyectoCriteria = null;
 
 	
+	protected $collActividadPoas;
+
+	
+	protected $lastActividadPoaCriteria = null;
+
+	
 	protected $alreadyInSave = false;
 
 	
@@ -433,6 +439,14 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collActividadPoas !== null) {
+				foreach($this->collActividadPoas as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -496,6 +510,14 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 
 				if ($this->collSubactividadProyectos !== null) {
 					foreach($this->collSubactividadProyectos as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collActividadPoas !== null) {
+					foreach($this->collActividadPoas as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -694,6 +716,10 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 				$copyObj->addSubactividadProyecto($relObj->copy($deepCopy));
 			}
 
+			foreach($this->getActividadPoas() as $relObj) {
+				$copyObj->addActividadPoa($relObj->copy($deepCopy));
+			}
+
 		} 
 
 		$copyObj->setNew(true);
@@ -874,6 +900,181 @@ abstract class BaseActividadProyecto extends BaseObject  implements Persistent {
 	{
 		$this->collSubactividadProyectos[] = $l;
 		$l->setActividadProyecto($this);
+	}
+
+	
+	public function initActividadPoas()
+	{
+		if ($this->collActividadPoas === null) {
+			$this->collActividadPoas = array();
+		}
+	}
+
+	
+	public function getActividadPoas($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadPoas === null) {
+			if ($this->isNew()) {
+			   $this->collActividadPoas = array();
+			} else {
+
+				$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+				ActividadPoaPeer::addSelectColumns($criteria);
+				$this->collActividadPoas = ActividadPoaPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+				ActividadPoaPeer::addSelectColumns($criteria);
+				if (!isset($this->lastActividadPoaCriteria) || !$this->lastActividadPoaCriteria->equals($criteria)) {
+					$this->collActividadPoas = ActividadPoaPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastActividadPoaCriteria = $criteria;
+		return $this->collActividadPoas;
+	}
+
+	
+	public function countActividadPoas($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+		return ActividadPoaPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addActividadPoa(ActividadPoa $l)
+	{
+		$this->collActividadPoas[] = $l;
+		$l->setActividadProyecto($this);
+	}
+
+
+	
+	public function getActividadPoasJoinMetaPoa($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadPoas === null) {
+			if ($this->isNew()) {
+				$this->collActividadPoas = array();
+			} else {
+
+				$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinMetaPoa($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+			if (!isset($this->lastActividadPoaCriteria) || !$this->lastActividadPoaCriteria->equals($criteria)) {
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinMetaPoa($criteria, $con);
+			}
+		}
+		$this->lastActividadPoaCriteria = $criteria;
+
+		return $this->collActividadPoas;
+	}
+
+
+	
+	public function getActividadPoasJoinProceso($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadPoas === null) {
+			if ($this->isNew()) {
+				$this->collActividadPoas = array();
+			} else {
+
+				$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinProceso($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+			if (!isset($this->lastActividadPoaCriteria) || !$this->lastActividadPoaCriteria->equals($criteria)) {
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinProceso($criteria, $con);
+			}
+		}
+		$this->lastActividadPoaCriteria = $criteria;
+
+		return $this->collActividadPoas;
+	}
+
+
+	
+	public function getActividadPoasJoinProyecto($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadPoas === null) {
+			if ($this->isNew()) {
+				$this->collActividadPoas = array();
+			} else {
+
+				$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPoaPeer::ACTIVIDAD_ID, $this->getId());
+
+			if (!isset($this->lastActividadPoaCriteria) || !$this->lastActividadPoaCriteria->equals($criteria)) {
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinProyecto($criteria, $con);
+			}
+		}
+		$this->lastActividadPoaCriteria = $criteria;
+
+		return $this->collActividadPoas;
 	}
 
 } 
