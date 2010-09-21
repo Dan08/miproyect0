@@ -32,21 +32,41 @@ class seguimientometasActions extends sfActions
 
   public function executeCreate()
   {
-    $c = new Criteria();
-    $c->add(AnualizacionPeer::META_PD_ID, $this->getRequestParameter('meta'));
-    $meta = AnualizacionPeer::doSelectOne($c);
+    if ($this->getRequestParameter('meta'))
+    {
+      /**
+       * Se restringe la lista de años a los que tienen un valor programado en la anualizacion
+       */
+      $c = new Criteria();
+      $c->add(AnualizacionPeer::META_PD_ID, $this->getRequestParameter('meta'));
+      $meta = AnualizacionPeer::doSelectOne($c);
 
-    $years = array();
-    
-    if ($meta->getAnyo1() != 0) { $years[1] = "Año 1"; }
-    if ($meta->getAnyo2() != 0) { $years[2] = "Año 2"; }
-    if ($meta->getAnyo3() != 0) { $years[3] = "Año 3"; }
-    if ($meta->getAnyo4() != 0) { $years[4] = "Año 4"; }
-    $this->years = $years;
+      $years = array();
 
-    $this->seguimiento_indicador_meta = new SeguimientoIndicadorMeta();
+      if ($meta->getAnyo1() != 0) { $years[1] = "Año 1"; }
+      if ($meta->getAnyo2() != 0) { $years[2] = "Año 2"; }
+      if ($meta->getAnyo3() != 0) { $years[3] = "Año 3"; }
+      if ($meta->getAnyo4() != 0) { $years[4] = "Año 4"; }
+      $this->years = $years;
 
-    $this->setTemplate('edit');
+      /**
+       * lista de indicadores asociados a la meta
+       */
+      $c2 = new Criteria;
+      $c2->add(IndicadorMetaPeer::META_PD_ID, $this->getRequestParameter('meta'));
+      $this->criteria = $c2;
+
+      $this->seguimiento_indicador_meta = new SeguimientoIndicadorMeta();
+
+      $this->setTemplate('edit');
+    } else {
+      /**
+       * Mostrar la lista de metad pd
+       */
+      $this->meta_pds = MetaPdPeer::doSelect(new Criteria());
+      $this->setTemplate('listMetas');
+
+    }
   }
 
   public function executeEdit()

@@ -12,10 +12,7 @@
 <tbody>
 <tr>
   <th>Indicador meta:</th>
-  <td><?php echo object_select_tag($seguimiento_indicador_meta, 'getIndicadorMetaId', array (
-  'related_class' => 'IndicadorMeta',
-  'include_blank' => true,
-)) ?></td>
+  <td><?php echo select_tag('indicador_meta_id', objects_for_select(IndicadorMetaPeer::doSelect($criteria), 'getId', '__toString')) ?></td>
 </tr>
 <tr>
   <th>A&ntilde;o*:</th>

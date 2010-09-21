@@ -75,7 +75,7 @@
           </div></div>
         </li>
 
-        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#Actividades">Actividades</a>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#Actividadesproyectos">Actividades</a>
           <div id="Actividades" class="yuimenu"><div class="bd">
             <ul>
               <li class="yuimenuitem">
@@ -86,7 +86,7 @@
           </div></div>
         </li>
 
-        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#SubActividades">Sub-actividades</a>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#SubActividadesproyectos">Sub-actividades</a>
           <div id="SubActividades" class="yuimenu"><div class="bd">
             <ul>
               <li class="yuimenuitem">
@@ -117,8 +117,19 @@
           </div></div>
         </li>
 
-        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#ActividadesPOA">Actividades POA</a>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#ActividadesPOA">Actividad POA a partir de proyecto</a>
           <div id="ActividadesPOA" class="yuimenu"><div class="bd">
+            <ul>
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'actividadpoa/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'actividadpoa/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#ActividadesPOA">Actividad POA a partir de procedimiento</a>
+          <div id="ActividadesPOAprocedimiento" class="yuimenu"><div class="bd">
             <ul>
               <li class="yuimenuitem">
                 <?php echo link_to('Crear', 'actividadpoa/create', 'class="yuimenuitemlabel"')?></li>
@@ -154,6 +165,50 @@
                 <?php echo link_to('Crear', 'componenteproyecto/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
                 <?php echo link_to('Modificar', 'componenteproyecto/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#actividades">Actividades</a>
+          <div id="actividades" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'actividad/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'actividad/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#cdp">CDP</a>
+          <div id="cdp" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'cdp/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'cdp/list', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Vincular con actividad', 'cdpactividad/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar con actividad', 'cdpactividad/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#clienteactividad">Clientes de Actividad</a>
+          <div id="clienteactividad" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'clienteactividad/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'clienteactividad/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#localidadactividad">Localidades de Actividad</a>
+          <div id="localidadactividad" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'clienteactividad/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'clienteactividad/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>
@@ -301,6 +356,17 @@
                 <?php echo link_to('Crear', 'proceso/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
                 <?php echo link_to('Modificar', 'proceso/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#Procesos">Procedimientos</a>
+          <div id="Procedimientos" class="yuimenu"><div class="bd">
+            <ul>
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'procedimiento/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'procedimiento/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>

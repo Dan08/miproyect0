@@ -260,6 +260,27 @@ CREATE TABLE `proceso`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
+#-- procedimiento
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `procedimiento`;
+
+
+CREATE TABLE `procedimiento`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`proceso_id` INTEGER,
+	`nombre` VARCHAR(255),
+	`descripcion` TEXT,
+	PRIMARY KEY (`id`),
+	INDEX `procedimiento_FI_1` (`proceso_id`),
+	CONSTRAINT `procedimiento_FK_1`
+		FOREIGN KEY (`proceso_id`)
+		REFERENCES `proceso` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- meta_pd
 #-----------------------------------------------------------------------------
 
@@ -534,6 +555,7 @@ CREATE TABLE `actividad_poa`
 	`meta_poa_id` INTEGER,
 	`proceso_id` INTEGER,
 	`proyecto_id` INTEGER,
+	`actividad_id` INTEGER,
 	`descripcion` TEXT  NOT NULL,
 	`responsable` VARCHAR(50),
 	`observaciones` TEXT,
@@ -554,6 +576,88 @@ CREATE TABLE `actividad_poa`
 	CONSTRAINT `actividad_poa_FK_3`
 		FOREIGN KEY (`proyecto_id`)
 		REFERENCES `proyecto` (`id`)
+		ON DELETE SET NULL,
+	INDEX `actividad_poa_FI_4` (`actividad_id`),
+	CONSTRAINT `actividad_poa_FK_4`
+		FOREIGN KEY (`actividad_id`)
+		REFERENCES `actividad_proyecto` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- procedimiento_poa
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `procedimiento_poa`;
+
+
+CREATE TABLE `procedimiento_poa`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`proceso_id` INTEGER,
+	`procedimiento_id` INTEGER,
+	`ponderacion` FLOAT  NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `procedimiento_poa_FI_1` (`proceso_id`),
+	CONSTRAINT `procedimiento_poa_FK_1`
+		FOREIGN KEY (`proceso_id`)
+		REFERENCES `proceso` (`id`)
+		ON DELETE SET NULL,
+	INDEX `procedimiento_poa_FI_2` (`procedimiento_id`),
+	CONSTRAINT `procedimiento_poa_FK_2`
+		FOREIGN KEY (`procedimiento_id`)
+		REFERENCES `procedimiento` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- subactividad_poa
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `subactividad_poa`;
+
+
+CREATE TABLE `subactividad_poa`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`procedimiento_id` INTEGER,
+	`descripcion` TEXT,
+	`responsable` VARCHAR(50),
+	`entregable` TEXT  NOT NULL,
+	`fecha_inicio` DATE  NOT NULL,
+	`duracion` INTEGER  NOT NULL,
+	`ponderacion` FLOAT  NOT NULL,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`),
+	INDEX `subactividad_poa_FI_1` (`procedimiento_id`),
+	CONSTRAINT `subactividad_poa_FK_1`
+		FOREIGN KEY (`procedimiento_id`)
+		REFERENCES `procedimiento` (`id`)
+		ON DELETE SET NULL
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- subactividad_poa_ejecucion
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `subactividad_poa_ejecucion`;
+
+
+CREATE TABLE `subactividad_poa_ejecucion`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`subactividad_proyecto_id` INTEGER,
+	`mes` INTEGER  NOT NULL,
+	`descripcion` TEXT  NOT NULL,
+	`avance` FLOAT,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`),
+	INDEX `subactividad_poa_ejecucion_FI_1` (`subactividad_proyecto_id`),
+	CONSTRAINT `subactividad_poa_ejecucion_FK_1`
+		FOREIGN KEY (`subactividad_proyecto_id`)
+		REFERENCES `subactividad_poa` (`id`)
 		ON DELETE SET NULL
 )Type=InnoDB;
 
