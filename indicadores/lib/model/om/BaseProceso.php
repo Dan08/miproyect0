@@ -46,12 +46,6 @@ abstract class BaseProceso extends BaseObject  implements Persistent {
 	protected $lastActividadPoaCriteria = null;
 
 	
-	protected $collProcedimientoPoas;
-
-	
-	protected $lastProcedimientoPoaCriteria = null;
-
-	
 	protected $alreadyInSave = false;
 
 	
@@ -289,14 +283,6 @@ abstract class BaseProceso extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->collProcedimientoPoas !== null) {
-				foreach($this->collProcedimientoPoas as $referrerFK) {
-					if (!$referrerFK->isDeleted()) {
-						$affectedRows += $referrerFK->save($con);
-					}
-				}
-			}
-
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -362,14 +348,6 @@ abstract class BaseProceso extends BaseObject  implements Persistent {
 
 				if ($this->collActividadPoas !== null) {
 					foreach($this->collActividadPoas as $referrerFK) {
-						if (!$referrerFK->validate($columns)) {
-							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
-						}
-					}
-				}
-
-				if ($this->collProcedimientoPoas !== null) {
-					foreach($this->collProcedimientoPoas as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -526,10 +504,6 @@ abstract class BaseProceso extends BaseObject  implements Persistent {
 
 			foreach($this->getActividadPoas() as $relObj) {
 				$copyObj->addActividadPoa($relObj->copy($deepCopy));
-			}
-
-			foreach($this->getProcedimientoPoas() as $relObj) {
-				$copyObj->addProcedimientoPoa($relObj->copy($deepCopy));
 			}
 
 		} 
@@ -792,6 +766,41 @@ abstract class BaseProceso extends BaseObject  implements Persistent {
 
 
 	
+	public function getActividadPoasJoinProcedimiento($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadPoas === null) {
+			if ($this->isNew()) {
+				$this->collActividadPoas = array();
+			} else {
+
+				$criteria->add(ActividadPoaPeer::PROCESO_ID, $this->getId());
+
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinProcedimiento($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(ActividadPoaPeer::PROCESO_ID, $this->getId());
+
+			if (!isset($this->lastActividadPoaCriteria) || !$this->lastActividadPoaCriteria->equals($criteria)) {
+				$this->collActividadPoas = ActividadPoaPeer::doSelectJoinProcedimiento($criteria, $con);
+			}
+		}
+		$this->lastActividadPoaCriteria = $criteria;
+
+		return $this->collActividadPoas;
+	}
+
+
+	
 	public function getActividadPoasJoinProyecto($criteria = null, $con = null)
 	{
 				include_once 'lib/model/om/BaseActividadPoaPeer.php';
@@ -858,111 +867,6 @@ abstract class BaseProceso extends BaseObject  implements Persistent {
 		$this->lastActividadPoaCriteria = $criteria;
 
 		return $this->collActividadPoas;
-	}
-
-	
-	public function initProcedimientoPoas()
-	{
-		if ($this->collProcedimientoPoas === null) {
-			$this->collProcedimientoPoas = array();
-		}
-	}
-
-	
-	public function getProcedimientoPoas($criteria = null, $con = null)
-	{
-				include_once 'lib/model/om/BaseProcedimientoPoaPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collProcedimientoPoas === null) {
-			if ($this->isNew()) {
-			   $this->collProcedimientoPoas = array();
-			} else {
-
-				$criteria->add(ProcedimientoPoaPeer::PROCESO_ID, $this->getId());
-
-				ProcedimientoPoaPeer::addSelectColumns($criteria);
-				$this->collProcedimientoPoas = ProcedimientoPoaPeer::doSelect($criteria, $con);
-			}
-		} else {
-						if (!$this->isNew()) {
-												
-
-				$criteria->add(ProcedimientoPoaPeer::PROCESO_ID, $this->getId());
-
-				ProcedimientoPoaPeer::addSelectColumns($criteria);
-				if (!isset($this->lastProcedimientoPoaCriteria) || !$this->lastProcedimientoPoaCriteria->equals($criteria)) {
-					$this->collProcedimientoPoas = ProcedimientoPoaPeer::doSelect($criteria, $con);
-				}
-			}
-		}
-		$this->lastProcedimientoPoaCriteria = $criteria;
-		return $this->collProcedimientoPoas;
-	}
-
-	
-	public function countProcedimientoPoas($criteria = null, $distinct = false, $con = null)
-	{
-				include_once 'lib/model/om/BaseProcedimientoPoaPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		$criteria->add(ProcedimientoPoaPeer::PROCESO_ID, $this->getId());
-
-		return ProcedimientoPoaPeer::doCount($criteria, $distinct, $con);
-	}
-
-	
-	public function addProcedimientoPoa(ProcedimientoPoa $l)
-	{
-		$this->collProcedimientoPoas[] = $l;
-		$l->setProceso($this);
-	}
-
-
-	
-	public function getProcedimientoPoasJoinProcedimiento($criteria = null, $con = null)
-	{
-				include_once 'lib/model/om/BaseProcedimientoPoaPeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collProcedimientoPoas === null) {
-			if ($this->isNew()) {
-				$this->collProcedimientoPoas = array();
-			} else {
-
-				$criteria->add(ProcedimientoPoaPeer::PROCESO_ID, $this->getId());
-
-				$this->collProcedimientoPoas = ProcedimientoPoaPeer::doSelectJoinProcedimiento($criteria, $con);
-			}
-		} else {
-									
-			$criteria->add(ProcedimientoPoaPeer::PROCESO_ID, $this->getId());
-
-			if (!isset($this->lastProcedimientoPoaCriteria) || !$this->lastProcedimientoPoaCriteria->equals($criteria)) {
-				$this->collProcedimientoPoas = ProcedimientoPoaPeer::doSelectJoinProcedimiento($criteria, $con);
-			}
-		}
-		$this->lastProcedimientoPoaCriteria = $criteria;
-
-		return $this->collProcedimientoPoas;
 	}
 
 } 

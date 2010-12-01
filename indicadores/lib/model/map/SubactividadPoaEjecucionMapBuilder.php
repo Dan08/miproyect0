@@ -34,7 +34,7 @@ class SubactividadPoaEjecucionMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addForeignKey('SUBACTIVIDAD_PROYECTO_ID', 'SubactividadProyectoId', 'int', CreoleTypes::INTEGER, 'subactividad_poa', 'ID', false, null);
+		$tMap->addForeignKey('SUBACTIVIDAD_POA_ID', 'SubactividadPoaId', 'int', CreoleTypes::INTEGER, 'subactividad_procedimiento_poa', 'ID', false, null);
 
 		$tMap->addColumn('MES', 'Mes', 'int', CreoleTypes::INTEGER, true, null);
 

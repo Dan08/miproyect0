@@ -73,6 +73,14 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 
 	
+	protected $cdp;
+
+
+	
+	protected $crp;
+
+
+	
 	protected $fecha_solicitud;
 
 
@@ -281,6 +289,20 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 	{
 
 		return $this->numero_solicitud;
+	}
+
+	
+	public function getCdp()
+	{
+
+		return $this->cdp;
+	}
+
+	
+	public function getCrp()
+	{
+
+		return $this->crp;
 	}
 
 	
@@ -699,6 +721,34 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setCdp($v)
+	{
+
+						if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->cdp !== $v) {
+			$this->cdp = $v;
+			$this->modifiedColumns[] = ActividadPeer::CDP;
+		}
+
+	} 
+	
+	public function setCrp($v)
+	{
+
+						if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->crp !== $v) {
+			$this->crp = $v;
+			$this->modifiedColumns[] = ActividadPeer::CRP;
+		}
+
+	} 
+	
 	public function setFechaSolicitud($v)
 	{
 
@@ -900,31 +950,35 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 
 			$this->numero_solicitud = $rs->getString($startcol + 15);
 
-			$this->fecha_solicitud = $rs->getDate($startcol + 16, null);
+			$this->cdp = $rs->getString($startcol + 16);
 
-			$this->fecha_contrato = $rs->getDate($startcol + 17, null);
+			$this->crp = $rs->getString($startcol + 17);
 
-			$this->fecha_acta_inicio = $rs->getDate($startcol + 18, null);
+			$this->fecha_solicitud = $rs->getDate($startcol + 18, null);
 
-			$this->fecha_terminacion = $rs->getDate($startcol + 19, null);
+			$this->fecha_contrato = $rs->getDate($startcol + 19, null);
 
-			$this->fecha_liquidacion = $rs->getDate($startcol + 20, null);
+			$this->fecha_acta_inicio = $rs->getDate($startcol + 20, null);
 
-			$this->plazo_meses = $rs->getInt($startcol + 21);
+			$this->fecha_terminacion = $rs->getDate($startcol + 21, null);
 
-			$this->contrato_id = $rs->getInt($startcol + 22);
+			$this->fecha_liquidacion = $rs->getDate($startcol + 22, null);
 
-			$this->existencia_contrato_numero = $rs->getString($startcol + 23);
+			$this->plazo_meses = $rs->getInt($startcol + 23);
 
-			$this->created_at = $rs->getTimestamp($startcol + 24, null);
+			$this->contrato_id = $rs->getInt($startcol + 24);
 
-			$this->updated_at = $rs->getTimestamp($startcol + 25, null);
+			$this->existencia_contrato_numero = $rs->getString($startcol + 25);
+
+			$this->created_at = $rs->getTimestamp($startcol + 26, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 27, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 26; 
+						return $startcol + 28; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Actividad object", $e);
 		}
@@ -1298,33 +1352,39 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				return $this->getNumeroSolicitud();
 				break;
 			case 16:
-				return $this->getFechaSolicitud();
+				return $this->getCdp();
 				break;
 			case 17:
-				return $this->getFechaContrato();
+				return $this->getCrp();
 				break;
 			case 18:
-				return $this->getFechaActaInicio();
+				return $this->getFechaSolicitud();
 				break;
 			case 19:
-				return $this->getFechaTerminacion();
+				return $this->getFechaContrato();
 				break;
 			case 20:
-				return $this->getFechaLiquidacion();
+				return $this->getFechaActaInicio();
 				break;
 			case 21:
-				return $this->getPlazoMeses();
+				return $this->getFechaTerminacion();
 				break;
 			case 22:
-				return $this->getContratoId();
+				return $this->getFechaLiquidacion();
 				break;
 			case 23:
-				return $this->getExistenciaContratoNumero();
+				return $this->getPlazoMeses();
 				break;
 			case 24:
-				return $this->getCreatedAt();
+				return $this->getContratoId();
 				break;
 			case 25:
+				return $this->getExistenciaContratoNumero();
+				break;
+			case 26:
+				return $this->getCreatedAt();
+				break;
+			case 27:
 				return $this->getUpdatedAt();
 				break;
 			default:
@@ -1353,16 +1413,18 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 			$keys[13] => $this->getComponenteInversionId(),
 			$keys[14] => $this->getPlurianualProgramado(),
 			$keys[15] => $this->getNumeroSolicitud(),
-			$keys[16] => $this->getFechaSolicitud(),
-			$keys[17] => $this->getFechaContrato(),
-			$keys[18] => $this->getFechaActaInicio(),
-			$keys[19] => $this->getFechaTerminacion(),
-			$keys[20] => $this->getFechaLiquidacion(),
-			$keys[21] => $this->getPlazoMeses(),
-			$keys[22] => $this->getContratoId(),
-			$keys[23] => $this->getExistenciaContratoNumero(),
-			$keys[24] => $this->getCreatedAt(),
-			$keys[25] => $this->getUpdatedAt(),
+			$keys[16] => $this->getCdp(),
+			$keys[17] => $this->getCrp(),
+			$keys[18] => $this->getFechaSolicitud(),
+			$keys[19] => $this->getFechaContrato(),
+			$keys[20] => $this->getFechaActaInicio(),
+			$keys[21] => $this->getFechaTerminacion(),
+			$keys[22] => $this->getFechaLiquidacion(),
+			$keys[23] => $this->getPlazoMeses(),
+			$keys[24] => $this->getContratoId(),
+			$keys[25] => $this->getExistenciaContratoNumero(),
+			$keys[26] => $this->getCreatedAt(),
+			$keys[27] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -1427,33 +1489,39 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 				$this->setNumeroSolicitud($value);
 				break;
 			case 16:
-				$this->setFechaSolicitud($value);
+				$this->setCdp($value);
 				break;
 			case 17:
-				$this->setFechaContrato($value);
+				$this->setCrp($value);
 				break;
 			case 18:
-				$this->setFechaActaInicio($value);
+				$this->setFechaSolicitud($value);
 				break;
 			case 19:
-				$this->setFechaTerminacion($value);
+				$this->setFechaContrato($value);
 				break;
 			case 20:
-				$this->setFechaLiquidacion($value);
+				$this->setFechaActaInicio($value);
 				break;
 			case 21:
-				$this->setPlazoMeses($value);
+				$this->setFechaTerminacion($value);
 				break;
 			case 22:
-				$this->setContratoId($value);
+				$this->setFechaLiquidacion($value);
 				break;
 			case 23:
-				$this->setExistenciaContratoNumero($value);
+				$this->setPlazoMeses($value);
 				break;
 			case 24:
-				$this->setCreatedAt($value);
+				$this->setContratoId($value);
 				break;
 			case 25:
+				$this->setExistenciaContratoNumero($value);
+				break;
+			case 26:
+				$this->setCreatedAt($value);
+				break;
+			case 27:
 				$this->setUpdatedAt($value);
 				break;
 		} 	}
@@ -1479,16 +1547,18 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[13], $arr)) $this->setComponenteInversionId($arr[$keys[13]]);
 		if (array_key_exists($keys[14], $arr)) $this->setPlurianualProgramado($arr[$keys[14]]);
 		if (array_key_exists($keys[15], $arr)) $this->setNumeroSolicitud($arr[$keys[15]]);
-		if (array_key_exists($keys[16], $arr)) $this->setFechaSolicitud($arr[$keys[16]]);
-		if (array_key_exists($keys[17], $arr)) $this->setFechaContrato($arr[$keys[17]]);
-		if (array_key_exists($keys[18], $arr)) $this->setFechaActaInicio($arr[$keys[18]]);
-		if (array_key_exists($keys[19], $arr)) $this->setFechaTerminacion($arr[$keys[19]]);
-		if (array_key_exists($keys[20], $arr)) $this->setFechaLiquidacion($arr[$keys[20]]);
-		if (array_key_exists($keys[21], $arr)) $this->setPlazoMeses($arr[$keys[21]]);
-		if (array_key_exists($keys[22], $arr)) $this->setContratoId($arr[$keys[22]]);
-		if (array_key_exists($keys[23], $arr)) $this->setExistenciaContratoNumero($arr[$keys[23]]);
-		if (array_key_exists($keys[24], $arr)) $this->setCreatedAt($arr[$keys[24]]);
-		if (array_key_exists($keys[25], $arr)) $this->setUpdatedAt($arr[$keys[25]]);
+		if (array_key_exists($keys[16], $arr)) $this->setCdp($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setCrp($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setFechaSolicitud($arr[$keys[18]]);
+		if (array_key_exists($keys[19], $arr)) $this->setFechaContrato($arr[$keys[19]]);
+		if (array_key_exists($keys[20], $arr)) $this->setFechaActaInicio($arr[$keys[20]]);
+		if (array_key_exists($keys[21], $arr)) $this->setFechaTerminacion($arr[$keys[21]]);
+		if (array_key_exists($keys[22], $arr)) $this->setFechaLiquidacion($arr[$keys[22]]);
+		if (array_key_exists($keys[23], $arr)) $this->setPlazoMeses($arr[$keys[23]]);
+		if (array_key_exists($keys[24], $arr)) $this->setContratoId($arr[$keys[24]]);
+		if (array_key_exists($keys[25], $arr)) $this->setExistenciaContratoNumero($arr[$keys[25]]);
+		if (array_key_exists($keys[26], $arr)) $this->setCreatedAt($arr[$keys[26]]);
+		if (array_key_exists($keys[27], $arr)) $this->setUpdatedAt($arr[$keys[27]]);
 	}
 
 	
@@ -1512,6 +1582,8 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(ActividadPeer::COMPONENTE_INVERSION_ID)) $criteria->add(ActividadPeer::COMPONENTE_INVERSION_ID, $this->componente_inversion_id);
 		if ($this->isColumnModified(ActividadPeer::PLURIANUAL_PROGRAMADO)) $criteria->add(ActividadPeer::PLURIANUAL_PROGRAMADO, $this->plurianual_programado);
 		if ($this->isColumnModified(ActividadPeer::NUMERO_SOLICITUD)) $criteria->add(ActividadPeer::NUMERO_SOLICITUD, $this->numero_solicitud);
+		if ($this->isColumnModified(ActividadPeer::CDP)) $criteria->add(ActividadPeer::CDP, $this->cdp);
+		if ($this->isColumnModified(ActividadPeer::CRP)) $criteria->add(ActividadPeer::CRP, $this->crp);
 		if ($this->isColumnModified(ActividadPeer::FECHA_SOLICITUD)) $criteria->add(ActividadPeer::FECHA_SOLICITUD, $this->fecha_solicitud);
 		if ($this->isColumnModified(ActividadPeer::FECHA_CONTRATO)) $criteria->add(ActividadPeer::FECHA_CONTRATO, $this->fecha_contrato);
 		if ($this->isColumnModified(ActividadPeer::FECHA_ACTA_INICIO)) $criteria->add(ActividadPeer::FECHA_ACTA_INICIO, $this->fecha_acta_inicio);
@@ -1581,6 +1653,10 @@ abstract class BaseActividad extends BaseObject  implements Persistent {
 		$copyObj->setPlurianualProgramado($this->plurianual_programado);
 
 		$copyObj->setNumeroSolicitud($this->numero_solicitud);
+
+		$copyObj->setCdp($this->cdp);
+
+		$copyObj->setCrp($this->crp);
 
 		$copyObj->setFechaSolicitud($this->fecha_solicitud);
 

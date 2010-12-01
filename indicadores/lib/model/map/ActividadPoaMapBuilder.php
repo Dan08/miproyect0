@@ -38,6 +38,10 @@ class ActividadPoaMapBuilder {
 
 		$tMap->addForeignKey('PROCESO_ID', 'ProcesoId', 'int', CreoleTypes::INTEGER, 'proceso', 'ID', false, null);
 
+		$tMap->addColumn('TIPO', 'Tipo', 'string', CreoleTypes::VARCHAR, false, 50);
+
+		$tMap->addForeignKey('PROCEDIMIENTO_ID', 'ProcedimientoId', 'int', CreoleTypes::INTEGER, 'procedimiento', 'ID', false, null);
+
 		$tMap->addForeignKey('PROYECTO_ID', 'ProyectoId', 'int', CreoleTypes::INTEGER, 'proyecto', 'ID', false, null);
 
 		$tMap->addForeignKey('ACTIVIDAD_ID', 'ActividadId', 'int', CreoleTypes::INTEGER, 'actividad_proyecto', 'ID', false, null);

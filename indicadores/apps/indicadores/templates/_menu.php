@@ -121,9 +121,9 @@
           <div id="ActividadesPOA" class="yuimenu"><div class="bd">
             <ul>
               <li class="yuimenuitem">
-                <?php echo link_to('Crear', 'actividadpoa/create', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Crear', 'actividadpoaproyecto/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
-                <?php echo link_to('Modificar', 'actividadpoa/list', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Modificar', 'actividadpoaproyecto/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>
@@ -132,9 +132,9 @@
           <div id="ActividadesPOAprocedimiento" class="yuimenu"><div class="bd">
             <ul>
               <li class="yuimenuitem">
-                <?php echo link_to('Crear', 'actividadpoa/create', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Crear', 'actividadpoaprocedimiento/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
-                <?php echo link_to('Modificar', 'actividadpoa/list', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Modificar', 'actividadpoaprocedimiento/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>

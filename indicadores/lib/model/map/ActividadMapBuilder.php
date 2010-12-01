@@ -64,6 +64,10 @@ class ActividadMapBuilder {
 
 		$tMap->addColumn('NUMERO_SOLICITUD', 'NumeroSolicitud', 'string', CreoleTypes::VARCHAR, false, 20);
 
+		$tMap->addColumn('CDP', 'Cdp', 'string', CreoleTypes::VARCHAR, false, 10);
+
+		$tMap->addColumn('CRP', 'Crp', 'string', CreoleTypes::VARCHAR, false, 10);
+
 		$tMap->addColumn('FECHA_SOLICITUD', 'FechaSolicitud', 'int', CreoleTypes::DATE, false, null);
 
 		$tMap->addColumn('FECHA_CONTRATO', 'FechaContrato', 'int', CreoleTypes::DATE, false, null);

@@ -23,7 +23,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 	const ID = 'subactividad_poa_ejecucion.ID';
 
 	
-	const SUBACTIVIDAD_PROYECTO_ID = 'subactividad_poa_ejecucion.SUBACTIVIDAD_PROYECTO_ID';
+	const SUBACTIVIDAD_POA_ID = 'subactividad_poa_ejecucion.SUBACTIVIDAD_POA_ID';
 
 	
 	const MES = 'subactividad_poa_ejecucion.MES';
@@ -46,17 +46,17 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'SubactividadProyectoId', 'Mes', 'Descripcion', 'Avance', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (SubactividadPoaEjecucionPeer::ID, SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadPoaEjecucionPeer::MES, SubactividadPoaEjecucionPeer::DESCRIPCION, SubactividadPoaEjecucionPeer::AVANCE, SubactividadPoaEjecucionPeer::CREATED_AT, SubactividadPoaEjecucionPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'subactividad_proyecto_id', 'mes', 'descripcion', 'avance', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_PHPNAME => array ('Id', 'SubactividadPoaId', 'Mes', 'Descripcion', 'Avance', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (SubactividadPoaEjecucionPeer::ID, SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, SubactividadPoaEjecucionPeer::MES, SubactividadPoaEjecucionPeer::DESCRIPCION, SubactividadPoaEjecucionPeer::AVANCE, SubactividadPoaEjecucionPeer::CREATED_AT, SubactividadPoaEjecucionPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'subactividad_poa_id', 'mes', 'descripcion', 'avance', 'created_at', 'updated_at', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'SubactividadProyectoId' => 1, 'Mes' => 2, 'Descripcion' => 3, 'Avance' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, ),
-		BasePeer::TYPE_COLNAME => array (SubactividadPoaEjecucionPeer::ID => 0, SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID => 1, SubactividadPoaEjecucionPeer::MES => 2, SubactividadPoaEjecucionPeer::DESCRIPCION => 3, SubactividadPoaEjecucionPeer::AVANCE => 4, SubactividadPoaEjecucionPeer::CREATED_AT => 5, SubactividadPoaEjecucionPeer::UPDATED_AT => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'subactividad_proyecto_id' => 1, 'mes' => 2, 'descripcion' => 3, 'avance' => 4, 'created_at' => 5, 'updated_at' => 6, ),
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'SubactividadPoaId' => 1, 'Mes' => 2, 'Descripcion' => 3, 'Avance' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, ),
+		BasePeer::TYPE_COLNAME => array (SubactividadPoaEjecucionPeer::ID => 0, SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID => 1, SubactividadPoaEjecucionPeer::MES => 2, SubactividadPoaEjecucionPeer::DESCRIPCION => 3, SubactividadPoaEjecucionPeer::AVANCE => 4, SubactividadPoaEjecucionPeer::CREATED_AT => 5, SubactividadPoaEjecucionPeer::UPDATED_AT => 6, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'subactividad_poa_id' => 1, 'mes' => 2, 'descripcion' => 3, 'avance' => 4, 'created_at' => 5, 'updated_at' => 6, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
@@ -113,7 +113,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 
 		$criteria->addSelectColumn(SubactividadPoaEjecucionPeer::ID);
 
-		$criteria->addSelectColumn(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID);
+		$criteria->addSelectColumn(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID);
 
 		$criteria->addSelectColumn(SubactividadPoaEjecucionPeer::MES);
 
@@ -204,7 +204,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 	}
 
 	
-	public static function doCountJoinSubactividadPoa(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinSubactividadProcedimientoPoa(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
@@ -220,7 +220,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadPoaPeer::ID);
+		$criteria->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, SubactividadProcedimientoPoaPeer::ID);
 
 		$rs = SubactividadPoaEjecucionPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -232,7 +232,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 
 
 	
-	public static function doSelectJoinSubactividadPoa(Criteria $c, $con = null)
+	public static function doSelectJoinSubactividadProcedimientoPoa(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
@@ -242,9 +242,9 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 
 		SubactividadPoaEjecucionPeer::addSelectColumns($c);
 		$startcol = (SubactividadPoaEjecucionPeer::NUM_COLUMNS - SubactividadPoaEjecucionPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		SubactividadPoaPeer::addSelectColumns($c);
+		SubactividadProcedimientoPoaPeer::addSelectColumns($c);
 
-		$c->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadPoaPeer::ID);
+		$c->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, SubactividadProcedimientoPoaPeer::ID);
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
@@ -256,7 +256,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = SubactividadPoaPeer::getOMClass();
+			$omClass = SubactividadProcedimientoPoaPeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj2 = new $cls();
@@ -264,7 +264,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 
 			$newObject = true;
 			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getSubactividadPoa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getSubactividadProcedimientoPoa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 										$temp_obj2->addSubactividadPoaEjecucion($obj1); 					break;
 				}
@@ -295,7 +295,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadPoaPeer::ID);
+		$criteria->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, SubactividadProcedimientoPoaPeer::ID);
 
 		$rs = SubactividadPoaEjecucionPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -318,10 +318,10 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 		SubactividadPoaEjecucionPeer::addSelectColumns($c);
 		$startcol2 = (SubactividadPoaEjecucionPeer::NUM_COLUMNS - SubactividadPoaEjecucionPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		SubactividadPoaPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + SubactividadPoaPeer::NUM_COLUMNS;
+		SubactividadProcedimientoPoaPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + SubactividadProcedimientoPoaPeer::NUM_COLUMNS;
 
-		$c->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, SubactividadPoaPeer::ID);
+		$c->addJoin(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, SubactividadProcedimientoPoaPeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
@@ -337,7 +337,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 
 
 					
-			$omClass = SubactividadPoaPeer::getOMClass();
+			$omClass = SubactividadProcedimientoPoaPeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -347,7 +347,7 @@ abstract class BaseSubactividadPoaEjecucionPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getSubactividadPoa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getSubactividadProcedimientoPoa(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addSubactividadPoaEjecucion($obj1); 					break;
 				}
