@@ -16,4 +16,20 @@ class IndicadorMeta extends BaseIndicadorMeta
     public function  getMetaPd($con = null) {
         return parent::getMetaPd($con);
     }
+
+    public function getLastValue($year) {
+      $c = new Criteria();
+      $c->add(SeguimientoIndicadorMetaPeer::INDICADOR_META_ID, $this->id);
+      $c->add(SeguimientoIndicadorMetaPeer::ANYO, $year);
+      $c->addAscendingOrderByColumn(SeguimientoIndicadorMetaPeer::ID);
+      
+      $valor = SeguimientoIndicadorMetaPeer::doSelectOne($c);
+
+      if ($valor == null)
+      {
+        return null;
+      } else {
+        return $valor->getValor();
+      }
+    }
 }

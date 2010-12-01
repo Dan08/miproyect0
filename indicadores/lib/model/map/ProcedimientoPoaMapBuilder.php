@@ -34,11 +34,13 @@ class ProcedimientoPoaMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addForeignKey('PROCESO_ID', 'ProcesoId', 'int', CreoleTypes::INTEGER, 'proceso', 'ID', false, null);
-
 		$tMap->addForeignKey('PROCEDIMIENTO_ID', 'ProcedimientoId', 'int', CreoleTypes::INTEGER, 'procedimiento', 'ID', false, null);
 
 		$tMap->addColumn('PONDERACION', 'Ponderacion', 'double', CreoleTypes::FLOAT, true, null);
+
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+
+		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 
 	} 
 } 

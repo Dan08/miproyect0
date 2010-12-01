@@ -13,7 +13,7 @@ abstract class BaseActividadPeer {
 	const CLASS_DEFAULT = 'lib.model.Actividad';
 
 	
-	const NUM_COLUMNS = 26;
+	const NUM_COLUMNS = 28;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -68,6 +68,12 @@ abstract class BaseActividadPeer {
 	const NUMERO_SOLICITUD = 'actividad.NUMERO_SOLICITUD';
 
 	
+	const CDP = 'actividad.CDP';
+
+	
+	const CRP = 'actividad.CRP';
+
+	
 	const FECHA_SOLICITUD = 'actividad.FECHA_SOLICITUD';
 
 	
@@ -103,18 +109,18 @@ abstract class BaseActividadPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'ProyectoId', 'Descripcion', 'TipoGastoId', 'ComponenteSectorId', 'ConceptoGastoId', 'CodAppFvs', 'MetaProyectoId', 'InversionRecurrente', 'MesEtapaContractual', 'MesInicioEjecucion', 'Reservas', 'AreaResponsable', 'ComponenteInversionId', 'PlurianualProgramado', 'NumeroSolicitud', 'FechaSolicitud', 'FechaContrato', 'FechaActaInicio', 'FechaTerminacion', 'FechaLiquidacion', 'PlazoMeses', 'ContratoId', 'ExistenciaContratoNumero', 'CreatedAt', 'UpdatedAt', ),
-		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID, ActividadPeer::PROYECTO_ID, ActividadPeer::DESCRIPCION, ActividadPeer::TIPO_GASTO_ID, ActividadPeer::COMPONENTE_SECTOR_ID, ActividadPeer::CONCEPTO_GASTO_ID, ActividadPeer::COD_APP_FVS, ActividadPeer::META_PROYECTO_ID, ActividadPeer::INVERSION_RECURRENTE, ActividadPeer::MES_ETAPA_CONTRACTUAL, ActividadPeer::MES_INICIO_EJECUCION, ActividadPeer::RESERVAS, ActividadPeer::AREA_RESPONSABLE, ActividadPeer::COMPONENTE_INVERSION_ID, ActividadPeer::PLURIANUAL_PROGRAMADO, ActividadPeer::NUMERO_SOLICITUD, ActividadPeer::FECHA_SOLICITUD, ActividadPeer::FECHA_CONTRATO, ActividadPeer::FECHA_ACTA_INICIO, ActividadPeer::FECHA_TERMINACION, ActividadPeer::FECHA_LIQUIDACION, ActividadPeer::PLAZO_MESES, ActividadPeer::CONTRATO_ID, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO, ActividadPeer::CREATED_AT, ActividadPeer::UPDATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'proyecto_id', 'descripcion', 'tipo_gasto_id', 'componente_sector_id', 'concepto_gasto_id', 'cod_app_fvs', 'meta_proyecto_id', 'inversion_recurrente', 'mes_etapa_contractual', 'mes_inicio_ejecucion', 'reservas', 'area_responsable', 'componente_inversion_id', 'plurianual_programado', 'numero_solicitud', 'fecha_solicitud', 'fecha_contrato', 'fecha_acta_inicio', 'fecha_terminacion', 'fecha_liquidacion', 'plazo_meses', 'contrato_id', 'existencia_contrato_numero', 'created_at', 'updated_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'ProyectoId', 'Descripcion', 'TipoGastoId', 'ComponenteSectorId', 'ConceptoGastoId', 'CodAppFvs', 'MetaProyectoId', 'InversionRecurrente', 'MesEtapaContractual', 'MesInicioEjecucion', 'Reservas', 'AreaResponsable', 'ComponenteInversionId', 'PlurianualProgramado', 'NumeroSolicitud', 'Cdp', 'Crp', 'FechaSolicitud', 'FechaContrato', 'FechaActaInicio', 'FechaTerminacion', 'FechaLiquidacion', 'PlazoMeses', 'ContratoId', 'ExistenciaContratoNumero', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID, ActividadPeer::PROYECTO_ID, ActividadPeer::DESCRIPCION, ActividadPeer::TIPO_GASTO_ID, ActividadPeer::COMPONENTE_SECTOR_ID, ActividadPeer::CONCEPTO_GASTO_ID, ActividadPeer::COD_APP_FVS, ActividadPeer::META_PROYECTO_ID, ActividadPeer::INVERSION_RECURRENTE, ActividadPeer::MES_ETAPA_CONTRACTUAL, ActividadPeer::MES_INICIO_EJECUCION, ActividadPeer::RESERVAS, ActividadPeer::AREA_RESPONSABLE, ActividadPeer::COMPONENTE_INVERSION_ID, ActividadPeer::PLURIANUAL_PROGRAMADO, ActividadPeer::NUMERO_SOLICITUD, ActividadPeer::CDP, ActividadPeer::CRP, ActividadPeer::FECHA_SOLICITUD, ActividadPeer::FECHA_CONTRATO, ActividadPeer::FECHA_ACTA_INICIO, ActividadPeer::FECHA_TERMINACION, ActividadPeer::FECHA_LIQUIDACION, ActividadPeer::PLAZO_MESES, ActividadPeer::CONTRATO_ID, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO, ActividadPeer::CREATED_AT, ActividadPeer::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'proyecto_id', 'descripcion', 'tipo_gasto_id', 'componente_sector_id', 'concepto_gasto_id', 'cod_app_fvs', 'meta_proyecto_id', 'inversion_recurrente', 'mes_etapa_contractual', 'mes_inicio_ejecucion', 'reservas', 'area_responsable', 'componente_inversion_id', 'plurianual_programado', 'numero_solicitud', 'cdp', 'crp', 'fecha_solicitud', 'fecha_contrato', 'fecha_acta_inicio', 'fecha_terminacion', 'fecha_liquidacion', 'plazo_meses', 'contrato_id', 'existencia_contrato_numero', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProyectoId' => 1, 'Descripcion' => 2, 'TipoGastoId' => 3, 'ComponenteSectorId' => 4, 'ConceptoGastoId' => 5, 'CodAppFvs' => 6, 'MetaProyectoId' => 7, 'InversionRecurrente' => 8, 'MesEtapaContractual' => 9, 'MesInicioEjecucion' => 10, 'Reservas' => 11, 'AreaResponsable' => 12, 'ComponenteInversionId' => 13, 'PlurianualProgramado' => 14, 'NumeroSolicitud' => 15, 'FechaSolicitud' => 16, 'FechaContrato' => 17, 'FechaActaInicio' => 18, 'FechaTerminacion' => 19, 'FechaLiquidacion' => 20, 'PlazoMeses' => 21, 'ContratoId' => 22, 'ExistenciaContratoNumero' => 23, 'CreatedAt' => 24, 'UpdatedAt' => 25, ),
-		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID => 0, ActividadPeer::PROYECTO_ID => 1, ActividadPeer::DESCRIPCION => 2, ActividadPeer::TIPO_GASTO_ID => 3, ActividadPeer::COMPONENTE_SECTOR_ID => 4, ActividadPeer::CONCEPTO_GASTO_ID => 5, ActividadPeer::COD_APP_FVS => 6, ActividadPeer::META_PROYECTO_ID => 7, ActividadPeer::INVERSION_RECURRENTE => 8, ActividadPeer::MES_ETAPA_CONTRACTUAL => 9, ActividadPeer::MES_INICIO_EJECUCION => 10, ActividadPeer::RESERVAS => 11, ActividadPeer::AREA_RESPONSABLE => 12, ActividadPeer::COMPONENTE_INVERSION_ID => 13, ActividadPeer::PLURIANUAL_PROGRAMADO => 14, ActividadPeer::NUMERO_SOLICITUD => 15, ActividadPeer::FECHA_SOLICITUD => 16, ActividadPeer::FECHA_CONTRATO => 17, ActividadPeer::FECHA_ACTA_INICIO => 18, ActividadPeer::FECHA_TERMINACION => 19, ActividadPeer::FECHA_LIQUIDACION => 20, ActividadPeer::PLAZO_MESES => 21, ActividadPeer::CONTRATO_ID => 22, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO => 23, ActividadPeer::CREATED_AT => 24, ActividadPeer::UPDATED_AT => 25, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'proyecto_id' => 1, 'descripcion' => 2, 'tipo_gasto_id' => 3, 'componente_sector_id' => 4, 'concepto_gasto_id' => 5, 'cod_app_fvs' => 6, 'meta_proyecto_id' => 7, 'inversion_recurrente' => 8, 'mes_etapa_contractual' => 9, 'mes_inicio_ejecucion' => 10, 'reservas' => 11, 'area_responsable' => 12, 'componente_inversion_id' => 13, 'plurianual_programado' => 14, 'numero_solicitud' => 15, 'fecha_solicitud' => 16, 'fecha_contrato' => 17, 'fecha_acta_inicio' => 18, 'fecha_terminacion' => 19, 'fecha_liquidacion' => 20, 'plazo_meses' => 21, 'contrato_id' => 22, 'existencia_contrato_numero' => 23, 'created_at' => 24, 'updated_at' => 25, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProyectoId' => 1, 'Descripcion' => 2, 'TipoGastoId' => 3, 'ComponenteSectorId' => 4, 'ConceptoGastoId' => 5, 'CodAppFvs' => 6, 'MetaProyectoId' => 7, 'InversionRecurrente' => 8, 'MesEtapaContractual' => 9, 'MesInicioEjecucion' => 10, 'Reservas' => 11, 'AreaResponsable' => 12, 'ComponenteInversionId' => 13, 'PlurianualProgramado' => 14, 'NumeroSolicitud' => 15, 'Cdp' => 16, 'Crp' => 17, 'FechaSolicitud' => 18, 'FechaContrato' => 19, 'FechaActaInicio' => 20, 'FechaTerminacion' => 21, 'FechaLiquidacion' => 22, 'PlazoMeses' => 23, 'ContratoId' => 24, 'ExistenciaContratoNumero' => 25, 'CreatedAt' => 26, 'UpdatedAt' => 27, ),
+		BasePeer::TYPE_COLNAME => array (ActividadPeer::ID => 0, ActividadPeer::PROYECTO_ID => 1, ActividadPeer::DESCRIPCION => 2, ActividadPeer::TIPO_GASTO_ID => 3, ActividadPeer::COMPONENTE_SECTOR_ID => 4, ActividadPeer::CONCEPTO_GASTO_ID => 5, ActividadPeer::COD_APP_FVS => 6, ActividadPeer::META_PROYECTO_ID => 7, ActividadPeer::INVERSION_RECURRENTE => 8, ActividadPeer::MES_ETAPA_CONTRACTUAL => 9, ActividadPeer::MES_INICIO_EJECUCION => 10, ActividadPeer::RESERVAS => 11, ActividadPeer::AREA_RESPONSABLE => 12, ActividadPeer::COMPONENTE_INVERSION_ID => 13, ActividadPeer::PLURIANUAL_PROGRAMADO => 14, ActividadPeer::NUMERO_SOLICITUD => 15, ActividadPeer::CDP => 16, ActividadPeer::CRP => 17, ActividadPeer::FECHA_SOLICITUD => 18, ActividadPeer::FECHA_CONTRATO => 19, ActividadPeer::FECHA_ACTA_INICIO => 20, ActividadPeer::FECHA_TERMINACION => 21, ActividadPeer::FECHA_LIQUIDACION => 22, ActividadPeer::PLAZO_MESES => 23, ActividadPeer::CONTRATO_ID => 24, ActividadPeer::EXISTENCIA_CONTRATO_NUMERO => 25, ActividadPeer::CREATED_AT => 26, ActividadPeer::UPDATED_AT => 27, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'proyecto_id' => 1, 'descripcion' => 2, 'tipo_gasto_id' => 3, 'componente_sector_id' => 4, 'concepto_gasto_id' => 5, 'cod_app_fvs' => 6, 'meta_proyecto_id' => 7, 'inversion_recurrente' => 8, 'mes_etapa_contractual' => 9, 'mes_inicio_ejecucion' => 10, 'reservas' => 11, 'area_responsable' => 12, 'componente_inversion_id' => 13, 'plurianual_programado' => 14, 'numero_solicitud' => 15, 'cdp' => 16, 'crp' => 17, 'fecha_solicitud' => 18, 'fecha_contrato' => 19, 'fecha_acta_inicio' => 20, 'fecha_terminacion' => 21, 'fecha_liquidacion' => 22, 'plazo_meses' => 23, 'contrato_id' => 24, 'existencia_contrato_numero' => 25, 'created_at' => 26, 'updated_at' => 27, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, )
 	);
 
 	
@@ -199,6 +205,10 @@ abstract class BaseActividadPeer {
 		$criteria->addSelectColumn(ActividadPeer::PLURIANUAL_PROGRAMADO);
 
 		$criteria->addSelectColumn(ActividadPeer::NUMERO_SOLICITUD);
+
+		$criteria->addSelectColumn(ActividadPeer::CDP);
+
+		$criteria->addSelectColumn(ActividadPeer::CRP);
 
 		$criteria->addSelectColumn(ActividadPeer::FECHA_SOLICITUD);
 

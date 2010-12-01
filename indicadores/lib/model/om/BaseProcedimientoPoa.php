@@ -13,21 +13,28 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 
 
 	
-	protected $proceso_id;
-
-
-	
 	protected $procedimiento_id;
 
 
 	
 	protected $ponderacion;
 
+
 	
-	protected $aProceso;
+	protected $created_at;
+
+
+	
+	protected $updated_at;
 
 	
 	protected $aProcedimiento;
+
+	
+	protected $collActividadProcedimientoPoas;
+
+	
+	protected $lastActividadProcedimientoPoaCriteria = null;
 
 	
 	protected $alreadyInSave = false;
@@ -40,13 +47,6 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 	{
 
 		return $this->id;
-	}
-
-	
-	public function getProcesoId()
-	{
-
-		return $this->proceso_id;
 	}
 
 	
@@ -64,6 +64,50 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getCreatedAt($format = 'Y-m-d H:i:s')
+	{
+
+		if ($this->created_at === null || $this->created_at === '') {
+			return null;
+		} elseif (!is_int($this->created_at)) {
+						$ts = strtotime($this->created_at);
+			if ($ts === -1 || $ts === false) { 				throw new PropelException("Unable to parse value of [created_at] as date/time value: " . var_export($this->created_at, true));
+			}
+		} else {
+			$ts = $this->created_at;
+		}
+		if ($format === null) {
+			return $ts;
+		} elseif (strpos($format, '%') !== false) {
+			return strftime($format, $ts);
+		} else {
+			return date($format, $ts);
+		}
+	}
+
+	
+	public function getUpdatedAt($format = 'Y-m-d H:i:s')
+	{
+
+		if ($this->updated_at === null || $this->updated_at === '') {
+			return null;
+		} elseif (!is_int($this->updated_at)) {
+						$ts = strtotime($this->updated_at);
+			if ($ts === -1 || $ts === false) { 				throw new PropelException("Unable to parse value of [updated_at] as date/time value: " . var_export($this->updated_at, true));
+			}
+		} else {
+			$ts = $this->updated_at;
+		}
+		if ($format === null) {
+			return $ts;
+		} elseif (strpos($format, '%') !== false) {
+			return strftime($format, $ts);
+		} else {
+			return date($format, $ts);
+		}
+	}
+
+	
 	public function setId($v)
 	{
 
@@ -74,24 +118,6 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 		if ($this->id !== $v) {
 			$this->id = $v;
 			$this->modifiedColumns[] = ProcedimientoPoaPeer::ID;
-		}
-
-	} 
-	
-	public function setProcesoId($v)
-	{
-
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
-			$v = (int) $v;
-		}
-
-		if ($this->proceso_id !== $v) {
-			$this->proceso_id = $v;
-			$this->modifiedColumns[] = ProcedimientoPoaPeer::PROCESO_ID;
-		}
-
-		if ($this->aProceso !== null && $this->aProceso->getId() !== $v) {
-			$this->aProceso = null;
 		}
 
 	} 
@@ -124,23 +150,59 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setCreatedAt($v)
+	{
+
+		if ($v !== null && !is_int($v)) {
+			$ts = strtotime($v);
+			if ($ts === -1 || $ts === false) { 				throw new PropelException("Unable to parse date/time value for [created_at] from input: " . var_export($v, true));
+			}
+		} else {
+			$ts = $v;
+		}
+		if ($this->created_at !== $ts) {
+			$this->created_at = $ts;
+			$this->modifiedColumns[] = ProcedimientoPoaPeer::CREATED_AT;
+		}
+
+	} 
+	
+	public function setUpdatedAt($v)
+	{
+
+		if ($v !== null && !is_int($v)) {
+			$ts = strtotime($v);
+			if ($ts === -1 || $ts === false) { 				throw new PropelException("Unable to parse date/time value for [updated_at] from input: " . var_export($v, true));
+			}
+		} else {
+			$ts = $v;
+		}
+		if ($this->updated_at !== $ts) {
+			$this->updated_at = $ts;
+			$this->modifiedColumns[] = ProcedimientoPoaPeer::UPDATED_AT;
+		}
+
+	} 
+	
 	public function hydrate(ResultSet $rs, $startcol = 1)
 	{
 		try {
 
 			$this->id = $rs->getInt($startcol + 0);
 
-			$this->proceso_id = $rs->getInt($startcol + 1);
+			$this->procedimiento_id = $rs->getInt($startcol + 1);
 
-			$this->procedimiento_id = $rs->getInt($startcol + 2);
+			$this->ponderacion = $rs->getFloat($startcol + 2);
 
-			$this->ponderacion = $rs->getFloat($startcol + 3);
+			$this->created_at = $rs->getTimestamp($startcol + 3, null);
+
+			$this->updated_at = $rs->getTimestamp($startcol + 4, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 4; 
+						return $startcol + 5; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating ProcedimientoPoa object", $e);
 		}
@@ -171,6 +233,16 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 	
 	public function save($con = null)
 	{
+    if ($this->isNew() && !$this->isColumnModified(ProcedimientoPoaPeer::CREATED_AT))
+    {
+      $this->setCreatedAt(time());
+    }
+
+    if ($this->isModified() && !$this->isColumnModified(ProcedimientoPoaPeer::UPDATED_AT))
+    {
+      $this->setUpdatedAt(time());
+    }
+
 		if ($this->isDeleted()) {
 			throw new PropelException("You cannot save an object that has been deleted.");
 		}
@@ -198,13 +270,6 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aProceso !== null) {
-				if ($this->aProceso->isModified()) {
-					$affectedRows += $this->aProceso->save($con);
-				}
-				$this->setProceso($this->aProceso);
-			}
-
 			if ($this->aProcedimiento !== null) {
 				if ($this->aProcedimiento->isModified()) {
 					$affectedRows += $this->aProcedimiento->save($con);
@@ -223,6 +288,14 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 					$affectedRows += ProcedimientoPoaPeer::doUpdate($this, $con);
 				}
 				$this->resetModified(); 			}
+
+			if ($this->collActividadProcedimientoPoas !== null) {
+				foreach($this->collActividadProcedimientoPoas as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
 
 			$this->alreadyInSave = false;
 		}
@@ -261,12 +334,6 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aProceso !== null) {
-				if (!$this->aProceso->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aProceso->getValidationFailures());
-				}
-			}
-
 			if ($this->aProcedimiento !== null) {
 				if (!$this->aProcedimiento->validate($columns)) {
 					$failureMap = array_merge($failureMap, $this->aProcedimiento->getValidationFailures());
@@ -278,6 +345,14 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
+
+				if ($this->collActividadProcedimientoPoas !== null) {
+					foreach($this->collActividadProcedimientoPoas as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
 
 
 			$this->alreadyInValidation = false;
@@ -301,13 +376,16 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getProcesoId();
-				break;
-			case 2:
 				return $this->getProcedimientoId();
 				break;
-			case 3:
+			case 2:
 				return $this->getPonderacion();
+				break;
+			case 3:
+				return $this->getCreatedAt();
+				break;
+			case 4:
+				return $this->getUpdatedAt();
 				break;
 			default:
 				return null;
@@ -320,9 +398,10 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 		$keys = ProcedimientoPoaPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getProcesoId(),
-			$keys[2] => $this->getProcedimientoId(),
-			$keys[3] => $this->getPonderacion(),
+			$keys[1] => $this->getProcedimientoId(),
+			$keys[2] => $this->getPonderacion(),
+			$keys[3] => $this->getCreatedAt(),
+			$keys[4] => $this->getUpdatedAt(),
 		);
 		return $result;
 	}
@@ -342,13 +421,16 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setProcesoId($value);
-				break;
-			case 2:
 				$this->setProcedimientoId($value);
 				break;
-			case 3:
+			case 2:
 				$this->setPonderacion($value);
+				break;
+			case 3:
+				$this->setCreatedAt($value);
+				break;
+			case 4:
+				$this->setUpdatedAt($value);
 				break;
 		} 	}
 
@@ -358,9 +440,10 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 		$keys = ProcedimientoPoaPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setProcesoId($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setProcedimientoId($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setPonderacion($arr[$keys[3]]);
+		if (array_key_exists($keys[1], $arr)) $this->setProcedimientoId($arr[$keys[1]]);
+		if (array_key_exists($keys[2], $arr)) $this->setPonderacion($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setCreatedAt($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setUpdatedAt($arr[$keys[4]]);
 	}
 
 	
@@ -369,9 +452,10 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 		$criteria = new Criteria(ProcedimientoPoaPeer::DATABASE_NAME);
 
 		if ($this->isColumnModified(ProcedimientoPoaPeer::ID)) $criteria->add(ProcedimientoPoaPeer::ID, $this->id);
-		if ($this->isColumnModified(ProcedimientoPoaPeer::PROCESO_ID)) $criteria->add(ProcedimientoPoaPeer::PROCESO_ID, $this->proceso_id);
 		if ($this->isColumnModified(ProcedimientoPoaPeer::PROCEDIMIENTO_ID)) $criteria->add(ProcedimientoPoaPeer::PROCEDIMIENTO_ID, $this->procedimiento_id);
 		if ($this->isColumnModified(ProcedimientoPoaPeer::PONDERACION)) $criteria->add(ProcedimientoPoaPeer::PONDERACION, $this->ponderacion);
+		if ($this->isColumnModified(ProcedimientoPoaPeer::CREATED_AT)) $criteria->add(ProcedimientoPoaPeer::CREATED_AT, $this->created_at);
+		if ($this->isColumnModified(ProcedimientoPoaPeer::UPDATED_AT)) $criteria->add(ProcedimientoPoaPeer::UPDATED_AT, $this->updated_at);
 
 		return $criteria;
 	}
@@ -402,12 +486,23 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setProcesoId($this->proceso_id);
-
 		$copyObj->setProcedimientoId($this->procedimiento_id);
 
 		$copyObj->setPonderacion($this->ponderacion);
 
+		$copyObj->setCreatedAt($this->created_at);
+
+		$copyObj->setUpdatedAt($this->updated_at);
+
+
+		if ($deepCopy) {
+									$copyObj->setNew(false);
+
+			foreach($this->getActividadProcedimientoPoas() as $relObj) {
+				$copyObj->addActividadProcedimientoPoa($relObj->copy($deepCopy));
+			}
+
+		} 
 
 		$copyObj->setNew(true);
 
@@ -430,35 +525,6 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 			self::$peer = new ProcedimientoPoaPeer();
 		}
 		return self::$peer;
-	}
-
-	
-	public function setProceso($v)
-	{
-
-
-		if ($v === null) {
-			$this->setProcesoId(NULL);
-		} else {
-			$this->setProcesoId($v->getId());
-		}
-
-
-		$this->aProceso = $v;
-	}
-
-
-	
-	public function getProceso($con = null)
-	{
-		if ($this->aProceso === null && ($this->proceso_id !== null)) {
-						include_once 'lib/model/om/BaseProcesoPeer.php';
-
-			$this->aProceso = ProcesoPeer::retrieveByPK($this->proceso_id, $con);
-
-			
-		}
-		return $this->aProceso;
 	}
 
 	
@@ -488,6 +554,76 @@ abstract class BaseProcedimientoPoa extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aProcedimiento;
+	}
+
+	
+	public function initActividadProcedimientoPoas()
+	{
+		if ($this->collActividadProcedimientoPoas === null) {
+			$this->collActividadProcedimientoPoas = array();
+		}
+	}
+
+	
+	public function getActividadProcedimientoPoas($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProcedimientoPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collActividadProcedimientoPoas === null) {
+			if ($this->isNew()) {
+			   $this->collActividadProcedimientoPoas = array();
+			} else {
+
+				$criteria->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getId());
+
+				ActividadProcedimientoPoaPeer::addSelectColumns($criteria);
+				$this->collActividadProcedimientoPoas = ActividadProcedimientoPoaPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getId());
+
+				ActividadProcedimientoPoaPeer::addSelectColumns($criteria);
+				if (!isset($this->lastActividadProcedimientoPoaCriteria) || !$this->lastActividadProcedimientoPoaCriteria->equals($criteria)) {
+					$this->collActividadProcedimientoPoas = ActividadProcedimientoPoaPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastActividadProcedimientoPoaCriteria = $criteria;
+		return $this->collActividadProcedimientoPoas;
+	}
+
+	
+	public function countActividadProcedimientoPoas($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseActividadProcedimientoPoaPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getId());
+
+		return ActividadProcedimientoPoaPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addActividadProcedimientoPoa(ActividadProcedimientoPoa $l)
+	{
+		$this->collActividadProcedimientoPoas[] = $l;
+		$l->setProcedimientoPoa($this);
 	}
 
 } 

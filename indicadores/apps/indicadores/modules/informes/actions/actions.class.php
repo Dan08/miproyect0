@@ -177,6 +177,7 @@ class informesActions extends sfActions
 
   public function executeMetasPlanDesarrollo()
   {
-    $this->metaspd = AnualizacionPeer::doSelectJoinAll(new Criteria());
+    $this->metaspd = IndicadorMetaPeer::doSelectJoinAll(new Criteria());
+    //$this->metaspd = AnualizacionPeer::doSelectJoinAll(new Criteria());
   }
 }

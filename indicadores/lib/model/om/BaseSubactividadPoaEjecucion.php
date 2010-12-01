@@ -13,7 +13,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 
 
 	
-	protected $subactividad_proyecto_id;
+	protected $subactividad_poa_id;
 
 
 	
@@ -36,7 +36,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 	protected $updated_at;
 
 	
-	protected $aSubactividadPoa;
+	protected $aSubactividadProcedimientoPoa;
 
 	
 	protected $alreadyInSave = false;
@@ -52,10 +52,10 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 	}
 
 	
-	public function getSubactividadProyectoId()
+	public function getSubactividadPoaId()
 	{
 
-		return $this->subactividad_proyecto_id;
+		return $this->subactividad_poa_id;
 	}
 
 	
@@ -138,20 +138,20 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 
 	} 
 	
-	public function setSubactividadProyectoId($v)
+	public function setSubactividadPoaId($v)
 	{
 
 						if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
 
-		if ($this->subactividad_proyecto_id !== $v) {
-			$this->subactividad_proyecto_id = $v;
-			$this->modifiedColumns[] = SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID;
+		if ($this->subactividad_poa_id !== $v) {
+			$this->subactividad_poa_id = $v;
+			$this->modifiedColumns[] = SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID;
 		}
 
-		if ($this->aSubactividadPoa !== null && $this->aSubactividadPoa->getId() !== $v) {
-			$this->aSubactividadPoa = null;
+		if ($this->aSubactividadProcedimientoPoa !== null && $this->aSubactividadProcedimientoPoa->getId() !== $v) {
+			$this->aSubactividadProcedimientoPoa = null;
 		}
 
 	} 
@@ -234,7 +234,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 
 			$this->id = $rs->getInt($startcol + 0);
 
-			$this->subactividad_proyecto_id = $rs->getInt($startcol + 1);
+			$this->subactividad_poa_id = $rs->getInt($startcol + 1);
 
 			$this->mes = $rs->getInt($startcol + 2);
 
@@ -318,11 +318,11 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 
 
 												
-			if ($this->aSubactividadPoa !== null) {
-				if ($this->aSubactividadPoa->isModified()) {
-					$affectedRows += $this->aSubactividadPoa->save($con);
+			if ($this->aSubactividadProcedimientoPoa !== null) {
+				if ($this->aSubactividadProcedimientoPoa->isModified()) {
+					$affectedRows += $this->aSubactividadProcedimientoPoa->save($con);
 				}
-				$this->setSubactividadPoa($this->aSubactividadPoa);
+				$this->setSubactividadProcedimientoPoa($this->aSubactividadProcedimientoPoa);
 			}
 
 
@@ -374,9 +374,9 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 
 
 												
-			if ($this->aSubactividadPoa !== null) {
-				if (!$this->aSubactividadPoa->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aSubactividadPoa->getValidationFailures());
+			if ($this->aSubactividadProcedimientoPoa !== null) {
+				if (!$this->aSubactividadProcedimientoPoa->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aSubactividadProcedimientoPoa->getValidationFailures());
 				}
 			}
 
@@ -408,7 +408,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getSubactividadProyectoId();
+				return $this->getSubactividadPoaId();
 				break;
 			case 2:
 				return $this->getMes();
@@ -436,7 +436,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 		$keys = SubactividadPoaEjecucionPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getSubactividadProyectoId(),
+			$keys[1] => $this->getSubactividadPoaId(),
 			$keys[2] => $this->getMes(),
 			$keys[3] => $this->getDescripcion(),
 			$keys[4] => $this->getAvance(),
@@ -461,7 +461,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setSubactividadProyectoId($value);
+				$this->setSubactividadPoaId($value);
 				break;
 			case 2:
 				$this->setMes($value);
@@ -486,7 +486,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 		$keys = SubactividadPoaEjecucionPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setSubactividadProyectoId($arr[$keys[1]]);
+		if (array_key_exists($keys[1], $arr)) $this->setSubactividadPoaId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setMes($arr[$keys[2]]);
 		if (array_key_exists($keys[3], $arr)) $this->setDescripcion($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setAvance($arr[$keys[4]]);
@@ -500,7 +500,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 		$criteria = new Criteria(SubactividadPoaEjecucionPeer::DATABASE_NAME);
 
 		if ($this->isColumnModified(SubactividadPoaEjecucionPeer::ID)) $criteria->add(SubactividadPoaEjecucionPeer::ID, $this->id);
-		if ($this->isColumnModified(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID)) $criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, $this->subactividad_proyecto_id);
+		if ($this->isColumnModified(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID)) $criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, $this->subactividad_poa_id);
 		if ($this->isColumnModified(SubactividadPoaEjecucionPeer::MES)) $criteria->add(SubactividadPoaEjecucionPeer::MES, $this->mes);
 		if ($this->isColumnModified(SubactividadPoaEjecucionPeer::DESCRIPCION)) $criteria->add(SubactividadPoaEjecucionPeer::DESCRIPCION, $this->descripcion);
 		if ($this->isColumnModified(SubactividadPoaEjecucionPeer::AVANCE)) $criteria->add(SubactividadPoaEjecucionPeer::AVANCE, $this->avance);
@@ -536,7 +536,7 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setSubactividadProyectoId($this->subactividad_proyecto_id);
+		$copyObj->setSubactividadPoaId($this->subactividad_poa_id);
 
 		$copyObj->setMes($this->mes);
 
@@ -573,32 +573,32 @@ abstract class BaseSubactividadPoaEjecucion extends BaseObject  implements Persi
 	}
 
 	
-	public function setSubactividadPoa($v)
+	public function setSubactividadProcedimientoPoa($v)
 	{
 
 
 		if ($v === null) {
-			$this->setSubactividadProyectoId(NULL);
+			$this->setSubactividadPoaId(NULL);
 		} else {
-			$this->setSubactividadProyectoId($v->getId());
+			$this->setSubactividadPoaId($v->getId());
 		}
 
 
-		$this->aSubactividadPoa = $v;
+		$this->aSubactividadProcedimientoPoa = $v;
 	}
 
 
 	
-	public function getSubactividadPoa($con = null)
+	public function getSubactividadProcedimientoPoa($con = null)
 	{
-		if ($this->aSubactividadPoa === null && ($this->subactividad_proyecto_id !== null)) {
-						include_once 'lib/model/om/BaseSubactividadPoaPeer.php';
+		if ($this->aSubactividadProcedimientoPoa === null && ($this->subactividad_poa_id !== null)) {
+						include_once 'lib/model/om/BaseSubactividadProcedimientoPoaPeer.php';
 
-			$this->aSubactividadPoa = SubactividadPoaPeer::retrieveByPK($this->subactividad_proyecto_id, $con);
+			$this->aSubactividadProcedimientoPoa = SubactividadProcedimientoPoaPeer::retrieveByPK($this->subactividad_poa_id, $con);
 
 			
 		}
-		return $this->aSubactividadPoa;
+		return $this->aSubactividadProcedimientoPoa;
 	}
 
 } 

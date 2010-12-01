@@ -789,7 +789,7 @@ abstract class BaseSubactividadPoa extends BaseObject  implements Persistent {
 			   $this->collSubactividadPoaEjecucions = array();
 			} else {
 
-				$criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, $this->getId());
+				$criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, $this->getId());
 
 				SubactividadPoaEjecucionPeer::addSelectColumns($criteria);
 				$this->collSubactividadPoaEjecucions = SubactividadPoaEjecucionPeer::doSelect($criteria, $con);
@@ -798,7 +798,7 @@ abstract class BaseSubactividadPoa extends BaseObject  implements Persistent {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, $this->getId());
+				$criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, $this->getId());
 
 				SubactividadPoaEjecucionPeer::addSelectColumns($criteria);
 				if (!isset($this->lastSubactividadPoaEjecucionCriteria) || !$this->lastSubactividadPoaEjecucionCriteria->equals($criteria)) {
@@ -822,7 +822,7 @@ abstract class BaseSubactividadPoa extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_PROYECTO_ID, $this->getId());
+		$criteria->add(SubactividadPoaEjecucionPeer::SUBACTIVIDAD_POA_ID, $this->getId());
 
 		return SubactividadPoaEjecucionPeer::doCount($criteria, $distinct, $con);
 	}

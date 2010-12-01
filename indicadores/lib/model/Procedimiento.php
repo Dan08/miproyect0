@@ -9,4 +9,8 @@
  */ 
 class Procedimiento extends BaseProcedimiento
 {
+  public function __toString()
+  {
+    return $this->getNombre();
+  }
 }
