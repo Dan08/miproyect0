@@ -150,6 +150,41 @@
           </div></div>
         </li>
       </ul>
+      <ul>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#ProcedimientoPOA">Programacion Procedimientos</a>
+          <div id="procedimientopoa" class="yuimenu"><div class="bd">
+            <ul>
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'procedimientopoa/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'procedimientopoa/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#actividadProcedimiento">Actividades Procedimiento</a>
+          <div id="actividadprocedimientopoa" class="yuimenu"><div class="bd">
+            <ul>
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'actividadprocedimientopoa/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'actividadprocedimientopoa/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#subactividadProcedimiento">Subactividades Procedimiento</a>
+          <div id="subactividadprocedimientopoa" class="yuimenu"><div class="bd">
+            <ul>
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'subactividadprocedimientopoa/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'subactividadprocedimientopoa/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+
+      </ul>
     </div></div>
   </li>
 
@@ -292,6 +327,8 @@
         <?php echo link_to('Seguimiento Metas Plan de Desarrollo', 'seguimientometas/create', 'class="yuimenuitemlabel"')?></li>
       <li class="yuimenuitem">
         <?php echo link_to('Seguimiento Subactividades Proyectos', 'subactividadejecucion/list', 'class="yuimenuitemlabel"')?></li>
+      <li class="yuimenuitem">
+        <?php echo link_to('Seguimiento Subactividades Procedimientos (POA)', 'subactividadprocedimientopoaejecucion/list', 'class="yuimenuitemlabel"')?></li>
     </ul>
     </div>
     </div>

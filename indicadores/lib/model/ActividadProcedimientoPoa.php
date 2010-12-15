@@ -9,4 +9,7 @@
  */ 
 class ActividadProcedimientoPoa extends BaseActividadProcedimientoPoa
 {
+  public function  __toString() {
+    return $this->getActividad();
+  }
 }

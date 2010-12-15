@@ -9,4 +9,7 @@
  */ 
 class ProcedimientoPoa extends BaseProcedimientoPoa
 {
+  public function  __toString() {
+    return $this->getProcedimiento();
+  }
 }
