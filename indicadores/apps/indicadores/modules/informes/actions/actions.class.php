@@ -137,7 +137,7 @@ class informesActions extends sfActions
   }
 
   /**
-   * Informe de ejecucion por proyectos discriminado con actividades
+   * Informe de avance por proyectos discriminado con actividades
    */
   public function executeProyectos()
   {
@@ -157,6 +157,9 @@ class informesActions extends sfActions
     }
   }
 
+  /**
+   * Informe de ejecucion por proyectos discriminado con actividades
+   */
   public function executeEjecucionproyectos()
   {
     if ($this->getRequestParameter('proyecto'))
@@ -179,5 +182,41 @@ class informesActions extends sfActions
   {
     $this->metaspd = IndicadorMetaPeer::doSelectJoinAll(new Criteria());
     //$this->metaspd = AnualizacionPeer::doSelectJoinAll(new Criteria());
+  }
+
+  /**
+   * Informe para de POA para procesos y procedimientos
+   */
+  public function executePoaProcesos()
+  {
+    //$this->procesos = ProcedimientoPeer::doSelectJoinProceso(new Criteria());
+    $this->procesos = ProcedimientoPoaPeer::doSelectJoinAll(new Criteria());
+  }
+
+  public function executePoaejecucion() {
+    if ($this->getRequestParameter('proceso'))
+    {
+      // mostrar lista de procedimientos asociados al proceso
+      $c = new Criteria();
+      $c->add(ProcedimientoPeer::PROCESO_ID, $this->getRequestParameter('proceso'));
+      $c->addJoin(ProcedimientoPeer::ID, ProcedimientoPoaPeer::PROCEDIMIENTO_ID);
+
+      $this->procedimientos = ProcedimientoPoaPeer::doSelect($c);
+      $this->setTemplate('listEjecucionProcedimientos');
+
+    } elseif ($this->getRequestParameter('procedimiento'))
+    {
+      // mostrar el informe del proyecto especificado
+      $c = new Criteria();
+      $c->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getRequestParameter('procedimiento'));
+      //$c->addAscendingOrderByColumn(ActividadProyectoPeer::META_PD_ID);
+
+      $this->actividades = SubactividadProcedimientoPoaPeer::doSelectJoinAll($c);
+      //$this->proyecto = ProyectoPeer::retrieveByPK($this->getRequestParameter('proyecto'));
+    } else {
+      // mostrar lista de procesos
+      $this->procesos = ProcesoPeer::doSelect(new Criteria);
+      $this->setTemplate('listEjecucionProcesos');
+    }
   }
 }
