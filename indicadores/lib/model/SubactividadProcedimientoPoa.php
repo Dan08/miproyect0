@@ -141,8 +141,11 @@ class SubactividadProcedimientoPoa extends BaseSubactividadProcedimientoPoa
     {
       $semanas[$i] = 2;
     }
-
-    return $semanas;
+    
+    /**limitar a 52 el tamaño del array, para actividades con programacion mas
+     * alla de fin de año genera una semana 53
+     */
+    return array_slice($semanas, 0, 52);
   }
 
 }
