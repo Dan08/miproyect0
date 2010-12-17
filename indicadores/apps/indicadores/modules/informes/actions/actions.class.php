@@ -189,10 +189,26 @@ class informesActions extends sfActions
    */
   public function executePoaProcesos()
   {
-    //$this->procesos = ProcedimientoPeer::doSelectJoinProceso(new Criteria());
-    $this->procesos = ProcedimientoPoaPeer::doSelectJoinAll(new Criteria());
+    if ($this->getRequestParameter('procedimiento'))
+    {
+      // mostrar el informe del proyecto especificado
+      $c = new Criteria();
+      $c->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getRequestParameter('procedimiento'));
+
+      $this->actividades = SubactividadProcedimientoPoaPeer::doSelectJoinAll($c);
+    
+    } else {
+
+      $this->procesos = ProcedimientoPoaPeer::doSelectJoinAll(new Criteria());
+      $this->setTemplate('ListPoaProcesos');
+    }
   }
 
+  /**
+   * Informe de avances para poa de procedimientos
+   *
+   * ToDo: revisar si se deja asi, sino borrar
+   */
   public function executePoaejecucion() {
     if ($this->getRequestParameter('proceso'))
     {
@@ -217,6 +233,26 @@ class informesActions extends sfActions
       // mostrar lista de procesos
       $this->procesos = ProcesoPeer::doSelect(new Criteria);
       $this->setTemplate('listEjecucionProcesos');
+    }
+  }
+
+  /**
+   * Informe de ejecucion por proyectos discriminado con actividades
+   */
+  public function executeEjecucionPoaProcedimientos()
+  {
+    if ($this->getRequestParameter('procedimiento'))
+    {
+      // mostrar el informe del proyecto especificado
+      $c = new Criteria();
+      $c->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getRequestParameter('procedimiento'));
+
+      $this->actividades = SubactividadProcedimientoPoaPeer::doSelectJoinAll($c);
+
+    } else {
+
+      $this->procesos = ProcedimientoPoaPeer::doSelectJoinAll(new Criteria());
+      $this->setTemplate('ListEjecucionPoaProcesos');
     }
   }
 }
