@@ -1,0 +1,11 @@
+all:
+  is_secure: on
+  credentials: PD
+  
+create:
+  is_secure: on
+  credentials: [PD, create]
+  
+list:
+  is_secure: on
+  credentials: [PD, edit]

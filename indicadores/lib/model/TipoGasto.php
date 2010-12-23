@@ -9,4 +9,7 @@
  */ 
 class TipoGasto extends BaseTipoGasto
 {
+  public function  __toString() {
+    return $this->getTipoGasto();
+  }
 }

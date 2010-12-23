@@ -9,4 +9,7 @@
  */ 
 class Componente extends BaseComponente
 {
+  public function  __toString() {
+    return $this->getComponente();
+  }
 }

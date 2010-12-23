@@ -1,6 +1,3 @@
-<?php
-var_dump($procesos);
-?>
 <h1>Informe POA - Procesos</h1>
 <table>
 <thead>

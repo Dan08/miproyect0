@@ -21,7 +21,13 @@ class componenteproyectoActions extends sfActions
 
   public function executeList()
   {
-    $this->componente_proyectos = ComponenteProyectoPeer::doSelect(new Criteria());
+    if (!$this->getRequestParameter('proyecto')) {
+      $this->setTemplate('BuscarComponente');
+    } else {
+      $c = new Criteria();
+      $c->add(ComponenteProyectoPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $this->componente_proyectos = ComponenteProyectoPeer::doSelect($c);
+    }
   }
 
   public function executeShow()

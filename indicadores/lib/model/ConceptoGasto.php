@@ -9,4 +9,7 @@
  */ 
 class ConceptoGasto extends BaseConceptoGasto
 {
+  public function  __toString() {
+    return $this->getConceptoGasto();
+  }
 }

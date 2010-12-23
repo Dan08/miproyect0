@@ -1,0 +1,11 @@
+all:
+  is_secure: on
+  credentials: Proyectos
+  
+create:
+  is_secure: on
+  credentials: [Proyectos, create]
+  
+list:
+  is_secure: on
+  credentials: [Proyectos, edit]

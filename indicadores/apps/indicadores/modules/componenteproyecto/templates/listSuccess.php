@@ -7,7 +7,6 @@
 <table>
 <thead>
 <tr>
-  <th>Id</th>
   <th>Componente</th>
   <th>Proyecto</th>
   <th>Monto</th>
@@ -16,13 +15,10 @@
 <tbody>
 <?php foreach ($componente_proyectos as $componente_proyecto): ?>
 <tr>
-    <td><?php echo link_to($componente_proyecto->getId(), 'componenteproyecto/show?id='.$componente_proyecto->getId()) ?></td>
-      <td><?php echo $componente_proyecto->getComponenteId() ?></td>
-      <td><?php echo $componente_proyecto->getProyectoId() ?></td>
+    <td><?php echo link_to($componente_proyecto->getComponente(), 'componenteproyecto/show?id='.$componente_proyecto->getId()) ?></td>
+      <td><?php echo $componente_proyecto->getProyecto() ?></td>
       <td><?php echo $componente_proyecto->getMonto() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'componenteproyecto/create') ?>

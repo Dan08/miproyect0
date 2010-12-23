@@ -1,0 +1,11 @@
+all:
+  is_secure: on
+  credentials: Contractual
+  
+create:
+  is_secure: on
+  credentials: [Contractual, create]
+  
+list:
+  is_secure: on
+  credentials: [Contractual, edit]

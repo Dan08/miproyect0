@@ -156,9 +156,8 @@
 </tr>
 <tr>
   <th>Contrato:</th>
-  <td><?php echo object_select_tag($actividad, 'getContratoId', array (
-  'related_class' => 'Contrato',
-  'include_blank' => true,
+  <td><?php echo object_input_tag($actividad, 'getContratoId', array (
+  'size' => 20,
 )) ?></td>
 </tr>
 <tr>

@@ -7,7 +7,6 @@
 <table>
 <thead>
 <tr>
-  <th>Id</th>
   <th>Numero</th>
   <th>Contratista</th>
   <th>Fecha firma</th>
@@ -25,8 +24,7 @@
 <tbody>
 <?php foreach ($contratos as $contrato): ?>
 <tr>
-    <td><?php echo link_to($contrato->getId(), 'contrato/show?id='.$contrato->getId()) ?></td>
-      <td><?php echo $contrato->getNumero() ?></td>
+    <td><?php echo link_to($contrato->getNumero(), 'contrato/show?id='.$contrato->getId()) ?></td>
       <td><?php echo $contrato->getContratista() ?></td>
       <td><?php echo $contrato->getFechaFirma() ?></td>
       <td><?php echo $contrato->getFechaActaInicio() ?></td>
