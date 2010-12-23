@@ -21,7 +21,14 @@ class contratoActions extends sfActions
 
   public function executeList()
   {
-    $this->contratos = ContratoPeer::doSelect(new Criteria());
+    if (!$this->getRequestParameter('contrato')) {
+      $this->setTemplate('BuscarContrato');
+    } else {
+      $c = new Criteria();
+      $c->add(ContratoPeer::NUMERO, $this->getRequestParameter('contrato'));
+
+      $this->contratos = ContratoPeer::doSelect($c);
+    }
   }
 
   public function executeShow()

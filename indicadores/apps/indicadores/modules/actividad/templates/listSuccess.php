@@ -7,9 +7,8 @@
 <table>
 <thead>
 <tr>
-  <th>Id</th>
-  <th>Proyecto</th>
   <th>Descripcion</th>
+  <th>Proyecto</th>
   <th>Tipo gasto</th>
   <th>Componente sector</th>
   <th>Concepto gasto</th>
@@ -40,12 +39,11 @@
 <tbody>
 <?php foreach ($actividads as $actividad): ?>
 <tr>
-    <td><?php echo link_to($actividad->getId(), 'actividad/show?id='.$actividad->getId()) ?></td>
-      <td><?php echo $actividad->getProyectoId() ?></td>
-      <td><?php echo $actividad->getDescripcion() ?></td>
-      <td><?php echo $actividad->getTipoGastoId() ?></td>
-      <td><?php echo $actividad->getComponenteSectorId() ?></td>
-      <td><?php echo $actividad->getConceptoGastoId() ?></td>
+    <td><?php echo link_to($actividad->getDescripcion(), 'actividad/show?id='.$actividad->getId()) ?></td>
+      <td><?php echo $actividad->getProyecto() ?></td>
+      <td><?php echo $actividad->getTipoGasto() ?></td>
+      <td><?php echo $actividad->getComponenteSector() ?></td>
+      <td><?php echo $actividad->getConceptoGasto() ?></td>
       <td><?php echo $actividad->getCodAppFvs() ?></td>
       <td><?php echo $actividad->getMetaProyectoId() ?></td>
       <td><?php echo $actividad->getInversionRecurrente() ?></td>
@@ -72,5 +70,3 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'actividad/create') ?>

@@ -220,10 +220,16 @@
                 <?php echo link_to('Crear', 'cdp/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
                 <?php echo link_to('Modificar', 'cdp/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#crp">CRP</a>
+          <div id="crp" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
               <li class="yuimenuitem">
-                <?php echo link_to('Vincular con actividad', 'cdpactividad/create', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Crear', 'crp/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
-                <?php echo link_to('Modificar con actividad', 'cdpactividad/list', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Modificar', 'crp/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>
@@ -243,7 +249,17 @@
               <li class="yuimenuitem">
                 <?php echo link_to('Crear', 'clienteactividad/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
-                <?php echo link_to('Modificar', 'clienteactividad/list', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Modificar', 'localidadactividad/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#contrato">Contratos</a>
+          <div id="contrato" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'contrato/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'contrato/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>
@@ -350,6 +366,16 @@
         <li class="yuimenuitem">
           <?php echo link_to('Ejecucion Semanal Proyectos', 'informes/ejecucionproyectos', 'class="yuimenuitemlabel"')?></li>
       </ul>
+      <ul>
+        <li class="yuimenuitem">
+          <?php echo link_to('Avance Procedimientos', 'informes/PoaProcesos', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
+          <?php echo link_to('Ejecucion Semanal Procedimientos', 'informes/EjecucionPoaProcedimientos', 'class="yuimenuitemlabel"')?></li>
+      </ul>
+      <ul>
+        <li class="yuimenuitem">
+          <?php echo link_to('Proyecto por Componentes', 'informes/AsignacionComponentesProyecto', 'class="yuimenuitemlabel"')?></li>
+      </ul>
        <ul>
         <li class="yuimenuitem">
           <?php echo link_to('Cuadro de Mando Integral (CMI)', 'informes/CMI', 'class="yuimenuitemlabel"')?></li>
@@ -422,6 +448,8 @@
         <?php echo link_to('Usuarios', 'sfGuardUser', 'class="yuimenuitemlabel"')?></li>
       <li class="yuimenuitem">
         <?php echo link_to('Grupos', 'sfGuardGroup', 'class="yuimenuitemlabel"')?></li>
+      <li class="yuimenuitem">
+        <?php echo link_to('Permisos', 'sfGuardPermission', 'class="yuimenuitemlabel"')?></li>
      </ul>
      </div>
      </div>

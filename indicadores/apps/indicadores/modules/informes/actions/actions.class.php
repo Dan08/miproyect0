@@ -255,4 +255,30 @@ class informesActions extends sfActions
       $this->setTemplate('ListEjecucionPoaProcesos');
     }
   }
+
+  /**
+   * Lista las asignaciones de los proyectos por componente
+   */
+  public function executeAsignacionComponentesProyecto() {
+    $this->componente_proyectos = ComponenteProyectoPeer::doSelect(new Criteria());
+  }
+
+  public function executeActividadesProyectos() {
+    if (!$this->getRequestParameter('proyecto')) {
+      // mostrar lista de proyectos
+      $this->proyectos = ProyectoPeer::doSelect(new Criteria);
+      $this->setTemplate('listActividadesProyectos');
+    } else {
+      // mostrar lista de actividades del proyecto
+      $c = new Criteria();
+      $c->add(ActividadPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+
+      $this->actividads = ActividadPeer::doSelect($c);
+
+
+    }
+  }
+
+
+
 }

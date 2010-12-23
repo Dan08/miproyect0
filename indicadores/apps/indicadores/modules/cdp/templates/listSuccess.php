@@ -7,7 +7,6 @@
 <table>
 <thead>
 <tr>
-  <th>Id</th>
   <th>Numero</th>
   <th>Fecha</th>
   <th>Monto</th>
@@ -16,13 +15,10 @@
 <tbody>
 <?php foreach ($cdps as $cdp): ?>
 <tr>
-    <td><?php echo link_to($cdp->getId(), 'cdp/show?id='.$cdp->getId()) ?></td>
-      <td><?php echo $cdp->getNumero() ?></td>
+    <td><?php echo link_to($cdp->getNumero(), 'cdp/show?id='.$cdp->getId()) ?></td>
       <td><?php echo $cdp->getFecha() ?></td>
       <td><?php echo $cdp->getMonto() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'cdp/create') ?>

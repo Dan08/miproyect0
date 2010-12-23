@@ -1,0 +1,11 @@
+all:
+  is_secure: on
+  credentials: POA
+  
+create:
+  is_secure: on
+  credentials: [POA, create]
+  
+list:
+  is_secure: on
+  credentials: [POA, edit]

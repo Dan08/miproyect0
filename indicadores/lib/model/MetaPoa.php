@@ -9,4 +9,7 @@
  */ 
 class MetaPoa extends BaseMetaPoa
 {
+  public function  __toString() {
+    return $this->getMeta();
+  }
 }

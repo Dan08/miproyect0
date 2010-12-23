@@ -9,4 +9,7 @@
  */ 
 class ComponenteSector extends BaseComponenteSector
 {
+  public function  __toString() {
+    return $this->getComponenteSector();
+  }
 }

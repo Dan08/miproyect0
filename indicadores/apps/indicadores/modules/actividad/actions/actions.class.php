@@ -21,7 +21,17 @@ class actividadActions extends sfActions
 
   public function executeList()
   {
-    $this->actividads = ActividadPeer::doSelect(new Criteria());
+    if ((!$this->getRequestParameter('proyecto')) && (!$this->getRequestParameter('mes'))) {
+      // mostrar formulario
+      $this->setTemplate('BuscarActividad');
+    } else {
+     // mostrar las actividades segun el criterio con paginacion
+     $c = new Criteria();
+     $c->add(ActividadPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+     $c->add(ActividadPeer::MES_INICIO_EJECUCION, $this->getRequestParameter('mes'));
+
+     $this->actividads = ActividadPeer::doSelect($c);
+    }
   }
 
   public function executeShow()

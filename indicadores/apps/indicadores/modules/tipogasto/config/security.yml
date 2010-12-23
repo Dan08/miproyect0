@@ -1,0 +1,11 @@
+all:
+  is_secure: on
+  credentials: setup
+  
+seguimiento:
+  is_secure: on
+  credentials: insert
+  
+updateSeguimiento:
+  is_secure: on
+  credentials: insert

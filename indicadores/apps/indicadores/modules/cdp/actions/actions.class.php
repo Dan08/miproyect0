@@ -21,7 +21,14 @@ class cdpActions extends sfActions
 
   public function executeList()
   {
-    $this->cdps = CdpPeer::doSelect(new Criteria());
+    if (!$this->getRequestParameter('cdp')) {
+      $this->setTemplate('BuscarCDP');
+    } else {
+      $c = new Criteria();
+      $c->add(CdpPeer::NUMERO, $this->getRequestParameter('cdp'));
+      
+      $this->cdps = CdpPeer::doSelect($c);
+    }
   }
 
   public function executeShow()
