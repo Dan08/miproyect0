@@ -17,14 +17,12 @@
 <tbody>
 <?php foreach ($localidad_actividads as $localidad_actividad): ?>
 <tr>
-    <td><?php echo link_to($localidad_actividad->getId(), 'localidadactividad/show?id='.$localidad_actividad->getId()) ?></td>
-      <td><?php echo $localidad_actividad->getLocalidadId() ?></td>
-      <td><?php echo $localidad_actividad->getActividadId() ?></td>
+    <td><?php echo link_to($localidad_actividad->getId(), 'localidadactividad/edit?id='.$localidad_actividad->getId().'&actividad='.$localidad_actividad->getActividadId()) ?></td>
+      <td><?php echo $localidad_actividad->getLocalidad() ?></td>
+      <td><?php echo $localidad_actividad->getActividad()->getDescripcion() ?></td>
       <td><?php echo $localidad_actividad->getMonto() ?></td>
       <td><?php echo $localidad_actividad->getCantidad() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'localidadactividad/create') ?>

@@ -9,4 +9,7 @@
  */ 
 class Fuente extends BaseFuente
 {
+  public function  __toString() {
+    return $this->getFuente();
+  }
 }

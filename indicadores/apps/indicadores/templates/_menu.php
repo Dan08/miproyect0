@@ -233,6 +233,16 @@
             </ul>
           </div></div>
         </li>
+        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#fuenteactividad">Fuentes de Actividad</a>
+          <div id="fuenteactividad" class="yuimenu"><div class="bd">
+            <ul class="first-of-type">
+              <li class="yuimenuitem">
+                <?php echo link_to('Crear', 'fuenteactividad/create', 'class="yuimenuitemlabel"')?></li>
+              <li class="yuimenuitem">
+                <?php echo link_to('Modificar', 'fuenteactividad/list', 'class="yuimenuitemlabel"')?></li>
+            </ul>
+          </div></div>
+        </li>
         <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#clienteactividad">Clientes de Actividad</a>
           <div id="clienteactividad" class="yuimenu"><div class="bd">
             <ul class="first-of-type">
@@ -247,7 +257,7 @@
           <div id="localidadactividad" class="yuimenu"><div class="bd">
             <ul class="first-of-type">
               <li class="yuimenuitem">
-                <?php echo link_to('Crear', 'clienteactividad/create', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Crear', 'localidadactividad/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
                 <?php echo link_to('Modificar', 'localidadactividad/list', 'class="yuimenuitemlabel"')?></li>
             </ul>

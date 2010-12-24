@@ -21,7 +21,27 @@ class fuenteactividadActions extends sfActions
 
   public function executeList()
   {
-    $this->fuente_actividads = FuenteActividadPeer::doSelect(new Criteria());
+    // listar las fuentes de la actividad seleccionada
+    if($this->getRequestParameter('actividad')) {
+      $c = new Criteria();
+      $c->add(FuenteActividadPeer::ACTIVIDAD_ID, $this->getRequestParameter('actividad'));
+
+      $this->fuente_actividads = FuenteActividadPeer::doSelect($c);
+
+    // mostrar la lista de actividades correspondiente al proyecto y mes
+    } elseif (($this->getRequestParameter('proyecto')) && ($this->getRequestParameter('mes'))) {
+      $c = new Criteria();
+      $c->add(ActividadPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $c->add(ActividadPeer::MES_INICIO_EJECUCION, $this->getRequestParameter('mes'));
+
+      $this->actividads = ActividadPeer::doSelect($c);
+
+      $this->setTemplate('ListActividades');
+    // mostrar formulario de busqueda de actividad
+    } else {
+      $this->setTemplate('BuscarActividad');
+
+    }
   }
 
   public function executeShow()
@@ -32,14 +52,32 @@ class fuenteactividadActions extends sfActions
 
   public function executeCreate()
   {
-    $this->fuente_actividad = new FuenteActividad();
+    if($this->getRequestParameter('actividad')) {
+      $this->fuente_actividad = new FuenteActividad();
+      $this->actividad = ActividadPeer::retrieveByPK($this->getRequestParameter('actividad'));
 
-    $this->setTemplate('edit');
+      $this->setTemplate('edit');
+
+    } elseif (($this->getRequestParameter('proyecto')) && ($this->getRequestParameter('mes'))) {
+      $c = new Criteria();
+      $c->add(ActividadPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $c->add(ActividadPeer::MES_INICIO_EJECUCION, $this->getRequestParameter('mes'));
+
+      $this->actividads = ActividadPeer::doSelect($c);
+
+      $this->setTemplate('ListActividadesCreate');
+    // mostrar formulario de busqueda de actividad
+    } else {
+      $this->setTemplate('BuscarActividadCreate');
+
+    }
+
   }
 
   public function executeEdit()
   {
     $this->fuente_actividad = FuenteActividadPeer::retrieveByPk($this->getRequestParameter('id'));
+    $this->actividad = ActividadPeer::retrieveByPK($this->getRequestParameter('actividad'));
     $this->forward404Unless($this->fuente_actividad);
   }
 
