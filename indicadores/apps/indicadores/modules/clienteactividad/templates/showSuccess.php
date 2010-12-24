@@ -27,5 +27,4 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'clienteactividad/edit?id='.$cliente_actividad->getId()) ?>
 &nbsp;<?php echo link_to('list', 'clienteactividad/list') ?>

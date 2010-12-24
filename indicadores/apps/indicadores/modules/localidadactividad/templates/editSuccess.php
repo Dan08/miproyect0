@@ -19,10 +19,8 @@
 </tr>
 <tr>
   <th>Actividad:</th>
-  <td><?php echo object_select_tag($localidad_actividad, 'getActividadId', array (
-  'related_class' => 'Actividad',
-  'include_blank' => true,
-)) ?></td>
+  <td><?php echo $actividad->getDescripcion() ?>
+      <?php echo input_hidden_tag('actividad_id', $actividad->getId()); ?></td>
 </tr>
 <tr>
   <th>Monto:</th>

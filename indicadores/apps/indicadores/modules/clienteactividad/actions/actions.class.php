@@ -21,6 +21,27 @@ class clienteactividadActions extends sfActions
 
   public function executeList()
   {
+    // listar las fuentes de la actividad seleccionada
+    if($this->getRequestParameter('actividad')) {
+      $c = new Criteria();
+      $c->add(ClienteActividadPeer::ACTIVIDAD_ID, $this->getRequestParameter('actividad'));
+
+      $this->cliente_actividads = ClienteActividadPeer::doSelect($c);
+
+    // mostrar la lista de actividades correspondiente al proyecto y mes
+    } elseif (($this->getRequestParameter('proyecto')) && ($this->getRequestParameter('mes'))) {
+      $c = new Criteria();
+      $c->add(ActividadPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $c->add(ActividadPeer::MES_INICIO_EJECUCION, $this->getRequestParameter('mes'));
+
+      $this->actividads = ActividadPeer::doSelect($c);
+
+      $this->setTemplate('ListActividades');
+    // mostrar formulario de busqueda de actividad
+    } else {
+      $this->setTemplate('BuscarActividad');
+
+    }
     $this->cliente_actividads = ClienteActividadPeer::doSelect(new Criteria());
   }
 
@@ -32,14 +53,31 @@ class clienteactividadActions extends sfActions
 
   public function executeCreate()
   {
-    $this->cliente_actividad = new ClienteActividad();
+    if($this->getRequestParameter('actividad')) {
+      $this->cliente_actividad = new ClienteActividad();
+      $this->actividad = ActividadPeer::retrieveByPK($this->getRequestParameter('actividad'));
 
-    $this->setTemplate('edit');
+      $this->setTemplate('edit');
+
+    } elseif (($this->getRequestParameter('proyecto')) && ($this->getRequestParameter('mes'))) {
+      $c = new Criteria();
+      $c->add(ActividadPeer::PROYECTO_ID, $this->getRequestParameter('proyecto'));
+      $c->add(ActividadPeer::MES_INICIO_EJECUCION, $this->getRequestParameter('mes'));
+
+      $this->actividads = ActividadPeer::doSelect($c);
+
+      $this->setTemplate('ListActividadesCreate');
+    // mostrar formulario de busqueda de actividad
+    } else {
+      $this->setTemplate('BuscarActividadCreate');
+
+    }
   }
 
   public function executeEdit()
   {
     $this->cliente_actividad = ClienteActividadPeer::retrieveByPk($this->getRequestParameter('id'));
+    $this->actividad = ActividadPeer::retrieveByPK($this->getRequestParameter('actividad'));
     $this->forward404Unless($this->cliente_actividad);
   }
 

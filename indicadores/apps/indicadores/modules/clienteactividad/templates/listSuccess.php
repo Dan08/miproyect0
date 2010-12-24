@@ -17,9 +17,9 @@
 <tbody>
 <?php foreach ($cliente_actividads as $cliente_actividad): ?>
 <tr>
-    <td><?php echo link_to($cliente_actividad->getId(), 'clienteactividad/show?id='.$cliente_actividad->getId()) ?></td>
-      <td><?php echo $cliente_actividad->getClienteId() ?></td>
-      <td><?php echo $cliente_actividad->getActividadId() ?></td>
+    <td><?php echo link_to($cliente_actividad->getId(), 'clienteactividad/edit?id='.$cliente_actividad->getId().'&actividad='.$cliente_actividad->getActividadId()) ?></td>
+      <td><?php echo $cliente_actividad->getCliente() ?></td>
+      <td><?php echo $cliente_actividad->getActividad()->getDescripcion() ?></td>
       <td><?php echo $cliente_actividad->getMonto() ?></td>
       <td><?php echo $cliente_actividad->getCantidad() ?></td>
   </tr>
