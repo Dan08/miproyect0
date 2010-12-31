@@ -3,6 +3,7 @@
 // date: 2010/12/01 01:25:30
 ?>
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript') ?>
 
 <?php echo form_tag('subactividadprocedimientopoa/update') ?>
 
@@ -11,11 +12,36 @@
 <table>
 <tbody>
 <tr>
+  <th>Procedimiento</th>
+  <td><?php echo select_tag('procedimiento_id', objects_for_select($procedimiento, 'getId', '__toString', '', 'include_blank=true')) ?>
+        <?php
+          echo observe_field('procedimiento_id', array(
+          'update'   => 'actividad_procedimiento_id',
+          'url'      => 'ajax/ActividadProcedimientoporProcedimiento',
+          'with'     => "'procedimiento=' + value",
+          'script'   => true,
+          'loading' => "Element.show('indicator')",
+          'complete' => "Element.hide('indicator')",
+        ));
+        ?>
+ </td>
+
+</tr>
+<tr>
   <th>Actividad procedimiento:</th>
   <td><?php echo object_select_tag($subactividad_procedimiento_poa, 'getActividadProcedimientoId', array (
   'related_class' => 'ActividadProcedimientoPoa',
   'include_blank' => true,
-)) ?></td>
+)) ?>
+  <?php
+    echo observe_field('actividad_procedimiento_id', array(
+    'update'   => 'pond',
+    'url'      => 'ajax/SubactividadProcedimiento',
+    'with'     => "'actividad=' + value",
+    'script'   => true,
+    ));
+  ?>
+  </td>
 </tr>
 <tr>
   <th>Descripcion:</th>
@@ -51,7 +77,7 @@
   <th>Ponderacion*:</th>
   <td><?php echo object_input_tag($subactividad_procedimiento_poa, 'getPonderacion', array (
   'size' => 7,
-)) ?></td>
+)) ?>&nbsp;Ponderacion Acumulada <div id="pond" style="display: inline"></div>%</td>
 </tr>
 </tbody>
 </table>

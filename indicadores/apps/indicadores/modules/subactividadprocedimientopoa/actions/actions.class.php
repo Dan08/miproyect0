@@ -32,6 +32,7 @@ class subactividadprocedimientopoaActions extends sfActions
 
   public function executeCreate()
   {
+    $this->procedimiento = ProcedimientoPoaPeer::doSelect(new Criteria());
     $this->subactividad_procedimiento_poa = new SubactividadProcedimientoPoa();
 
     $this->setTemplate('edit');
@@ -39,6 +40,7 @@ class subactividadprocedimientopoaActions extends sfActions
 
   public function executeEdit()
   {
+    $this->procedimiento = ProcedimientoPoaPeer::doSelect(new Criteria());
     $this->subactividad_procedimiento_poa = SubactividadProcedimientoPoaPeer::retrieveByPk($this->getRequestParameter('id'));
     $this->forward404Unless($this->subactividad_procedimiento_poa);
   }

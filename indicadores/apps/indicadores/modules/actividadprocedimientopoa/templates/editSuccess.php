@@ -3,6 +3,8 @@
 // date: 2010/12/01 01:24:46
 ?>
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript') ?>
+
 
 <?php echo form_tag('actividadprocedimientopoa/update') ?>
 
@@ -15,7 +17,16 @@
   <td><?php echo object_select_tag($actividad_procedimiento_poa, 'getProcedimientoPoaId', array (
   'related_class' => 'ProcedimientoPoa',
   'include_blank' => true,
-)) ?></td>
+)) ?>
+<?php
+  echo observe_field('procedimiento_poa_id', array(
+  'update'   => 'pond',
+  'url'      => 'ajax/ActividadProcedimiento',
+  'with'     => "'procedimiento=' + value",
+  'script'   => true,
+));
+?>
+  </td>
 </tr>
 <tr>
   <th>Actividad*:</th>
@@ -33,7 +44,7 @@
   <th>Ponderacion*:</th>
   <td><?php echo object_input_tag($actividad_procedimiento_poa, 'getPonderacion', array (
   'size' => 7,
-)) ?></td>
+)) ?>&nbsp;Ponderacion Acumulada <div id="pond" style="display: inline"></div>%</td>
 </tr>
 </tbody>
 </table>
