@@ -279,6 +279,10 @@ class informesActions extends sfActions
     }
   }
 
+  public function executeFuentesProyectos() {
+    $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+  }
+
 
 
 }

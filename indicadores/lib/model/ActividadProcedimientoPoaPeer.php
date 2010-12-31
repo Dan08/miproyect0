@@ -9,4 +9,11 @@
  */ 
 class ActividadProcedimientoPoaPeer extends BaseActividadProcedimientoPoaPeer
 {
+  public static function doSelectByProcedimiento($procedimiento)
+  {
+    $c = new Criteria();
+    $c->add(self::PROCEDIMIENTO_POA_ID, $procedimiento);
+
+    return self::doSelect($c);
+  }
 }

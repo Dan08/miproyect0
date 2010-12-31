@@ -29,4 +29,20 @@ class Proyecto extends BaseProyecto
 
     return $ejecucion;
   }
+
+  public function getArrayfuentes() {
+    $actividades = array();
+
+    $c = new Criteria();
+    $c->add(ActividadPeer::PROYECTO_ID, $this->id);
+    $c->add(ActividadPeer::ID, FuenteActividadPeer::ACTIVIDAD_ID);
+    $c->addJoin(ActividadPeer, self);
+    $c->addJoin(ActividadPeer, FuenteActividadPeer);
+
+    return FuenteActividadPeer::doSelectJoinFuente($c);
+
+
+
+
+  }
 }

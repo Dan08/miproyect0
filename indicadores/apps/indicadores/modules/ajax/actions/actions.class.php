@@ -36,4 +36,16 @@ class ajaxActions extends sfActions
   {
     $this->actividades = ActividadProyectoPeer::doSelectByProyecto($this->getRequestParameter('proyecto'));
   }
+
+  public function executeActividadProcedimiento() {
+    $this->procedimiento = ProcedimientoPoaPeer::retrieveByPK($this->getRequestParameter('procedimiento'));
+  }
+
+  public function executeSubactividadProcedimiento() {
+    $this->actividad = ActividadProcedimientoPoaPeer::retrieveByPK($this->getRequestParameter('actividad'));
+  }
+
+  public function executeActividadProcedimientoporProcedimiento() {
+    $this->actividades = ActividadProcedimientoPoaPeer::doSelectByProcedimiento($this->getRequestParameter('procedimiento'));
+  }
 }
