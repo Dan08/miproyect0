@@ -30,6 +30,24 @@ class informesActions extends sfActions
     $this->objetivos = ObjetivoPeer::doSelect(new Criteria());
     $this->anyo = $this->getRequestParameter('year');
   }
+
+  public function executeCMIActividadPoa()
+  {
+    $c = new Criteria();
+    $c->add(IndicadorPeer::CATEGORIA_ID,4,  Criteria::EQUAL);
+    $this->objetivos = ObjetivoPeer::doSelect($c);
+
+    $this->setTemplate('CMIAnual');
+  }
+
+  public function executeCMIProcedimientoPoa()
+  {
+    $c = new Criteria();
+    $c->add(IndicadorPeer::CATEGORIA_ID,5,  Criteria::EQUAL);
+    $this->objetivos = ObjetivoPeer::doSelect($c);
+
+    $this->setTemplate('CMIAnual');
+  }
   
   public function executeProcesos()
   {
@@ -48,6 +66,42 @@ class informesActions extends sfActions
       $this->umbral = $this->getRequestParameter('umbral');
       $this->objetivos = ObjetivoPeer::doSelect(new Criteria());
       
+    }
+  }
+
+  public function executeUmbralesActividadPoa()
+  {
+    if (!$this->getRequestParameter('umbral'))
+    {
+      $this->setTemplate('umbralesactividadesform');
+
+    } else {
+      $this->umbral = $this->getRequestParameter('umbral');
+
+      $c = new Criteria();
+      $c->add(IndicadorPeer::CATEGORIA_ID,4,  Criteria::EQUAL);
+      $this->objetivos = ObjetivoPeer::doSelect($c);
+
+      $this->setTemplate('umbrales');
+
+    }
+  }
+
+    public function executeUmbralesProcedimientoPoa()
+  {
+    if (!$this->getRequestParameter('umbral'))
+    {
+      $this->setTemplate('umbralesprocedimientosform');
+
+    } else {
+      $this->umbral = $this->getRequestParameter('umbral');
+
+      $c = new Criteria();
+      $c->add(IndicadorPeer::CATEGORIA_ID,5,  Criteria::EQUAL);
+      $this->objetivos = ObjetivoPeer::doSelect($c);
+
+      $this->setTemplate('umbrales');
+
     }
   }
   
