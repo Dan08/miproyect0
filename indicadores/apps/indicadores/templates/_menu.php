@@ -395,9 +395,21 @@
                   <?php echo link_to('Informe Historico', 'informes/historico', 'class="yuimenuitemlabel"')?></li>
         <li class="yuimenuitem">
           <?php echo link_to('Informe por Umbrales', 'informes/umbrales', 'class="yuimenuitemlabel"')?></li>
-        <li class="yuimenuitem">
-          <?php echo link_to('Generar hojas de vida de Indicadores', 'informes/hoja', 'class="yuimenuitemlabel"')?></li>        
        </ul>
+       <ul>
+          <li class="yuimenuitem">
+            <?php echo link_to('Cuadro de Mando Integral (CMI) para POA', 'informes/CMIActividadPoa', 'class="yuimenuitemlabel"')?></li>
+          <li class="yuimenuitem">
+            <?php echo link_to('Informe por Umbrales para POA', 'informes/umbralesActividadPoa', 'class="yuimenuitemlabel"')?></li>
+          <li class="yuimenuitem">
+          <?php echo link_to('Cuadro de Mando Integral (CMI) para Procedimientos', 'informes/CMIProcedimientoPoa', 'class="yuimenuitemlabel"')?></li>
+          <li class="yuimenuitem">
+            <?php echo link_to('Informe por Umbrales para Procedimientos', 'informes/umbralesProcedimientoPoa', 'class="yuimenuitemlabel"')?></li>
+        </ul>
+        <ul>
+          <li class="yuimenuitem">
+          <?php echo link_to('Generar hojas de vida de Indicadores', 'informes/hoja', 'class="yuimenuitemlabel"')?></li>
+        </ul>
      </div></div>
   </li>
 
