@@ -335,8 +335,16 @@ class informesActions extends sfActions
 
   public function executeFuentesProyectos() {
     $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+    $this->fuentes = FuentePeer::doSelect(new Criteria());
   }
 
+  public function executeClientesProyectos() {
+    $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+    $this->clientes = ClientePeer::doSelect(new Criteria());
+  }
 
-
+  public function executeLocalidadesProyectos() {
+    $this->proyectos = ProyectoPeer::doSelect(new Criteria());
+    $this->localidades = LocalidadPeer::doSelect(new Criteria());
+  }
 }

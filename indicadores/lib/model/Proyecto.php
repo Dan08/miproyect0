@@ -30,19 +30,39 @@ class Proyecto extends BaseProyecto
     return $ejecucion;
   }
 
-  public function getArrayfuentes() {
-    $actividades = array();
+  public function getArrayFuentes() {
+    $fuentes = array();
 
-    $c = new Criteria();
-    $c->add(ActividadPeer::PROYECTO_ID, $this->id);
-    $c->add(ActividadPeer::ID, FuenteActividadPeer::ACTIVIDAD_ID);
-    $c->addJoin(ActividadPeer, self);
-    $c->addJoin(ActividadPeer, FuenteActividadPeer);
+    foreach($this->getActividads() as $actividad) {
+      foreach ($actividad->getArrayFuentes() as $key => $value) {
+        $fuentes[$key] += $value;
+      }
+    }
 
-    return FuenteActividadPeer::doSelectJoinFuente($c);
+    return $fuentes;
+  }
 
+  public function getArrayLocalidades() {
+    $localidades = array();
 
+    foreach($this->getActividads() as $actividad) {
+      foreach ($actividad->getArrayLocalidades() as $key => $value) {
+        $localidades[$key] += $value;
+      }
+    }
 
+    return $localidades;
+  }
 
+  public function getArrayClientes() {
+    $clientes = array();
+
+    foreach($this->getActividads() as $actividad) {
+      foreach ($actividad->getArrayClientes() as $key => $value) {
+        $clientes[$key] += $value;
+      }
+    }
+
+    return $clientes;
   }
 }
