@@ -8,8 +8,8 @@
 <thead>
 <tr>
   <th>Proyecto</th>
-  <?php foreach ($fuentes as $fuente): ?>
-  <th><?php echo $fuente->getFuente() ?></th>
+  <?php foreach ($clientes as $cliente): ?>
+  <th><?php echo $cliente->getCliente() ?></th>
   <?php  endforeach; ?>
 </tr>
 </thead>
@@ -17,7 +17,7 @@
 <?php foreach ($proyectos as $proyecto): ?>
   <tr>
     <td><?php echo $proyecto ?></td>
-    <?php foreach ($proyecto->getArrayFuentes() as $value): ?>
+    <?php foreach ($proyecto->getArrayClientes() as $value): ?>
     <td><?php echo $value ?></td>
     <?    endforeach; ?>
   </tr>

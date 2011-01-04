@@ -384,7 +384,14 @@
       </ul>
       <ul>
         <li class="yuimenuitem">
-          <?php echo link_to('Proyecto por Componentes', 'informes/AsignacionComponentesProyecto', 'class="yuimenuitemlabel"')?></li>
+          <?php echo link_to('Proyectos por Componentes', 'informes/AsignacionComponentesProyecto', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
+          <?php echo link_to('Proyectos por Fuentes', 'informes/FuentesProyectos', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
+          <?php echo link_to('Proyectos por Localidades', 'informes/LocalidadesProyectos', 'class="yuimenuitemlabel"')?></li>
+        <li class="yuimenuitem">
+          <?php echo link_to('Proyectos por Clientes', 'informes/ClientesProyectos', 'class="yuimenuitemlabel"')?></li>
+
       </ul>
        <ul>
         <li class="yuimenuitem">
