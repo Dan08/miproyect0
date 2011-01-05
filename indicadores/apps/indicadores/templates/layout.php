@@ -12,8 +12,9 @@
 </head>
 <body class="yui-skin-sam"> 
 <div class="wrapper">
-<div class="header">
-<?php echo image_tag("logo.png") ?>
+<div class="header">  
+  <div id="logo"><?php echo image_tag("home_logo.png") ?>
+  <?php echo image_tag("logo.png") ?></div>
 </div>
 <?php include('_menu.php') ?>
 <div class="main">
