@@ -19,7 +19,7 @@
 <h3>Fecha de elaboracion: <em><?php echo date('d/M/Y H:m:s'); ?></em></h3>
 <br />
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Actividad</th>

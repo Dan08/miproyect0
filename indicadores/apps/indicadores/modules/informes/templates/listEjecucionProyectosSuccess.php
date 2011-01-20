@@ -4,7 +4,7 @@
 ?>
 <h1>proyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Codigo</th>

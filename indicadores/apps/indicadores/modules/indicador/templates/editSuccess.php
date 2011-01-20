@@ -9,7 +9,7 @@
 
 <?php echo object_input_hidden_tag($indicador, 'getId') ?>
 
-<table>
+<table class="data">
 	<tbody>
 		<tr>
 			<th>Nombre del Indicador:</th>

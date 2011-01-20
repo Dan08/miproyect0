@@ -4,7 +4,7 @@
 ?>
 <h1>cdp</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Numero</th>

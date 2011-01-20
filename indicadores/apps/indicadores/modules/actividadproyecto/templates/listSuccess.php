@@ -7,11 +7,9 @@
 <table class="data">
 <thead>
 <tr>
-  <th>Id</th>
-  <th>Proyecto</th>
+  <th>Actividad</th>
   <th>Meta pd</th>
   <th>Meta proyecto</th>
-  <th>Actividad</th>
   <th>Descripcion</th>
   <th>Ponderacion</th>
 
@@ -20,11 +18,9 @@
 <tbody>
 <?php foreach ($actividad_proyectos as $actividad_proyecto): ?>
 <tr>
-    <td><?php echo link_to($actividad_proyecto->getId(), 'actividadproyecto/show?id='.$actividad_proyecto->getId()) ?></td>
-      <td><?php echo $actividad_proyecto->getProyectoId() ?></td>
-      <td><?php echo $actividad_proyecto->getMetaPdId() ?></td>
-      <td><?php echo $actividad_proyecto->getMetaProyectoId() ?></td>
-      <td><?php echo $actividad_proyecto->getActividad() ?></td>
+    <td><?php echo link_to($actividad_proyecto->getActividad(), 'actividadproyecto/show?id='.$actividad_proyecto->getId()) ?></td>
+      <td><?php echo $actividad_proyecto->getMetaPd() ?></td>
+      <td><?php echo $actividad_proyecto->getMetaProyecto() ?></td>
       <td><?php echo $actividad_proyecto->getDescripcion() ?></td>
       <td><?php echo $actividad_proyecto->getPonderacion() ?></td>
 

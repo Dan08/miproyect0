@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($componente_sector, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Componente sector:</th>

@@ -4,10 +4,9 @@
 ?>
 <h1>proyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
-  <th>Id</th>
   <th>Codigo</th>
   <th>Proyecto</th>
   <th>Descripcion</th>
@@ -20,8 +19,7 @@
 <tbody>
 <?php foreach ($proyectos as $proyecto): ?>
 <tr>
-    <td><?php echo link_to($proyecto->getId(), 'actividadproyecto/list?proyecto='.$proyecto->getId()) ?></td>
-      <td><?php echo $proyecto->getCodigo() ?></td>
+    <td><?php echo link_to($proyecto->getCodigo(), 'actividadproyecto/list?proyecto='.$proyecto->getId()) ?></td>
       <td><?php echo $proyecto->getProyecto() ?></td>
       <td><?php echo $proyecto->getDescripcion() ?></td>
       <td><?php echo $proyecto->getMagnitud() ?></td>

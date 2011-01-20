@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($seguimiento_indicador_meta, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Indicador meta:</th>

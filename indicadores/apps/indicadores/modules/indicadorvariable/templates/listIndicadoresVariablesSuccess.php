@@ -4,7 +4,7 @@
 ?>
 <h1>indicadorvariable</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Indicador</th>

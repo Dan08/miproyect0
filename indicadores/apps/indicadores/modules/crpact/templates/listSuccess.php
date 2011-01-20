@@ -4,7 +4,7 @@
 ?>
 <h1>crpact</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Id</th>

@@ -5,7 +5,7 @@ var_dump($procedimientos);
 ?>
 <h1>procedimiento</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Proceso</th>

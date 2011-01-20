@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($anualizacion, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Meta pd:</th>

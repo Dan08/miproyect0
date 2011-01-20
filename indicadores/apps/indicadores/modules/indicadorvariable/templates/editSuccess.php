@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($indicador_variable, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Indicador:</th>

@@ -9,7 +9,7 @@
 
 <?php echo object_input_hidden_tag($subactividad_procedimiento_poa, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Procedimiento</th>

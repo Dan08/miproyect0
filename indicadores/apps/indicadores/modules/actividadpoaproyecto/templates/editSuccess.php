@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($actividad_poa, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Meta poa:</th>

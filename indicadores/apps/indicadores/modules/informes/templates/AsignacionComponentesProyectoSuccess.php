@@ -7,7 +7,7 @@
 ?>
 <h1>Asignacion de Proyectos por Componente</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Proyecto</th>

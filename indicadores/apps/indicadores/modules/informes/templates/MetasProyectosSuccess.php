@@ -6,7 +6,7 @@
 
 ?>
 <h1>Informe Metas Plan de Desarrollo - Proyectos</h1>
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Meta Plan Desarrollo</th>

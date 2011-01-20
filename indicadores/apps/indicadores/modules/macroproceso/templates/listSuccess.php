@@ -4,7 +4,7 @@
 ?>
 <h1>macroproceso</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Nombre</th>

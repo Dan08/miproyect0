@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($cliente_actividad, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Cliente:</th>

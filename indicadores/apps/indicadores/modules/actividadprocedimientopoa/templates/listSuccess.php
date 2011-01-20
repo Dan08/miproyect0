@@ -4,7 +4,7 @@
 ?>
 <h1>actividadprocedimientopoa</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Id</th>

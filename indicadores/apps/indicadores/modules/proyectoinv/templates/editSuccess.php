@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($proyecto_inversion, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Meta pd:</th>

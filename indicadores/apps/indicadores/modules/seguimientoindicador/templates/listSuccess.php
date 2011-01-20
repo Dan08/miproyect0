@@ -4,7 +4,7 @@
 ?>
 <h1>seguimientoindicador</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Meta</th>
