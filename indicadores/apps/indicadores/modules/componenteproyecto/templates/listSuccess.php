@@ -4,7 +4,7 @@
 ?>
 <h1>componenteproyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Componente</th>

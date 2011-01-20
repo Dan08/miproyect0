@@ -4,7 +4,7 @@
 ?>
 <h1>procedimiento</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Procedimiento</th>

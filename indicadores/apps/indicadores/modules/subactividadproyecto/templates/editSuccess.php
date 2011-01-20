@@ -9,7 +9,7 @@
 
 <?php echo object_input_hidden_tag($subactividad_proyecto, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Proyecto:</th>

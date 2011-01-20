@@ -4,10 +4,9 @@
 ?>
 <h1>subactividadproyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
-  <th>Id</th>
   <th>Actividad proyecto</th>
   <th>Descripcion</th>
   <th>Entregable</th>
@@ -21,8 +20,7 @@
 <tbody>
 <?php foreach ($subactividad_proyectos as $subactividad_proyecto): ?>
 <tr>
-    <td><?php echo link_to($subactividad_proyecto->getId(), 'subactividadproyecto/edit?id='.$subactividad_proyecto->getId()) ?></td>
-      <td><?php echo $subactividad_proyecto->getActividadProyecto() ?></td>
+    <td><?php echo link_to($subactividad_proyecto->getActividadProyecto(), 'subactividadproyecto/edit?id='.$subactividad_proyecto->getId()) ?></td>
       <td><?php echo $subactividad_proyecto->getDescripcion() ?></td>
       <td><?php echo $subactividad_proyecto->getEntregable() ?></td>
       <td><?php echo $subactividad_proyecto->getFechaInicio() ?></td>
@@ -34,5 +32,3 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'subactividadproyecto/create') ?>

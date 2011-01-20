@@ -2,7 +2,7 @@
 var_dump($procesos);
 ?>
 <h1>Informe POA - Procesos</h1>
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Proceso</th>

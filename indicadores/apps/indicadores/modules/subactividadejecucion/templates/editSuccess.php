@@ -12,7 +12,7 @@
 
 <?php echo object_input_hidden_tag($subactividad_ejecucion, 'getId') ?>
 <?php echo input_hidden_tag('subactividad_proyecto_id', $subactividad->getId()) ?>
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Mes*:</th>

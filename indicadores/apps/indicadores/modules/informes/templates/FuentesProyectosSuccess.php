@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 ?>
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Proyecto</th>

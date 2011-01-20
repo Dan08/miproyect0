@@ -1,4 +1,4 @@
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Codigo</th>

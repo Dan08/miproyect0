@@ -15,7 +15,7 @@
 <p>&nbsp;</p>
 <?php echo form_tag('indicador/updateFormula', 'id=form1 name=form1') ?>
 <?php echo object_input_hidden_tag($indicador, 'getId') ?>
-<table>
+<table class="data">
   <tr>
     <th><strong>Variables</strong></th>
     <th><strong>Formula</strong></th>

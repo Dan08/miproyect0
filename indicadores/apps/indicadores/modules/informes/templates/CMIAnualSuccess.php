@@ -1,7 +1,7 @@
 <h1>Cuadro de Mando Integral</h1>
 <p>Fecha de elaboracion: <strong><?php echo date('d/M/Y H:m:s') ?></strong></p>
 
-<table>
+<table class="data">
   <tr>
     <th>Objetivo Estrategico</th>
     <th>Indicador</th>

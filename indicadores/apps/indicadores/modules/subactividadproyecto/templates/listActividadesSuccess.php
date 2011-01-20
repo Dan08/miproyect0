@@ -4,13 +4,11 @@
 ?>
 <h1>actividadproyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
-  <th>Id</th>
-  <th>Proyecto</th>
-  <th>Meta pd</th>
   <th>Actividad</th>
+  <th>Meta Plan Desarrollo</th>
   <th>Descripcion</th>
   <th>Ponderacion</th>
   <th>Created at</th>
@@ -20,17 +18,11 @@
 <tbody>
 <?php foreach ($actividad_proyectos as $actividad_proyecto): ?>
 <tr>
-    <td><?php echo link_to($actividad_proyecto->getId(), 'subactividadproyecto/list?actividad='.$actividad_proyecto->getId()) ?></td>
-      <td><?php echo $actividad_proyecto->getProyectoId() ?></td>
-      <td><?php echo $actividad_proyecto->getMetaPdId() ?></td>
-      <td><?php echo $actividad_proyecto->getActividad() ?></td>
+    <td><?php echo link_to($actividad_proyecto->getActividad(), 'subactividadproyecto/list?actividad='.$actividad_proyecto->getId()) ?></td>
+      <td><?php echo $actividad_proyecto->getMetaPd() ?></td>
       <td><?php echo $actividad_proyecto->getDescripcion() ?></td>
       <td><?php echo $actividad_proyecto->getPonderacion() ?></td>
-      <td><?php echo $actividad_proyecto->getCreatedAt() ?></td>
-      <td><?php echo $actividad_proyecto->getUpdatedAt() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'actividadproyecto/create') ?>

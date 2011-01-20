@@ -14,7 +14,7 @@
 <h3>Informe Avance Procedimiento</h3>
 <br />
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Actividad</th>

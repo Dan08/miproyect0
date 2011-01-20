@@ -8,7 +8,7 @@
 
 <?php echo object_input_hidden_tag($subactividad_poa_ejecucion, 'getId') ?>
 
-<table>
+<table class="data">
 <tbody>
 <tr>
   <th>Subactividad proyecto:</th>

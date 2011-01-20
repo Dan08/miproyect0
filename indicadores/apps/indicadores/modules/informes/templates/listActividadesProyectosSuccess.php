@@ -7,7 +7,7 @@
 ?>
 <h1>Plan Contractual: Listar Actividades de Proyecto</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Codigo</th>

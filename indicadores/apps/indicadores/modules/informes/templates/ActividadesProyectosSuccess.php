@@ -7,7 +7,7 @@
 ?>
 <h1>actividad</h1>
 
-<table>
+<table class="data">
 <thead>
 <tr>
   <th>Descripcion</th>
