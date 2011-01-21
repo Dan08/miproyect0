@@ -40,7 +40,7 @@
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getPonderacion() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProyecto()->getEjecucionPonderada() ?></td>
       <?php $pos +=current($cuenta); next($cuenta); ?>
-    <? endif; ?>
+    <?php endif; ?>
 
     <td><?echo $actividad ?></td>
     <td><?echo $actividad->getEjecucion() ?></td>

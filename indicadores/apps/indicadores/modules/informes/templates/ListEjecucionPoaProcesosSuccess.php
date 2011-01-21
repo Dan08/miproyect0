@@ -16,6 +16,6 @@
     <td><?php echo $proceso->getPonderacion();?></td>
     <td><?php echo 'ejecucion' ?></td>
   </tr>
-  <?php  endforeach; ?>
+  <?php endforeach; ?>
 </tbody>
 </table>

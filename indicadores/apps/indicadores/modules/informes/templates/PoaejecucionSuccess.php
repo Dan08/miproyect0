@@ -37,7 +37,7 @@
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProcedimientoPoa()->getPonderacion() ?></td>
       <td rowspan="<?php echo current($cuenta) ?>"><?php echo $actividad->getActividadProcedimientoPoa()->getEjecucionPonderada() ?></td>
       <?php $pos +=current($cuenta); next($cuenta); ?>
-    <? endif; ?>
+    <?php endif; ?>
       <td><?php echo $actividad->getDescripcion() ?></td>
       <td><?php echo $actividad->getEjecucion() ?></td>
       <?php $total += $actividad->getPonderacion() ?>

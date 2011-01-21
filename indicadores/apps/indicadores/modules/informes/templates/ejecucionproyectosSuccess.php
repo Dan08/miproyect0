@@ -13,7 +13,7 @@
 <h3>Fecha de elaboracion: <em><?php echo date('d/M/Y H:m:s') ?></em></h3>
 <br />
 
-<table class="data">
+<table>
 <thead>
 <tr>
   <th>Actividad</th>
@@ -82,11 +82,11 @@
     <?php if ($pos == (pos($actividad))): ?>
       <td rowspan="<?php echo current($cuenta) ?>"><?php ($actividad);echo $actividad->getActividadProyecto() ?></td>
       <?php $pos +=current($cuenta); next($cuenta); ?>
-    <? endif; ?>
+    <?php endif; ?>
 
-    <td><?echo $actividad ?></td>
-    <td><?echo $actividad->getFechaInicio() ?></td>
-    <td><?echo $actividad->getDuracion() ?></td>
+    <td><?php echo $actividad ?></td>
+    <td><?php echo $actividad->getFechaInicio() ?></td>
+    <td><?php echo $actividad->getDuracion() ?></td>
     <td><?php echo $actividad->getEjecucion() ?>%</td>
     <?php foreach ($actividad->getArrayInformeEjecucion() as $semana): ?>
     <td <?php if($semana == 1) { echo 'class="amarillo"'; } ?>

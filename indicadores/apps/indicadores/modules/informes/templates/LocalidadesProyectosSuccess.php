@@ -19,8 +19,8 @@
     <td><?php echo $proyecto ?></td>
     <?php foreach ($proyecto->getArrayLocalidades() as $value): ?>
     <td><?php echo $value ?></td>
-    <?    endforeach; ?>
+    <? endforeach; ?>
   </tr>
-<?php        endforeach; ?>
+<?php endforeach; ?>
 </tbody>
 </table>

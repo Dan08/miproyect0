@@ -21,4 +21,20 @@ class ProcedimientoPoa extends BaseProcedimientoPoa
 
     return $sum;
   }
+  
+  public function getEjecucion()
+  {
+    $c = new Criteria();
+    $c->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->id);
+
+    $resultset = ActividadProcedimientoPoaPeer::doSelect($c);
+
+    $ejecucion = 0;
+    foreach ($resultset as $item)
+    {
+      $ejecucion += $item->getEjecucionPonderada();
+    }
+
+    return $ejecucion;
+  }
 }

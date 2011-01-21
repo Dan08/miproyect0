@@ -19,8 +19,8 @@
     <td><?php echo $proyecto ?></td>
     <?php foreach ($proyecto->getArrayFuentes() as $value): ?>
     <td><?php echo $value ?></td>
-    <?    endforeach; ?>
+    <?php endforeach; ?>
   </tr>
-<?php        endforeach; ?>
+<?php endforeach; ?>
 </tbody>
 </table>
