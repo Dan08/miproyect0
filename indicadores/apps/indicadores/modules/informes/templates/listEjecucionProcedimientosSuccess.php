@@ -22,5 +22,3 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'procedimiento/create') ?>
