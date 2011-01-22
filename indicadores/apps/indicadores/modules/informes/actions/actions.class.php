@@ -250,6 +250,7 @@ class informesActions extends sfActions
       $c->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getRequestParameter('procedimiento'));
 
       $this->actividades = SubactividadProcedimientoPoaPeer::doSelectJoinAll($c);
+      $this->procedimiento = ProcedimientoPoaPeer::retrieveByPK($this->getRequestParameter('procedimiento'));
     
     } else {
 

@@ -14,7 +14,7 @@
 <h1>Informe Ejecucion Procedimiento</h1>
 
 <br />
-<h3>Procedimiento: <em><?php echo $procedimiento; ?></em></h3>
+<h3>Procedimiento: <em><?php echo $procedimiento->getProcedimiento(); ?></em></h3>
 <h3>Porcentaje Ejecucion: <em><?php echo $procedimiento->getEjecucion(); ?>%</em></h3>
 <h3>Fecha de elaboracion: <em><?php echo date('d/M/Y H:m:s'); ?></em></h3>
 <br />
