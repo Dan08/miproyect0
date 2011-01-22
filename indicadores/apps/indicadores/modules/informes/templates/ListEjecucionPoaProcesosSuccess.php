@@ -14,7 +14,7 @@
     <td><?php echo $proceso->getProcedimiento()->getProceso(); ?></td>
     <td><?php echo link_to($proceso->getProcedimiento(), 'informes/EjecucionPoaProcedimientos?procedimiento='.$proceso->getId()) ?></td>
     <td><?php echo $proceso->getPonderacion();?></td>
-    <td><?php echo 'ejecucion' ?></td>
+    <td><?php echo $proceso->getEjecucion(); ?></td>
   </tr>
   <?php endforeach; ?>
 </tbody>
