@@ -42,8 +42,8 @@
       <?php $pos +=current($cuenta); next($cuenta); ?>
     <?php endif; ?>
 
-    <td><?echo $actividad ?></td>
-    <td><?echo $actividad->getEjecucion() ?></td>
+    <td><?php echo $actividad ?></td>
+    <td><?php echo $actividad->getEjecucion() ?></td>
     <?php $total += $actividad->getPonderacion() ?>
     <td><?php echo $actividad->getPonderacion() ?></td>
     <td><?php echo $actividad->getEjecucionPonderada() ?></td>
