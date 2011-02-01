@@ -7,30 +7,22 @@
 <table class="data">
 <thead>
 <tr>
-  <th>Id</th>
   <th>Meta pd</th>
   <th>Anyo1</th>
   <th>Anyo2</th>
   <th>Anyo3</th>
   <th>Anyo4</th>
-  <th>Created at</th>
-  <th>Updated at</th>
 </tr>
 </thead>
 <tbody>
 <?php foreach ($anualizacions as $anualizacion): ?>
 <tr>
-    <td><?php echo link_to($anualizacion->getId(), 'anualizacion/show?id='.$anualizacion->getId()) ?></td>
-      <td><?php echo $anualizacion->getMetaPdId() ?></td>
+    <td><?php echo link_to($anualizacion->getMetaPd(), 'anualizacion/show?id='.$anualizacion->getId()) ?></td>
       <td><?php echo $anualizacion->getAnyo1() ?></td>
       <td><?php echo $anualizacion->getAnyo2() ?></td>
       <td><?php echo $anualizacion->getAnyo3() ?></td>
       <td><?php echo $anualizacion->getAnyo4() ?></td>
-      <td><?php echo $anualizacion->getCreatedAt() ?></td>
-      <td><?php echo $anualizacion->getUpdatedAt() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'anualizacion/create') ?>
