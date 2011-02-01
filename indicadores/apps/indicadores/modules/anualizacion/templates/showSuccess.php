@@ -10,7 +10,7 @@
 </tr>
 <tr>
 <th>Meta pd: </th>
-<td><?php echo $anualizacion->getMetaPdId() ?></td>
+<td><?php echo $anualizacion->getMetaPd() ?></td>
 </tr>
 <tr>
 <th>Anyo1: </th>
