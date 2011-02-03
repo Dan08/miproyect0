@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'componenteact/edit?id='.$componente_actividad->getId()) ?>
-&nbsp;<?php echo link_to('list', 'componenteact/list') ?>
+<?php echo link_to('Editar', 'componenteact/edit?id='.$componente_actividad->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'componenteact/list') ?>

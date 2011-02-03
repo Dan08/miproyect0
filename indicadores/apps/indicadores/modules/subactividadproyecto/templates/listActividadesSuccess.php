@@ -11,8 +11,6 @@
   <th>Meta Plan Desarrollo</th>
   <th>Descripcion</th>
   <th>Ponderacion</th>
-  <th>Created at</th>
-  <th>Updated at</th>
 </tr>
 </thead>
 <tbody>

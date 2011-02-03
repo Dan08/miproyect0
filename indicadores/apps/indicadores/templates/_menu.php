@@ -138,17 +138,6 @@
             </ul>
           </div></div>
         </li>
-
-        <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#IndicadoresPOA">Indicadores POA</a>
-          <div id="IndicadoresPOA" class="yuimenu"><div class="bd">
-            <ul>
-              <li class="yuimenuitem">
-                <?php echo link_to('Crear', 'macroproceso/create', 'class="yuimenuitemlabel"')?></li>
-              <li class="yuimenuitem">
-                <?php echo link_to('Modificar', 'proceso/create', 'class="yuimenuitemlabel"')?></li>
-            </ul>
-          </div></div>
-        </li>
       </ul>
       <ul>
         <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#ProcedimientoPOA">Programacion Procedimientos</a>

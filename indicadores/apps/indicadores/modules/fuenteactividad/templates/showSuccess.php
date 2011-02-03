@@ -23,4 +23,4 @@
 </tbody>
 </table>
 <hr />
-&nbsp;<?php echo link_to('list', 'fuenteactividad/list') ?>
+&nbsp;<?php echo link_to('Listar', 'fuenteactividad/list') ?>

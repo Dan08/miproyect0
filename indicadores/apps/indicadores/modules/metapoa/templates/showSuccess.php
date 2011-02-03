@@ -27,5 +27,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'metapoa/edit?id='.$meta_poa->getId()) ?>
-&nbsp;<?php echo link_to('list', 'metapoa/list') ?>
+<?php echo link_to('Editar', 'metapoa/edit?id='.$meta_poa->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'metapoa/list') ?>

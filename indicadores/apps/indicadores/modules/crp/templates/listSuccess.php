@@ -7,7 +7,6 @@
 <table class="data">
 <thead>
 <tr>
-  <th>Id</th>
   <th>Numero</th>
   <th>Fecha</th>
   <th>Monto</th>
@@ -16,7 +15,7 @@
 <tbody>
 <?php foreach ($crps as $crp): ?>
 <tr>
-    <td><?php echo link_to($crp->getId(), 'crp/show?id='.$crp->getId()) ?></td>
+    <td><?php echo link_to($crp->getNumero(), 'crp/show?id='.$crp->getId()) ?></td>
       <td><?php echo $crp->getNumero() ?></td>
       <td><?php echo $crp->getFecha() ?></td>
       <td><?php echo $crp->getMonto() ?></td>
@@ -24,5 +23,3 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'crp/create') ?>

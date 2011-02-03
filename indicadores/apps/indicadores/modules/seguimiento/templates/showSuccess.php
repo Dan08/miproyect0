@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'seguimiento/edit?id='.$historico_variable->getId()) ?>
-&nbsp;<?php echo link_to('list', 'seguimiento/list') ?>
+<?php echo link_to('Editar', 'seguimiento/edit?id='.$historico_variable->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'seguimiento/list') ?>

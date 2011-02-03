@@ -35,5 +35,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'metapd/edit?id='.$meta_pd->getId()) ?>
-&nbsp;<?php echo link_to('list', 'metapd/list') ?>
+<?php echo link_to('Editar', 'metapd/edit?id='.$meta_pd->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'metapd/list') ?>

@@ -59,5 +59,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'contrato/edit?id='.$contrato->getId()) ?>
-&nbsp;<?php echo link_to('list', 'contrato/list') ?>
+<?php echo link_to('Editar', 'contrato/edit?id='.$contrato->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'contrato/list') ?>

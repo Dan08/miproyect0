@@ -19,5 +19,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'cargo/edit?id='.$cargo->getId()) ?>
-&nbsp;<?php echo link_to('list', 'cargo/list') ?>
+<?php echo link_to('Editar', 'cargo/edit?id='.$cargo->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'cargo/list') ?>

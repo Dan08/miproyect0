@@ -10,7 +10,7 @@
 </tr>
 <tr>
 <th>Proyecto: </th>
-<td><?php echo $actividad->getProyectoId() ?></td>
+<td><?php echo $actividad->getProyecto() ?></td>
 </tr>
 <tr>
 <th>Descripcion: </th>
@@ -18,15 +18,15 @@
 </tr>
 <tr>
 <th>Tipo gasto: </th>
-<td><?php echo $actividad->getTipoGastoId() ?></td>
+<td><?php echo $actividad->getTipoGasto() ?></td>
 </tr>
 <tr>
 <th>Componente sector: </th>
-<td><?php echo $actividad->getComponenteSectorId() ?></td>
+<td><?php echo $actividad->getComponenteSector() ?></td>
 </tr>
 <tr>
 <th>Concepto gasto: </th>
-<td><?php echo $actividad->getConceptoGastoId() ?></td>
+<td><?php echo $actividad->getConceptoGasto() ?></td>
 </tr>
 <tr>
 <th>Cod app fvs: </th>
@@ -34,7 +34,7 @@
 </tr>
 <tr>
 <th>Meta proyecto: </th>
-<td><?php echo $actividad->getMetaProyectoId() ?></td>
+<td><?php echo $actividad->getMetaProyecto() ?></td>
 </tr>
 <tr>
 <th>Inversion recurrente: </th>
@@ -58,7 +58,7 @@
 </tr>
 <tr>
 <th>Componente inversion: </th>
-<td><?php echo $actividad->getComponenteInversionId() ?></td>
+<td><?php echo $actividad->getComponenteInversion() ?></td>
 </tr>
 <tr>
 <th>Plurianual programado: </th>
@@ -102,7 +102,7 @@
 </tr>
 <tr>
 <th>Contrato: </th>
-<td><?php echo $actividad->getContratoId() ?></td>
+<td><?php echo $actividad->getContrato() ?></td>
 </tr>
 <tr>
 <th>Existencia contrato numero: </th>
@@ -119,5 +119,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'actividad/edit?id='.$actividad->getId()) ?>
-&nbsp;<?php echo link_to('list', 'actividad/list') ?>
+<?php echo link_to('Editar', 'actividad/edit?id='.$actividad->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'actividad/list') ?>

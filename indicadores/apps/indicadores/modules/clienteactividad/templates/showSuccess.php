@@ -27,4 +27,4 @@
 </tbody>
 </table>
 <hr />
-&nbsp;<?php echo link_to('list', 'clienteactividad/list') ?>
+&nbsp;<?php echo link_to('Listar', 'clienteactividad/list') ?>
