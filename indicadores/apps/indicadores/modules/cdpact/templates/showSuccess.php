@@ -19,5 +19,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'cdpact/edit?id='.$cdp_actividad->getId()) ?>
-&nbsp;<?php echo link_to('list', 'cdpact/list') ?>
+<?php echo link_to('Editar', 'cdpact/edit?id='.$cdp_actividad->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'cdpact/list') ?>

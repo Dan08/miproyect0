@@ -35,5 +35,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'actividadprocedimientopoa/edit?id='.$actividad_procedimiento_poa->getId()) ?>
-&nbsp;<?php echo link_to('list', 'actividadprocedimientopoa/list') ?>
+<?php echo link_to('Editar', 'actividadprocedimientopoa/edit?id='.$actividad_procedimiento_poa->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'actividadprocedimientopoa/list') ?>

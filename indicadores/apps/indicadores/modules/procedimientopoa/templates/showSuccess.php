@@ -27,5 +27,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'procedimientopoa/edit?id='.$procedimiento_poa->getId()) ?>
-&nbsp;<?php echo link_to('list', 'procedimientopoa/list') ?>
+<?php echo link_to('Editar', 'procedimientopoa/edit?id='.$procedimiento_poa->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'procedimientopoa/list') ?>

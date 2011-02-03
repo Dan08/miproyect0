@@ -47,5 +47,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'subactividadprocedimientopoa/edit?id='.$subactividad_procedimiento_poa->getId()) ?>
-&nbsp;<?php echo link_to('list', 'subactividadprocedimientopoa/list') ?>
+<?php echo link_to('Editar', 'subactividadprocedimientopoa/edit?id='.$subactividad_procedimiento_poa->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'subactividadprocedimientopoa/list') ?>

@@ -15,5 +15,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'componentesector/edit?id='.$componente_sector->getId()) ?>
-&nbsp;<?php echo link_to('list', 'componentesector/list') ?>
+<?php echo link_to('Editar', 'componentesector/edit?id='.$componente_sector->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'componentesector/list') ?>

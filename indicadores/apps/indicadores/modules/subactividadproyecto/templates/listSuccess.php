@@ -13,8 +13,6 @@
   <th>Fecha inicio</th>
   <th>Duracion</th>
   <th>Ponderacion</th>
-  <th>Created at</th>
-  <th>Updated at</th>
 </tr>
 </thead>
 <tbody>
@@ -26,8 +24,6 @@
       <td><?php echo $subactividad_proyecto->getFechaInicio() ?></td>
       <td><?php echo $subactividad_proyecto->getDuracion() ?></td>
       <td><?php echo $subactividad_proyecto->getPonderacion() ?></td>
-      <td><?php echo $subactividad_proyecto->getCreatedAt() ?></td>
-      <td><?php echo $subactividad_proyecto->getUpdatedAt() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>

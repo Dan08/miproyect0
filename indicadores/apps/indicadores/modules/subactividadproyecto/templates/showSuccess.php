@@ -43,5 +43,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'subactividadproyecto/edit?id='.$subactividad_proyecto->getId()) ?>
-&nbsp;<?php echo link_to('list', 'subactividadproyecto/list') ?>
+<?php echo link_to('Editar', 'subactividadproyecto/edit?id='.$subactividad_proyecto->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'subactividadproyecto/list') ?>

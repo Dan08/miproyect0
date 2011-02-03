@@ -28,5 +28,3 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
-<?php echo link_to ('create', 'actividadproyecto/create') ?>

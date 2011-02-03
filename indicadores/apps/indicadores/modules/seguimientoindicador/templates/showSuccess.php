@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'seguimientoindicador/edit?id='.$seguimiento_indicador_meta->getId()) ?>
-&nbsp;<?php echo link_to('list', 'seguimientoindicador/list') ?>
+<?php echo link_to('Editar', 'seguimientoindicador/edit?id='.$seguimiento_indicador_meta->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'seguimientoindicador/list') ?>

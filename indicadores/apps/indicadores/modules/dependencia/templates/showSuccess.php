@@ -15,5 +15,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'dependencia/edit?id='.$dependencia->getId()) ?>
-&nbsp;<?php echo link_to('list', 'dependencia/list') ?>
+<?php echo link_to('Editar', 'dependencia/edit?id='.$dependencia->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'dependencia/list') ?>

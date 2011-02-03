@@ -10,11 +10,11 @@
 </tr>
 <tr>
 <th>Componente: </th>
-<td><?php echo $componente_proyecto->getComponenteId() ?></td>
+<td><?php echo $componente_proyecto->getComponente() ?></td>
 </tr>
 <tr>
 <th>Proyecto: </th>
-<td><?php echo $componente_proyecto->getProyectoId() ?></td>
+<td><?php echo $componente_proyecto->getProyecto() ?></td>
 </tr>
 <tr>
 <th>Monto: </th>
@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'componenteproyecto/edit?id='.$componente_proyecto->getId()) ?>
-&nbsp;<?php echo link_to('list', 'componenteproyecto/list') ?>
+<?php echo link_to('Editar', 'componenteproyecto/edit?id='.$componente_proyecto->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'componenteproyecto/list') ?>

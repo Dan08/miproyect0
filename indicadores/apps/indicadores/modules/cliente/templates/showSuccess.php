@@ -15,5 +15,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('edit', 'cliente/edit?id='.$cliente->getId()) ?>
-&nbsp;<?php echo link_to('list', 'cliente/list') ?>
+<?php echo link_to('Editar', 'cliente/edit?id='.$cliente->getId()) ?>
+&nbsp;<?php echo link_to('Listar', 'cliente/list') ?>
