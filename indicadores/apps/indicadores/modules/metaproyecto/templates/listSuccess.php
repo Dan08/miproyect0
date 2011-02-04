@@ -27,7 +27,7 @@
       <td><?php echo $meta_proyecto->getTipo() ?></td>
       <td><?php echo $meta_proyecto->getObjetivoId() ?></td>
       <td><?php echo $meta_proyecto->getDescripcion() ?></td>
-      <td><?php echo $meta_proyecto->getAnualizacionId() ?></td>
+      <td><?php echo $meta_proyecto->getAnualizacion()->getMetaPd() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>

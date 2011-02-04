@@ -18,26 +18,26 @@
 )) ?></td>
 </tr>
 <tr>
-  <th>Anyo1:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getAnyo1', array (
+  <th>A&ntilde;o 1:</th>
+  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o1', array (
   'size' => 7,
 )) ?></td>
 </tr>
 <tr>
-  <th>Anyo2:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getAnyo2', array (
+  <th>A&ntilde;o 2:</th>
+  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o2', array (
   'size' => 7,
 )) ?></td>
 </tr>
 <tr>
-  <th>Anyo3:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getAnyo3', array (
+  <th>A&ntilde;o 3:</th>
+  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o3', array (
   'size' => 7,
 )) ?></td>
 </tr>
 <tr>
-  <th>Anyo4:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getAnyo4', array (
+  <th>A&ntilde;o 4:</th>
+  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o4', array (
   'size' => 7,
 )) ?></td>
 </tr>

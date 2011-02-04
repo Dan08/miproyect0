@@ -26,7 +26,7 @@
 </tr>
 <tr>
 <th>Anualizacion: </th>
-<td><?php echo $indicador_meta->getAnualizacionId() ?></td>
+<td><?php echo $indicador_meta->getAnualizacion()->getMetaPd() ?></td>
 </tr>
 <tr>
 <th>Created at: </th>
