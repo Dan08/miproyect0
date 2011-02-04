@@ -13,19 +13,19 @@
 <td><?php echo $anualizacion->getMetaPd() ?></td>
 </tr>
 <tr>
-<th>Anyo1: </th>
+<th>A&ntilde;o 1: </th>
 <td><?php echo $anualizacion->getAnyo1() ?></td>
 </tr>
 <tr>
-<th>Anyo2: </th>
+<th>A&ntilde;o 2: </th>
 <td><?php echo $anualizacion->getAnyo2() ?></td>
 </tr>
 <tr>
-<th>Anyo3: </th>
+<th>A&ntilde;o 3: </th>
 <td><?php echo $anualizacion->getAnyo3() ?></td>
 </tr>
 <tr>
-<th>Anyo4: </th>
+<th>A&ntilde;o 4: </th>
 <td><?php echo $anualizacion->getAnyo4() ?></td>
 </tr>
 <tr>
