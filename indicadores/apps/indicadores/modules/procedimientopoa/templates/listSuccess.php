@@ -16,7 +16,7 @@
 <?php foreach ($procedimiento_poas as $procedimiento_poa): ?>
 <tr>
     <td><?php echo link_to($procedimiento_poa->getProcedimiento(), 'procedimientopoa/show?id='.$procedimiento_poa->getId()) ?></td>
-    <td><?php echo $procedimiento_poa->getProceso() ?>
+    <td><?php echo $procedimiento_poa->getProcedimiento()->getProceso() ?>
     <td><?php echo $procedimiento_poa->getPonderacion() ?></td>
   </tr>
 <?php endforeach; ?>

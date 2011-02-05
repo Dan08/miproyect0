@@ -13,7 +13,6 @@
   <th>Tipo</th>
   <th>Procedimiento</th>
   <th>Proyecto</th>
-  <th>Descripcion</th>
   <th>Responsable</th>
   <th>Observaciones</th>
 </tr>
@@ -21,13 +20,12 @@
 <tbody>
 <?php foreach ($actividad_poas as $actividad_poa): ?>
 <tr>
-    <td><?php echo link_to($actividad_poa->getActividad(), 'actividadpoaproyecto/show?id='.$actividad_poa->getId()) ?></td>
+    <td><?php echo link_to($actividad_poa->getDescripcion(), 'actividadpoaproyecto/show?id='.$actividad_poa->getId()) ?></td>
       <td><?php echo $actividad_poa->getMetaPoa() ?></td>
       <td><?php echo $actividad_poa->getProceso() ?></td>
       <td><?php echo $actividad_poa->getTipo() ?></td>
       <td><?php echo $actividad_poa->getProcedimiento() ?></td>
       <td><?php echo $actividad_poa->getProyecto() ?></td>
-      <td><?php echo $actividad_poa->getDescripcion() ?></td>
       <td><?php echo $actividad_poa->getResponsable() ?></td>
       <td><?php echo $actividad_poa->getObservaciones() ?></td>
   </tr>

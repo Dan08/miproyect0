@@ -54,11 +54,11 @@
 </tr>
 <tr>
 <th>Area responsable: </th>
-<td><?php echo $actividad->getAreaResponsable() ?></td>
+<td><?php echo $actividad->getDependencia() ?></td>
 </tr>
 <tr>
 <th>Componente inversion: </th>
-<td><?php echo $actividad->getComponenteInversion() ?></td>
+<td><?php echo $actividad->getComponente() ?></td>
 </tr>
 <tr>
 <th>Plurianual programado: </th>
