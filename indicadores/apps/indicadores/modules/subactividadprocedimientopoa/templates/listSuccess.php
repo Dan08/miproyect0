@@ -8,7 +8,6 @@
 <thead>
 <tr>
   <th>Actividad procedimiento</th>
-  <th>Descripcion</th>
   <th>Responsable</th>
   <th>Entregable</th>
   <th>Fecha inicio</th>
@@ -19,8 +18,7 @@
 <tbody>
 <?php foreach ($subactividad_procedimiento_poas as $subactividad_procedimiento_poa): ?>
 <tr>
-    <td><?php echo link_to($subactividad_procedimiento_poa->getActividadProcedimientoId(), 'subactividadprocedimientopoa/show?id='.$subactividad_procedimiento_poa->getId()) ?></td>
-      <td><?php echo $subactividad_procedimiento_poa->getDescripcion() ?></td>
+    <td><?php echo link_to($subactividad_procedimiento_poa->getDescripcion(), 'subactividadprocedimientopoa/show?id='.$subactividad_procedimiento_poa->getId()) ?></td>
       <td><?php echo $subactividad_procedimiento_poa->getResponsable() ?></td>
       <td><?php echo $subactividad_procedimiento_poa->getEntregable() ?></td>
       <td><?php echo $subactividad_procedimiento_poa->getFechaInicio() ?></td>
