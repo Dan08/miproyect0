@@ -15,7 +15,7 @@
 <tbody>
 <?php foreach ($fuente_actividads as $fuente_actividad): ?>
 <tr>
-    <td><?php echo link_to($fuente_actividad->getFuente()), 'fuenteactividad/edit?id='.$fuente_actividad->getId().'&actividad='.$fuente_actividad->getActividadId()) ?></td>
+    <td><?php echo link_to($fuente_actividad->getFuente(), 'fuenteactividad/edit?id='.$fuente_actividad->getId().'&actividad='.$fuente_actividad->getActividadId()) ?></td>
       <td><?php echo $fuente_actividad->getActividad()->getDescripcion() ?></td>
       <td><?php echo $fuente_actividad->getMonto() ?></td>
   </tr>

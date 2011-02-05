@@ -45,13 +45,13 @@
       <td><?php echo $actividad->getComponenteSector() ?></td>
       <td><?php echo $actividad->getConceptoGasto() ?></td>
       <td><?php echo $actividad->getCodAppFvs() ?></td>
-      <td><?php echo $actividad->getMetaProyectoId() ?></td>
+      <td><?php echo $actividad->getMetaProyecto() ?></td>
       <td><?php echo $actividad->getInversionRecurrente() ?></td>
       <td><?php echo $actividad->getMesEtapaContractual() ?></td>
       <td><?php echo $actividad->getMesInicioEjecucion() ?></td>
       <td><?php echo $actividad->getReservas() ?></td>
       <td><?php echo $actividad->getAreaResponsable() ?></td>
-      <td><?php echo $actividad->getComponenteInversion() ?></td>
+      <td><?php echo $actividad->getComponenteInversion()->getComponente() ?></td>
       <td><?php echo $actividad->getPlurianualProgramado() ?></td>
       <td><?php echo $actividad->getNumeroSolicitud() ?></td>
       <td><?php echo $actividad->getCdp() ?></td>
