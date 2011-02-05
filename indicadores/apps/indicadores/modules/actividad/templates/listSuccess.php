@@ -50,7 +50,7 @@
       <td><?php echo $actividad->getMesEtapaContractual() ?></td>
       <td><?php echo $actividad->getMesInicioEjecucion() ?></td>
       <td><?php echo $actividad->getReservas() ?></td>
-      <td><?php echo $actividad->getAreaResponsable() ?></td>
+      <td><?php echo $actividad->getDependencia() ?></td>
       <td><?php echo $actividad->getComponenteInversion()->getComponente() ?></td>
       <td><?php echo $actividad->getPlurianualProgramado() ?></td>
       <td><?php echo $actividad->getNumeroSolicitud() ?></td>
