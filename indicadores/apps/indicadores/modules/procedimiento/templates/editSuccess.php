@@ -34,9 +34,9 @@
 <hr />
 <?php echo submit_tag('save') ?>
 <?php if ($procedimiento->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'procedimiento/delete?id='.$procedimiento->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'procedimiento/show?id='.$procedimiento->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'procedimiento/delete?id='.$procedimiento->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'procedimiento/show?id='.$procedimiento->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'procedimiento/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'procedimiento/list') ?>
 <?php endif; ?>
 </form>

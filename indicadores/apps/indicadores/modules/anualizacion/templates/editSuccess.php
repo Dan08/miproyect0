@@ -19,25 +19,25 @@
 </tr>
 <tr>
   <th>A&ntilde;o 1:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o1', array (
+  <td><?php echo object_input_tag($anualizacion, 'getAnyo1', array (
   'size' => 7,
 )) ?></td>
 </tr>
 <tr>
   <th>A&ntilde;o 2:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o2', array (
+  <td><?php echo object_input_tag($anualizacion, 'getAnyo2', array (
   'size' => 7,
 )) ?></td>
 </tr>
 <tr>
   <th>A&ntilde;o 3:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o3', array (
+  <td><?php echo object_input_tag($anualizacion, 'getAnyo3', array (
   'size' => 7,
 )) ?></td>
 </tr>
 <tr>
   <th>A&ntilde;o 4:</th>
-  <td><?php echo object_input_tag($anualizacion, 'getA&ntilde;o4', array (
+  <td><?php echo object_input_tag($anualizacion, 'getAnyo4', array (
   'size' => 7,
 )) ?></td>
 </tr>

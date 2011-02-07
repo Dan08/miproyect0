@@ -171,9 +171,9 @@
 <hr />
 <?php echo submit_tag('save') ?>
 <?php if ($actividad->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'actividad/delete?id='.$actividad->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'actividad/show?id='.$actividad->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'actividad/delete?id='.$actividad->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'actividad/show?id='.$actividad->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'actividad/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'actividad/list') ?>
 <?php endif; ?>
 </form>

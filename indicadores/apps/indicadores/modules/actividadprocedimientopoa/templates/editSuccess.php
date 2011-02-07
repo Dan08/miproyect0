@@ -51,9 +51,9 @@
 <hr />
 <?php echo submit_tag('save') ?>
 <?php if ($actividad_procedimiento_poa->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'actividadprocedimientopoa/delete?id='.$actividad_procedimiento_poa->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'actividadprocedimientopoa/show?id='.$actividad_procedimiento_poa->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'actividadprocedimientopoa/delete?id='.$actividad_procedimiento_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'actividadprocedimientopoa/show?id='.$actividad_procedimiento_poa->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'actividadprocedimientopoa/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'actividadprocedimientopoa/list') ?>
 <?php endif; ?>
 </form>

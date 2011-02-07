@@ -28,9 +28,9 @@
 <hr />
 <?php echo submit_tag('save') ?>
 <?php if ($procedimiento_poa->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'procedimientopoa/delete?id='.$procedimiento_poa->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'procedimientopoa/show?id='.$procedimiento_poa->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'procedimientopoa/delete?id='.$procedimiento_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'procedimientopoa/show?id='.$procedimiento_poa->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'procedimientopoa/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'procedimientopoa/list') ?>
 <?php endif; ?>
 </form>
