@@ -14,7 +14,6 @@
   <th>Tipo</th>
   <th>Objetivo</th>
   <th>Descripcion</th>
-  <th>Anualizacion</th>
 </tr>
 </thead>
 <tbody>
@@ -25,9 +24,8 @@
       <td><?php echo $meta_proyecto->getProyecto() ?></td>
       <td><?php echo $meta_proyecto->getMeta() ?></td>
       <td><?php echo $meta_proyecto->getTipo() ?></td>
-      <td><?php echo $meta_proyecto->getObjetivoId() ?></td>
+      <td><?php echo $meta_proyecto->getObjetivo() ?></td>
       <td><?php echo $meta_proyecto->getDescripcion() ?></td>
-      <td><?php echo $meta_proyecto->getAnualizacion()->getMetaPd() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>

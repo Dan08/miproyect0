@@ -40,9 +40,9 @@
 <hr />
 <?php echo submit_tag('save') ?>
 <?php if ($subactividad_poa_ejecucion->getId()): ?>
-  &nbsp;<?php echo link_to('delete', 'subactividadpoaejecucion/delete?id='.$subactividad_poa_ejecucion->getId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'subactividadpoaejecucion/show?id='.$subactividad_poa_ejecucion->getId()) ?>
+  &nbsp;<?php echo link_to('Eliminar', 'subactividadpoaejecucion/delete?id='.$subactividad_poa_ejecucion->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
+  &nbsp;<?php echo link_to('Cancelar', 'subactividadpoaejecucion/show?id='.$subactividad_poa_ejecucion->getId()) ?>
 <?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'subactividadpoaejecucion/list') ?>
+  &nbsp;<?php echo link_to('Cancelar', 'subactividadpoaejecucion/list') ?>
 <?php endif; ?>
 </form>
