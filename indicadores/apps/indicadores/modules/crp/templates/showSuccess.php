@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'crp/edit?id='.$crp->getId()) ?>
+<?php echo link_to('Editar', 'crp/edit?id='.$crp->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'crp/list') ?>

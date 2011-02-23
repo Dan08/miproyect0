@@ -51,5 +51,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'metaproyecto/edit?id='.$meta_proyecto->getId()) ?>
+<?php echo link_to('Editar', 'metaproyecto/edit?id='.$meta_proyecto->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'metaproyecto/list') ?>

@@ -67,5 +67,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Modificar', 'indicador/edit?id='.$indicador->getId(), 'class="button"') ?>
+<?php echo link_to('Editar', 'indicador/edit?id='.$indicador->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Regresar a la lista', 'indicador/list', 'class="button"') ?>

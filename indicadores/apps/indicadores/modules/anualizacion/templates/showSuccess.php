@@ -39,5 +39,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'anualizacion/edit?id='.$anualizacion->getId()) ?>
+<?php echo link_to('Editar', 'anualizacion/edit?id='.$anualizacion->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'anualizacion/list') ?>

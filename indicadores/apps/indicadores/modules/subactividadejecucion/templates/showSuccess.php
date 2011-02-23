@@ -35,5 +35,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'subactividadejecucion/edit?id='.$subactividad_ejecucion->getId()) ?>
+<?php echo link_to('Editar', 'subactividadejecucion/edit?id='.$subactividad_ejecucion->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'subactividadejecucion/list') ?>

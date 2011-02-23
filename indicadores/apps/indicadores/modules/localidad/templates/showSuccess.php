@@ -15,5 +15,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'localidad/edit?id='.$localidad->getId()) ?>
+<?php echo link_to('Editar', 'localidad/edit?id='.$localidad->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'localidad/list') ?>

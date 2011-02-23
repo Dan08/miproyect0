@@ -19,5 +19,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'cdpactividad/edit?id='.$cdp_actividad->getId()) ?>
+<?php echo link_to('Editar', 'cdpactividad/edit?id='.$cdp_actividad->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'cdpactividad/list') ?>

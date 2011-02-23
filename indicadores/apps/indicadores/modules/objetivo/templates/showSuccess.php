@@ -32,5 +32,5 @@
 </table>
 <hr />
 
-<?php echo link_to('Modificar', 'objetivo/edit?id='.$objetivo->getId(), 'class="button"') ?>
+<?php echo link_to('Editar', 'objetivo/edit?id='.$objetivo->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Regresar a la lista', 'objetivo/list', 'class="button"') ?>

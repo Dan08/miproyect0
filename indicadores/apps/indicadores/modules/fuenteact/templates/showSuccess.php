@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'fuenteact/edit?id='.$fuente_actividad->getId()) ?>
+<?php echo link_to('Editar', 'fuenteact/edit?id='.$fuente_actividad->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'fuenteact/list') ?>
