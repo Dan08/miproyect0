@@ -31,5 +31,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'proyectoinv/edit?id='.$proyecto_inversion->getId()) ?>
+<?php echo link_to('Editar', 'proyectoinv/edit?id='.$proyecto_inversion->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'proyectoinv/list') ?>

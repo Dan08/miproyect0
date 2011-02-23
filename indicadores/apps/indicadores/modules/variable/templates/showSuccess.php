@@ -15,5 +15,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Modificar', 'variable/edit?id='.$variable->getId(), 'class="button"') ?>
+<?php echo link_to('Editar', 'variable/edit?id='.$variable->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Regresar a la lista', 'variable/list', 'class="button"') ?>

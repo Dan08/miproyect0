@@ -39,5 +39,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'indicadormeta/edit?id='.$indicador_meta->getId()) ?>
+<?php echo link_to('Editar', 'indicadormeta/edit?id='.$indicador_meta->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'indicadormeta/list') ?>

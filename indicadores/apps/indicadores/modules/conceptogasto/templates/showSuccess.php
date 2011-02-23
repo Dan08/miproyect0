@@ -15,5 +15,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'conceptogasto/edit?id='.$concepto_gasto->getId()) ?>
+<?php echo link_to('Editar', 'conceptogasto/edit?id='.$concepto_gasto->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'conceptogasto/list') ?>

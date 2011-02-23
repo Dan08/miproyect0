@@ -23,5 +23,5 @@
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'componenteproyecto/edit?id='.$componente_proyecto->getId()) ?>
+<?php echo link_to('Editar', 'componenteproyecto/edit?id='.$componente_proyecto->getId(), 'class="button"') ?>
 &nbsp;<?php echo link_to('Listar', 'componenteproyecto/list') ?>
