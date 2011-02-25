@@ -169,7 +169,7 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($actividad->getId()): ?>
   &nbsp;<?php echo link_to('Eliminar', 'actividad/delete?id='.$actividad->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
   &nbsp;<?php echo link_to('Cancelar', 'actividad/show?id='.$actividad->getId()) ?>

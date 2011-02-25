@@ -56,7 +56,7 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($subactividad_poa->getId()): ?>
   &nbsp;<?php echo link_to('Eliminar', 'subactividadpoa/delete?id='.$subactividad_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
   &nbsp;<?php echo link_to('Cancelar', 'subactividadpoa/show?id='.$subactividad_poa->getId()) ?>
