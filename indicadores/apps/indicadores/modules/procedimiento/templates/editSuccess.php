@@ -32,7 +32,7 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($procedimiento->getId()): ?>
   &nbsp;<?php echo link_to('Eliminar', 'procedimiento/delete?id='.$procedimiento->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
   &nbsp;<?php echo link_to('Cancelar', 'procedimiento/show?id='.$procedimiento->getId()) ?>

@@ -26,7 +26,7 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($procedimiento_poa->getId()): ?>
   &nbsp;<?php echo link_to('Eliminar', 'procedimientopoa/delete?id='.$procedimiento_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
   &nbsp;<?php echo link_to('Cancelar', 'procedimientopoa/show?id='.$procedimiento_poa->getId()) ?>

@@ -59,7 +59,7 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($actividad_poa->getId()): ?>
   &nbsp;<?php echo link_to('Eliminar', 'actividadpoaproyecto/delete?id='.$actividad_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
   &nbsp;<?php echo link_to('Cancelar', 'actividadpoaproyecto/show?id='.$actividad_poa->getId()) ?>

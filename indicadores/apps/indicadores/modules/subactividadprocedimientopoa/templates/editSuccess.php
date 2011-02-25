@@ -82,7 +82,7 @@
 </tbody>
 </table>
 <hr />
-<?php echo submit_tag('save') ?>
+<?php echo submit_tag('Guardar', 'class="button"') ?>
 <?php if ($subactividad_procedimiento_poa->getId()): ?>
   &nbsp;<?php echo link_to('Eliminar', 'subactividadprocedimientopoa/delete?id='.$subactividad_procedimiento_poa->getId(), array('post'=>'true', 'confirm'=>'¿Esta seguro?', 'class'=>'button')) ?>
   &nbsp;<?php echo link_to('Cancelar', 'subactividadprocedimientopoa/show?id='.$subactividad_procedimiento_poa->getId()) ?>
