@@ -3,23 +3,23 @@
 // date: 2010/12/01 01:25:44
 ?>
 <?php use_helper('Object') ?>
+<h3>Subactividad: <?php echo $subactividad->getDescripcion(); ?></h3>
+<h3>Duracion: <?php echo $subactividad->getDuracion(); ?> meses</h3>
+<h3>Porcentaje Avance: <?php echo $subactividad->getEjecucion(); ?>%</h3>
+<?php if ($subactividad->getMesMedicion() > 0): ?>
 
 <?php echo form_tag('subactividadprocedimientopoaejecucion/update') ?>
 
 <?php echo object_input_hidden_tag($subactividad_procedimiento_poa_ejecucion, 'getId') ?>
+<?php echo input_hidden_tag('subactividad_poa_id', $subactividad->getId()) ?>
 
 <table class="data">
 <tbody>
 <tr>
-  <th>Subactividad poa:</th>
-  <td><?php echo object_select_tag($subactividad_procedimiento_poa_ejecucion, 'getSubactividadPoaId', array (
-  'related_class' => 'SubactividadProcedimientoPoa',
-  'include_blank' => true,
-)) ?></td>
-</tr>
-<tr>
   <th>Mes*:</th>
-  <td><?php echo object_input_tag($subactividad_procedimiento_poa_ejecucion, 'getMes', array (
+  <td>
+  <?php echo $subactividad->getMesMedicion(); ?> de <?php echo $subactividad->getDuracion(); ?>
+  <?php echo object_input_tag($subactividad_procedimiento_poa_ejecucion, 'getMes', array (
   'size' => 7,
 )) ?></td>
 </tr>
@@ -46,3 +46,7 @@
   &nbsp;<?php echo link_to('Cancelar', 'subactividadprocedimientopoaejecucion/list') ?>
 <?php endif; ?>
 </form>
+<?php else: ?>
+<h1><strong>Se han realizado todas las mediciones</strong></h1>
+<?php endif; ?>
+

@@ -21,7 +21,27 @@ class subactividadprocedimientopoaejecucionActions extends sfActions
 
   public function executeList()
   {
-    $this->subactividad_procedimiento_poa_ejecucions = SubactividadProcedimientoPoaEjecucionPeer::doSelect(new Criteria());
+    // listar subactividades
+    if ($this->getRequestParameter('actividad'))
+    {
+      $c = new Criteria();
+      $c->add(SubactividadProcedimientoPoaPeer::ACTIVIDAD_PROCEDIMIENTO_ID, $this->getRequestParameter('actividad'));
+      
+      $this->subactividad_procedimiento_poas = SubactividadProcedimientoPoaPeer::doSelect($c);
+      $this->setTemplate('listSubActividades');
+    // listar actividades
+    } elseif ($this->getRequestParameter('procedimiento'))
+    {
+      $c = new Criteria();
+      $c->add(ActividadProcedimientoPoaPeer::PROCEDIMIENTO_POA_ID, $this->getRequestParameter('procedimiento'));
+      $this->actividad_procedimiento_poas = ActividadProcedimientoPoaPeer::doSelect($c);
+      $this->setTemplate('listActividades');
+
+    // listar procedimientos
+    } else {
+      $this->procedimiento_poas = ProcedimientoPoaPeer::doSelect(new Criteria());
+      $this->setTemplate('listProcedimientos');
+    }
   }
 
   public function executeShow()
@@ -32,6 +52,10 @@ class subactividadprocedimientopoaejecucionActions extends sfActions
 
   public function executeCreate()
   {
+    // tomar el identificador de la subactividad
+    $this->id = $this->getRequestParameter('subactividad');
+    // consultar el numero de mediciones que existen
+    $this->subactividad = SubactividadProcedimientoPoaPeer::retrieveByPK($this->id);
     $this->subactividad_procedimiento_poa_ejecucion = new SubactividadProcedimientoPoaEjecucion();
 
     $this->setTemplate('edit');

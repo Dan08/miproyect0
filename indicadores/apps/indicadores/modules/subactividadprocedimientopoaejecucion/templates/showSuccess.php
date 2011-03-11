@@ -5,12 +5,8 @@
 <table class="data">
 <tbody>
 <tr>
-<th>Id: </th>
-<td><?php echo $subactividad_procedimiento_poa_ejecucion->getId() ?></td>
-</tr>
-<tr>
 <th>Subactividad poa: </th>
-<td><?php echo $subactividad_procedimiento_poa_ejecucion->getSubactividadPoaId() ?></td>
+<td><?php echo $subactividad_procedimiento_poa_ejecucion->getSubactividadProcedimientoPoa() ?></td>
 </tr>
 <tr>
 <th>Mes: </th>
@@ -24,16 +20,6 @@
 <th>Avance: </th>
 <td><?php echo $subactividad_procedimiento_poa_ejecucion->getAvance() ?></td>
 </tr>
-<tr>
-<th>Created at: </th>
-<td><?php echo $subactividad_procedimiento_poa_ejecucion->getCreatedAt() ?></td>
-</tr>
-<tr>
-<th>Updated at: </th>
-<td><?php echo $subactividad_procedimiento_poa_ejecucion->getUpdatedAt() ?></td>
-</tr>
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'subactividadprocedimientopoaejecucion/edit?id='.$subactividad_procedimiento_poa_ejecucion->getId(), 'class="button"') ?>
-&nbsp;<?php echo link_to('Listar', 'subactividadprocedimientopoaejecucion/list') ?>
