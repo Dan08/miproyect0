@@ -51,7 +51,7 @@
       <td><?php echo $actividad->getMesInicioEjecucion() ?></td>
       <td><?php echo $actividad->getReservas() ?></td>
       <td><?php echo $actividad->getDependencia() ?></td>
-      <td><?php echo $actividad->getComponenteInversion()->getComponente() ?></td>
+      <td><?php echo $actividad->getComponente() ?></td>
       <td><?php echo $actividad->getPlurianualProgramado() ?></td>
       <td><?php echo $actividad->getNumeroSolicitud() ?></td>
       <td><?php echo $actividad->getCdp() ?></td>

@@ -310,7 +310,7 @@
               <li class="yuimenuitem">
                 <?php echo link_to('Vincular', 'indicadorvariable/create', 'class="yuimenuitemlabel"')?></li>
               <li class="yuimenuitem">
-                <?php echo link_to('Modificar vinculo', 'indicadorvariable/create', 'class="yuimenuitemlabel"')?></li>
+                <?php echo link_to('Modificar vinculo', 'indicadorvariable/list', 'class="yuimenuitemlabel"')?></li>
             </ul>
           </div></div>
         </li>

@@ -5,12 +5,8 @@
 <table class="data">
 <tbody>
 <tr>
-<th>Id: </th>
-<td><?php echo $subactividad_ejecucion->getId() ?></td>
-</tr>
-<tr>
 <th>Subactividad proyecto: </th>
-<td><?php echo $subactividad_ejecucion->getSubactividadProyectoId() ?></td>
+<td><?php echo $subactividad_ejecucion->getSubactividadProyecto() ?></td>
 </tr>
 <tr>
 <th>Mes: </th>
@@ -24,16 +20,6 @@
 <th>Avance: </th>
 <td><?php echo $subactividad_ejecucion->getAvance() ?></td>
 </tr>
-<tr>
-<th>Created at: </th>
-<td><?php echo $subactividad_ejecucion->getCreatedAt() ?></td>
-</tr>
-<tr>
-<th>Updated at: </th>
-<td><?php echo $subactividad_ejecucion->getUpdatedAt() ?></td>
-</tr>
 </tbody>
 </table>
 <hr />
-<?php echo link_to('Editar', 'subactividadejecucion/edit?id='.$subactividad_ejecucion->getId(), 'class="button"') ?>
-&nbsp;<?php echo link_to('Listar', 'subactividadejecucion/list') ?>
