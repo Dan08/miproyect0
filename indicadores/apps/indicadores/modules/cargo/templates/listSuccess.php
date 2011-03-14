@@ -17,7 +17,7 @@
 <tr>
     <td><?php echo link_to($cargo->getId(), 'cargo/show?id='.$cargo->getId()) ?></td>
       <td><?php echo $cargo->getNombre() ?></td>
-      <td><?php echo $cargo->getDependenciaId() ?></td>
+      <td><?php echo $cargo->getDependencia() ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>

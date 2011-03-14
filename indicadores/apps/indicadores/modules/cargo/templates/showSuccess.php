@@ -14,7 +14,7 @@
 </tr>
 <tr>
 <th>Dependencia: </th>
-<td><?php echo $cargo->getDependenciaId() ?></td>
+<td><?php echo $cargo->getDependencia() ?></td>
 </tr>
 </tbody>
 </table>
