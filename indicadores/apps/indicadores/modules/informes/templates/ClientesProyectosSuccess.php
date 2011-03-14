@@ -7,10 +7,16 @@
 <table class="data">
 <thead>
 <tr>
-  <th>Proyecto</th>
+  <th rowspan="2">Proyecto</th>
   <?php foreach ($clientes as $cliente): ?>
-  <th><?php echo $cliente->getCliente() ?></th>
+  <th colspan="2"><?php echo $cliente->getCliente() ?></th>
   <?php  endforeach; ?>
+</tr>
+<tr>
+  <?php foreach ($clientes as $cliente): ?>
+    <th>Programado</th>
+    <th>Ejecutado</th>
+  <?php endforeach;?>
 </tr>
 </thead>
 <tbody>
@@ -18,7 +24,8 @@
   <tr>
     <td><?php echo $proyecto ?></td>
     <?php foreach ($proyecto->getArrayClientes() as $value): ?>
-    <td><?php echo $value ?></td>
+    <td><?php echo $value['pro'] ?></td>
+    <td><?php echo $value['eje'] ?></td>
     <?    endforeach; ?>
   </tr>
 <?php        endforeach; ?>

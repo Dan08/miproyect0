@@ -13,6 +13,7 @@
   <th>Proyecto</th>
   <th>Componente</th>
   <th>Monto</th>
+  <th>Ejecutado</th>
 </tr>
 </thead>
 <tbody>
@@ -21,7 +22,8 @@
   <td><?php echo $componente_proyecto->getProyecto() ?></td>
   <td><?php echo $componente_proyecto->getComponente() ?></td>
   <td><?php echo $componente_proyecto->getMonto() ?></td>
-  </tr>
+  <td><?php echo $componente_proyecto->getMontoEjecutado() ?></td>
+</tr>
 <?php endforeach; ?>
 </tbody>
 </table>
